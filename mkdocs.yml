@@ -1,0 +1,39 @@
+site_name: Markdown Validator
+site_description: Rule-based Markdown document validation for static site content.
+site_author: Matt Briggs
+repo_url: https://github.com/mattbriggs/markdown-validator
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - Rules Reference: rules-reference.md
+  - CLI Reference: cli-reference.md
+  - API:
+      - Domain: api/domain.md
+      - Infrastructure: api/infrastructure.md
+      - Services: api/services.md
+      - CLI: api/cli.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [.]
+          options:
+            docstring_style: sphinx
+            show_source: true
+            show_signature_annotations: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - tables
