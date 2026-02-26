@@ -1,0 +1,352 @@
+{
+    "rules": {
+        "header": [{
+                "name": "The-mstopic-attribute-has-a-value-of-tutorial",
+                "id": "1",
+                "query": "ms.topic",
+                "flag": "value",
+                "operation": "==",
+                "value": "tutorial",
+                "level": "Required",
+                "mitigation": "You must have an author in your document."
+            },
+            {
+                "name": "The-title-attribute-value-includes-word-tutorial",
+                "id": "2",
+                "query": "title",
+                "flag": "value",
+                "operation": "[]",
+                "value": "tutorial",
+                "level": "Required",
+                "mitigation": "You must have an author in your document."
+            },
+            {
+                "name": "The-description-attribute-value-includes-the-word-tutorial",
+                "id": "3",
+                "query": "description",
+                "flag": "value",
+                "operation": "[]",
+                "value": "tutorial",
+                "level": "Required",
+                "mitigation": "You must have an author in your document."
+            },
+            {
+                "name": "The-msdate-attribute-reflects-the-current-week",
+                "id": "4",
+                "query": "ms.date",
+                "flag": "date",
+                "operation": "<",
+                "value": "7",
+                "level": "Required",
+                "mitigation": "You must have an author in your document."
+            },
+            {
+                "name": "The-customer-intent-statement-is-a-markdown-comment-in-the-last-line-in-the-metadata-section",
+                "id": "5",
+                "query": "intent",
+                "flag": "check",
+                "operation": "",
+                "value": "",
+                "level": "Required",
+                "mitigation": "You must have an author in your document."
+            }
+        ],
+        "body": [{
+                "name": "H1-is-present-after-the-metadata-section",
+                "id": "6",
+                "query": "/html/body/h1",
+                "flag": "count",
+                "operation": "==",
+                "value": "1",
+                "level": "Required",
+                "mitigation": "You must have one H1 in your document."
+            },
+            {
+                "name": "H1-begins-with-the-Tutorial",
+                "id": "7",
+                "query": "/html/body/h1",
+                "flag": "text",
+                "operation": "[:",
+                "value": "Tutorial:",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "H1-Tutorial:--is-followed-by-a-verb",
+                "id": "8",
+                "query": "/html/body/h1",
+                "flag": "text",
+                "operation": "p1",
+                "value": "verb",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-introductory-paragraph-is-no-more-than-6-sentences",
+                "id": "9",
+                "query": "/html/body/p",
+                "flag": "s",
+                "operation": "<",
+                "value": "6",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "Introductory-paragraph-is-not-an-ordered-list",
+                "id": "10",
+                "query": "/html/body/h1//preceding-sibling::ol",
+                "flag": "count",
+                "operation": "<",
+                "value": "0",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "Introductory-paragraph-is-not-an-unordered-list",
+                "id": "11",
+                "query": "/html/body/h1//following-sibling::ul",
+                "flag": "count",
+                "operation": "<",
+                "value": "0",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-introductory-paragraph-is-followed-by-a-sentence-that-says,-In-this-tutorial",
+                "id": "12",
+                "query": "/html/body/h1//following-sibling::p",
+                "flag": "text",
+                "operation": "[:",
+                "value": "In this tutorial",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-introductory-paragraph-occurs-before-the-first-H2",
+                "id": "13",
+                "query": "/html/body/h2/preceding-sibling::p",
+                "flag": "count",
+                "operation": "==",
+                "value": "1",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-tutorial-should-not-include-the-terms-guide-article-or-topic",
+                "id": "14",
+                "query": "/html/body/",
+                "flag": "all",
+                "operation": "[]",
+                "value": "['guide', 'article', or 'topic']",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-phrase-In-this-tutorial,-you-learn-how-to:--is-followed-by->[!div-class=checklist]",
+                "id": "15",
+                "query": "//div[@class='checklist']/preceding-sibling::p",
+                "flag": "text",
+                "operation": "[]",
+                "value": "In this tutorial",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-checklist-section-uses-green-checkmarks",
+                "id": "16",
+                "query": "/div[@class='checklist']",
+                "flag": "count",
+                "operation": ">",
+                "value": "0",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "If-there-are-no-prerequisites-theres-a-sentence-that-provides-a-link-to-a-free-account-just-before-the-first-H2",
+                "id": "18",
+                "query": "X",
+                "flag": "X",
+                "operation": "X",
+                "value": "X",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "If-Prerequisites-are-included,-Prerequisites-is-the-first-H2",
+                "id": "19",
+                "query": "/html/body/h2[1]",
+                "flag": "text",
+                "operation": "[:",
+                "value": "Prerequisites",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "If-Prerequisites-are-included,-the-first-prerequisite-is-a-link-to-a-free-trial-account",
+                "id": "20",
+                "query": "/html/body/h2[1]/following-sibling::a",
+                "flag": "text",
+                "operation": "==",
+                "value": "If you don't have an Azure subscription, create a free account before you begin.",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "There-are-no-links-to-outside-content-after-the-Prerequisites-section-and-before-the-Next-steps-section",
+                "id": "24",
+                "query": ".//h2[2]/following-sibling::a count",
+                "flag": "count",
+                "operation": "==",
+                "value": "0",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "If-there-are-H2s-other-than-up-resources-and-Next-steps-there-must-be-two",
+                "id": "25",
+                "query": "/html/body/h2",
+                "flag": "count",
+                "operation": ">",
+                "value": "2",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "H2s-are-no-longer-than-60-characters",
+                "id": "27",
+                "query": "/html/body/h2",
+                "flag": "l",
+                "operation": "<",
+                "value": "61",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-H2-headings-arent-numbered",
+                "id": "28",
+                "query": "/html/body/h2",
+                "flag": "text",
+                "operation": "r",
+                "value": "^([0-9])",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-H3-headings-arent-numbered",
+                "id": "29",
+                "query": "/html/body/h2",
+                "flag": "text",
+                "operation": "r",
+                "value": "^([0-9])",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "No-more-than-9-H2s",
+                "id": "30",
+                "query": "/html/body/h2",
+                "flag": "count",
+                "operation": "<",
+                "value": "10",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "If-there-are-no-H2s-there-can-be-no-H3s",
+                "id": "33",
+                "query": "/html/body/h3",
+                "flag": "count",
+                "operation": "==",
+                "value": "0",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-second-to-last-H2-is-Clean-up-resources",
+                "id": "34",
+                "query": "X",
+                "flag": "X",
+                "operation": "X",
+                "value": "X",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "If--Clean-up-resources-H2-then-sentence-that-explains-that-the-result-of-the-tutorial-may-impact-price-and-then-an-ordered-list",
+                "id": "35",
+                "query": "X",
+                "flag": "X",
+                "operation": "X",
+                "value": "X",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "If-no-Clean-up-resources-H2-then-P-with-sentence-with-string-no-resources-to-clean-up-in-this-section",
+                "id": "36",
+                "query": "X",
+                "flag": "X",
+                "operation": "X",
+                "value": "X",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-last-H2-is-Next-steps",
+                "id": "37",
+                "query": "X",
+                "flag": "X",
+                "operation": "X",
+                "value": "X",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "The-Next-steps-H2-is-followed-by-a-link",
+                "id": "38",
+                "query": "X",
+                "flag": "X",
+                "operation": "X",
+                "value": "X",
+                "level": "Required",
+                "mitigation": "XXX"
+            },
+            {
+                "name": "This-formatted-as->-[!div-class=nextstepaction]",
+                "id": "39",
+                "query": "X",
+                "flag": "X",
+                "operation": "X",
+                "value": "X",
+                "level": "Required",
+                "mitigation": "XXX"
+            }
+        ]
+    },
+    "workflows": [{
+            "name": "The-mstopic-attribute-has-a-value-of-tutorial",
+            "type": "header",
+            "steps": "(S,1)(1,E)"
+        },
+        {
+            "name": "The-title-attribute-value-includes-word-tutorial",
+            "type": "header",
+            "steps": "(S,2)(2,E)"
+        },
+        {
+            "name": "The-description-attribute-value-includes-the-word-tutorial",
+            "type": "header",
+            "steps": "(S,3)(3,E)"
+        },
+        {
+            "name": "The-msdate-attribute-reflects-the-current-week",
+            "type": "header",
+            "steps": "(S,4)(4,E)"
+        },
+        {
+            "name": "The-customer-intent-statement-is-a-markdown-comment-in-the-last-line-in-the-metadata-section",
+            "type": "header",
+            "steps": "(S,5)(5,E)"
+        }
+    ]
+}
