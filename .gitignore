@@ -145,8 +145,8 @@ config.py
 config.json
 secrets.json
 
-/docs
 /workingstuff
+/coverage_html
 
 /.vscode
 /.VSCodeCounter
