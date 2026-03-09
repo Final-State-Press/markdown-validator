@@ -3,6 +3,9 @@ site_description: Rule-based Markdown document validation for static site conten
 site_author: Matt Briggs
 repo_url: https://github.com/mattbriggs/markdown-validator
 
+docs_dir: site
+site_dir: docs
+
 theme:
   name: material
   features:
@@ -35,5 +38,12 @@ plugins:
 markdown_extensions:
   - admonition
   - pymdownx.highlight
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - tables
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
