@@ -36,8 +36,8 @@ _INTRO = (
 class ValidatorREPL(cmd.Cmd):
     """Interactive REPL for exploring and testing validation rules.
 
-    :param intro: Introductory message displayed on startup.
-    :param prompt: Shell prompt string.
+    :cvar intro: Introductory message displayed on startup.
+    :cvar prompt: Shell prompt string.
     """
 
     intro: str = _INTRO

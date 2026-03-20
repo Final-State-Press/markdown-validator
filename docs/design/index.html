@@ -1,0 +1,1884 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Rule-based Markdown document validation for static site content.">
+      
+      
+        <meta name="author" content="Matt Briggs">
+      
+      
+      
+        <link rel="prev" href="../architecture/">
+      
+      
+        <link rel="next" href="../rules-reference/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>Design - Markdown Validator</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#design-markdown-validator" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Markdown Validator" class="md-header__button md-logo" aria-label="Markdown Validator" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Markdown Validator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mattbriggs/markdown-validator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Markdown Validator" class="md-nav__button md-logo" aria-label="Markdown Validator" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Markdown Validator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mattbriggs/markdown-validator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../product/assessment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assessment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../product/roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../product/revision-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Revision Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../srs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requirements
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose and Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-system-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. System Boundaries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. System Boundaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-dependency-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer Dependency Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-layer-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Layer Responsibilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Layer Responsibilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#markdown_validatordomain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        markdown_validator.domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown_validatorinfrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        markdown_validator.infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown_validatorservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        markdown_validator.services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown_validatorcli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        markdown_validator.cli
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-design-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Design Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Design Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-domainoperatorspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy (domain/operators.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository-infrastructureloaderpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository (infrastructure/loader.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value-object-all-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Value Object (all models)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facade-servicesscannerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Facade (services/scanner.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chain-of-responsibility-servicesworkflowpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chain of Responsibility (services/workflow.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-contract-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Contract Schemas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Contract Schemas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rule-json-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule JSON Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pydantic-models-domainmodelspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pydantic Models (domain/models.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-workflow-step-language-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Workflow Step Language Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-operator-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Operator Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-adding-a-new-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Adding a New Operator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-known-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Known Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rules-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rules Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Domain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-purpose-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose and Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-system-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. System Boundaries
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. System Boundaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#layer-dependency-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Layer Dependency Rule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-layer-responsibilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Layer Responsibilities
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Layer Responsibilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#markdown_validatordomain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        markdown_validator.domain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown_validatorinfrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        markdown_validator.infrastructure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown_validatorservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        markdown_validator.services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#markdown_validatorcli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        markdown_validator.cli
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-design-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Design Patterns
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Design Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-domainoperatorspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Strategy (domain/operators.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repository-infrastructureloaderpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository (infrastructure/loader.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value-object-all-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Value Object (all models)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facade-servicesscannerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Facade (services/scanner.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chain-of-responsibility-servicesworkflowpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chain of Responsibility (services/workflow.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-contract-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Contract Schemas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Contract Schemas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rule-json-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rule JSON Schema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pydantic-models-domainmodelspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pydantic Models (domain/models.py)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-workflow-step-language-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Workflow Step Language Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-operator-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Operator Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-adding-a-new-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Adding a New Operator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-known-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Known Limitations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="design-markdown-validator">Design: markdown-validator</h1>
+<h2 id="1-purpose-and-scope">1. Purpose and Scope</h2>
+<p><code>markdown-validator</code> is a rule-based linting tool for Markdown documents used
+in static site generators (DocFX, Hugo).  It validates documents against a
+declarative JSON rule set, checking both YAML front-matter metadata and the
+HTML-rendered document body using XPath expressions.</p>
+<p>The tool is used to:
+- Enforce consistent document structure across large documentation repositories
+- Validate metadata completeness (required keys, date freshness, topic values)
+- Check heading hierarchy, section order, and content patterns
+- Integrate with CI/CD pipelines as a validation gate</p>
+<hr />
+<h2 id="2-system-boundaries">2. System Boundaries</h2>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────────┐
+│  CLI Boundary                                                        │
+│  Input:  CLI arguments (file paths, flags)                          │
+│  Output: Exit code (0 = all pass, 1 = failures), stdout report      │
+│  Entry:  markdown_validator.cli.main:cli                            │
+└───────────────────────────┬─────────────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────────────┐
+│  Service Boundary                                                    │
+│  Input:  file paths (markdown + rule set)                           │
+│  Output: ScanReport (Pydantic model, immutable)                     │
+│  Entry:  Scanner.validate()                                         │
+└──────────┬───────────────────────────────────┬──────────────────────┘
+           │                                   │
+┌──────────▼──────────┐            ┌───────────▼───────────────────────┐
+│  Infrastructure     │            │  Domain                           │
+│  Boundary           │            │  Boundary                         │
+│  Input: file paths  │            │  Input: pure Python values        │
+│  Output: domain     │            │  Output: bool / str               │
+│  value objects      │            │  (no I/O, no side effects)        │
+│  - ParsedDocument   │            │  - RuleModel (immutable)          │
+│  - RuleSetModel     │            │  - ValidationResult (immutable)   │
+└─────────────────────┘            └───────────────────────────────────┘
+</code></pre></div>
+<h3 id="layer-dependency-rule">Layer Dependency Rule</h3>
+<div class="highlight"><pre><span></span><code>CLI  →  Services  →  Infrastructure  →  Domain
+                ↘                  ↘
+                 Domain              Domain
+</code></pre></div>
+<ul>
+<li><strong>Domain</strong> depends on nothing internal.</li>
+<li><strong>Infrastructure</strong> depends only on Domain.</li>
+<li><strong>Services</strong> depend on Domain and Infrastructure.</li>
+<li><strong>CLI</strong> depends only on Services.</li>
+</ul>
+<p>Violations of this rule (e.g., CLI importing from Infrastructure directly)
+are prohibited.</p>
+<hr />
+<h2 id="3-layer-responsibilities">3. Layer Responsibilities</h2>
+<h3 id="markdown_validatordomain"><code>markdown_validator.domain</code></h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>models.py</code></td>
+<td>Pydantic contract models and frozen dataclasses (value objects)</td>
+</tr>
+<tr>
+<td><code>operators.py</code></td>
+<td>Pure comparison strategy functions — no I/O, no logging</td>
+</tr>
+<tr>
+<td><code>evaluator.py</code></td>
+<td>Apply a single <code>RuleModel</code> to a <code>ParsedDocument</code> → <code>ValidationResult</code></td>
+</tr>
+<tr>
+<td><code>pos.py</code></td>
+<td>Thin NLTK wrapper for POS tagging and sentence counting</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Domain does NOT</strong>: read files, write files, log at INFO level, or reference
+the infrastructure or services layers.</p>
+<h3 id="markdown_validatorinfrastructure"><code>markdown_validator.infrastructure</code></h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parser.py</code></td>
+<td>Read a <code>.md</code> file → <code>ParsedDocument</code> (the only file reader for source docs)</td>
+</tr>
+<tr>
+<td><code>loader.py</code></td>
+<td>Read a <code>.json</code> rule-set file → <code>RuleSetModel</code> (Repository pattern)</td>
+</tr>
+<tr>
+<td><code>reporter.py</code></td>
+<td>Write <code>ScanReport</code> to JSON or CSV (the only file writer for output)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Infrastructure does NOT</strong>: contain business logic, evaluate rules, or
+interact with the CLI.</p>
+<h3 id="markdown_validatorservices"><code>markdown_validator.services</code></h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scanner.py</code></td>
+<td>Facade: compose parser + loader + evaluator → <code>ScanReport</code></td>
+</tr>
+<tr>
+<td><code>workflow.py</code></td>
+<td>Execute workflow step sequences against rule results</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Services do NOT</strong>: read/write files directly (delegated to infrastructure),
+or handle CLI concerns.</p>
+<h3 id="markdown_validatorcli"><code>markdown_validator.cli</code></h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main.py</code></td>
+<td>Click-based batch CLI — parse args, call Scanner, render output</td>
+</tr>
+<tr>
+<td><code>repl.py</code></td>
+<td>Interactive cmd.Cmd REPL — probe documents during rule development</td>
+</tr>
+</tbody>
+</table>
+<p><strong>CLI does NOT</strong>: contain business logic or call infrastructure directly.</p>
+<hr />
+<h2 id="4-design-patterns">4. Design Patterns</h2>
+<h3 id="strategy-domainoperatorspy">Strategy (<code>domain/operators.py</code>)</h3>
+<p>Each comparison operator is an independent <code>Callable[[str, str], bool]</code>
+registered in <code>OPERATOR_REGISTRY</code>.</p>
+<p><strong>Justification</strong>: Operators can be substituted independently, tested in
+isolation, and extended without modifying the evaluator.  Adding a new
+operator (e.g., <code>&gt;=</code>) requires only adding one function and one registry
+entry.</p>
+<h3 id="repository-infrastructureloaderpy">Repository (<code>infrastructure/loader.py</code>)</h3>
+<p><code>RuleSetRepository.load(path)</code> is the single point for loading rule sets
+from disk.</p>
+<p><strong>Justification</strong>: The Scanner service can be tested with an in-memory rule
+set injected via the constructor, without any filesystem access.  This
+enables fast, hermetic unit tests.</p>
+<h3 id="value-object-all-models">Value Object (all models)</h3>
+<p><code>ParsedDocument</code> is a frozen dataclass; all Pydantic models have
+<code>model_config = {"frozen": True}</code>.</p>
+<p><strong>Justification</strong>: Eliminates accidental mutation across layer boundaries.
+Frozen objects are inherently thread-safe and cacheable.</p>
+<h3 id="facade-servicesscannerpy">Facade (<code>services/scanner.py</code>)</h3>
+<p><code>Scanner</code> presents one <code>validate()</code> method over the
+parse → load → evaluate → report pipeline.</p>
+<p><strong>Justification</strong>: CLI code remains simple; it does not need to know about
+parsers, loaders, or evaluators.  The full pipeline is exercised with a
+single call.</p>
+<h3 id="chain-of-responsibility-servicesworkflowpy">Chain of Responsibility (<code>services/workflow.py</code>)</h3>
+<p>The <code>WorkflowEngine._dispatch()</code> method routes each workflow step to the
+correct handler based on the <code>(source, target)</code> pattern.  Twelve patterns
+are individually handled.</p>
+<p><strong>Justification</strong>: Each step type can be tested independently.  Adding a new
+step type requires adding one <code>elif</code> branch without touching other patterns.</p>
+<hr />
+<h2 id="5-contract-schemas">5. Contract Schemas</h2>
+<h3 id="rule-json-schema">Rule JSON Schema</h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;header&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;topic-must-be-tutorial&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;header&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ms.topic&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;flag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;operation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;==&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tutorial&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Required&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mitigation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Set ms.topic: tutorial in the front matter.&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;body&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;must-have-h1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;query&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/html/body/h1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;flag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;count&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;operation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;==&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Required&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mitigation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The document must have exactly one H1 heading.&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;workflows&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Check ms.topic&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;steps&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;S-1,1-E&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Required&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;fix&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Set ms.topic: tutorial in the front matter.&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Schema notes:</strong>
+- <code>id</code> accepts strings (coerced to <code>int</code> at load time for backward compat)
+- <code>level</code> and <code>mitigation</code> are optional on rules; defaults: <code>"Required"</code>, <code>""</code>
+- Workflow <code>steps</code> accept both <code>S-1,1-E</code> and <code>(S,1)(1,E)</code> formats; normalised at load</p>
+<h3 id="pydantic-models-domainmodelspy">Pydantic Models (<code>domain/models.py</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>RuleModel</code></td>
+<td>Single rule (input contract, frozen)</td>
+</tr>
+<tr>
+<td><code>RulesSection</code></td>
+<td>Header + body rule lists; validates no duplicate IDs</td>
+</tr>
+<tr>
+<td><code>WorkflowModel</code></td>
+<td>Workflow step sequence (normalises step format on load)</td>
+</tr>
+<tr>
+<td><code>RuleSetModel</code></td>
+<td>Top-level rule set file schema</td>
+</tr>
+<tr>
+<td><code>ParsedDocument</code></td>
+<td>Immutable parsed document (frozen dataclass)</td>
+</tr>
+<tr>
+<td><code>ValidationResult</code></td>
+<td>Single rule evaluation outcome (output, frozen)</td>
+</tr>
+<tr>
+<td><code>ScanReport</code></td>
+<td>Aggregated scan results (output, frozen)</td>
+</tr>
+<tr>
+<td><code>WorkflowResult</code></td>
+<td>Single workflow execution result (output, frozen)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-workflow-step-language-reference">6. Workflow Step Language Reference</h2>
+<p>A workflow is a string of comma-separated <code>&lt;source&gt;-&lt;target&gt;</code> tokens.
+Twelve patterns are recognised:</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Example</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>S-N</code></td>
+<td><code>S-1</code></td>
+<td>Start: load rule N as the initial state</td>
+</tr>
+<tr>
+<td><code>N-D</code></td>
+<td><code>1-D</code></td>
+<td>Rule N result becomes the decision point</td>
+</tr>
+<tr>
+<td><code>M-D</code></td>
+<td><code>M-D</code></td>
+<td>Merge state becomes the decision</td>
+</tr>
+<tr>
+<td><code>T-N</code></td>
+<td><code>T-2</code></td>
+<td>If decision is True, load rule N</td>
+</tr>
+<tr>
+<td><code>F-N</code></td>
+<td><code>F-3</code></td>
+<td>If decision is False, load rule N</td>
+</tr>
+<tr>
+<td><code>T-R</code></td>
+<td><code>T-R</code></td>
+<td>If decision is True, reverse (negate) it</td>
+</tr>
+<tr>
+<td><code>F-R</code></td>
+<td><code>F-R</code></td>
+<td>If decision is False, reverse (negate) it</td>
+</tr>
+<tr>
+<td><code>N-M</code></td>
+<td><code>2-M</code></td>
+<td>Rule N exits into merge state</td>
+</tr>
+<tr>
+<td><code>M-N</code></td>
+<td><code>M-3</code></td>
+<td>Merge state exits to rule N</td>
+</tr>
+<tr>
+<td><code>M-E</code></td>
+<td><code>M-E</code></td>
+<td>Merge state ends the workflow</td>
+</tr>
+<tr>
+<td><code>N-E</code></td>
+<td><code>4-E</code></td>
+<td>Rule N result ends the workflow</td>
+</tr>
+<tr>
+<td><code>N-N</code></td>
+<td><code>1-2</code></td>
+<td>Both rules must pass</td>
+</tr>
+</tbody>
+</table>
+<p>Example — simple rule check:
+<div class="highlight"><pre><span></span><code>S-1,1-E
+</code></pre></div></p>
+<p>Example — conditional branch:
+<div class="highlight"><pre><span></span><code>S-1,1-D,T-2,F-3,M-E
+</code></pre></div>
+(Rule 1 is the decision; if True run rule 2, if False run rule 3, then end.)</p>
+<hr />
+<h2 id="7-operator-reference">7. Operator Reference</h2>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Name</th>
+<th>Signature</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==</code></td>
+<td>Equal</td>
+<td><code>str == str</code></td>
+<td>Strips whitespace before comparing</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>Not equal</td>
+<td><code>str != str</code></td>
+<td>Strips whitespace before comparing</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Greater than</td>
+<td><code>int &gt; int</code></td>
+<td>Both operands coerced to <code>int</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Less than</td>
+<td><code>int &lt; int</code></td>
+<td>Both operands coerced to <code>int</code></td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>Contains</td>
+<td><code>value in result</code></td>
+<td>Case-insensitive</td>
+</tr>
+<tr>
+<td><code>[:</code></td>
+<td>Starts with</td>
+<td><code>result.startswith(value)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>:]</code></td>
+<td>Ends with</td>
+<td><code>result.endswith(value)</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>Regex</td>
+<td><code>re.search(value, result)</code></td>
+<td>Python regex, DOTALL mode</td>
+</tr>
+<tr>
+<td><code>l</code></td>
+<td>Length</td>
+<td><code>len(result) &lt; int(value)</code></td>
+<td>True if shorter than threshold</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>Sentence count</td>
+<td><code>sentences &lt;= int(value)</code></td>
+<td>Body rules only, uses NLTK</td>
+</tr>
+<tr>
+<td><code>p&lt;N&gt;</code></td>
+<td>Part of speech</td>
+<td><code>pos_tag[N] == value</code></td>
+<td>e.g. <code>p1</code> checks word 1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-adding-a-new-operator">8. Adding a New Operator</h2>
+<ol>
+<li>Add a function <code>op_myflag(result: str, value: str) -&gt; bool</code> in
+   <code>markdown_validator/domain/operators.py</code>.</li>
+<li>Register it: <code>OPERATOR_REGISTRY["myflag"] = op_myflag</code>.</li>
+<li>Add a unit test in <code>tests/unit/domain/test_operators.py</code>.</li>
+<li>Document it in this table.</li>
+</ol>
+<p>No other changes are required.</p>
+<hr />
+<h2 id="9-known-limitations">9. Known Limitations</h2>
+<ul>
+<li><strong>NLTK data required</strong>: <code>punkt_tab</code> and <code>averaged_perceptron_tagger_eng</code>
+  must be downloaded before POS/sentence rules can run.</li>
+<li><strong>YAML front matter required</strong>: All <code>.md</code> files must begin with a <code>---</code>
+  block; plain Markdown without front matter is rejected.</li>
+<li><strong>XPath on flattened HTML</strong>: The document body is rendered as standard HTML
+  by the <code>markdown</code> library. The outline-based DOM described in the original
+  README (where H3 is a child of H2) is <strong>not</strong> implemented; the DOM is flat.
+  XPath queries must use positional predicates (e.g., <code>//h2[1]</code>) instead of
+  structural nesting.</li>
+<li><strong>Concurrent scanning</strong>: <code>Scanner.validate_directory()</code> processes files
+  sequentially; parallelism is left to the caller (e.g., <code>concurrent.futures</code>).</li>
+<li><strong>No negation operator</strong>: Absence assertions require brittle workflow
+  inversion; a <code>negate</code> field is planned for v0.3.</li>
+</ul>
+<p>For planned fixes to each of these limitations, see the <a href="../product/roadmap/">Product Roadmap</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -27,21 +27,21 @@ logger = logging.getLogger(__name__)
 class RuleModel(BaseModel):
     """A single validation rule loaded from a JSON rule-set file.
 
-    :param id: Unique positive integer identifier for this rule.
-    :param name: Human-readable rule description.
-    :param type: Whether this rule targets ``"header"`` (YAML metadata) or
+    :ivar id: Unique positive integer identifier for this rule.
+    :ivar name: Human-readable rule description.
+    :ivar type: Whether this rule targets ``"header"`` (YAML metadata) or
         ``"body"`` (HTML-rendered document body).
-    :param query: For ``header`` rules, the metadata key to look up.
+    :ivar query: For ``header`` rules, the metadata key to look up.
         For ``body`` rules, an XPath expression against the HTML body.
-    :param flag: Processing mode — controls what ``query`` extracts.
+    :ivar flag: Processing mode — controls what ``query`` extracts.
         Values: ``"value"``, ``"check"``, ``"count"``, ``"text"``,
         ``"date"``, ``"dom"``, ``"all"``.
-    :param operation: Comparison operator token. See
+    :ivar operation: Comparison operator token. See
         :mod:`markdown_validator.domain.operators`.
-    :param value: Expected value used in the comparison assertion.
-    :param level: Severity — ``"Required"`` failures fail the entire scan;
+    :ivar value: Expected value used in the comparison assertion.
+    :ivar level: Severity — ``"Required"`` failures fail the entire scan;
         ``"Suggested"`` failures are informational only.
-    :param mitigation: Human-readable remediation hint shown on failure.
+    :ivar mitigation: Human-readable remediation hint shown on failure.
     """
 
     id: int
@@ -85,8 +85,8 @@ class RuleModel(BaseModel):
 class RulesSection(BaseModel):
     """The ``"rules"`` section of a rule-set JSON file.
 
-    :param header: Rules that operate on YAML front-matter metadata.
-    :param body: Rules that operate on the HTML-rendered document body.
+    :ivar header: Rules that operate on YAML front-matter metadata.
+    :ivar body: Rules that operate on the HTML-rendered document body.
     """
 
     header: list[RuleModel] = []
@@ -128,13 +128,13 @@ class RulesSection(BaseModel):
 class WorkflowModel(BaseModel):
     """A single workflow definition from a rule-set JSON file.
 
-    :param name: Descriptive name for the workflow.
-    :param steps: Step string in the workflow step language, e.g.
+    :ivar name: Descriptive name for the workflow.
+    :ivar steps: Step string in the workflow step language, e.g.
         ``"S-1,1-D,T-2,M-E"``. Both dash-separated (``S-1``) and
         parenthesis-separated (``(S,1)``) formats are accepted; the latter
         is normalised on load.
-    :param level: Whether this workflow is ``"Required"`` or ``"Suggested"``.
-    :param fix: Human-readable remediation text shown when the workflow fails.
+    :ivar level: Whether this workflow is ``"Required"`` or ``"Suggested"``.
+    :ivar fix: Human-readable remediation text shown when the workflow fails.
     """
 
     name: str
@@ -164,8 +164,8 @@ class WorkflowModel(BaseModel):
 class RuleSetModel(BaseModel):
     """The top-level schema for a rule-set JSON file.
 
-    :param rules: Header and body rule definitions.
-    :param workflows: Optional list of multi-step workflow definitions.
+    :ivar rules: Header and body rule definitions.
+    :ivar workflows: Optional list of multi-step workflow definitions.
     """
 
     rules: RulesSection
@@ -193,9 +193,9 @@ class RuleSetModel(BaseModel):
 class ParsedDocument:
     """An immutable representation of a parsed Markdown file.
 
-    :param filepath: Absolute path to the source ``.md`` file.
-    :param metadata: Key-value pairs extracted from the YAML front matter.
-    :param html: HTML string produced by rendering the document body.
+    :ivar filepath: Absolute path to the source ``.md`` file.
+    :ivar metadata: Key-value pairs extracted from the YAML front matter.
+    :ivar html: HTML string produced by rendering the document body.
     """
 
     filepath: Path
@@ -211,14 +211,14 @@ class ParsedDocument:
 class ValidationResult(BaseModel):
     """The outcome of evaluating a single rule against a document.
 
-    :param rule_id: ID of the rule that was evaluated.
-    :param rule_name: Human-readable name of the rule.
-    :param passed: ``True`` if the rule assertion succeeded.
-    :param level: Severity of this rule (``"Required"`` or ``"Suggested"``).
-    :param expected_value: The value the rule expected to find.
-    :param actual_value: The value actually found (or ``""`` if unavailable).
-    :param mitigation: Remediation hint shown when the rule fails.
-    :param filepath: Path to the document that was validated.
+    :ivar rule_id: ID of the rule that was evaluated.
+    :ivar rule_name: Human-readable name of the rule.
+    :ivar passed: ``True`` if the rule assertion succeeded.
+    :ivar level: Severity of this rule (``"Required"`` or ``"Suggested"``).
+    :ivar expected_value: The value the rule expected to find.
+    :ivar actual_value: The value actually found (or ``""`` if unavailable).
+    :ivar mitigation: Remediation hint shown when the rule fails.
+    :ivar filepath: Path to the document that was validated.
     """
 
     rule_id: int
@@ -236,11 +236,11 @@ class ValidationResult(BaseModel):
 class ScanReport(BaseModel):
     """Aggregated results of running all rules in a rule set against one file.
 
-    :param filepath: Path to the validated document.
-    :param score: Number of rules that passed.
-    :param total_rules: Total number of rules evaluated.
-    :param passed: ``True`` only when every ``Required`` rule passed.
-    :param results: Per-rule validation outcomes.
+    :ivar filepath: Path to the validated document.
+    :ivar score: Number of rules that passed.
+    :ivar total_rules: Total number of rules evaluated.
+    :ivar passed: ``True`` only when every ``Required`` rule passed.
+    :ivar results: Per-rule validation outcomes.
     """
 
     filepath: str
@@ -255,9 +255,9 @@ class ScanReport(BaseModel):
 class WorkflowResult(BaseModel):
     """Outcome of running a single workflow step sequence.
 
-    :param workflow_name: Name of the workflow.
-    :param passed: Final boolean state after all steps.
-    :param fix: Remediation text if the workflow failed.
+    :ivar workflow_name: Name of the workflow.
+    :ivar passed: Final boolean state after all steps.
+    :ivar fix: Remediation text if the workflow failed.
     """
 
     workflow_name: str
