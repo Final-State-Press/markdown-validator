@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: set markdown-validator output format text json csv
+  Audience: user
+-->
+<task id="t_set-output-format">
+  <title>Set the output format for validation reports</title>
+
+  <shortdesc>Use the <codeph>--format</codeph> option to choose how
+  markdown-validator presents its report: plain text for terminal reading,
+  JSON for CI integration and scripting, or CSV for spreadsheet analysis.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>output format</keyword>
+        <keyword>JSON report</keyword>
+        <keyword>CSV report</keyword>
+        <keyword>text report</keyword>
+        <keyword>--format option</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Choose between text, JSON, and CSV output formats for markdown-validator reports to suit local review, CI integration, or spreadsheet analysis."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <steps>
+
+      <step id="step-text">
+        <cmd>To produce human-readable text output (the default), run the
+        validate command without the <codeph>--format</codeph> option, or
+        specify <codeph>--format text</codeph>.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/article.md --rules rules/tutorial.json</codeblock>
+          <p>Example output:</p>
+          <codeblock xml:space="preserve">  ✓  [1]  topic-must-be-tutorial
+  ✗  [4]  description-must-exist
+           → Add a description field to the front matter.
+
+Score: 5/6   FAILED</codeblock>
+        </info>
+      </step>
+
+      <step id="step-json">
+        <cmd>To produce JSON output for scripting or CI integration, add
+        <codeph>--format json</codeph>.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/article.md --rules rules/tutorial.json --format json</codeblock>
+          <p>The JSON output includes all rule results and metadata:</p>
+          <codeblock xml:space="preserve">{
+  "filepath": "docs/article.md",
+  "score": 5,
+  "total_rules": 6,
+  "passed": false,
+  "results": [
+    {"rule_id": 1, "rule_name": "topic-must-be-tutorial", "passed": true, ...},
+    {"rule_id": 4, "rule_name": "description-must-exist",  "passed": false,
+     "mitigation": "Add a description field to the front matter.", ...}
+  ]
+}</codeblock>
+        </info>
+      </step>
+
+      <step id="step-csv">
+        <cmd>To produce CSV output for spreadsheet analysis, add
+        <codeph>--format csv</codeph>.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/ --rules rules/tutorial.json --format csv --output reports/</codeblock>
+          <p>Each row in the CSV file represents one rule evaluation. Columns
+          include the rule ID, name, type, level, and pass/fail status.</p>
+          <note type="tip">CSV output is most useful when combined with
+          <codeph>--output</codeph> to save the file. See
+          <xref href="t_save-reports.dita">Save validation reports to disk</xref>.</note>
+        </info>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

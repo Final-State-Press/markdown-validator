@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE troubleshooting PUBLIC "-//OASIS//DTD DITA Troubleshooting//EN" "troubleshooting.dtd">
+<!--
+  SEO keyword phrase: markdown-validator CI pipeline fails GitHub Actions validation
+  Audience: user
+-->
+<troubleshooting id="ts_ci-fails">
+  <title>Resolve a validation failure in a CI/CD pipeline</title>
+
+  <shortdesc>When the validation step in your CI pipeline fails, your pull request
+  is blocked. This topic shows you how to find the failure report, reproduce the
+  failure locally, and resolve the specific issue.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>CI pipeline fails</keyword>
+        <keyword>GitHub Actions validation failure</keyword>
+        <keyword>pull request blocked</keyword>
+        <keyword>validation gate fails</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Diagnose and fix a markdown-validator step that fails in a CI/CD pipeline, including how to read the failure report and reproduce the failure locally."/>
+    </metadata>
+  </prolog>
+
+  <troublebody>
+
+    <condition id="condition">
+      <title>Situation</title>
+      <p>Your pull request shows a failing check in CI. The check is named
+      something like <b>Validate documentation</b> or <b>validate</b>. The
+      merge button is blocked.</p>
+    </condition>
+
+    <troubleSolution>
+      <cause id="cause-required-rule">
+        <title>Cause: A Required rule failed</title>
+        <p>One or more Required validation rules failed on at least one file
+        in your pull request.</p>
+      </cause>
+      <remedy id="remedy-required-rule">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>Open the CI pipeline log to find the rule failure details.</cmd>
+            <info>
+              <p>In GitHub Actions: navigate to the <b>Actions</b> tab of the
+              repository, select the failing workflow run, expand the
+              <b>Validate documentation</b> step, and read the output.</p>
+              <p>Alternatively, if reports were uploaded as artifacts, download
+              the <b>validation-reports</b> artifact and open the JSON file for
+              your changed article.</p>
+            </info>
+          </step>
+          <step>
+            <cmd>Note the rule name and mitigation message for each failure.</cmd>
+          </step>
+          <step>
+            <cmd>Reproduce the failure locally.</cmd>
+            <info>
+              <codeblock xml:space="preserve">md-validate validate docs/your-article.md --rules rules/tutorial.json</codeblock>
+              <p>Confirm you see the same failure. If local validation passes
+              but CI fails, check that your local rule set and the one in CI
+              are the same version.</p>
+            </info>
+          </step>
+          <step>
+            <cmd>Fix the identified failures using the mitigation messages
+            as your guide.</cmd>
+            <info>
+              <p>For guidance on common failure types, see
+              <xref href="../user-guide/tasks/t_read-validation-report.dita">Read the validation report</xref>.</p>
+            </info>
+          </step>
+          <step>
+            <cmd>Push the fix and verify the CI check passes.</cmd>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution>
+      <cause id="cause-nltk-ci">
+        <title>Cause: NLTK data is missing from the CI environment</title>
+        <p>The pipeline does not include a step to download NLTK corpora, or
+        the NLTK cache step failed.</p>
+      </cause>
+      <remedy id="remedy-nltk-ci">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>Open your workflow file
+            (<filepath>.github/workflows/validate-docs.yml</filepath>) and
+            add the NLTK download step before the validation step.</cmd>
+            <info>
+              <codeblock xml:space="preserve">- name: Download NLTK language data
+  run: python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng</codeblock>
+            </info>
+          </step>
+          <step>
+            <cmd>Commit the updated workflow file and push.</cmd>
+            <stepresult>The CI pipeline downloads the NLTK corpora before
+            validation runs. For a complete workflow example including the
+            NLTK cache step, see
+            <xref href="../user-guide/tasks/t_integrate-github-actions.dita">Add markdown-validator to a GitHub Actions workflow</xref>.</stepresult>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution>
+      <cause id="cause-wrong-rules">
+        <title>Cause: CI uses a different rule set than local validation</title>
+        <p>CI validates with the rule set file committed to the repository.
+        If you are running a different version of the rule set locally, the
+        results will differ.</p>
+      </cause>
+      <remedy id="remedy-wrong-rules">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>Check the CI configuration file to see which rule set
+            it uses.</cmd>
+            <info>
+              <p>Open <filepath>.github/workflows/validate-docs.yml</filepath>
+              and look for the <codeph>--rules</codeph> flag in the validate
+              step.</p>
+            </info>
+          </step>
+          <step>
+            <cmd>Run local validation with the same rule set path.</cmd>
+            <info>
+              <codeblock xml:space="preserve">md-validate validate docs/your-article.md --rules rules/tutorial.json</codeblock>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+  </troublebody>
+</troubleshooting>

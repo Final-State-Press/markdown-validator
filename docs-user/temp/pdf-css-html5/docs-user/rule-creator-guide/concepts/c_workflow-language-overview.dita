@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_workflow-language-overview" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="concept:1;7:44" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:1;8:10">Understanding the workflow step language</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="keyword:1;13:18">workflow language</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="keyword:2;14:18">conditional rule chains</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="keyword:3;15:18">workflow steps</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="keyword:4;16:18">rule dependencies</keyword>
+      </keywords>
+      <othermeta name="description" content="Learn when to use markdown-validator workflows instead of individual rules, and how the step language expresses conditional rule dependencies." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="othermeta:1;19:163"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="shortdesc:1;23:14">Workflows chain rules together with conditional logic. Use them when
+  a rule should only run if another rule passes or fails — for example, "check H2
+  structure only when the document is a tutorial." Simple checks that are always
+  evaluated do not need workflows.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="conbody:1;28:12">
+
+    <section id="when-to-use" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="section:1;30:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:2;31:14">When to use workflows</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:1;32:10">Use a workflow when:</p>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="ul:1;33:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="li:1;34:13">A check is only meaningful if another check passes first. For example:
+        the H1 must start with "Tutorial:" only applies when
+        <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:1;36:17">ms.topic == tutorial</codeph>.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="li:2;37:13">You need to express conditional presence. For example: "if there are
+        no H2 headings, then there should also be no H3 headings."</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="li:3;39:13">Two checks together constitute a single editorial requirement. For
+        example: either the Prerequisites heading exists, or the article is marked
+        as a reference — but not both.</li>
+      </ul>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:2;43:10">Do not use a workflow for checks that are always evaluated independently.
+      Keep the rule list simple; add workflows only when the conditional logic is
+      genuinely needed.</p>
+    </section>
+
+    <section id="graph-model" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="section:2;48:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:3;49:14">The workflow as a directed graph</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:3;50:10">Before reading the step token syntax, build this mental model: a
+      workflow is a small directed graph. The nodes in the graph are:</p>
+
+      <dl class="- topic/dl " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dl:1;53:11">
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dlentry:1;54:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dt:1;55:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:2;55:23">S</codeph> — Start</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dd:1;56:15">The fixed entry point. Every workflow begins here.</dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dlentry:2;58:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dt:2;59:15">Rule IDs (1, 2, 3, …)</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dd:2;60:15">Each rule referenced in the workflow is a node. Execution passes
+          through these nodes and each one produces a pass or fail result.</dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dlentry:3;63:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dt:3;64:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:3;64:23">D</codeph> — Decision</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dd:3;65:15">A branching node. The result of the rule just before
+          <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:4;66:19">D</codeph> determines which branch runs next. A passing
+          result takes the True (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:5;67:42">T</codeph>) branch; a failing result
+          takes the False (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:6;68:36">F</codeph>) branch.</dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dlentry:4;70:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dt:4;71:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:7;71:23">M</codeph> — Merge</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dd:4;72:15">A convergence node. Both branches of a decision point lead back
+          to <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:8;73:22">M</codeph> so the workflow has a single exit path.</dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dlentry:5;75:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dt:5;76:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:9;76:23">E</codeph> — End</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="dd:5;77:15">The fixed exit point. Every workflow ends here.</dd>
+        </dlentry>
+      </dl>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:4;81:10">The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:10;81:22">steps</codeph> field encodes the edges of this graph as
+      a comma-separated list of <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:11;82:41">source-target</codeph> tokens. Each
+      token is one directed edge: "execution can travel from
+      <i class="+ topic/ph hi-d/i " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="i:1;84:10">source</i> to <i class="+ topic/ph hi-d/i " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="i:2;84:27">target</i>."</p>
+    </section>
+
+    <section id="simple-workflow" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="section:3;87:35">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:4;88:14">The simplest workflow: a single rule</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:5;89:10">Before reading the full token syntax, see what the simplest possible
+      workflow looks like. A linear, unconditional check uses just two tokens:</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeblock:1;92:39">"steps": "S-1,1-E"</codeblock>
+
+      <fig id="fig-workflow-simple" class="- topic/fig " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="fig:1;94:37">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:5;95:16">Graph of the simple workflow S-1,1-E</title>
+        <image href="../../images/workflow-simple.png" placement="break" class="- topic/image " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="image:1;96:74">
+          <alt class="- topic/alt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="alt:1;97:16">Flowchart: S leads directly to Rule 1, which leads directly to
+          End. No decision or merge nodes are needed.</alt>
+        </image>
+      </fig>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:6;102:10"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:12;102:18">S-1</codeph> means "Start leads to Rule 1." <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:13;102:70">1-E</codeph>
+      means "Rule 1 leads to End." There is no decision node because the result
+      is always the result of Rule 1. This is the pattern to start with and
+      add complexity only when conditional logic is required.</p>
+    </section>
+
+    <section id="step-language" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="section:4;108:33">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:6;109:14">Reading step tokens for conditional workflows</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:7;110:10">When a workflow needs a conditional branch, it uses the Decision (D)
+      and Merge (M) nodes. Here is the token string for a conditional workflow
+      and the graph it produces:</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeblock:2;114:39">"steps": "S-1,1-D,T-2,F-3,2-M,3-M,M-E"</codeblock>
+
+      <fig id="fig-workflow-conditional" class="- topic/fig " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="fig:2;116:42">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:7;117:16">Graph of the conditional workflow S-1,1-D,T-2,F-3,2-M,3-M,M-E</title>
+        <image href="../../images/workflow-state-diagram.png" placement="break" class="- topic/image " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="image:2;118:81">
+          <alt class="- topic/alt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="alt:2;119:16">Flowchart: S leads to Rule 1 (precondition). Rule 1 leads to D
+          (decision node). The true branch from D leads to Rule 2. The false
+          branch leads to Rule 3. Both Rule 2 and Rule 3 lead to M (merge).
+          M leads to End. Edge labels show the token that encodes each
+          transition.</alt>
+        </image>
+      </fig>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:8;127:10">Token-by-token reading:</p>
+      <table class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="table:1;128:14">
+        <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="tgroup:1;129:26">
+          <colspec colname="col1" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="colspec:1;130:51" colnum="1"/>
+          <colspec colname="col2" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="colspec:2;131:53" colnum="2"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="thead:1;132:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:1;133:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:1;134:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Token</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:2;135:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Meaning</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="tbody:1;138:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:2;139:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:3;140:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:14;140:30">S-1</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:4;141:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Edge from Start to Rule 1. Rule 1 runs first.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:3;143:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:5;144:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:15;144:30">1-D</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:6;145:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Edge from Rule 1 to the Decision node. Rule 1's
+              pass/fail result controls the branch.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:4;148:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:7;149:22" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:16;149:30">T-2</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:8;150:22" colname="col2" dita-ot:x="2" dita-ot:y="4">True branch: if Rule 1 passed, run Rule 2.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:5;152:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:9;153:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:17;153:30">F-3</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:10;154:22" colname="col2" dita-ot:x="2" dita-ot:y="5">False branch: if Rule 1 failed, run Rule 3.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:6;156:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:11;157:22" colname="col1" dita-ot:x="1" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:18;157:30">2-M</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:12;158:22" colname="col2" dita-ot:x="2" dita-ot:y="6">Edge from Rule 2 to the Merge node.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:7;160:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:13;161:22" colname="col1" dita-ot:x="1" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:19;161:30">3-M</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:14;162:22" colname="col2" dita-ot:x="2" dita-ot:y="7">Edge from Rule 3 to the Merge node.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:8;164:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:15;165:22" colname="col1" dita-ot:x="1" dita-ot:y="8"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:20;165:30">M-E</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:16;166:22" colname="col2" dita-ot:x="2" dita-ot:y="8">Edge from Merge to End. The workflow is complete.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="step-by-step-build" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="section:5;173:38">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:8;174:14">Build a workflow from a plain-English requirement</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:9;175:10">The easiest way to write a workflow token string is to build it one
+      edge at a time, starting from the requirement in plain English.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:10;178:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="b:1;178:13">Requirement:</b> "Tutorial articles must have an H1 that starts
+      with 'Tutorial:'. Other article types are not checked for H1 format."</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:11;181:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="b:2;181:13">Step 1 — Identify the nodes.</b> This requirement has a
+      precondition (is this a tutorial?) and a conditional check (only for
+      tutorials). That means the graph needs: S, a precondition rule, D, a
+      check rule for the True branch, a sentinel rule for the False branch
+      (see step 3), M, and E.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:12;187:10">Assign IDs: Rule 1 checks <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:21;187:44">ms.topic == tutorial</codeph>.
+      Rule 2 checks the H1 starts with "Tutorial:". Rule 10 is a sentinel
+      (a rule that is known to always pass for any valid document).</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:13;191:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="b:3;191:13">Step 2 — Draw the edges one at a time.</b></p>
+      <table id="table-step-build" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="table:2;192:36">
+        <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="tgroup:2;193:26">
+          <colspec colname="col1" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="colspec:3;194:51" colnum="1"/>
+          <colspec colname="col2" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="colspec:4;195:50" colnum="2"/>
+          <colspec colname="col3" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="colspec:5;196:52" colnum="3"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="thead:2;197:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:9;198:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:17;199:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Token added</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:18;200:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Edge it encodes</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:19;201:22" colname="col3" dita-ot:x="3" dita-ot:y="1">Token string so far</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="tbody:2;204:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:10;205:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:20;206:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:22;206:30">S-1</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:21;207:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Start → Rule 1 (precondition: is this a tutorial?)</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:22;208:22" colname="col3" dita-ot:x="3" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:23;208:30">S-1</codeph></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:11;210:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:23;211:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:24;211:30">1-D</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:24;212:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Rule 1 → Decision (its result controls the branch)</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:25;213:22" colname="col3" dita-ot:x="3" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:25;213:30">S-1,1-D</codeph></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:12;215:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:26;216:22" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:26;216:30">T-2</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:27;217:22" colname="col2" dita-ot:x="2" dita-ot:y="4">True branch → Rule 2 (check H1 prefix for tutorials)</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:28;218:22" colname="col3" dita-ot:x="3" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:27;218:30">S-1,1-D,T-2</codeph></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:13;220:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:29;221:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:28;221:30">F-10</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:30;222:22" colname="col2" dita-ot:x="2" dita-ot:y="5">False branch → Rule 10 (sentinel; skip H1 check)</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:31;223:22" colname="col3" dita-ot:x="3" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:29;223:30">S-1,1-D,T-2,F-10</codeph></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:14;225:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:32;226:22" colname="col1" dita-ot:x="1" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:30;226:30">2-M</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:33;227:22" colname="col2" dita-ot:x="2" dita-ot:y="6">Rule 2 → Merge (True branch rejoins)</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:34;228:22" colname="col3" dita-ot:x="3" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:31;228:30">S-1,1-D,T-2,F-10,2-M</codeph></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:15;230:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:35;231:22" colname="col1" dita-ot:x="1" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:32;231:30">10-M</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:36;232:22" colname="col2" dita-ot:x="2" dita-ot:y="7">Rule 10 → Merge (False branch rejoins)</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:37;233:22" colname="col3" dita-ot:x="3" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:33;233:30">S-1,1-D,T-2,F-10,2-M,10-M</codeph></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="row:16;235:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:38;236:22" colname="col1" dita-ot:x="1" dita-ot:y="8"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:34;236:30">M-E</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:39;237:22" colname="col2" dita-ot:x="2" dita-ot:y="8">Merge → End (workflow complete)</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="entry:40;238:22" colname="col3" dita-ot:x="3" dita-ot:y="8"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:35;238:30">S-1,1-D,T-2,F-10,2-M,10-M,M-E</codeph></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:14;244:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="b:4;244:13">Step 3 — Why the sentinel rule?</b> The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:36;244:61">F-M</codeph>
+      token does not exist. Every branch must pass through a rule node before
+      reaching M. When the False branch represents "nothing to check here,"
+      route it through a sentinel — a rule whose precondition always passes
+      for well-formed documents. The sentinel contributes a pass result and
+      the branch continues cleanly to M.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:15;251:10">The finished workflow object:</p>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeblock:3;252:39">{
+  "name": "tutorial-h1-prefix",
+  "steps": "S-1,1-D,T-2,F-10,2-M,10-M,M-E",
+  "level": "Required",
+  "fix": "Tutorial articles must open with an H1 that starts with 'Tutorial:'."
+}</codeblock>
+    </section>
+
+    <section id="practical-example" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="section:6;260:37">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:9;261:14">Practical example: enforcing different H1 formats per topic type</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:16;262:10">When both branches of a decision carry meaningful checks — not just
+      "skip" — no sentinel is needed. This workflow enforces a different H1
+      prefix depending on <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:37;264:35">ms.topic</codeph>:</p>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="ul:2;265:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="li:4;266:13">If <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:38;266:24">ms.topic == tutorial</codeph> (Rule 1 passes), the H1
+        must start with "Tutorial:" (Rule 2).</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="li:5;268:13">If <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:39;268:24">ms.topic != tutorial</codeph> (Rule 1 fails), the H1
+        must start with "How to" (Rule 3).</li>
+      </ul>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeblock:4;271:39">{
+  "name": "h1-matches-topic-type",
+  "steps": "S-1,1-D,T-2,F-3,2-M,3-M,M-E",
+  "level": "Required",
+  "fix": "Match your H1 prefix to your ms.topic value."
+}</codeblock>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:17;277:10">Rule 1 is the precondition; D routes to Rule 2 or Rule 3 depending
+      on the topic type; both paths merge before the workflow ends. Because
+      both branches run a real check, no sentinel is needed.</p>
+    </section>
+
+    <section id="inversion-antipattern" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="section:7;282:41">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:10;283:14">Avoid the workflow-inversion pattern</title>
+      <note type="caution" class="- topic/note " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="note:1;284:28">The pattern described below is a known design smell.
+      Do not use it for new rules. It exists only as a workaround until the
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:40;286:15">negate</codeph> flag is available in v0.3.</note>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:18;287:10">Some teams use workflow branching to express "this thing must NOT
+      exist" — for example, "the title must not contain the word 'guide'."
+      Because markdown-validator has no negation operator in v0.2, this
+      requires inverting the pass/fail result by routing branches in reverse:
+      the True branch (content IS present — the bad state) loops back into a
+      failing rule, and the False branch (content is absent — the good state)
+      routes to a sentinel that passes.</p>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:19;294:10">This pattern is fragile. A single miswiring of T and F branches
+      causes the rule to silently pass bad content or fail good content — and
+      the error is difficult to spot by reading the token string alone. If you
+      must use it, test it exhaustively and document the inversion clearly in
+      your rule set's README. For the full pattern and its known failure modes,
+      see <xref href="c_rule-design-patterns.dita#c_rule-design-patterns/pattern-absence" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="xref:1;299:92"/>.</p>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="p:20;300:10">When v0.3 ships, replace any inverted workflows with a standard rule
+      that uses <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="codeph:41;301:25">"negate": true</codeph>.</p>
+    </section>
+
+    <section id="next-steps-workflow" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="section:8;304:39">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="title:11;305:14">Next steps</title>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="ul:3;306:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="li:6;307:13">For the full step-pattern reference, see
+        <xref href="../reference/r_workflow-steps.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="xref:2;308:58"/>.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="li:7;309:13">To write a workflow, see
+        <xref href="../tasks/t_write-workflow.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="xref:3;310:54"/>.</li>
+      </ul>
+    </section>
+
+  </conbody>
+</concept>

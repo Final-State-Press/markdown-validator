@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+  SEO keyword phrase: rule set JSON file markdown-validator structure overview
+  Audience: rule-creator
+-->
+<concept id="c_rule-sets-overview">
+  <title>Understanding rule sets</title>
+
+  <shortdesc>A rule set is a JSON file that tells markdown-validator what to
+  check in a Markdown document. It contains two sections: <codeph>rules</codeph>,
+  which defines individual checks, and <codeph>workflows</codeph>, which chains
+  rules together with conditional logic.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>rule set</keyword>
+        <keyword>JSON rule file</keyword>
+        <keyword>header rules</keyword>
+        <keyword>body rules</keyword>
+        <keyword>workflows</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Learn how markdown-validator rule sets are structured: the rules section, header vs. body rules, and optional workflow chains."/>
+    </metadata>
+  </prolog>
+
+  <conbody>
+
+    <section id="rule-set-structure">
+      <title>Rule set structure</title>
+      <p>A rule set JSON file has the following top-level structure:</p>
+
+      <codeblock xml:space="preserve">{
+  "rules": {
+    "header": [ ... ],
+    "body":   [ ... ]
+  },
+  "workflows": [ ... ]
+}</codeblock>
+
+      <dl>
+        <dlentry>
+          <dt><codeph>rules.header</codeph></dt>
+          <dd>An array of rules that check the YAML front-matter metadata at the
+          top of each Markdown file. Use header rules to validate fields like
+          <codeph>ms.topic</codeph>, <codeph>ms.date</codeph>,
+          <codeph>title</codeph>, and <codeph>description</codeph>.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><codeph>rules.body</codeph></dt>
+          <dd>An array of rules that check the document content — headings, section
+          structure, text patterns, paragraph length. Body rules use XPath
+          expressions to target specific elements in the rendered HTML.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><codeph>workflows</codeph></dt>
+          <dd>An optional array of workflow definitions. Workflows chain multiple
+          rules together with conditional logic ("if rule A passes, then also check
+          rule B"). If you do not need conditional logic, this array can be
+          empty or omitted.</dd>
+        </dlentry>
+      </dl>
+    </section>
+
+    <section id="header-vs-body">
+      <title>Header rules vs. body rules</title>
+
+      <table id="rule-type-table">
+        <title>Header rules vs. body rules</title>
+        <tgroup cols="3">
+          <colspec colname="aspect" colwidth="2*"/>
+          <colspec colname="header" colwidth="3*"/>
+          <colspec colname="body" colwidth="3*"/>
+          <thead>
+            <row>
+              <entry>Aspect</entry>
+              <entry>Header rules</entry>
+              <entry>Body rules</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>What they check</entry>
+              <entry>YAML front-matter key-value pairs</entry>
+              <entry>Markdown content rendered as HTML</entry>
+            </row>
+            <row>
+              <entry>Query syntax</entry>
+              <entry>Metadata key name (for example, <codeph>ms.topic</codeph>)</entry>
+              <entry>XPath expression (for example,
+              <codeph>/html/body/h1</codeph>)</entry>
+            </row>
+            <row>
+              <entry>Typical use cases</entry>
+              <entry>Required fields exist, field values match allowed values,
+              date is recent</entry>
+              <entry>Heading count, section order, required headings present,
+              title starts with keyword</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="simple-example">
+      <title>A minimal rule set example</title>
+      <p>This rule set checks two things: the <codeph>ms.topic</codeph>
+      front-matter field must equal <codeph>tutorial</codeph>, and the document
+      body must contain exactly one H1 heading.</p>
+
+      <codeblock xml:space="preserve">{
+  "rules": {
+    "header": [
+      {
+        "id": 1,
+        "name": "topic-must-be-tutorial",
+        "type": "header",
+        "query": "ms.topic",
+        "flag": "value",
+        "operation": "==",
+        "value": "tutorial",
+        "level": "Required",
+        "mitigation": "Set ms.topic: tutorial in the front matter."
+      }
+    ],
+    "body": [
+      {
+        "id": 2,
+        "name": "must-have-exactly-one-h1",
+        "type": "body",
+        "query": "/html/body/h1",
+        "flag": "count",
+        "operation": "==",
+        "value": "1",
+        "level": "Required",
+        "mitigation": "The document must have exactly one H1 heading."
+      }
+    ]
+  },
+  "workflows": []
+}</codeblock>
+    </section>
+
+    <section id="next-steps-ruleset">
+      <title>Next steps</title>
+      <ul>
+        <li>To understand each field in a rule, see
+        <xref href="c_rule-anatomy.dita">Anatomy of a validation rule</xref>.</li>
+        <li>To create your first rule set file, see
+        <xref href="../tasks/t_create-rule-set.dita">Create a rule set file</xref>.</li>
+      </ul>
+    </section>
+
+  </conbody>
+</concept>

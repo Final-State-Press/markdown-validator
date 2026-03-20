@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<!--
+  SEO keyword phrase: markdown-validator operators reference == != contains regex length
+  Audience: rule-creator
+-->
+<reference id="r_operators">
+  <title>Operators reference</title>
+
+  <shortdesc>The <codeph>operation</codeph> field specifies the comparison
+  operator applied between the processed query result and the expected
+  <codeph>value</codeph>. The operator returns true (pass) or false
+  (fail).</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>operators reference</keyword>
+        <keyword>comparison operators</keyword>
+        <keyword>regex operator</keyword>
+        <keyword>length operator</keyword>
+        <keyword>contains operator</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Complete reference for markdown-validator comparison operators: equality, inequality, numeric, contains, starts-with, ends-with, regex, length, sentence count, and part-of-speech."/>
+    </metadata>
+  </prolog>
+
+  <refbody>
+
+    <table id="operators-table">
+      <title>Comparison operators</title>
+      <tgroup cols="4">
+        <colspec colname="token" colwidth="1*"/>
+        <colspec colname="name" colwidth="1.5*"/>
+        <colspec colname="behavior" colwidth="3*"/>
+        <colspec colname="example" colwidth="3*"/>
+        <thead>
+          <row>
+            <entry>Token</entry>
+            <entry>Name</entry>
+            <entry>Behavior</entry>
+            <entry>Example</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><codeph>==</codeph></entry>
+            <entry>Equals</entry>
+            <entry>True if the result equals the value after whitespace
+            stripping. Case-sensitive.</entry>
+            <entry><codeph>"operation": "==", "value": "tutorial"</codeph></entry>
+          </row>
+          <row>
+            <entry><codeph>!=</codeph></entry>
+            <entry>Not equals</entry>
+            <entry>True if the result does not equal the value after
+            whitespace stripping.</entry>
+            <entry><codeph>"operation": "!=", "value": "draft"</codeph></entry>
+          </row>
+          <row>
+            <entry><codeph>&gt;</codeph></entry>
+            <entry>Greater than</entry>
+            <entry>Numeric comparison. Both operands coerced to integers.</entry>
+            <entry><codeph>"operation": "&gt;", "value": "0"</codeph></entry>
+          </row>
+          <row>
+            <entry><codeph>&lt;</codeph></entry>
+            <entry>Less than</entry>
+            <entry>Numeric comparison. Both operands coerced to integers.</entry>
+            <entry><codeph>"operation": "&lt;", "value": "365"</codeph></entry>
+          </row>
+          <row>
+            <entry><codeph>[]</codeph></entry>
+            <entry>Contains</entry>
+            <entry>True if the result contains the value as a substring.
+            Case-insensitive. For comma-separated value lists, the result
+            must contain at least one of the listed values.</entry>
+            <entry><codeph>"operation": "[]", "value": "tutorial, how-to"</codeph></entry>
+          </row>
+          <row>
+            <entry><codeph>[:</codeph></entry>
+            <entry>Starts with</entry>
+            <entry>True if the result starts with the value string.</entry>
+            <entry><codeph>"operation": "[:", "value": "Tutorial:"</codeph></entry>
+          </row>
+          <row>
+            <entry><codeph>:]</codeph></entry>
+            <entry>Ends with</entry>
+            <entry>True if the result ends with the value string.</entry>
+            <entry><codeph>"operation": ":]", "value": "resources"</codeph></entry>
+          </row>
+          <row>
+            <entry><codeph>r</codeph></entry>
+            <entry>Regex match</entry>
+            <entry>True if Python <codeph>re.search(value, result)</codeph>
+            matches. Uses DOTALL mode (dot matches newlines).</entry>
+            <entry><codeph>"operation": "r", "value": "^Tutorial: [A-Z]"</codeph></entry>
+          </row>
+          <row>
+            <entry><codeph>l</codeph></entry>
+            <entry>Length limit</entry>
+            <entry>True if <codeph>len(result) &lt; int(value)</codeph>.
+            Use to enforce maximum character counts.</entry>
+            <entry><codeph>"operation": "l", "value": "60"</codeph></entry>
+          </row>
+          <row>
+            <entry><codeph>s</codeph></entry>
+            <entry>Max sentences</entry>
+            <entry>True if <codeph>sentence_count &lt;= int(value)</codeph>.
+            Uses NLTK tokenizer. Requires NLTK corpora.</entry>
+            <entry><codeph>"operation": "s", "value": "3"</codeph></entry>
+          </row>
+          <row>
+            <entry><codeph>p&lt;N&gt;</codeph></entry>
+            <entry>Part of speech</entry>
+            <entry>True if the Nth word's Penn Treebank POS tag equals
+            value. Position is 1-indexed. Requires NLTK corpora.
+            Common tags: <codeph>NN</codeph> (noun), <codeph>VB</codeph>
+            (base verb), <codeph>JJ</codeph> (adjective).</entry>
+            <entry><codeph>"operation": "p3", "value": "VB"</codeph></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <section id="notes">
+      <title>Notes</title>
+      <ul>
+        <li>The <codeph>s</codeph> and <codeph>p&lt;N&gt;</codeph> operators
+        require NLTK corpora. See
+        <xref href="../../user-guide/tasks/t_download-nltk.dita">Download NLTK language data</xref>.</li>
+        <li>There is no negation operator. See the absence-check pattern in
+        <xref href="../concepts/c_rule-design-patterns.dita">Rule design patterns</xref>.</li>
+        <li>For multi-element XPath results with <codeph>==</codeph>, the
+        evaluator requires every element to match. Target elements by position
+        to avoid this. See
+        <xref href="../concepts/c_known-limitations.dita">Known limitations</xref>.</li>
+      </ul>
+    </section>
+
+  </refbody>
+</reference>

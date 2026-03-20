@@ -1,0 +1,14 @@
+%%{init: {"theme": "neutral"}}%%
+flowchart TD
+    A["Author pushes commit\nor opens pull request"] --> B["CI checks out branch"]
+    B --> C["pip install markdown-validator"]
+    C --> D["python -m nltk.downloader …\n(if NLTK rules used)"]
+    D --> E["md-validate validate docs/\n--rules rules/tutorial.json"]
+    E --> F{Exit code?}
+
+    F -- "0\n(all Required rules pass)" --> G["✅ Check passes\nPR eligible to merge"]
+    F -- "1\n(Required rule failed)" --> H["❌ Check fails\nMerge blocked"]
+
+    H --> I["Author reads failure\nin Actions log or artifact"]
+    I --> J["Author fixes file\nand pushes"]
+    J --> B

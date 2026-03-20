@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE troubleshooting PUBLIC "-//OASIS//DTD DITA Troubleshooting//EN" "troubleshooting.dtd">
+<!--
+  SEO keyword phrase: markdown-validator rule always fails valid document debug
+  Audience: rule-creator
+-->
+<troubleshooting id="ts_rule-never-passes">
+  <title>Debug a rule that never passes on a valid document</title>
+
+  <shortdesc>A rule that always fails even on correctly formatted documents
+  usually has a mismatch between the query result and the expected value.
+  Use the REPL to inspect the exact values the rule is working with.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>rule always fails</keyword>
+        <keyword>rule debug</keyword>
+        <keyword>rule never passes</keyword>
+        <keyword>incorrect rule result</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Debug a markdown-validator rule that fails on every document even when the document satisfies the rule's intent. Common causes: whitespace, wrong operator, multi-element XPath, wrong flag."/>
+    </metadata>
+  </prolog>
+
+  <troublebody>
+
+    <condition id="condition">
+      <title>Situation</title>
+      <p>You have a rule that you believe should pass on a correctly formatted
+      document, but it always reports FAIL regardless of the document
+      content.</p>
+    </condition>
+
+    <troubleSolution>
+      <cause id="cause-whitespace">
+        <title>Cause: Whitespace in the query result</title>
+        <p>The metadata value or XPath text result has leading or trailing
+        whitespace that prevents an equality match.</p>
+      </cause>
+      <remedy id="remedy-whitespace">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>Start the REPL, load the document, and inspect the exact
+            value.</cmd>
+            <info>
+              <codeblock xml:space="preserve">md-validate repl
+&gt; load docs/article.md
+&gt; get ms.topic</codeblock>
+            </info>
+            <stepresult>Compare the output to what your rule's
+            <codeph>value</codeph> field expects. Look for extra spaces or
+            quotes.</stepresult>
+          </step>
+          <step>
+            <cmd>Update the rule's <codeph>value</codeph> field to match the
+            exact string, or clean up the front matter.</cmd>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution>
+      <cause id="cause-multi-element">
+        <title>Cause: Multi-element XPath result with equality operator</title>
+        <p>An XPath expression returns multiple elements, and the
+        <codeph>==</codeph> operator requires <i>every</i> element to match
+        the expected value. If any element differs, the rule fails. This
+        is almost never the intended behavior.</p>
+      </cause>
+      <remedy id="remedy-multi-element">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>In the REPL, run the query with the <codeph>text</codeph>
+            flag to see all results.</cmd>
+            <info>
+              <codeblock xml:space="preserve">&gt; query //h2 text
+Result: ['Prerequisites', 'Deploy the app', 'Clean up resources']</codeblock>
+            </info>
+          </step>
+          <step>
+            <cmd>Narrow the XPath to target the specific element you want
+            by position.</cmd>
+            <info>
+              <codeblock xml:space="preserve"># Instead of: //h2[last()]/preceding-sibling::h2
+# Use:
+&gt; query //h2[last()-1] text
+Result: ['Deploy the app']</codeblock>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution>
+      <cause id="cause-wrong-flag">
+        <title>Cause: Wrong flag for the check type</title>
+        <p>Using <codeph>text</codeph> when you need <codeph>count</codeph>,
+        or vice versa, causes the comparison to fail because the result is
+        not in the expected form.</p>
+      </cause>
+      <remedy id="remedy-wrong-flag">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>Review the flags reference to confirm you are using the
+            correct flag for your check.</cmd>
+            <info>
+              <p>The <xref href="../rule-creator-guide/reference/r_flags.dita">flags reference</xref>
+              lists all flags with descriptions and examples.</p>
+            </info>
+          </step>
+          <step>
+            <cmd>In the REPL, compare the output of different flags on the
+            same XPath to see which form matches your expected value.</cmd>
+            <info>
+              <codeblock xml:space="preserve">&gt; query /html/body/h1 count
+Result: 1
+
+&gt; query /html/body/h1 text
+Result: ['How to deploy the app']</codeblock>
+              <p>Use <codeph>count</codeph> when comparing to a number, and
+              <codeph>text</codeph> when comparing to a string.</p>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution>
+      <cause id="cause-inverted-workflow">
+        <title>Cause: Inverted workflow branch logic</title>
+        <p>A workflow intended to express absence uses a branch pattern that
+        is inverted — it passes when the content is wrong and fails when the
+        content is correct.</p>
+      </cause>
+      <remedy id="remedy-inverted-workflow">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>Run validation with <codeph>--verbose</codeph> to trace the
+            workflow step-by-step.</cmd>
+            <info>
+              <codeblock xml:space="preserve">md-validate --verbose validate docs/article.md --rules rules/tutorial.json</codeblock>
+              <p>The verbose output shows which branch (True or False) the
+              decision node follows for each workflow step.</p>
+            </info>
+          </step>
+          <step>
+            <cmd>Read the decision point output carefully and verify your
+            branch routing.</cmd>
+            <info>
+              <p>The True branch runs when the precondition rule
+              <i>passes</i>. If your workflow uses <codeph>F-sentinel</codeph>
+              for the False branch, confirm the sentinel rule passes on valid
+              documents by testing it in the REPL with <codeph>eval</codeph>.</p>
+              <p><xref href="../rule-creator-guide/concepts/c_rule-design-patterns.dita">Rule design patterns</xref>
+              covers the absence-check pattern and the known fragility of
+              workflow inversion.</p>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+  </troublebody>
+</troubleshooting>

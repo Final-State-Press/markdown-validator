@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/troubleshooting?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/troubleshooting/?><?path2project ../?><?path2project-uri ../?><?path2rootmap-uri ../?><?doctype-public -//OASIS//DTD DITA Troubleshooting//EN?><?doctype-system troubleshooting.dtd?><troubleshooting xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ts_xpath-wrong-results" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic troubleshooting++task) (topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic troubleshooting/troubleshooting " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="troubleshooting:1;7:46" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="title:1;8:10">Debug an XPath expression that returns unexpected results</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="keyword:1;13:18">XPath wrong results</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="keyword:2;14:18">flat DOM XPath</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="keyword:3;15:18">XPath debug REPL</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="keyword:4;16:18">following-sibling XPath problem</keyword>
+      </keywords>
+      <othermeta name="description" content="Debug unexpected XPath query results in markdown-validator, including flat DOM limitations, namespace issues, and following-sibling behavior." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="othermeta:1;19:162"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="shortdesc:1;23:14">XPath queries that seem correct but return unexpected results are
+  usually caused by the flat HTML structure that markdown-validator produces.
+  Use the REPL to inspect the actual HTML and adjust your query.</shortdesc>
+
+  <troublebody class="- topic/body troubleshooting/troublebody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="troublebody:1;27:16">
+
+    <condition id="condition" class="- topic/section troubleshooting/condition " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="condition:1;29:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="title:2;30:14">Situation</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="p:1;31:10">An XPath expression in a body rule returns no results, or it returns
+      more elements than expected, causing the rule to behave incorrectly.</p>
+    </condition>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="troubleSolution:1;35:22">
+      <cause id="cause-flat-dom" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="cause:1;36:34">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="title:3;37:16">Cause: Flat HTML — within-section containment does not work</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="p:2;38:12">The rendered HTML is flat: all headings are direct children of
+        <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeph:1;39:17">&lt;body&gt;</codeph>. Queries like
+        <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeph:2;40:17">.//h2[1]/following-sibling::p</codeph> do not return only
+        paragraphs in the first H2's section — they return all paragraphs
+        after the first H2, including those in every subsequent section.</p>
+      </cause>
+      <remedy id="remedy-flat-dom" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="remedy:1;44:36">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="title:4;45:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="steps:1;46:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="step:1;47:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="cmd:1;48:18">In the REPL, run <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeph:3;48:43">dump html</codeph> on your document
+            to see the actual HTML structure.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="info:1;50:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeblock:1;51:47">md-validate repl
+&gt; load docs/tutorial.md
+&gt; dump html</codeblock>
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="p:3;54:18">Confirm that headings are direct children of
+              <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeph:4;55:23">&lt;body&gt;</codeph> with no section wrappers.</p>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="step:2;58:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="cmd:2;59:18">Rewrite the XPath to use absolute position instead of
+            containment.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="info:2;61:19">
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="p:4;62:18">Instead of:</p>
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeblock:2;63:47">.//h2[@id='prerequisites']/following-sibling::p[1]</codeblock>
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="p:5;64:18">Use:</p>
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeblock:3;65:47">//h2[normalize-space(text())='Prerequisites']</codeblock>
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="p:6;66:18">Checking for the presence of the heading rather than its
+              content achieves the same editorial goal without requiring
+              containment.</p>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="troubleSolution:2;75:22">
+      <cause id="cause-text-spaces" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="cause:2;76:37">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="title:5;77:16">Cause: Whitespace in element text</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="p:7;78:12">XPath text comparisons are exact. A heading with a trailing space
+        (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeph:5;79:18">Prerequisites </codeph>) does not match the predicate
+        <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeph:6;80:17">[text()='Prerequisites']</codeph>.</p>
+      </cause>
+      <remedy id="remedy-text-spaces" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="remedy:2;82:39">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="title:6;83:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="steps:2;84:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="step:3;85:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="cmd:3;86:18">In the REPL, run the query with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeph:7;86:58">text</codeph> to
+            see the exact string the element contains, including any whitespace.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="info:3;88:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeblock:4;89:47">&gt; query //h2 text
+Result: ['Prerequisites ', 'Deploy the app']</codeblock>
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="p:8;91:18">Note any trailing spaces in the output.</p>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="step:4;94:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="cmd:4;95:18">Update the XPath predicate to use
+            <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeph:8;96:21">normalize-space()</codeph> instead of a bare
+            <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeph:9;97:21">text()</codeph> comparison.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="info:4;98:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeblock:5;99:47">//h2[normalize-space(text())='Prerequisites']</codeblock>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="troubleSolution:3;106:22">
+      <cause id="cause-no-matches" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="cause:3;107:36">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="title:7;108:16">Cause: XPath returns zero results</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="p:9;109:12">The element path does not match any nodes in the HTML. Common reasons:
+        the element name is wrong, the document uses a heading level you did not
+        expect, or the XPath predicate is too strict.</p>
+      </cause>
+      <remedy id="remedy-no-matches" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="remedy:3;113:38">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="title:8;114:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="steps:3;115:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="step:5;116:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="cmd:5;117:18">In the REPL, run a broader query first and narrow it down.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="info:5;118:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="codeblock:6;119:47">&gt; query //h2 text
+Result: ['Prerequisites', 'Deploy the app', 'Clean up resources']
+
+&gt; query //h2[2] text
+Result: ['Deploy the app']</codeblock>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="step:6;126:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_xpath-wrong-results.dita" xtrc="cmd:6;127:18">Compare the actual element text against your predicate
+            value.</cmd>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+  </troublebody>
+</troubleshooting>

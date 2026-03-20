@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: validate directory of Markdown files recursive batch
+  Audience: user
+-->
+<task id="t_validate-directory">
+  <title>Validate a directory of Markdown files</title>
+
+  <shortdesc>Run <codeph>md-validate validate</codeph> with a directory path to
+  validate all Markdown files in that directory and its subdirectories at once.
+  Use this before a release or periodic quality review.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>validate directory</keyword>
+        <keyword>batch validation</keyword>
+        <keyword>recursive markdown validation</keyword>
+        <keyword>documentation repository scan</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Run markdown-validator against an entire directory to validate multiple Markdown files at once and save a report for each file."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <p>markdown-validator is installed and the virtual environment is active.
+      See <xref href="t_install.dita"/>.</p>
+    </prereq>
+
+    <context id="context">
+      <p>When you pass a directory path instead of a file path, markdown-validator
+      scans every <filepath>.md</filepath> file in that directory recursively.
+      It produces one report per file and a summary in the terminal.</p>
+      <p>A single failing file sets the exit code to <codeph>1</codeph> for the
+      entire run. This is the behavior CI pipelines rely on to gate the merge.</p>
+    </context>
+
+    <steps>
+
+      <step id="step-run-dir">
+        <cmd>Run the validate command with a directory path.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/ --rules rules/tutorial.json</codeblock>
+          <p>Replace <codeph>docs/</codeph> with the path to the directory you
+          want to scan and <codeph>rules/tutorial.json</codeph> with your team's
+          rule set.</p>
+        </info>
+        <stepresult>The tool prints a report for each file it validates, followed
+        by a summary of how many files passed and failed.</stepresult>
+      </step>
+
+      <step id="step-review-summary">
+        <cmd>Review the summary at the end of the output.</cmd>
+        <info>
+          <codeblock xml:space="preserve">Summary: 47 files validated — 45 passed, 2 failed</codeblock>
+          <p>Scroll up to find the per-file reports for the two failed files. The
+          file path is shown at the top of each report.</p>
+        </info>
+      </step>
+
+      <step id="step-save" importance="optional">
+        <cmd>To save per-file reports, add the <codeph>--output</codeph>
+        option.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/ --rules rules/tutorial.json --output reports/</codeblock>
+          <p>The tool creates one report file per validated Markdown file in the
+          <filepath>reports/</filepath> directory. This is useful for sharing
+          results with your team or tracking quality over time. For more about
+          saving reports, see <xref href="t_save-reports.dita">Save validation reports to a directory</xref>.</p>
+        </info>
+      </step>
+
+    </steps>
+
+    <result id="result">
+      <p>Every Markdown file in the directory has been validated. Files with
+      Required failures are identified in the terminal output and, if you used
+      <codeph>--output</codeph>, in the saved report files.</p>
+    </result>
+
+  </taskbody>
+</task>

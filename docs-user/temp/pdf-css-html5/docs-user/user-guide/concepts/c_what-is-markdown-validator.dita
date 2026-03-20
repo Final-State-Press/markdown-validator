@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_what-is-markdown-validator" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="concept:1;7:44" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="title:1;8:10">What is markdown-validator?</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="keyword:1;13:18">markdown-validator</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="keyword:2;14:18">documentation validation</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="keyword:3;15:18">front matter linting</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="keyword:4;16:18">content governance</keyword>
+      </keywords>
+      <othermeta name="description" content="Learn what markdown-validator does, why documentation teams use it, and what kinds of problems it catches automatically." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="othermeta:1;19:141"/>
+      <othermeta name="version" content="markdown-validator 0.2" class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="othermeta:2;20:67"/>
+      <othermeta name="last-updated" content="2026-03-20" class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="othermeta:3;21:60"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="shortdesc:1;25:14">markdown-validator is a rule-based tool that checks your Markdown files
+  against editorial standards defined by your team. It catches missing metadata,
+  incorrect front-matter values, and structural problems before your content reaches
+  review or publication.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="conbody:1;30:12">
+
+    <note type="note" id="version-notice" class="- topic/note " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="note:1;32:43">
+      <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="b:1;33:10">Applies to:</b> markdown-validator 0.2.x (last updated 2026-03-20).
+      Planned changes in v0.3 (negation operator) and v0.4 (structured DOM)
+      may affect rule behaviour described here.
+    </note>
+
+    <note type="important" id="blocked-pr" class="- topic/note " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="note:2;38:44">
+      <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="b:2;39:10">Pull request just blocked?</b> Go to
+      <xref href="../tasks/t_validate-single-file.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="xref:1;40:57">Validate a single file</xref>
+      to reproduce the failure locally, then
+      <xref href="../tasks/t_read-validation-report.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="xref:2;42:59">read the validation report</xref>
+      to fix it. You do not need to read this topic first.
+    </note>
+
+    <section id="the-problem" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="section:1;46:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="title:2;47:14">What it does</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="p:1;48:10">Your team defines rules once in a JSON file. The tool applies them to every
+      article and reports exactly which rules each file passes or fails — catching
+      missing fields, stale dates, wrong values, and structural issues that reviewers
+      would otherwise flag manually.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="p:2;53:10">markdown-validator checks two parts of each file:</p>
+      <table id="what-it-checks-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="table:1;54:40">
+        <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="tgroup:1;55:26">
+          <colspec colname="col1" colwidth="1.5*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="colspec:1;56:52" colnum="1"/>
+          <colspec colname="col2" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="colspec:2;57:54" colnum="2"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="thead:1;58:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="row:1;59:18"><entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="entry:1;59:25" colname="col1" dita-ot:x="1" dita-ot:y="1">Part</entry><entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="entry:2;59:44" colname="col2" dita-ot:x="2" dita-ot:y="1">What gets checked</entry></row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="tbody:1;61:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="row:2;62:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="entry:3;63:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="b:3;63:25">Front-matter metadata</b> — the YAML <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="codeph:1;63:70">---</codeph> block</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="entry:4;64:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Required fields present, values match allowed values, date is
+              recent, naming conventions</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="row:3;67:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="entry:5;68:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="b:4;68:25">Document body</b> — content below the front matter</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="entry:6;69:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Exactly one H1, required H2 sections present, heading
+              capitalization, no empty sections</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="how-authors-use-it" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="section:2;77:38">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="title:3;78:14">How you use it</title>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="ul:1;79:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="li:1;80:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="b:5;80:16">Locally before a pull request</b> — run the tool from the command
+        line to catch and fix problems before reviewers see them.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="li:2;82:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="b:6;82:16">Automatically in CI/CD</b> — the pipeline validates every pull
+        request. Required failures block the merge.</li>
+      </ul>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="p:3;85:10">Your content lead maintains the rule set. You run the validator and fix
+      what it reports.</p>
+    </section>
+
+    <section id="what-you-need" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="section:3;89:33">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="title:4;90:14">What you need</title>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="ul:2;91:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="li:3;92:13">Python 3.12+</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="li:4;93:13">The rule set file path (ask your content lead; typically
+        <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="filepath:1;94:19">rules/tutorial.json</filepath> in the repository)</li>
+      </ul>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="p:4;96:10">To get started: <xref href="../tasks/t_install.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="xref:3;96:63">Install markdown-validator</xref>
+      | <xref href="c_how-validation-works.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="xref:4;97:50">How validation works</xref></p>
+    </section>
+
+  </conbody>
+</concept>

@@ -15,7 +15,14 @@ theme:
 
 nav:
   - Home: index.md
-  - Architecture: architecture.md
+  - Product:
+      - Assessment: product/assessment.md
+      - Roadmap: product/roadmap.md
+      - Revision Notes: product/revision-notes.md
+  - Requirements: srs.md
+  - Architecture:
+      - Overview: architecture.md
+      - Design: design.md
   - Rules Reference: rules-reference.md
   - CLI Reference: cli-reference.md
   - API:

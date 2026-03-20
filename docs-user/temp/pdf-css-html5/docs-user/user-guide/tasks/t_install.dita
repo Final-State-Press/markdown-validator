@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/tasks?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/tasks/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Task//EN?><?doctype-system task.dtd?><task xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="t_install" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic task/task " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="task:1;7:22" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="title:1;8:10">Install markdown-validator</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="keyword:1;13:18">install markdown-validator</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="keyword:2;14:18">pip install</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="keyword:3;15:18">Python setup</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="keyword:4;16:18">virtual environment</keyword>
+      </keywords>
+      <othermeta name="description" content="Step-by-step instructions to install markdown-validator using pip, verify the installation, and set up a development environment." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="othermeta:1;19:150"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="shortdesc:1;23:14">Install markdown-validator with pip in a Python virtual environment.
+  After installation, the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeph:1;24:35">md-validate</codeph> command is available from
+  your terminal.</shortdesc>
+
+  <taskbody class="- topic/body task/taskbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="taskbody:1;27:13">
+
+    <prereq id="prereq" class="- topic/section task/prereq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="prereq:1;29:25">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="title:2;30:14">Before you begin</title>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="ul:1;31:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="li:1;32:13">Python 3.12 or later must be installed. To check your Python version,
+        open a terminal and enter:
+        <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeblock:1;34:41">python --version</codeblock>
+        If Python is not installed or is older than 3.12, download it from
+        <xref href="https://python.org" format="html" scope="external" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="xref:1;36:72">python.org</xref>.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="li:2;37:13">You need access to a terminal (Command Prompt or PowerShell on Windows,
+        Terminal on macOS or Linux).</li>
+      </ul>
+    </prereq>
+
+    <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="steps:1;42:12">
+
+      <step id="step-venv" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="step:1;44:28">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="cmd:1;45:14">Create and activate a virtual environment.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="info:1;46:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="p:1;47:14">On macOS or Linux:</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeblock:2;48:43">python -m venv .venv
+source .venv/bin/activate</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="p:2;50:14">On Windows (PowerShell):</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeblock:3;51:43">python -m venv .venv
+.venv\Scripts\Activate.ps1</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="p:3;53:14">When the virtual environment is active, your terminal prompt includes
+          <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeph:2;54:19">(.venv)</codeph>.</p>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="stepresult:1;56:21">The virtual environment is active. Packages you install now
+        go into this isolated environment.</stepresult>
+      </step>
+
+      <step id="step-pip" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="step:2;60:27">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="cmd:2;61:14">Install markdown-validator.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="info:2;62:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeblock:4;63:43">pip install markdown-validator</codeblock>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="stepresult:2;65:21">pip downloads and installs markdown-validator and its
+        dependencies.</stepresult>
+      </step>
+
+      <step id="step-verify" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="step:3;69:30">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="cmd:3;70:14">Verify the installation.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="info:3;71:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeblock:5;72:43">md-validate --version</codeblock>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="stepresult:3;74:21">The terminal displays the installed version number, confirming
+        that the tool is ready to use.</stepresult>
+      </step>
+
+    </steps>
+
+    <result id="result" class="- topic/section task/result " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="result:1;80:25">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="p:4;81:10">markdown-validator is installed. You can now run
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeph:3;82:15">md-validate validate</codeph> from this terminal session whenever
+      the virtual environment is active.</p>
+    </result>
+
+    <postreq id="postreq" class="- topic/section task/postreq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="postreq:1;86:27">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="p:5;87:10">If your team's rule set uses sentence-count (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeph:4;87:63">s</codeph>) or
+      part-of-speech (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeph:5;88:31">p&lt;N&gt;</codeph>) rules, also run:
+      <xref href="t_download-nltk.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="xref:2;89:41">Download NLTK language data</xref>.</p>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="p:6;90:10">Ready to validate:
+      <xref href="t_validate-single-file.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="xref:3;91:48">Validate a single file</xref>.</p>
+    </postreq>
+
+  </taskbody>
+</task>

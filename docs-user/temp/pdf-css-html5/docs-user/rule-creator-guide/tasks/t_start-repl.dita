@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/tasks?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/tasks/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Task//EN?><?doctype-system task.dtd?><task xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="t_start-repl" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic task/task " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="task:1;7:25" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="title:1;8:10">Start the interactive REPL</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="keyword:1;13:18">start REPL</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="keyword:2;14:18">interactive rule testing</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="keyword:3;15:18">md-validate repl</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="keyword:4;16:18">rule development tool</keyword>
+      </keywords>
+      <othermeta name="description" content="Start the markdown-validator interactive REPL to explore document structure, test XPath expressions, and evaluate rules before adding them to a rule set." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="othermeta:1;19:174"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="shortdesc:1;23:14">The interactive REPL lets you load a Markdown document and explore
+  its structure, test XPath queries, and evaluate rules interactively. Use it
+  when writing new rules to confirm your queries return what you expect before
+  adding them to a rule set.</shortdesc>
+
+  <taskbody class="- topic/body task/taskbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="taskbody:1;28:13">
+
+    <prereq id="prereq" class="- topic/section task/prereq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="prereq:1;30:25">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="p:1;31:10">markdown-validator is installed and the virtual environment is active.
+      See <xref href="../../user-guide/tasks/t_install.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="xref:1;32:62" type="task"><?ditaot usertext?>Install markdown-validator<?ditaot genshortdesc?><desc class="- topic/desc ">Install markdown-validator with pip in a Python virtual environment.   After installation, the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeph:1;24:35">md-validate</codeph> command is available from   your terminal.</desc></xref>.</p>
+    </prereq>
+
+    <context id="context" class="- topic/section task/context " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="context:1;35:27">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="p:2;36:10">The REPL is a scratch pad for rule authors — try queries and rules
+      against real documents without modifying the rule set file. Use
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="codeph:1;38:15">md-validate validate</codeph> for production validation.</p>
+    </context>
+
+    <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="steps:1;41:12">
+
+      <step id="step-start" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="step:1;43:29">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="cmd:1;44:14">Start the REPL.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="info:1;45:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="codeblock:1;46:43">md-validate repl</codeblock>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="stepresult:1;48:21">The terminal shows a welcome message and the
+        <systemoutput class="+ topic/ph sw-d/systemoutput " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="systemoutput:1;49:23">&gt;</systemoutput> prompt:
+        <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="codeblock:2;50:41">Markdown Validator REPL
+Type 'help' for a list of commands, 'quit' to exit.
+&gt;</codeblock>
+        </stepresult>
+      </step>
+
+      <step id="step-load" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="step:2;56:28">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="cmd:2;57:14">Load a Markdown document to work with.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="info:2;58:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="codeblock:3;59:43">&gt; load docs/tutorial-deploy-app.md</codeblock>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="stepresult:2;61:21">The REPL confirms the file is loaded and shows the
+        front-matter keys:
+        <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="codeblock:4;63:41">Loaded: /abs/path/docs/tutorial-deploy-app.md
+  Metadata keys: ['title', 'ms.topic', 'ms.date', 'author', 'description']</codeblock>
+        </stepresult>
+      </step>
+
+      <step id="step-explore" importance="optional" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="step:3;68:53">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="cmd:3;69:14">Inspect the document's metadata and HTML structure before
+        testing rules.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="info:3;71:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="codeblock:5;72:43">&gt; dump metadata
+&gt; dump html</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="p:3;74:14"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="codeph:2;74:22">dump metadata</codeph> prints the YAML front matter as a
+          JSON object. <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="codeph:3;75:32">dump html</codeph> prints the rendered HTML body,
+          which shows the exact structure your XPath queries will run against.</p>
+        </info>
+      </step>
+
+    </steps>
+
+    <result id="result" class="- topic/section task/result " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="result:1;82:25">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="p:4;83:10">The REPL is running with a document loaded. To test rules, see
+      <xref href="t_test-rule-repl.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="xref:2;84:42" type="task"><?ditaot usertext?>Test a rule in the interactive REPL<?ditaot genshortdesc?><desc class="- topic/desc ">Test a rule in the REPL by running the XPath query against a loaded   document and then evaluating the full rule object. This confirms your rule   will behave as expected before you commit it.</desc></xref>.</p>
+    </result>
+
+    <postreq id="postreq" class="- topic/section task/postreq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="postreq:1;87:27">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="p:5;88:10">To exit the REPL, enter <userinput class="+ topic/ph sw-d/userinput " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="userinput:1;88:45">quit</userinput> or press
+      <uicontrol class="+ topic/ph ui-d/uicontrol " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_start-repl.dita" xtrc="uicontrol:1;89:18">Ctrl+D</uicontrol>.</p>
+    </postreq>
+
+  </taskbody>
+</task>

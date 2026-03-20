@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<!--
+  SEO keyword phrase: markdown-validator report output fields JSON CSV format
+  Audience: user
+-->
+<reference id="r_report-output">
+  <title>Validation report output reference</title>
+
+  <shortdesc>Reference for the structure and fields of markdown-validator
+  validation reports in text, JSON, and CSV format.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>report output</keyword>
+        <keyword>JSON report fields</keyword>
+        <keyword>CSV report columns</keyword>
+        <keyword>validation score</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Reference for the fields in markdown-validator text, JSON, and CSV validation reports."/>
+    </metadata>
+  </prolog>
+
+  <refbody>
+
+    <section id="text-format">
+      <title>Text format</title>
+      <p>Text format is the default. It is designed for reading in a terminal.</p>
+      <codeblock xml:space="preserve">Validating: docs/tutorial-deploy-app.md
+Rule set:   rules/tutorial.json
+
+  ✓  [1]  topic-must-be-tutorial
+  ✗  [4]  description-must-exist              [Required]
+           → Add a description field to the front matter.
+  ✗  [6]  title-under-60-chars                [Suggested]
+           → Title must be under 60 characters.
+
+Score: 4/6   FAILED</codeblock>
+
+      <table id="text-fields">
+        <title>Text report fields</title>
+        <tgroup cols="2">
+          <colspec colname="field" colwidth="2*"/>
+          <colspec colname="desc" colwidth="4*"/>
+          <thead>
+            <row><entry>Field</entry><entry>Description</entry></row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>✓</codeph> / <codeph>✗</codeph></entry>
+              <entry>Check mark = rule passed. Cross = rule failed.</entry>
+            </row>
+            <row>
+              <entry><codeph>[N]</codeph></entry>
+              <entry>Rule ID number.</entry>
+            </row>
+            <row>
+              <entry>Rule name</entry>
+              <entry>Human-readable name of the rule as defined in the rule set.</entry>
+            </row>
+            <row>
+              <entry><codeph>[Required]</codeph> / <codeph>[Suggested]</codeph></entry>
+              <entry>Severity level. Shown for failed rules. Required failures
+              block the pipeline.</entry>
+            </row>
+            <row>
+              <entry><codeph>→ message</codeph></entry>
+              <entry>Mitigation message. Plain-English description of what to
+              fix. Shown only for failed rules.</entry>
+            </row>
+            <row>
+              <entry><codeph>Score: N/T</codeph></entry>
+              <entry>N = rules passed, T = total rules evaluated.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="json-format">
+      <title>JSON format</title>
+      <p>JSON format produces a single object with all validation results.</p>
+      <codeblock xml:space="preserve">{
+  "filepath": "docs/tutorial-deploy-app.md",
+  "score": 4,
+  "total_rules": 6,
+  "passed": false,
+  "results": [
+    {
+      "rule_id": 1,
+      "rule_name": "topic-must-be-tutorial",
+      "passed": true,
+      "level": "Required",
+      "expected_value": "tutorial",
+      "actual_value": "tutorial",
+      "mitigation": "",
+      "filepath": "docs/tutorial-deploy-app.md"
+    },
+    {
+      "rule_id": 4,
+      "rule_name": "description-must-exist",
+      "passed": false,
+      "level": "Required",
+      "expected_value": "true",
+      "actual_value": "",
+      "mitigation": "Add a description field to the front matter.",
+      "filepath": "docs/tutorial-deploy-app.md"
+    }
+  ]
+}</codeblock>
+
+      <table id="json-fields">
+        <title>JSON report fields</title>
+        <tgroup cols="3">
+          <colspec colname="field" colwidth="2*"/>
+          <colspec colname="type" colwidth="1*"/>
+          <colspec colname="desc" colwidth="4*"/>
+          <thead>
+            <row>
+              <entry>Field</entry><entry>Type</entry><entry>Description</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>filepath</codeph></entry>
+              <entry>string</entry>
+              <entry>Path to the validated document.</entry>
+            </row>
+            <row>
+              <entry><codeph>score</codeph></entry>
+              <entry>integer</entry>
+              <entry>Number of rules that passed.</entry>
+            </row>
+            <row>
+              <entry><codeph>total_rules</codeph></entry>
+              <entry>integer</entry>
+              <entry>Total number of rules evaluated.</entry>
+            </row>
+            <row>
+              <entry><codeph>passed</codeph></entry>
+              <entry>boolean</entry>
+              <entry><codeph>true</codeph> if all Required rules passed.</entry>
+            </row>
+            <row>
+              <entry><codeph>results[].rule_id</codeph></entry>
+              <entry>integer</entry>
+              <entry>Rule identifier.</entry>
+            </row>
+            <row>
+              <entry><codeph>results[].passed</codeph></entry>
+              <entry>boolean</entry>
+              <entry>Whether this individual rule passed.</entry>
+            </row>
+            <row>
+              <entry><codeph>results[].mitigation</codeph></entry>
+              <entry>string</entry>
+              <entry>Remediation message. Empty string if the rule passed.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="csv-format">
+      <title>CSV format</title>
+      <p>CSV format produces one row per rule evaluation. Useful for importing
+      into a spreadsheet or BI tool.</p>
+      <table id="csv-columns">
+        <title>CSV columns</title>
+        <tgroup cols="2">
+          <colspec colname="col" colwidth="2*"/>
+          <colspec colname="desc" colwidth="4*"/>
+          <thead>
+            <row><entry>Column</entry><entry>Description</entry></row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>filepath</codeph></entry>
+              <entry>Path to the validated document.</entry>
+            </row>
+            <row>
+              <entry><codeph>rule_id</codeph></entry>
+              <entry>Rule identifier.</entry>
+            </row>
+            <row>
+              <entry><codeph>rule_name</codeph></entry>
+              <entry>Human-readable rule name.</entry>
+            </row>
+            <row>
+              <entry><codeph>type</codeph></entry>
+              <entry><codeph>header</codeph> or <codeph>body</codeph>.</entry>
+            </row>
+            <row>
+              <entry><codeph>level</codeph></entry>
+              <entry><codeph>Required</codeph> or <codeph>Suggested</codeph>.</entry>
+            </row>
+            <row>
+              <entry><codeph>passed</codeph></entry>
+              <entry><codeph>true</codeph> or <codeph>false</codeph>.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+  </refbody>
+</reference>

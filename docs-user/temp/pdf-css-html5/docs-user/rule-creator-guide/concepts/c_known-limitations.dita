@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_known-limitations" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="concept:1;7:35" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="title:1;8:10">Known limitations</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="keyword:1;13:18">known limitations</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="keyword:2;14:18">flat DOM</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="keyword:3;15:18">no negation operator</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="keyword:4;16:18">XPath limitations</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="keyword:5;17:18">NLTK requirement</keyword>
+      </keywords>
+      <othermeta name="description" content="Know the current limitations of markdown-validator before writing rules: flat HTML DOM, absence of a negation operator, multi-element equality behavior, and NLTK dependency." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="othermeta:1;20:194"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="shortdesc:1;24:14">Understanding the current limitations of markdown-validator before
+  you write rules saves hours of debugging. Four limitations affect the types
+  of rules you can reliably express today.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="conbody:1;28:12">
+
+    <section id="flat-dom" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="section:1;30:28">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="title:2;31:14">Limitation 1: Flat HTML — within-section queries are not reliable</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:1;32:10">markdown-validator renders Markdown to HTML using the standard
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:1;33:15">markdown</codeph> library. This library produces <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="b:1;33:67">flat HTML</b>:
+      all headings are direct children of <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:2;34:51">&lt;body&gt;</codeph>. There are
+      no <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:3;35:18">&lt;section&gt;</codeph> wrappers that group a heading with its
+      content.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:2;38:10">This means XPath queries that rely on containment — "find a link that is
+      inside the Prerequisites section" — will not work as intended. The query
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:4;40:15">.//h2[1]/following-sibling::a</codeph> does not return links
+      within the first H2's section; it returns every link anywhere after the
+      first H2 in document order.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:3;44:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="b:2;44:13">What to do instead:</b> Write rules that check element presence and
+      order using absolute position (for example, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:5;45:59">.//h2[1]</codeph> for
+      the first H2), not containment. For sections, count the heading and rely
+      on positional predicates.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:4;49:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="b:3;49:13">Planned fix:</b> A structured-DOM parser mode is planned for v0.4.
+      See the <xref href="../../../site/product/roadmap.md" format="dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="xref:1;50:79" dita-ot:orig-format="markdown">product roadmap</xref>.</p>
+    </section>
+
+    <section id="no-negation" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="section:2;53:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="title:3;54:14">Limitation 2: No negation operator</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:5;55:10">There is no <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:6;55:30">negate</codeph> field or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:7;55:63">not</codeph>
+      operator. Expressing "the title must NOT contain the word 'guide'" requires
+      a workflow-inversion workaround that is difficult to read and error-prone.
+      See the absence-check pattern in
+      <xref href="c_rule-design-patterns.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="xref:2;59:48">Rule design patterns</xref>.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:6;61:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="b:4;61:13">Planned fix:</b> A <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:8;61:40">negate: true</codeph> field on
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:9;62:15">RuleModel</codeph> is planned for v0.3.</p>
+    </section>
+
+    <section id="multi-element-equality" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="section:3;65:42">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="title:4;66:14">Limitation 3: Multi-element equality checks are usually wrong</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:7;67:10">When an XPath query returns more than one element and you use
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:10;68:15">"operation": "=="</codeph>, the evaluator requires <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="b:5;68:69">every</b>
+      element in the result set to equal the expected value. This is almost
+      never the intended behavior.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:8;72:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="b:6;72:13">Example of the problem:</b> A rule targeting
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:11;73:15">".//h2[last()]/preceding-sibling::h2"</codeph> (to find the
+      second-to-last H2) returns <i class="+ topic/ph hi-d/i " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="i:1;74:37">all</i> H2s before the last one. Requiring
+      all of them to equal "Clean up resources" fails on any document with
+      more than two H2s.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:9;78:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="b:7;78:13">What to do instead:</b> Target the specific element you want by
+      position, not by relative relationship. Use
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:12;80:15">".//h2[last()-1]"</codeph> to get the second-to-last H2
+      directly.</p>
+    </section>
+
+    <section id="nltk-required" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="section:4;84:33">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="title:5;85:14">Limitation 4: NLTK language data must be installed separately</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:10;86:10">Rules that use the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:13;86:37">s</codeph> (sentence count) or
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="codeph:14;87:15">p&lt;N&gt;</codeph> (part of speech) operators require NLTK
+      language corpora that are not included with the pip package. A fresh
+      environment will fail with a LookupError on first use of these rules.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="p:11;91:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="b:8;91:13">What to do:</b> Include the NLTK download step in your team's
+      onboarding instructions and CI pipeline. See
+      <xref href="../../user-guide/tasks/t_download-nltk.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_known-limitations.dita" xtrc="xref:3;93:64">Download NLTK language data</xref>.</p>
+    </section>
+
+  </conbody>
+</concept>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: save validation reports directory markdown-validator
+  Audience: user
+-->
+<task id="t_save-reports">
+  <title>Save validation reports to a directory</title>
+
+  <shortdesc>Use the <codeph>--output</codeph> option to write one report file
+  per validated document to a directory. This is useful for sharing results with
+  your team, uploading reports as CI artifacts, or tracking quality over time.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>save reports</keyword>
+        <keyword>--output option</keyword>
+        <keyword>report files</keyword>
+        <keyword>validation history</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Use the --output option to save one validation report file per Markdown document for sharing with your team or CI artifact upload."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <p>Decide on a format for the saved reports before running the command.
+      <xref href="t_set-output-format.dita">Set output format</xref> compares the text, JSON,
+      and CSV options.</p>
+    </prereq>
+
+    <context id="context">
+      <p>Use case by format: <b>JSON</b> — CI artifact upload and scripting;
+      <b>CSV</b> — quality tracking and spreadsheet import; <b>text</b> — ad-hoc
+      team review. The output directory is created automatically if it does not
+      exist.</p>
+    </context>
+
+    <steps>
+
+      <step id="step-choose-format">
+        <cmd>Choose the report format that matches your use case.</cmd>
+        <info>
+          <dl>
+            <dlentry>
+              <dt>JSON — for CI artifact upload and machine processing</dt>
+              <dd><codeblock xml:space="preserve">md-validate validate docs/ --rules rules/tutorial.json \
+  --format json --output reports/</codeblock></dd>
+            </dlentry>
+            <dlentry>
+              <dt>CSV — for quality tracking and spreadsheet import</dt>
+              <dd><codeblock xml:space="preserve">md-validate validate docs/ --rules rules/tutorial.json \
+  --format csv --output reports/</codeblock></dd>
+            </dlentry>
+            <dlentry>
+              <dt>Text — for human review and sharing</dt>
+              <dd><codeblock xml:space="preserve">md-validate validate docs/ --rules rules/tutorial.json \
+  --format text --output reports/</codeblock></dd>
+            </dlentry>
+          </dl>
+          <p>Replace <codeph>reports/</codeph> with the path to the directory
+          where you want the report files saved.</p>
+        </info>
+        <stepresult>The tool validates every file and writes one report file
+        per document into the output directory. The file extension matches the
+        format: <filepath>.json</filepath>, <filepath>.csv</filepath>, or
+        <filepath>.txt</filepath>.</stepresult>
+      </step>
+
+      <step id="step-review-output">
+        <cmd>Open the output directory to confirm the generated files.</cmd>
+        <info>
+          <p>Each report file is named after the source document. For example,
+          validating <filepath>docs/tutorial-deploy-app.md</filepath> with
+          <codeph>--format json</codeph> produces
+          <filepath>reports/tutorial-deploy-app.json</filepath>. With
+          <codeph>--format csv</codeph> it produces
+          <filepath>reports/tutorial-deploy-app.csv</filepath>.</p>
+          <p>If you validate a directory, the output directory mirrors only the
+          filenames — subdirectory paths from the source are not recreated. All
+          report files land in the single output directory you specified.</p>
+        </info>
+      </step>
+
+      <step id="step-name-convention">
+        <cmd>Adopt a naming convention for the output directory if you save
+        reports from multiple runs.</cmd>
+        <info>
+          <p>Including a date or build identifier in the directory name makes
+          it easy to compare reports across runs:</p>
+          <codeblock xml:space="preserve">md-validate validate docs/ --rules rules/tutorial.json \
+  --format csv --output reports/2026-03-20/</codeblock>
+          <p>For CI pipelines, use the run number or commit SHA to make each
+          set of reports uniquely identifiable.</p>
+        </info>
+      </step>
+
+    </steps>
+
+    <result id="result">
+      <p>One report file per validated document is saved in the output
+      directory in the format you specified. The exit code is <codeph>0</codeph>
+      if all Required rules pass, or <codeph>1</codeph> if any Required rule
+      fails — regardless of whether reports are saved.</p>
+    </result>
+
+    <postreq id="postreq">
+      <p>To upload report files as CI artifacts (so your team can download
+      them from the Actions run summary page), see
+      <xref href="t_integrate-github-actions.dita">Add markdown-validator to a GitHub Actions workflow</xref>.</p>
+    </postreq>
+
+  </taskbody>
+</task>

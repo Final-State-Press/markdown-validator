@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/?><?path2project?><?path2project-uri ./?><?path2rootmap-uri ./?><?doctype-public -//OASIS//DTD DITA Map//EN?><?doctype-system map.dtd?><map xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" cascade="merge" class="- map/map " ditaarch:DITAArchVersion="1.3" domains="(map mapgroup-d) (topic abbrev-d) (topic delay-d) a(props deliveryTarget) (map ditavalref-d) (map glossref-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="rule-creator-guide" specializations="@props/deliveryTarget" xtrc="map:1;8:30" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap">
+  <title class="- topic/title " xtrc="title:1;9:10" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap">Rule Creator Guide</title>
+
+  <topicmeta class="- map/topicmeta " xtrc="topicmeta:1;11:14" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap">
+    <shortdesc class="- map/shortdesc " xtrc="shortdesc:1;12:16" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap">Complete guidance for content leads and editorial teams who
+    author, test, and maintain validation rule sets for markdown-validator.</shortdesc>
+    <othermeta class="- topic/othermeta " content="rule-creator" name="audience" xtrc="othermeta:1;14:56" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+  </topicmeta>
+
+  
+  
+  
+  <topichead class="+ map/topicref mapgroup-d/topichead " navtitle="Understanding rule sets" xtrc="topichead:1;20:49" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap">
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="topicref:1;21:91" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="topicref:2;22:85" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/concepts/c_workflow-language-overview.dita" xtrc="topicref:3;23:99" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="topicref:4;24:93" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+  </topichead>
+
+  
+  
+  
+  <topichead class="+ map/topicref mapgroup-d/topichead " navtitle="Author rules" xtrc="topichead:2;30:38" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap">
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="topicref:5;31:85" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="topicref:6;32:87" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="topicref:7;33:85" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/tasks/t_write-workflow.dita" xtrc="topicref:8;34:84" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+  </topichead>
+
+  
+  
+  
+  <topichead class="+ map/topicref mapgroup-d/topichead " navtitle="Test rules" xtrc="topichead:3;40:36" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap">
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/tasks/t_start-repl.dita" xtrc="topicref:9;41:80" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/tasks/t_test-rule-repl.dita" xtrc="topicref:10;42:84" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/tasks/t_test-workflow-repl.dita" xtrc="topicref:11;43:88" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+  </topichead>
+
+  
+  
+  
+  <topichead class="+ map/topicref mapgroup-d/topichead " navtitle="Govern and deploy" xtrc="topichead:4;49:43" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap">
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/concepts/c_rule-governance.dita" xtrc="topicref:12;50:88" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/concepts/c_known-limitations.dita" xtrc="topicref:13;51:90" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/tasks/t_deploy-rule-set.dita" xtrc="topicref:14;52:85" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+  </topichead>
+
+  
+  
+  
+  <topichead class="+ map/topicref mapgroup-d/topichead " navtitle="Reference" xtrc="topichead:5;58:35" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap">
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/reference/r_rule-fields.dita" xtrc="topicref:15;59:85" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/reference/r_flags.dita" xtrc="topicref:16;60:79" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/reference/r_operators.dita" xtrc="topicref:17;61:83" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/reference/r_workflow-steps.dita" xtrc="topicref:18;62:88" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="rule-creator-guide/reference/r_repl-commands.dita" xtrc="topicref:19;63:87" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide.ditamap"/>
+  </topichead>
+
+</map>

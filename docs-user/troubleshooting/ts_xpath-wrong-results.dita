@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE troubleshooting PUBLIC "-//OASIS//DTD DITA Troubleshooting//EN" "troubleshooting.dtd">
+<!--
+  SEO keyword phrase: XPath wrong results markdown-validator flat DOM debug
+  Audience: rule-creator
+-->
+<troubleshooting id="ts_xpath-wrong-results">
+  <title>Debug an XPath expression that returns unexpected results</title>
+
+  <shortdesc>XPath queries that seem correct but return unexpected results are
+  usually caused by the flat HTML structure that markdown-validator produces.
+  Use the REPL to inspect the actual HTML and adjust your query.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>XPath wrong results</keyword>
+        <keyword>flat DOM XPath</keyword>
+        <keyword>XPath debug REPL</keyword>
+        <keyword>following-sibling XPath problem</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Debug unexpected XPath query results in markdown-validator, including flat DOM limitations, namespace issues, and following-sibling behavior."/>
+    </metadata>
+  </prolog>
+
+  <troublebody>
+
+    <condition id="condition">
+      <title>Situation</title>
+      <p>An XPath expression in a body rule returns no results, or it returns
+      more elements than expected, causing the rule to behave incorrectly.</p>
+    </condition>
+
+    <troubleSolution>
+      <cause id="cause-flat-dom">
+        <title>Cause: Flat HTML — within-section containment does not work</title>
+        <p>The rendered HTML is flat: all headings are direct children of
+        <codeph>&lt;body&gt;</codeph>. Queries like
+        <codeph>.//h2[1]/following-sibling::p</codeph> do not return only
+        paragraphs in the first H2's section — they return all paragraphs
+        after the first H2, including those in every subsequent section.</p>
+      </cause>
+      <remedy id="remedy-flat-dom">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>In the REPL, run <codeph>dump html</codeph> on your document
+            to see the actual HTML structure.</cmd>
+            <info>
+              <codeblock xml:space="preserve">md-validate repl
+&gt; load docs/tutorial.md
+&gt; dump html</codeblock>
+              <p>Confirm that headings are direct children of
+              <codeph>&lt;body&gt;</codeph> with no section wrappers.</p>
+            </info>
+          </step>
+          <step>
+            <cmd>Rewrite the XPath to use absolute position instead of
+            containment.</cmd>
+            <info>
+              <p>Instead of:</p>
+              <codeblock xml:space="preserve">.//h2[@id='prerequisites']/following-sibling::p[1]</codeblock>
+              <p>Use:</p>
+              <codeblock xml:space="preserve">//h2[normalize-space(text())='Prerequisites']</codeblock>
+              <p>Checking for the presence of the heading rather than its
+              content achieves the same editorial goal without requiring
+              containment.</p>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution>
+      <cause id="cause-text-spaces">
+        <title>Cause: Whitespace in element text</title>
+        <p>XPath text comparisons are exact. A heading with a trailing space
+        (<codeph>Prerequisites </codeph>) does not match the predicate
+        <codeph>[text()='Prerequisites']</codeph>.</p>
+      </cause>
+      <remedy id="remedy-text-spaces">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>In the REPL, run the query with <codeph>text</codeph> to
+            see the exact string the element contains, including any whitespace.</cmd>
+            <info>
+              <codeblock xml:space="preserve">&gt; query //h2 text
+Result: ['Prerequisites ', 'Deploy the app']</codeblock>
+              <p>Note any trailing spaces in the output.</p>
+            </info>
+          </step>
+          <step>
+            <cmd>Update the XPath predicate to use
+            <codeph>normalize-space()</codeph> instead of a bare
+            <codeph>text()</codeph> comparison.</cmd>
+            <info>
+              <codeblock xml:space="preserve">//h2[normalize-space(text())='Prerequisites']</codeblock>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution>
+      <cause id="cause-no-matches">
+        <title>Cause: XPath returns zero results</title>
+        <p>The element path does not match any nodes in the HTML. Common reasons:
+        the element name is wrong, the document uses a heading level you did not
+        expect, or the XPath predicate is too strict.</p>
+      </cause>
+      <remedy id="remedy-no-matches">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>In the REPL, run a broader query first and narrow it down.</cmd>
+            <info>
+              <codeblock xml:space="preserve">&gt; query //h2 text
+Result: ['Prerequisites', 'Deploy the app', 'Clean up resources']
+
+&gt; query //h2[2] text
+Result: ['Deploy the app']</codeblock>
+            </info>
+          </step>
+          <step>
+            <cmd>Compare the actual element text against your predicate
+            value.</cmd>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+  </troublebody>
+</troubleshooting>

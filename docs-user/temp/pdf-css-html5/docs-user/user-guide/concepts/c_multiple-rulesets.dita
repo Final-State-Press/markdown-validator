@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_multiple-rulesets" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="concept:1;7:35" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="title:1;8:10">Working with multiple rule sets</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="keyword:1;13:18">multiple rule sets</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="keyword:2;14:18">monorepo validation</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="keyword:3;15:18">per-product rules</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="keyword:4;16:18">CI matrix strategy</keyword>
+      </keywords>
+      <othermeta name="description" content="Learn when and how to use more than one rule set in a single repository: per-product standards, CI matrix jobs, and how to prevent local vs CI rule mismatch." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="othermeta:1;19:178"/>
+      <othermeta name="version" content="markdown-validator 0.2" class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="othermeta:2;20:67"/>
+      <othermeta name="last-updated" content="2026-03-20" class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="othermeta:3;21:60"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="shortdesc:1;25:14">A single repository can contain content that must meet different
+  editorial standards — for example, a tutorial section and an API reference
+  section with distinct metadata requirements. Use separate rule set files and
+  specify the correct one at runtime with the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="codeph:1;28:55">--rules</codeph>
+  option.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="conbody:1;31:12">
+
+    <section id="why-multiple" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="section:1;33:32">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="title:2;34:14">When to use more than one rule set</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="p:1;35:10">A single rule set works well when all content in the repository
+      follows the same standards. Use multiple rule sets when:</p>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="ul:1;37:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:1;38:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:1;38:16">Different content types have different metadata requirements.</b>
+        For example, tutorial articles must have <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="codeph:2;39:58">ms.topic:
+        tutorial</codeph> and a "Prerequisites" section, while API reference
+        articles do not.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:2;42:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:2;42:16">Different teams own different subdirectories</b> and maintain
+        their own editorial standards independently.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:3;44:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:3;44:16">You are migrating from one standard to another</b> and need to
+        run the old rule set against existing content and the new rule set
+        against new content simultaneously.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:4;47:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:4;47:16">One rule set is shared across repositories</b> (for example, a
+        base style standard) while each repository adds its own
+        product-specific rules on top.</li>
+      </ul>
+    </section>
+
+    <section id="specifying-rules" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="section:2;53:36">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="title:3;54:14">Specifying the rule set at runtime</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="p:2;55:10">The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="codeph:3;55:22">--rules</codeph> option accepts any path to a JSON rule
+      set file. You can run the validator multiple times against different
+      directories using different rule sets:</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="codeblock:1;59:39"># Validate tutorials with the tutorial rule set
+md-validate validate docs/tutorials/ --rules rules/tutorials.json
+
+# Validate API reference with the reference rule set
+md-validate validate docs/reference/ --rules rules/api-reference.json</codeblock>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="p:3;65:10">There is no configuration file that automatically selects the rule
+      set. The rule set is always specified explicitly on the command line —
+      either by the author running the tool locally or by the CI pipeline.</p>
+    </section>
+
+    <section id="how-authors-know" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="section:3;70:36">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="title:4;71:14">How authors know which rule set applies</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="p:4;72:10">Document the rule set path in your repository's contributing guide.
+      Common conventions:</p>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="ul:2;74:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:5;75:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:5;75:16">By directory</b> — <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="filepath:1;75:45">docs/tutorials/</filepath> uses
+        <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="filepath:2;76:19">rules/tutorials.json</filepath>, etc.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:6;77:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:6;77:16">By front-matter field</b> — <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="codeph:4;77:52">ms.topic</codeph> value maps
+        to a rule set.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:7;79:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:7;79:16">Script wrapper</b> — a <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="filepath:3;79:49">validate.sh</filepath> script
+        picks the rule set automatically based on file path.</li>
+      </ul>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="p:5;82:10">Whatever convention you use, the local path must match the one CI uses.</p>
+    </section>
+
+    <section id="ci-matrix" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="section:4;85:29">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="title:5;86:14">CI configuration for multiple rule sets</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="p:6;87:10">When you have two or more rule sets, each one should run as a
+      separate CI job so that failures in one area do not suppress failures
+      in another. Use a GitHub Actions matrix strategy to avoid duplicating
+      the job definition:</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="codeblock:2;92:39">jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - docs-dir: docs/tutorials/
+            rules-file: rules/tutorials.json
+            artifact-name: reports-tutorials
+          - docs-dir: docs/reference/
+            rules-file: rules/api-reference.json
+            artifact-name: reports-reference
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Cache NLTK data
+        uses: actions/cache@v4
+        with:
+          path: ~/nltk_data
+          key: nltk-punkt-tagger
+
+      - name: Install markdown-validator
+        run: pip install markdown-validator
+
+      - name: Download NLTK language data
+        run: python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng
+
+      - name: Validate documentation
+        run: |
+          md-validate validate ${{ matrix.docs-dir }} \
+            --rules ${{ matrix.rules-file }} \
+            --format json \
+            --output reports/
+
+      - name: Upload validation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact-name }}
+          path: reports/</codeblock>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="p:7;140:10">Each matrix entry produces a separate check on the pull request. A
+      failure in tutorials does not prevent the reference check from running
+      and reporting its own result.</p>
+    </section>
+
+    <section id="local-ci-mismatch" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="section:5;145:37">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="title:6;146:14">Preventing local vs. CI rule mismatch</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="p:8;147:10">The most common multi-ruleset problem: an author validates with the
+      wrong rule set locally and sees different failures in CI.</p>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="ul:3;149:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:8;150:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:8;150:16">Commit all rule set files.</b> Never use local copies that
+        diverge from source control.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:9;152:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:9;152:16">Document the exact command</b> in the contributing guide,
+        including the full <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="codeph:5;153:36">--rules</codeph> path.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:10;154:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:10;154:16">Verify the CI <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="codeph:6;154:38">--rules</codeph> value</b> in
+        <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="filepath:4;155:19">.github/workflows/validate-docs.yml</filepath> matches
+        what authors use locally.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="li:11;157:13"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="b:11;157:16">Pin shared rule sets</b> if they are shared via a package or
+        submodule — uncoordinated updates cause hard-to-trace CI failures.</li>
+      </ul>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="p:9;160:10">If local and CI results differ, check that <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="codeph:7;160:61">--rules</codeph>
+      is identical in both. See also
+      <xref href="../../troubleshooting/ts_ci-fails.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_multiple-rulesets.dita" xtrc="xref:1;162:59" type="troubleshooting"><?ditaot usertext?>Resolve a validation failure in CI<?ditaot genshortdesc?><desc class="- topic/desc ">When the validation step in your CI pipeline fails, your pull request   is blocked. This topic shows you how to find the failure report, reproduce the   failure locally, and resolve the specific issue.</desc></xref>.</p>
+    </section>
+
+  </conbody>
+</concept>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE troubleshooting PUBLIC "-//OASIS//DTD DITA Troubleshooting//EN" "troubleshooting.dtd">
+<!--
+  SEO keyword phrase: markdown-validator ParseError no front matter fix
+  Audience: user
+-->
+<troubleshooting id="ts_no-frontmatter">
+  <title>Resolve a ParseError caused by missing front matter</title>
+
+  <shortdesc>A <systemoutput>ParseError</systemoutput> means markdown-validator
+  could not find a valid YAML front-matter block at the top of your file.
+  Every Markdown file must begin with <codeph>---</codeph> to be
+  validated.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>ParseError</keyword>
+        <keyword>no front matter</keyword>
+        <keyword>YAML front matter required</keyword>
+        <keyword>--- delimiter missing</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Fix the ParseError that occurs when a Markdown file does not begin with a valid YAML front-matter block delimited by ---."/>
+    </metadata>
+  </prolog>
+
+  <troublebody>
+
+    <condition id="condition">
+      <title>Situation</title>
+      <p>You run validation and see an error similar to:</p>
+      <codeblock xml:space="preserve">ParseError: docs/article.md — no front matter found.
+  File must begin with a --- delimited YAML block.</codeblock>
+      <p>The file is not validated and counts as a failure in the report.</p>
+    </condition>
+
+    <troubleSolution>
+      <cause id="cause-missing">
+        <title>Cause: Front matter block is absent</title>
+        <p>The file does not start with <codeph>---</codeph>, or the opening
+        delimiter is preceded by whitespace or a blank line.</p>
+      </cause>
+      <remedy id="remedy-missing">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>Ensure the very first line is exactly <codeph>---</codeph>
+            with no preceding whitespace, and close the block with a second
+            <codeph>---</codeph> line.</cmd>
+            <info>
+              <codeblock xml:space="preserve">---
+title: "Deploy a web application"
+ms.topic: tutorial
+ms.date: 2026-03-20
+author: your-github-username
+description: "Step-by-step guide to deploying a web app."
+---
+
+# Tutorial: Deploy a web application
+...</codeblock>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution>
+      <cause id="cause-encoding">
+        <title>Cause: File encoding issue</title>
+        <p>The file contains a byte-order mark (BOM) or non-UTF-8 characters
+        before the <codeph>---</codeph> delimiter.</p>
+      </cause>
+      <remedy id="remedy-encoding">
+        <title>Resolution</title>
+        <steps-informal>
+          <p>Save the file as UTF-8 without BOM. In most text editors, this is
+          the default encoding. If you are using VS Code, check the encoding
+          indicator in the status bar at the bottom right — it should show
+          <uicontrol>UTF-8</uicontrol>.</p>
+        </steps-informal>
+      </remedy>
+    </troubleSolution>
+
+  </troublebody>
+</troubleshooting>

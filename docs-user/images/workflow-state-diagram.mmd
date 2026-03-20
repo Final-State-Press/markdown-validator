@@ -1,0 +1,14 @@
+%%{init: {"theme": "neutral"}}%%
+flowchart LR
+    S(["S\nStart"]) -->|"S-1"| R1["Rule 1\nprecondition"]
+    R1 -->|"1-D"| D{"D\nDecision"}
+    D -->|"T-2\ntrue branch"| R2["Rule 2\ncheck A"]
+    D -->|"F-3\nfalse branch"| R3["Rule 3\ncheck B"]
+    R2 -->|"2-M"| M(["M\nMerge"])
+    R3 -->|"3-M"| M
+    M -->|"M-E"| E(["End"])
+
+    style S fill:#e8f4e8,stroke:#4a7c4a
+    style D fill:#fff3cd,stroke:#856404
+    style M fill:#e8f4e8,stroke:#4a7c4a
+    style E fill:#e8f4e8,stroke:#4a7c4a

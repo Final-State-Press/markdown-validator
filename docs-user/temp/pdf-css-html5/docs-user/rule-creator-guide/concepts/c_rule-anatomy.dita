@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_rule-anatomy" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="concept:1;7:30" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="title:1;8:10">Anatomy of a validation rule</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="keyword:1;13:18">rule anatomy</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="keyword:2;14:18">rule fields</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="keyword:3;15:18">query flag operation</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="keyword:4;16:18">mitigation message</keyword>
+      </keywords>
+      <othermeta name="description" content="Understand the purpose of every field in a markdown-validator rule: id, name, type, query, flag, operation, value, level, and mitigation." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="othermeta:1;19:158"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="shortdesc:1;23:14">Every markdown-validator rule is a JSON object with nine fields.
+  Understanding what each field does is the foundation for writing rules that
+  express your editorial standards accurately.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="conbody:1;27:12">
+
+    <section id="the-nine-fields" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="section:1;29:35">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="title:2;30:14">The nine rule fields</title>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeblock:1;32:39">{
+  "id":        1,
+  "name":      "topic-must-be-tutorial",
+  "type":      "header",
+  "query":     "ms.topic",
+  "flag":      "value",
+  "operation": "==",
+  "value":     "tutorial",
+  "level":     "Required",
+  "mitigation":"Set ms.topic: tutorial in the front matter."
+}</codeblock>
+
+      <dl class="- topic/dl " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dl:1;44:11">
+        <dlentry id="field-id" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dlentry:1;45:32">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dt:1;46:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:1;46:23">id</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dd:1;47:15">A unique integer that identifies this rule. IDs are used in
+          workflow definitions to refer to rules. Assign IDs sequentially within
+          a rule set and do not reuse them.</dd>
+        </dlentry>
+        <dlentry id="field-name" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dlentry:2;51:34">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dt:2;52:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:2;52:23">name</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dd:2;53:15">A human-readable label shown in validation reports. Use lowercase
+          words separated by hyphens (for example,
+          <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:3;55:19">description-must-exist</codeph>). Choose a name that reads like
+          an assertion so the failure is immediately clear.</dd>
+        </dlentry>
+        <dlentry id="field-type" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dlentry:3;58:34">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dt:3;59:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:4;59:23">type</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dd:3;60:15">Either <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:5;60:30">"header"</codeph> or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:6;60:59">"body"</codeph>. Header
+          rules check YAML front-matter; body rules check the rendered HTML. You
+          can omit this field if the rule is in the correct section of the rule
+          set file — it is injected automatically.</dd>
+        </dlentry>
+        <dlentry id="field-query" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dlentry:4;65:35">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dt:4;66:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:7;66:23">query</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dd:4;67:15">
+            <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="p:1;68:16">What to look up in the document.</p>
+            <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="ul:1;69:17">
+              <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="li:1;70:19">For <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="b:1;70:26">header</b> rules: the metadata key name (for example,
+              <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:8;71:23">"ms.topic"</codeph>).</li>
+              <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="li:2;72:19">For <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="b:2;72:26">body</b> rules: an XPath expression against the rendered
+              HTML (for example, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:9;73:42">"/html/body/h1"</codeph>).</li>
+            </ul>
+          </dd>
+        </dlentry>
+        <dlentry id="field-flag" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dlentry:5;77:34">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dt:5;78:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:10;78:23">flag</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dd:5;79:15">How to process the query result before comparing it with
+          <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:11;80:19">value</codeph>. For header rules, common flags are
+          <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:12;81:19">value</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:13;81:43">check</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:14;81:67">date</codeph>,
+          and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:15;82:23">pattern</codeph>. For body rules, common flags are
+          <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:16;83:19">count</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:17;83:43">text</codeph>, and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:18;83:70">dom</codeph>.
+          See <xref href="../reference/r_flags.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="xref:1;84:54" type="reference"><?ditaot usertext?>Flag reference<?ditaot genshortdesc?><desc class="- topic/desc ">The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:1;22:26">flag</codeph> field controls how a rule's query result   is processed before comparison. Header and body rules each have their own   flag set.</desc></xref> for the complete
+          list.</dd>
+        </dlentry>
+        <dlentry id="field-operation" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dlentry:6;87:39">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dt:6;88:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:19;88:23">operation</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dd:6;89:15">The comparison operator applied between the processed query result
+          and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:20;90:23">value</codeph>. Examples: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:21;90:57">"=="</codeph> (equals),
+          <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:22;91:19">"!="</codeph> (not equals), <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:23;91:55">"&gt;"</codeph> (greater
+          than), <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:24;92:26">"[]"</codeph> (contains). See the
+          <xref href="../reference/r_operators.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="xref:2;93:54" type="reference"><?ditaot usertext?>Operator reference<?ditaot genshortdesc?><desc class="- topic/desc ">The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_operators.dita" xtrc="codeph:1;24:26">operation</codeph> field specifies the comparison   operator applied between the processed query result and the expected   <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_operators.dita" xtrc="codeph:2;26:11">value</codeph>. The operator returns true (pass) or false   (fail).</desc></xref> for the complete
+          list.</dd>
+        </dlentry>
+        <dlentry id="field-value" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dlentry:7;96:35">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dt:7;97:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:25;97:23">value</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dd:7;98:15">The expected value the query result is compared against. Always a
+          string. For numeric comparisons the string is coerced to a number at
+          evaluation time. For multi-value checks (with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:26;100:65">"[]"</codeph>),
+          use a comma-separated list: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:27;101:47">"guide, article, topic"</codeph>.</dd>
+        </dlentry>
+        <dlentry id="field-level" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dlentry:8;103:35">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dt:8;104:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:28;104:23">level</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dd:8;105:15">Severity of a failure: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:29;105:46">"Required"</codeph> (blocks the CI
+          pipeline) or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:30;106:32">"Suggested"</codeph> (informational, does not block
+          the pipeline). Defaults to <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:31;107:46">"Required"</codeph> if omitted.</dd>
+        </dlentry>
+        <dlentry id="field-mitigation" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dlentry:9;109:40">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dt:9;110:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:32;110:23">mitigation</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="dd:9;111:15">A plain-English message shown to authors when this rule fails.
+          Write the mitigation as a direct instruction: what the author should do
+          to fix the problem. This message is the primary communication between
+          your rule and your authors — make it clear and actionable.</dd>
+        </dlentry>
+      </dl>
+    </section>
+
+    <section id="how-evaluation-works" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="section:2;119:40">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="title:3;120:14">How evaluation works</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="p:2;121:10">The tool resolves <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:33;121:36">query</codeph>, processes the result with
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:34;122:15">flag</codeph>, applies <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:35;122:46">operation</codeph> against
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:36;123:15">value</codeph>, and returns pass or fail. If the query returns
+      nothing (key absent, no XPath matches), the rule fails with the
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-anatomy.dita" xtrc="codeph:37;125:15">mitigation</codeph> message.</p>
+    </section>
+
+  </conbody>
+</concept>

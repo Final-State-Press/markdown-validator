@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_ci-integration-overview" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="concept:1;7:41" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="title:1;8:10">How markdown-validator fits into your CI/CD pipeline</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="keyword:1;13:18">CI/CD integration</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="keyword:2;14:18">GitHub Actions validation</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="keyword:3;15:18">pull request gate</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="keyword:4;16:18">automated documentation checks</keyword>
+      </keywords>
+      <othermeta name="description" content="Learn how markdown-validator runs as a CI/CD gate to block pull requests that fail Required validation rules, and what happens when it finds failures." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="othermeta:1;19:171"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="shortdesc:1;23:14">When markdown-validator runs in your CI/CD pipeline, it acts as a
+  quality gate on every pull request. If any Required rule fails, the pipeline
+  exits with a non-zero code and blocks the merge until you fix the reported
+  issues.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="conbody:1;28:12">
+
+    <section id="ci-workflow" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="section:1;30:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="title:2;31:14">How it works</title>
+
+      <fig id="fig-ci-flow" class="- topic/fig " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="fig:1;33:29">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="title:3;34:16">Pull-request validation flow</title>
+        <image href="../../images/ci-integration-flow.png" placement="break" class="- topic/image " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="image:1;35:78">
+          <alt class="- topic/alt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="alt:1;36:16">Flowchart: author pushes a commit, CI checks out the branch,
+          installs markdown-validator, runs md-validate validate, then branches
+          on exit code. Exit 0 means the PR is eligible to merge. Exit 1 blocks
+          the merge; the author reads the failure report, fixes the file, pushes,
+          and the pipeline re-runs.</alt>
+        </image>
+      </fig>
+
+      <ol class="- topic/ol " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="ol:1;44:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="li:1;45:13">Push a commit or open a pull request.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="li:2;46:13">CI runs <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="codeph:1;46:29">md-validate validate docs/ --rules rules/tutorial.json</codeph>
+        (exact paths vary — check <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="filepath:1;47:45">.github/workflows/validate-docs.yml</filepath>).</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="li:3;48:13">Exit <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="codeph:2;48:26">0</codeph>: all Required rules pass — PR is eligible to merge.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="li:4;49:13">Exit <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="codeph:3;49:26">1</codeph>: a Required rule failed — merge is blocked. Fix the
+        failures shown in the log, push again, pipeline re-runs.</li>
+      </ol>
+
+      <note type="tip" class="- topic/note " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="note:1;53:24">Run validation locally before opening a pull request to
+      catch failures before CI does. Use the same <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="codeph:4;54:59">--rules</codeph> path
+      that CI uses — both must point to the same committed file, or results will
+      differ.</note>
+    </section>
+
+    <section id="setup-ci" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="section:2;59:28">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="title:4;60:14">Set up CI</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="p:1;61:10">See <xref href="../tasks/t_integrate-github-actions.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_ci-integration-overview.dita" xtrc="xref:1;61:68">Add markdown-validator to a GitHub Actions workflow</xref>.</p>
+    </section>
+
+  </conbody>
+</concept>

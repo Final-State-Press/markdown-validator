@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/reference?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/reference/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="r_repl-commands" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="reference:1;7:33" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="title:1;8:10">REPL commands reference</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="keyword:1;13:18">REPL commands</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="keyword:2;14:18">load query eval dump get</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="keyword:3;15:18">interactive rule testing commands</keyword>
+      </keywords>
+      <othermeta name="description" content="Complete reference for all markdown-validator REPL commands: load, dump, query, get, and eval, with syntax and examples." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="othermeta:1;18:141"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="shortdesc:1;22:14">Complete reference for all commands available in the
+  <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:1;23:11">md-validate repl</codeph> interactive session.</shortdesc>
+
+  <refbody class="- topic/body        reference/refbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="refbody:1;25:12">
+
+    <table id="repl-commands-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="table:1;27:37">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="title:2;28:14">REPL commands</title>
+      <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="tgroup:1;29:24">
+        <colspec colname="col1" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="colspec:1;30:51" colnum="1"/>
+        <colspec colname="col2" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="colspec:2;31:50" colnum="2"/>
+        <colspec colname="col3" colwidth="4*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="colspec:3;32:55" colnum="3"/>
+        <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="thead:1;33:16">
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="row:1;34:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:1;35:20" colname="col1" dita-ot:x="1" dita-ot:y="1">Command</entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:2;36:20" colname="col2" dita-ot:x="2" dita-ot:y="1">Syntax</entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:3;37:20" colname="col3" dita-ot:x="3" dita-ot:y="1">Description</entry>
+          </row>
+        </thead>
+        <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="tbody:1;40:16">
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="row:2;41:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:4;42:20" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:2;42:28">load</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:5;43:20" colname="col2" dita-ot:x="2" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:3;43:28">load &lt;path&gt;</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:6;44:20" colname="col3" dita-ot:x="3" dita-ot:y="2">Load a Markdown file. All subsequent commands operate on
+            this file. You can load a new file at any time to switch
+            context.</entry>
+          </row>
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="row:3;48:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:7;49:20" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:4;49:28">dump metadata</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:8;50:20" colname="col2" dita-ot:x="2" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:5;50:28">dump metadata</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:9;51:20" colname="col3" dita-ot:x="3" dita-ot:y="3">Print the loaded file's YAML front matter as a formatted
+            JSON object. Use this to confirm which keys are present and their
+            exact values before writing header rules.</entry>
+          </row>
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="row:4;55:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:10;56:20" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:6;56:28">dump html</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:11;57:20" colname="col2" dita-ot:x="2" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:7;57:28">dump html</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:12;58:20" colname="col3" dita-ot:x="3" dita-ot:y="4">Print the rendered HTML of the loaded file's body. Use this
+            to see the exact DOM structure that body-rule XPath expressions
+            will query.</entry>
+          </row>
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="row:5;62:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:13;63:20" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:8;63:28">query</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:14;64:20" colname="col2" dita-ot:x="2" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:9;64:28">query &lt;xpath&gt; [flag]</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:15;65:20" colname="col3" dita-ot:x="3" dita-ot:y="5">Run an XPath expression against the loaded file's HTML body.
+            Optional flag: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:10;66:36">text</codeph> (default), <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:11;66:69">count</codeph>,
+            or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:12;67:24">dom</codeph>. Returns the result as a list.</entry>
+          </row>
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="row:6;69:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:16;70:20" colname="col1" dita-ot:x="1" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:13;70:28">get</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:17;71:20" colname="col2" dita-ot:x="2" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:14;71:28">get &lt;key&gt;</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:18;72:20" colname="col3" dita-ot:x="3" dita-ot:y="6">Retrieve the value of a front-matter key. Equivalent to
+            <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:15;73:21">dump metadata</codeph> for a single key.</entry>
+          </row>
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="row:7;75:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:19;76:20" colname="col1" dita-ot:x="1" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:16;76:28">eval</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:20;77:20" colname="col2" dita-ot:x="2" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:17;77:28">eval &lt;json-rule&gt;</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:21;78:20" colname="col3" dita-ot:x="3" dita-ot:y="7">Evaluate a rule JSON object against the loaded document.
+            The rule must be valid JSON on a single line. Returns PASS or
+            FAIL with the rule name and, on failure, the mitigation
+            message.</entry>
+          </row>
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="row:8;83:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:22;84:20" colname="col1" dita-ot:x="1" dita-ot:y="8"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:18;84:28">help</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:23;85:20" colname="col2" dita-ot:x="2" dita-ot:y="8"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:19;85:28">help</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:24;86:20" colname="col3" dita-ot:x="3" dita-ot:y="8">List all available commands.</entry>
+          </row>
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="row:9;88:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:25;89:20" colname="col1" dita-ot:x="1" dita-ot:y="9"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:20;89:28">quit</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:26;90:20" colname="col2" dita-ot:x="2" dita-ot:y="9"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:21;90:28">quit</codeph> or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:22;90:53">exit</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="entry:27;91:20" colname="col3" dita-ot:x="3" dita-ot:y="9">Exit the REPL.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <section id="repl-examples" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="section:1;97:33">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="title:3;98:14">Example session</title>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeblock:1;99:39">&gt; load docs/tutorial-deploy-app.md
+Loaded: /abs/path/docs/tutorial-deploy-app.md
+  Metadata keys: ['title', 'ms.topic', 'ms.date', 'author', 'description']
+
+&gt; get ms.topic
+ms.topic: tutorial
+
+&gt; query /html/body/h1 text
+Result: ['Tutorial: Deploy a web application']
+
+&gt; query //h2 count
+Result: [4]
+
+&gt; query //h2 text
+Result: ['Prerequisites', 'Deploy the app', 'Test the deployment',
+         'Clean up resources']
+
+&gt; eval {"id":1,"name":"h1-must-start-with-tutorial","type":"body","query":"/html/body/h1","flag":"text","operation":"[:","value":"Tutorial:","mitigation":"H1 must start with 'Tutorial:'"}
+PASS: rule id=1 name='h1-must-start-with-tutorial'
+
+&gt; quit</codeblock>
+    </section>
+
+  </refbody>
+</reference>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+  SEO keyword phrase: markdown-validator CI/CD pipeline integration overview
+  Audience: user
+-->
+<concept id="c_ci-integration-overview">
+  <title>How markdown-validator fits into your CI/CD pipeline</title>
+
+  <shortdesc>When markdown-validator runs in your CI/CD pipeline, it acts as a
+  quality gate on every pull request. If any Required rule fails, the pipeline
+  exits with a non-zero code and blocks the merge until you fix the reported
+  issues.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>CI/CD integration</keyword>
+        <keyword>GitHub Actions validation</keyword>
+        <keyword>pull request gate</keyword>
+        <keyword>automated documentation checks</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Learn how markdown-validator runs as a CI/CD gate to block pull requests that fail Required validation rules, and what happens when it finds failures."/>
+    </metadata>
+  </prolog>
+
+  <conbody>
+
+    <section id="ci-workflow">
+      <title>How it works</title>
+
+      <fig id="fig-ci-flow">
+        <title>Pull-request validation flow</title>
+        <image href="../../images/ci-integration-flow.png" placement="break">
+          <alt>Flowchart: author pushes a commit, CI checks out the branch,
+          installs markdown-validator, runs md-validate validate, then branches
+          on exit code. Exit 0 means the PR is eligible to merge. Exit 1 blocks
+          the merge; the author reads the failure report, fixes the file, pushes,
+          and the pipeline re-runs.</alt>
+        </image>
+      </fig>
+
+      <ol>
+        <li>Push a commit or open a pull request.</li>
+        <li>CI runs <codeph>md-validate validate docs/ --rules rules/tutorial.json</codeph>
+        (exact paths vary — check <filepath>.github/workflows/validate-docs.yml</filepath>).</li>
+        <li>Exit <codeph>0</codeph>: all Required rules pass — PR is eligible to merge.</li>
+        <li>Exit <codeph>1</codeph>: a Required rule failed — merge is blocked. Fix the
+        failures shown in the log, push again, pipeline re-runs.</li>
+      </ol>
+
+      <note type="tip">Run validation locally before opening a pull request to
+      catch failures before CI does. Use the same <codeph>--rules</codeph> path
+      that CI uses — both must point to the same committed file, or results will
+      differ.</note>
+    </section>
+
+    <section id="setup-ci">
+      <title>Set up CI</title>
+      <p>See <xref href="../tasks/t_integrate-github-actions.dita">Add markdown-validator to a GitHub Actions workflow</xref>.</p>
+    </section>
+
+  </conbody>
+</concept>

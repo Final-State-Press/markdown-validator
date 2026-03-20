@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: create markdown-validator rule set JSON file
+  Audience: rule-creator
+-->
+<task id="t_create-rule-set">
+  <title>Create a rule set file</title>
+
+  <shortdesc>Create a new JSON rule set file that markdown-validator can use to
+  validate your documentation. Start with a minimal structure and add rules
+  incrementally.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>create rule set</keyword>
+        <keyword>rule set JSON</keyword>
+        <keyword>documentation standards file</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Create a new markdown-validator rule set JSON file with the correct structure for header rules, body rules, and workflows."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <p>markdown-validator is installed. See
+      <xref href="../../user-guide/tasks/t_install.dita">Install markdown-validator</xref>.
+      Review the rule set structure before creating your file:
+      <xref href="../concepts/c_rule-sets-overview.dita">Understanding rule sets</xref>.</p>
+    </prereq>
+
+    <context id="context">
+      <p>A rule set file is a plain JSON file. Create it in the
+      <filepath>rules/</filepath> directory of your documentation repository so
+      that it is version-controlled alongside the content it governs.</p>
+    </context>
+
+    <steps>
+
+      <step id="step-create-file">
+        <cmd>Create a new file named after the content type it governs.</cmd>
+        <info>
+          <p>Use a descriptive name that reflects the content type, for
+          example <filepath>rules/tutorial.json</filepath> or
+          <filepath>rules/reference.json</filepath>.</p>
+        </info>
+      </step>
+
+      <step id="step-add-structure">
+        <cmd>Add the top-level JSON structure.</cmd>
+        <info>
+          <codeblock xml:space="preserve">{
+  "rules": {
+    "header": [],
+    "body":   []
+  },
+  "workflows": []
+}</codeblock>
+          <p>This is a valid, empty rule set. No rules means no checks — all
+          files will pass until you add rules.</p>
+        </info>
+      </step>
+
+      <step id="step-add-first-rule">
+        <cmd>Add your first header rule to check a required front-matter
+        field.</cmd>
+        <info>
+          <codeblock xml:space="preserve">{
+  "rules": {
+    "header": [
+      {
+        "id": 1,
+        "name": "ms-topic-must-exist",
+        "type": "header",
+        "query": "ms.topic",
+        "flag": "check",
+        "operation": "==",
+        "value": "true",
+        "level": "Required",
+        "mitigation": "Add ms.topic to the front matter."
+      }
+    ],
+    "body": []
+  },
+  "workflows": []
+}</codeblock>
+        </info>
+      </step>
+
+      <step id="step-validate-structure">
+        <cmd>Test the rule set by running it against a sample document.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate sample.md --rules rules/tutorial.json</codeblock>
+          <p>If the JSON is malformed, the tool reports a schema error.
+          Fix the JSON and re-run.</p>
+        </info>
+        <stepresult>The validation report confirms the rule set loads and
+        evaluates correctly.</stepresult>
+      </step>
+
+    </steps>
+
+    <postreq id="postreq">
+      <ul>
+        <li>To add header rules, see
+        <xref href="t_write-header-rule.dita">Write a header rule</xref>.</li>
+        <li>To add body rules, see
+        <xref href="t_write-body-rule.dita">Write a body rule</xref>.</li>
+      </ul>
+    </postreq>
+
+  </taskbody>
+</task>

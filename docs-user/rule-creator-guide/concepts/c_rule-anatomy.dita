@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+  SEO keyword phrase: anatomy of a markdown-validator rule fields explained
+  Audience: rule-creator
+-->
+<concept id="c_rule-anatomy">
+  <title>Anatomy of a validation rule</title>
+
+  <shortdesc>Every markdown-validator rule is a JSON object with nine fields.
+  Understanding what each field does is the foundation for writing rules that
+  express your editorial standards accurately.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>rule anatomy</keyword>
+        <keyword>rule fields</keyword>
+        <keyword>query flag operation</keyword>
+        <keyword>mitigation message</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Understand the purpose of every field in a markdown-validator rule: id, name, type, query, flag, operation, value, level, and mitigation."/>
+    </metadata>
+  </prolog>
+
+  <conbody>
+
+    <section id="the-nine-fields">
+      <title>The nine rule fields</title>
+
+      <codeblock xml:space="preserve">{
+  "id":        1,
+  "name":      "topic-must-be-tutorial",
+  "type":      "header",
+  "query":     "ms.topic",
+  "flag":      "value",
+  "operation": "==",
+  "value":     "tutorial",
+  "level":     "Required",
+  "mitigation":"Set ms.topic: tutorial in the front matter."
+}</codeblock>
+
+      <dl>
+        <dlentry id="field-id">
+          <dt><codeph>id</codeph></dt>
+          <dd>A unique integer that identifies this rule. IDs are used in
+          workflow definitions to refer to rules. Assign IDs sequentially within
+          a rule set and do not reuse them.</dd>
+        </dlentry>
+        <dlentry id="field-name">
+          <dt><codeph>name</codeph></dt>
+          <dd>A human-readable label shown in validation reports. Use lowercase
+          words separated by hyphens (for example,
+          <codeph>description-must-exist</codeph>). Choose a name that reads like
+          an assertion so the failure is immediately clear.</dd>
+        </dlentry>
+        <dlentry id="field-type">
+          <dt><codeph>type</codeph></dt>
+          <dd>Either <codeph>"header"</codeph> or <codeph>"body"</codeph>. Header
+          rules check YAML front-matter; body rules check the rendered HTML. You
+          can omit this field if the rule is in the correct section of the rule
+          set file — it is injected automatically.</dd>
+        </dlentry>
+        <dlentry id="field-query">
+          <dt><codeph>query</codeph></dt>
+          <dd>
+            <p>What to look up in the document.</p>
+            <ul>
+              <li>For <b>header</b> rules: the metadata key name (for example,
+              <codeph>"ms.topic"</codeph>).</li>
+              <li>For <b>body</b> rules: an XPath expression against the rendered
+              HTML (for example, <codeph>"/html/body/h1"</codeph>).</li>
+            </ul>
+          </dd>
+        </dlentry>
+        <dlentry id="field-flag">
+          <dt><codeph>flag</codeph></dt>
+          <dd>How to process the query result before comparing it with
+          <codeph>value</codeph>. For header rules, common flags are
+          <codeph>value</codeph>, <codeph>check</codeph>, <codeph>date</codeph>,
+          and <codeph>pattern</codeph>. For body rules, common flags are
+          <codeph>count</codeph>, <codeph>text</codeph>, and <codeph>dom</codeph>.
+          See <xref href="../reference/r_flags.dita">Flag reference</xref> for the complete
+          list.</dd>
+        </dlentry>
+        <dlentry id="field-operation">
+          <dt><codeph>operation</codeph></dt>
+          <dd>The comparison operator applied between the processed query result
+          and <codeph>value</codeph>. Examples: <codeph>"=="</codeph> (equals),
+          <codeph>"!="</codeph> (not equals), <codeph>"&gt;"</codeph> (greater
+          than), <codeph>"[]"</codeph> (contains). See the
+          <xref href="../reference/r_operators.dita">Operator reference</xref> for the complete
+          list.</dd>
+        </dlentry>
+        <dlentry id="field-value">
+          <dt><codeph>value</codeph></dt>
+          <dd>The expected value the query result is compared against. Always a
+          string. For numeric comparisons the string is coerced to a number at
+          evaluation time. For multi-value checks (with <codeph>"[]"</codeph>),
+          use a comma-separated list: <codeph>"guide, article, topic"</codeph>.</dd>
+        </dlentry>
+        <dlentry id="field-level">
+          <dt><codeph>level</codeph></dt>
+          <dd>Severity of a failure: <codeph>"Required"</codeph> (blocks the CI
+          pipeline) or <codeph>"Suggested"</codeph> (informational, does not block
+          the pipeline). Defaults to <codeph>"Required"</codeph> if omitted.</dd>
+        </dlentry>
+        <dlentry id="field-mitigation">
+          <dt><codeph>mitigation</codeph></dt>
+          <dd>A plain-English message shown to authors when this rule fails.
+          Write the mitigation as a direct instruction: what the author should do
+          to fix the problem. This message is the primary communication between
+          your rule and your authors — make it clear and actionable.</dd>
+        </dlentry>
+      </dl>
+    </section>
+
+    <section id="how-evaluation-works">
+      <title>How evaluation works</title>
+      <p>The tool resolves <codeph>query</codeph>, processes the result with
+      <codeph>flag</codeph>, applies <codeph>operation</codeph> against
+      <codeph>value</codeph>, and returns pass or fail. If the query returns
+      nothing (key absent, no XPath matches), the rule fails with the
+      <codeph>mitigation</codeph> message.</p>
+    </section>
+
+  </conbody>
+</concept>

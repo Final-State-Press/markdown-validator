@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<!--
+  SEO keyword phrase: markdown-validator REPL commands reference load query eval
+  Audience: rule-creator
+-->
+<reference id="r_repl-commands">
+  <title>REPL commands reference</title>
+
+  <shortdesc>Complete reference for all commands available in the
+  <codeph>md-validate repl</codeph> interactive session.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>REPL commands</keyword>
+        <keyword>load query eval dump get</keyword>
+        <keyword>interactive rule testing commands</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Complete reference for all markdown-validator REPL commands: load, dump, query, get, and eval, with syntax and examples."/>
+    </metadata>
+  </prolog>
+
+  <refbody>
+
+    <table id="repl-commands-table">
+      <title>REPL commands</title>
+      <tgroup cols="3">
+        <colspec colname="command" colwidth="2*"/>
+        <colspec colname="syntax" colwidth="3*"/>
+        <colspec colname="description" colwidth="4*"/>
+        <thead>
+          <row>
+            <entry>Command</entry>
+            <entry>Syntax</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><codeph>load</codeph></entry>
+            <entry><codeph>load &lt;path&gt;</codeph></entry>
+            <entry>Load a Markdown file. All subsequent commands operate on
+            this file. You can load a new file at any time to switch
+            context.</entry>
+          </row>
+          <row>
+            <entry><codeph>dump metadata</codeph></entry>
+            <entry><codeph>dump metadata</codeph></entry>
+            <entry>Print the loaded file's YAML front matter as a formatted
+            JSON object. Use this to confirm which keys are present and their
+            exact values before writing header rules.</entry>
+          </row>
+          <row>
+            <entry><codeph>dump html</codeph></entry>
+            <entry><codeph>dump html</codeph></entry>
+            <entry>Print the rendered HTML of the loaded file's body. Use this
+            to see the exact DOM structure that body-rule XPath expressions
+            will query.</entry>
+          </row>
+          <row>
+            <entry><codeph>query</codeph></entry>
+            <entry><codeph>query &lt;xpath&gt; [flag]</codeph></entry>
+            <entry>Run an XPath expression against the loaded file's HTML body.
+            Optional flag: <codeph>text</codeph> (default), <codeph>count</codeph>,
+            or <codeph>dom</codeph>. Returns the result as a list.</entry>
+          </row>
+          <row>
+            <entry><codeph>get</codeph></entry>
+            <entry><codeph>get &lt;key&gt;</codeph></entry>
+            <entry>Retrieve the value of a front-matter key. Equivalent to
+            <codeph>dump metadata</codeph> for a single key.</entry>
+          </row>
+          <row>
+            <entry><codeph>eval</codeph></entry>
+            <entry><codeph>eval &lt;json-rule&gt;</codeph></entry>
+            <entry>Evaluate a rule JSON object against the loaded document.
+            The rule must be valid JSON on a single line. Returns PASS or
+            FAIL with the rule name and, on failure, the mitigation
+            message.</entry>
+          </row>
+          <row>
+            <entry><codeph>help</codeph></entry>
+            <entry><codeph>help</codeph></entry>
+            <entry>List all available commands.</entry>
+          </row>
+          <row>
+            <entry><codeph>quit</codeph></entry>
+            <entry><codeph>quit</codeph> or <codeph>exit</codeph></entry>
+            <entry>Exit the REPL.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <section id="repl-examples">
+      <title>Example session</title>
+      <codeblock xml:space="preserve">&gt; load docs/tutorial-deploy-app.md
+Loaded: /abs/path/docs/tutorial-deploy-app.md
+  Metadata keys: ['title', 'ms.topic', 'ms.date', 'author', 'description']
+
+&gt; get ms.topic
+ms.topic: tutorial
+
+&gt; query /html/body/h1 text
+Result: ['Tutorial: Deploy a web application']
+
+&gt; query //h2 count
+Result: [4]
+
+&gt; query //h2 text
+Result: ['Prerequisites', 'Deploy the app', 'Test the deployment',
+         'Clean up resources']
+
+&gt; eval {"id":1,"name":"h1-must-start-with-tutorial","type":"body","query":"/html/body/h1","flag":"text","operation":"[:","value":"Tutorial:","mitigation":"H1 must start with 'Tutorial:'"}
+PASS: rule id=1 name='h1-must-start-with-tutorial'
+
+&gt; quit</codeblock>
+    </section>
+
+  </refbody>
+</reference>

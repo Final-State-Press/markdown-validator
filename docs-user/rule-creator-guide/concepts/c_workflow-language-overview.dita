@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+  SEO keyword phrase: markdown-validator workflow language conditional rules
+  Audience: rule-creator
+-->
+<concept id="c_workflow-language-overview">
+  <title>Understanding the workflow step language</title>
+
+  <shortdesc>Workflows chain rules together with conditional logic. Use them when
+  a rule should only run if another rule passes or fails — for example, "check H2
+  structure only when the document is a tutorial." Simple checks that are always
+  evaluated do not need workflows.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>workflow language</keyword>
+        <keyword>conditional rule chains</keyword>
+        <keyword>workflow steps</keyword>
+        <keyword>rule dependencies</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Learn when to use markdown-validator workflows instead of individual rules, and how the step language expresses conditional rule dependencies."/>
+    </metadata>
+  </prolog>
+
+  <conbody>
+
+    <section id="when-to-use">
+      <title>When to use workflows</title>
+      <p>Use a workflow when:</p>
+      <ul>
+        <li>A check is only meaningful if another check passes first. For example:
+        the H1 must start with "Tutorial:" only applies when
+        <codeph>ms.topic == tutorial</codeph>.</li>
+        <li>You need to express conditional presence. For example: "if there are
+        no H2 headings, then there should also be no H3 headings."</li>
+        <li>Two checks together constitute a single editorial requirement. For
+        example: either the Prerequisites heading exists, or the article is marked
+        as a reference — but not both.</li>
+      </ul>
+      <p>Do not use a workflow for checks that are always evaluated independently.
+      Keep the rule list simple; add workflows only when the conditional logic is
+      genuinely needed.</p>
+    </section>
+
+    <section id="graph-model">
+      <title>The workflow as a directed graph</title>
+      <p>Before reading the step token syntax, build this mental model: a
+      workflow is a small directed graph. The nodes in the graph are:</p>
+
+      <dl>
+        <dlentry>
+          <dt><codeph>S</codeph> — Start</dt>
+          <dd>The fixed entry point. Every workflow begins here.</dd>
+        </dlentry>
+        <dlentry>
+          <dt>Rule IDs (1, 2, 3, …)</dt>
+          <dd>Each rule referenced in the workflow is a node. Execution passes
+          through these nodes and each one produces a pass or fail result.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><codeph>D</codeph> — Decision</dt>
+          <dd>A branching node. The result of the rule just before
+          <codeph>D</codeph> determines which branch runs next. A passing
+          result takes the True (<codeph>T</codeph>) branch; a failing result
+          takes the False (<codeph>F</codeph>) branch.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><codeph>M</codeph> — Merge</dt>
+          <dd>A convergence node. Both branches of a decision point lead back
+          to <codeph>M</codeph> so the workflow has a single exit path.</dd>
+        </dlentry>
+        <dlentry>
+          <dt><codeph>E</codeph> — End</dt>
+          <dd>The fixed exit point. Every workflow ends here.</dd>
+        </dlentry>
+      </dl>
+
+      <p>The <codeph>steps</codeph> field encodes the edges of this graph as
+      a comma-separated list of <codeph>source-target</codeph> tokens. Each
+      token is one directed edge: "execution can travel from
+      <i>source</i> to <i>target</i>."</p>
+    </section>
+
+    <section id="simple-workflow">
+      <title>The simplest workflow: a single rule</title>
+      <p>Before reading the full token syntax, see what the simplest possible
+      workflow looks like. A linear, unconditional check uses just two tokens:</p>
+
+      <codeblock xml:space="preserve">"steps": "S-1,1-E"</codeblock>
+
+      <fig id="fig-workflow-simple">
+        <title>Graph of the simple workflow S-1,1-E</title>
+        <image href="../../images/workflow-simple.png" placement="break">
+          <alt>Flowchart: S leads directly to Rule 1, which leads directly to
+          End. No decision or merge nodes are needed.</alt>
+        </image>
+      </fig>
+
+      <p><codeph>S-1</codeph> means "Start leads to Rule 1." <codeph>1-E</codeph>
+      means "Rule 1 leads to End." There is no decision node because the result
+      is always the result of Rule 1. This is the pattern to start with and
+      add complexity only when conditional logic is required.</p>
+    </section>
+
+    <section id="step-language">
+      <title>Reading step tokens for conditional workflows</title>
+      <p>When a workflow needs a conditional branch, it uses the Decision (D)
+      and Merge (M) nodes. Here is the token string for a conditional workflow
+      and the graph it produces:</p>
+
+      <codeblock xml:space="preserve">"steps": "S-1,1-D,T-2,F-3,2-M,3-M,M-E"</codeblock>
+
+      <fig id="fig-workflow-conditional">
+        <title>Graph of the conditional workflow S-1,1-D,T-2,F-3,2-M,3-M,M-E</title>
+        <image href="../../images/workflow-state-diagram.png" placement="break">
+          <alt>Flowchart: S leads to Rule 1 (precondition). Rule 1 leads to D
+          (decision node). The true branch from D leads to Rule 2. The false
+          branch leads to Rule 3. Both Rule 2 and Rule 3 lead to M (merge).
+          M leads to End. Edge labels show the token that encodes each
+          transition.</alt>
+        </image>
+      </fig>
+
+      <p>Token-by-token reading:</p>
+      <table>
+        <tgroup cols="2">
+          <colspec colname="token" colwidth="1*"/>
+          <colspec colname="meaning" colwidth="3*"/>
+          <thead>
+            <row>
+              <entry>Token</entry>
+              <entry>Meaning</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>S-1</codeph></entry>
+              <entry>Edge from Start to Rule 1. Rule 1 runs first.</entry>
+            </row>
+            <row>
+              <entry><codeph>1-D</codeph></entry>
+              <entry>Edge from Rule 1 to the Decision node. Rule 1's
+              pass/fail result controls the branch.</entry>
+            </row>
+            <row>
+              <entry><codeph>T-2</codeph></entry>
+              <entry>True branch: if Rule 1 passed, run Rule 2.</entry>
+            </row>
+            <row>
+              <entry><codeph>F-3</codeph></entry>
+              <entry>False branch: if Rule 1 failed, run Rule 3.</entry>
+            </row>
+            <row>
+              <entry><codeph>2-M</codeph></entry>
+              <entry>Edge from Rule 2 to the Merge node.</entry>
+            </row>
+            <row>
+              <entry><codeph>3-M</codeph></entry>
+              <entry>Edge from Rule 3 to the Merge node.</entry>
+            </row>
+            <row>
+              <entry><codeph>M-E</codeph></entry>
+              <entry>Edge from Merge to End. The workflow is complete.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="step-by-step-build">
+      <title>Build a workflow from a plain-English requirement</title>
+      <p>The easiest way to write a workflow token string is to build it one
+      edge at a time, starting from the requirement in plain English.</p>
+
+      <p><b>Requirement:</b> "Tutorial articles must have an H1 that starts
+      with 'Tutorial:'. Other article types are not checked for H1 format."</p>
+
+      <p><b>Step 1 — Identify the nodes.</b> This requirement has a
+      precondition (is this a tutorial?) and a conditional check (only for
+      tutorials). That means the graph needs: S, a precondition rule, D, a
+      check rule for the True branch, a sentinel rule for the False branch
+      (see step 3), M, and E.</p>
+
+      <p>Assign IDs: Rule 1 checks <codeph>ms.topic == tutorial</codeph>.
+      Rule 2 checks the H1 starts with "Tutorial:". Rule 10 is a sentinel
+      (a rule that is known to always pass for any valid document).</p>
+
+      <p><b>Step 2 — Draw the edges one at a time.</b></p>
+      <table id="table-step-build">
+        <tgroup cols="3">
+          <colspec colname="token" colwidth="1*"/>
+          <colspec colname="edge" colwidth="2*"/>
+          <colspec colname="string" colwidth="3*"/>
+          <thead>
+            <row>
+              <entry>Token added</entry>
+              <entry>Edge it encodes</entry>
+              <entry>Token string so far</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>S-1</codeph></entry>
+              <entry>Start → Rule 1 (precondition: is this a tutorial?)</entry>
+              <entry><codeph>S-1</codeph></entry>
+            </row>
+            <row>
+              <entry><codeph>1-D</codeph></entry>
+              <entry>Rule 1 → Decision (its result controls the branch)</entry>
+              <entry><codeph>S-1,1-D</codeph></entry>
+            </row>
+            <row>
+              <entry><codeph>T-2</codeph></entry>
+              <entry>True branch → Rule 2 (check H1 prefix for tutorials)</entry>
+              <entry><codeph>S-1,1-D,T-2</codeph></entry>
+            </row>
+            <row>
+              <entry><codeph>F-10</codeph></entry>
+              <entry>False branch → Rule 10 (sentinel; skip H1 check)</entry>
+              <entry><codeph>S-1,1-D,T-2,F-10</codeph></entry>
+            </row>
+            <row>
+              <entry><codeph>2-M</codeph></entry>
+              <entry>Rule 2 → Merge (True branch rejoins)</entry>
+              <entry><codeph>S-1,1-D,T-2,F-10,2-M</codeph></entry>
+            </row>
+            <row>
+              <entry><codeph>10-M</codeph></entry>
+              <entry>Rule 10 → Merge (False branch rejoins)</entry>
+              <entry><codeph>S-1,1-D,T-2,F-10,2-M,10-M</codeph></entry>
+            </row>
+            <row>
+              <entry><codeph>M-E</codeph></entry>
+              <entry>Merge → End (workflow complete)</entry>
+              <entry><codeph>S-1,1-D,T-2,F-10,2-M,10-M,M-E</codeph></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <p><b>Step 3 — Why the sentinel rule?</b> The <codeph>F-M</codeph>
+      token does not exist. Every branch must pass through a rule node before
+      reaching M. When the False branch represents "nothing to check here,"
+      route it through a sentinel — a rule whose precondition always passes
+      for well-formed documents. The sentinel contributes a pass result and
+      the branch continues cleanly to M.</p>
+
+      <p>The finished workflow object:</p>
+      <codeblock xml:space="preserve">{
+  "name": "tutorial-h1-prefix",
+  "steps": "S-1,1-D,T-2,F-10,2-M,10-M,M-E",
+  "level": "Required",
+  "fix": "Tutorial articles must open with an H1 that starts with 'Tutorial:'."
+}</codeblock>
+    </section>
+
+    <section id="practical-example">
+      <title>Practical example: enforcing different H1 formats per topic type</title>
+      <p>When both branches of a decision carry meaningful checks — not just
+      "skip" — no sentinel is needed. This workflow enforces a different H1
+      prefix depending on <codeph>ms.topic</codeph>:</p>
+      <ul>
+        <li>If <codeph>ms.topic == tutorial</codeph> (Rule 1 passes), the H1
+        must start with "Tutorial:" (Rule 2).</li>
+        <li>If <codeph>ms.topic != tutorial</codeph> (Rule 1 fails), the H1
+        must start with "How to" (Rule 3).</li>
+      </ul>
+      <codeblock xml:space="preserve">{
+  "name": "h1-matches-topic-type",
+  "steps": "S-1,1-D,T-2,F-3,2-M,3-M,M-E",
+  "level": "Required",
+  "fix": "Match your H1 prefix to your ms.topic value."
+}</codeblock>
+      <p>Rule 1 is the precondition; D routes to Rule 2 or Rule 3 depending
+      on the topic type; both paths merge before the workflow ends. Because
+      both branches run a real check, no sentinel is needed.</p>
+    </section>
+
+    <section id="inversion-antipattern">
+      <title>Avoid the workflow-inversion pattern</title>
+      <note type="caution">The pattern described below is a known design smell.
+      Do not use it for new rules. It exists only as a workaround until the
+      <codeph>negate</codeph> flag is available in v0.3.</note>
+      <p>Some teams use workflow branching to express "this thing must NOT
+      exist" — for example, "the title must not contain the word 'guide'."
+      Because markdown-validator has no negation operator in v0.2, this
+      requires inverting the pass/fail result by routing branches in reverse:
+      the True branch (content IS present — the bad state) loops back into a
+      failing rule, and the False branch (content is absent — the good state)
+      routes to a sentinel that passes.</p>
+      <p>This pattern is fragile. A single miswiring of T and F branches
+      causes the rule to silently pass bad content or fail good content — and
+      the error is difficult to spot by reading the token string alone. If you
+      must use it, test it exhaustively and document the inversion clearly in
+      your rule set's README. For the full pattern and its known failure modes,
+      see <xref href="c_rule-design-patterns.dita#c_rule-design-patterns/pattern-absence"/>.</p>
+      <p>When v0.3 ships, replace any inverted workflows with a standard rule
+      that uses <codeph>"negate": true</codeph>.</p>
+    </section>
+
+    <section id="next-steps-workflow">
+      <title>Next steps</title>
+      <ul>
+        <li>For the full step-pattern reference, see
+        <xref href="../reference/r_workflow-steps.dita"/>.</li>
+        <li>To write a workflow, see
+        <xref href="../tasks/t_write-workflow.dita"/>.</li>
+      </ul>
+    </section>
+
+  </conbody>
+</concept>

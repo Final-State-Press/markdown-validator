@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/tasks?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/tasks/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Task//EN?><?doctype-system task.dtd?><task xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="t_read-validation-report" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic task/task " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="task:1;7:37" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="title:1;8:10">Read and act on a validation report</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="keyword:1;13:18">validation report</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="keyword:2;14:18">fix validation failures</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="keyword:3;15:18">mitigation message</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="keyword:4;16:18">Required Suggested rules</keyword>
+      </keywords>
+      <othermeta name="description" content="Learn how to interpret a markdown-validator report, distinguish Required from Suggested failures, and fix the most common front-matter and body errors." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="othermeta:1;19:172"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="shortdesc:1;23:14">A validation report shows which rules your file passes or fails,
+  the severity of each failure, and a plain-English mitigation message that tells
+  you exactly what to fix. This topic walks you through reading the report and
+  taking action.</shortdesc>
+
+  <taskbody class="- topic/body task/taskbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="taskbody:1;28:13">
+
+    <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="steps:1;30:12">
+
+      <step id="step-scan-score" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="step:1;32:34">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="cmd:1;33:14">Look at the score line at the bottom of the report.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="info:1;34:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeblock:1;35:43">Score: 4/6   FAILED</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="p:1;36:14">The score shows how many rules passed (4) out of the total (6).
+          <systemoutput class="+ topic/ph sw-d/systemoutput " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="systemoutput:1;37:25">FAILED</systemoutput> means at least one Required rule failed.
+          <systemoutput class="+ topic/ph sw-d/systemoutput " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="systemoutput:2;38:25">PASSED</systemoutput> means all Required rules passed (even
+          if some Suggested rules failed).</p>
+        </info>
+      </step>
+
+      <step id="step-find-failures" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="step:2;43:37">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="cmd:2;44:14">Find every line that starts with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeph:1;44:55">✗</codeph>.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="info:2;45:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="p:2;46:14">These lines identify the rules your file failed. Each failure shows
+          the rule ID in square brackets, the rule name, and a mitigation
+          message on the next line:</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeblock:2;49:43">  ✗  [4]  description-must-exist
+           → Add a description field to the front matter.</codeblock>
+        </info>
+      </step>
+
+      <step id="step-check-required" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="step:3;54:38">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="cmd:3;55:14">Identify which failures are Required (blocking).</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="info:3;56:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="p:3;57:14">Required failures show <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeph:2;57:45">[Required]</codeph> in the report.
+          If the report does not show a level label, the rule defaults to Required.
+          Fix all Required failures before pushing your branch.</p>
+        </info>
+      </step>
+
+      <step id="step-fix-frontmatter" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="step:4;63:39">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="cmd:4;64:14">Fix front-matter failures by editing the YAML block at the top of
+        your file.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="info:4;66:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="p:4;67:14">The most common front-matter failures and their fixes:</p>
+          <table class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="table:1;68:18">
+            <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="title:2;69:20">Common front-matter failures</title>
+            <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="tgroup:1;70:30">
+              <colspec colname="col1" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="colspec:1;71:54" colnum="1"/>
+              <colspec colname="col2" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="colspec:2;72:57" colnum="2"/>
+              <colspec colname="col3" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="colspec:3;73:53" colnum="3"/>
+              <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="thead:1;74:22">
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="row:1;75:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:1;76:26" colname="col1" dita-ot:x="1" dita-ot:y="1">Rule type</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:2;77:26" colname="col2" dita-ot:x="2" dita-ot:y="1">What failed</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:3;78:26" colname="col3" dita-ot:x="3" dita-ot:y="1">How to fix it</entry>
+                </row>
+              </thead>
+              <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="tbody:1;81:22">
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="row:2;82:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:4;83:26" colname="col1" dita-ot:x="1" dita-ot:y="2">Missing field</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:5;84:26" colname="col2" dita-ot:x="2" dita-ot:y="2">A required key (such as <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeph:3;84:58">description</codeph>)
+                  is absent</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:6;86:26" colname="col3" dita-ot:x="3" dita-ot:y="2">Add the field to the YAML block:
+                  <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeph:4;87:27">description: "Brief description here."</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="row:3;89:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:7;90:26" colname="col1" dita-ot:x="1" dita-ot:y="3">Wrong value</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:8;91:26" colname="col2" dita-ot:x="2" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeph:5;91:34">ms.topic</codeph> is set to an unexpected value</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:9;92:26" colname="col3" dita-ot:x="3" dita-ot:y="3">Change the value to match the expected one shown in the
+                  mitigation message</entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="row:4;95:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:10;96:26" colname="col1" dita-ot:x="1" dita-ot:y="4">Stale date</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:11;97:26" colname="col2" dita-ot:x="2" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeph:6;97:34">ms.date</codeph> is too old</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:12;98:26" colname="col3" dita-ot:x="3" dita-ot:y="4">Update <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeph:7;98:41">ms.date</codeph> to today's date in
+                  <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeph:8;99:27">YYYY-MM-DD</codeph> format</entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="row:5;101:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:13;102:26" colname="col1" dita-ot:x="1" dita-ot:y="5">Title format</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:14;103:26" colname="col2" dita-ot:x="2" dita-ot:y="5">Title does not start with the required prefix</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:15;104:26" colname="col3" dita-ot:x="3" dita-ot:y="5">Edit the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeph:9;104:43">title</codeph> field to match the
+                  pattern in the mitigation message</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </info>
+      </step>
+
+      <step id="step-fix-body" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="step:5;113:32">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="cmd:5;114:14">Fix body failures by editing the Markdown content below the front
+        matter.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="info:5;116:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="p:5;117:14">The most common body failures and their fixes:</p>
+          <table class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="table:2;118:18">
+            <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="title:3;119:20">Common body failures</title>
+            <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="tgroup:2;120:30">
+              <colspec colname="col1" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="colspec:4;121:54" colnum="1"/>
+              <colspec colname="col2" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="colspec:5;122:57" colnum="2"/>
+              <colspec colname="col3" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="colspec:6;123:53" colnum="3"/>
+              <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="thead:2;124:22">
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="row:6;125:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:16;126:26" colname="col1" dita-ot:x="1" dita-ot:y="1">Rule type</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:17;127:26" colname="col2" dita-ot:x="2" dita-ot:y="1">What failed</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:18;128:26" colname="col3" dita-ot:x="3" dita-ot:y="1">How to fix it</entry>
+                </row>
+              </thead>
+              <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="tbody:2;131:22">
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="row:7;132:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:19;133:26" colname="col1" dita-ot:x="1" dita-ot:y="2">Missing H1</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:20;134:26" colname="col2" dita-ot:x="2" dita-ot:y="2">The document has no H1 or more than one H1</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:21;135:26" colname="col3" dita-ot:x="3" dita-ot:y="2">Ensure exactly one line begins with a single
+                  <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeph:10;136:27">#</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="row:8;138:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:22;139:26" colname="col1" dita-ot:x="1" dita-ot:y="3">H1 format</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:23;140:26" colname="col2" dita-ot:x="2" dita-ot:y="3">H1 does not start with the required prefix (such as
+                  "Tutorial:")</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:24;142:26" colname="col3" dita-ot:x="3" dita-ot:y="3">Edit the H1 to match the pattern in the mitigation
+                  message</entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="row:9;145:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:25;146:26" colname="col1" dita-ot:x="1" dita-ot:y="4">Missing section</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:26;147:26" colname="col2" dita-ot:x="2" dita-ot:y="4">A required H2 (such as "Prerequisites") is absent</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="entry:27;148:26" colname="col3" dita-ot:x="3" dita-ot:y="4">Add the required H2 section and content</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </info>
+      </step>
+
+      <step id="step-re-validate" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="step:6;156:35">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="cmd:6;157:14">Re-run validation to confirm all Required failures are resolved.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="info:6;158:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="codeblock:3;159:43">md-validate validate docs/my-article.md --rules rules/tutorial.json</codeblock>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="stepresult:1;161:21">The report shows <systemoutput class="+ topic/ph sw-d/systemoutput " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_read-validation-report.dita" xtrc="systemoutput:3;161:52">PASSED</systemoutput> when all
+        Required rules pass.</stepresult>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

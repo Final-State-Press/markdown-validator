@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+  SEO keyword phrase: how markdown validation works parse evaluate report
+  Audience: user, rule-creator
+-->
+<concept id="c_how-validation-works">
+  <title>How validation works</title>
+
+  <shortdesc>markdown-validator processes your file in three stages: it parses
+  the front matter and document body, evaluates each rule in the rule set against
+  your file, and produces a scored report that identifies every rule your file
+  passes or fails.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>validation process</keyword>
+        <keyword>parse evaluate report</keyword>
+        <keyword>validation score</keyword>
+        <keyword>markdown-validator workflow</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Understand the three stages of markdown-validator: parsing your file, evaluating rules, and producing a scored report."/>
+    </metadata>
+  </prolog>
+
+  <conbody>
+
+    <section id="three-stages">
+      <title>The three stages</title>
+
+      <fig id="fig-pipeline">
+        <title>The three-stage validation pipeline</title>
+        <image href="../../images/validation-pipeline.png" placement="break">
+          <alt>Flowchart showing Stage 1 Parse (extract YAML front matter and render
+          body to HTML), Stage 2 Evaluate (apply header rules, body rules, and
+          workflows), and Stage 3 Report (score, pass/fail per rule, mitigation
+          messages), leading to an exit-0 merge or exit-1 blocked outcome.</alt>
+        </image>
+      </fig>
+
+      <dl>
+        <dlentry id="stage-parse">
+          <dt>Stage 1: Parse</dt>
+          <dd>
+            <p>The tool reads your <filepath>.md</filepath> file and splits it into
+            two parts:</p>
+            <ul>
+              <li><b>Front matter.</b> The YAML block delimited by <codeph>---</codeph>
+              at the top of the file. The tool extracts all key-value pairs from this
+              block.</li>
+              <li><b>Document body.</b> The Markdown content below the front matter.
+              The tool renders this to HTML so it can be queried structurally.</li>
+            </ul>
+            <note type="important">Your Markdown file must begin with a front-matter
+            block. Files without a <codeph>---</codeph> opening block produce a parse
+            error and cannot be validated. Follow
+            <xref href="../../troubleshooting/ts_no-frontmatter.dita">Resolve a missing front-matter block</xref>
+            if this happens to you.</note>
+          </dd>
+        </dlentry>
+
+        <dlentry id="stage-evaluate">
+          <dt>Stage 2: Evaluate</dt>
+          <dd>
+            <p>The tool applies each rule in the rule set to your file, one at a time.
+            Each rule either passes or fails. Rules are independent; a failing rule
+            does not stop evaluation of the remaining rules.</p>
+            <p>Some rules are grouped into <term>workflows</term> — sequences that
+            apply conditional logic. For example, a workflow might check heading
+            structure only when a specific metadata value is present. As an author,
+            you do not need to understand how workflows are written; the report shows
+            you their outcome just as it shows individual rule results.</p>
+          </dd>
+        </dlentry>
+
+        <dlentry id="stage-report">
+          <dt>Stage 3: Report</dt>
+          <dd>
+            <p>The tool produces a report that shows:</p>
+            <ul>
+              <li>A <b>score</b> — the number of rules that passed out of the total
+              number evaluated (for example, <codeph>24/26</codeph>)</li>
+              <li>A <b>pass/fail status</b> for each rule</li>
+              <li>A <b>mitigation message</b> for each failed rule, explaining what
+              to fix</li>
+            </ul>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+
+    <section id="what-the-score-means">
+      <title>What the score means</title>
+      <p>The score is rules passed / total rules. Not all failures block your pull
+      request — each rule is classified as <b>Required</b> (blocks CI, exit code 1)
+      or <b>Suggested</b> (informational only, exit code 0). See
+      <xref href="c_validation-levels.dita">Validation levels</xref>.</p>
+    </section>
+
+    <section id="example-output">
+      <title>Example output</title>
+      <p>Text report with two failures:</p>
+
+      <codeblock xml:space="preserve">Validating: docs/tutorial-deploy-app.md
+Rule set:   rules/tutorial.json
+
+  ✓  [1]  topic-must-be-tutorial
+  ✓  [2]  must-have-h1
+  ✓  [3]  h1-must-start-with-tutorial
+  ✗  [4]  description-must-exist
+           → Add a description field to the front matter.
+  ✓  [5]  ms-date-must-be-fresh
+  ✗  [6]  title-under-60-chars
+           → Title must be under 60 characters.
+
+Score: 4/6   FAILED</codeblock>
+
+      <p><codeph>✓</codeph> = passed, <codeph>✗</codeph> = failed,
+      <codeph>→</codeph> = mitigation message (what to fix).</p>
+    </section>
+
+  </conbody>
+</concept>

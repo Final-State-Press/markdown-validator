@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: read markdown validation report fix failures
+  Audience: user
+-->
+<task id="t_read-validation-report">
+  <title>Read and act on a validation report</title>
+
+  <shortdesc>A validation report shows which rules your file passes or fails,
+  the severity of each failure, and a plain-English mitigation message that tells
+  you exactly what to fix. This topic walks you through reading the report and
+  taking action.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>validation report</keyword>
+        <keyword>fix validation failures</keyword>
+        <keyword>mitigation message</keyword>
+        <keyword>Required Suggested rules</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Learn how to interpret a markdown-validator report, distinguish Required from Suggested failures, and fix the most common front-matter and body errors."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <steps>
+
+      <step id="step-scan-score">
+        <cmd>Look at the score line at the bottom of the report.</cmd>
+        <info>
+          <codeblock xml:space="preserve">Score: 4/6   FAILED</codeblock>
+          <p>The score shows how many rules passed (4) out of the total (6).
+          <systemoutput>FAILED</systemoutput> means at least one Required rule failed.
+          <systemoutput>PASSED</systemoutput> means all Required rules passed (even
+          if some Suggested rules failed).</p>
+        </info>
+      </step>
+
+      <step id="step-find-failures">
+        <cmd>Find every line that starts with <codeph>✗</codeph>.</cmd>
+        <info>
+          <p>These lines identify the rules your file failed. Each failure shows
+          the rule ID in square brackets, the rule name, and a mitigation
+          message on the next line:</p>
+          <codeblock xml:space="preserve">  ✗  [4]  description-must-exist
+           → Add a description field to the front matter.</codeblock>
+        </info>
+      </step>
+
+      <step id="step-check-required">
+        <cmd>Identify which failures are Required (blocking).</cmd>
+        <info>
+          <p>Required failures show <codeph>[Required]</codeph> in the report.
+          If the report does not show a level label, the rule defaults to Required.
+          Fix all Required failures before pushing your branch.</p>
+        </info>
+      </step>
+
+      <step id="step-fix-frontmatter">
+        <cmd>Fix front-matter failures by editing the YAML block at the top of
+        your file.</cmd>
+        <info>
+          <p>The most common front-matter failures and their fixes:</p>
+          <table>
+            <title>Common front-matter failures</title>
+            <tgroup cols="3">
+              <colspec colname="rule" colwidth="2*"/>
+              <colspec colname="problem" colwidth="2*"/>
+              <colspec colname="fix" colwidth="3*"/>
+              <thead>
+                <row>
+                  <entry>Rule type</entry>
+                  <entry>What failed</entry>
+                  <entry>How to fix it</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>Missing field</entry>
+                  <entry>A required key (such as <codeph>description</codeph>)
+                  is absent</entry>
+                  <entry>Add the field to the YAML block:
+                  <codeph>description: "Brief description here."</codeph></entry>
+                </row>
+                <row>
+                  <entry>Wrong value</entry>
+                  <entry><codeph>ms.topic</codeph> is set to an unexpected value</entry>
+                  <entry>Change the value to match the expected one shown in the
+                  mitigation message</entry>
+                </row>
+                <row>
+                  <entry>Stale date</entry>
+                  <entry><codeph>ms.date</codeph> is too old</entry>
+                  <entry>Update <codeph>ms.date</codeph> to today's date in
+                  <codeph>YYYY-MM-DD</codeph> format</entry>
+                </row>
+                <row>
+                  <entry>Title format</entry>
+                  <entry>Title does not start with the required prefix</entry>
+                  <entry>Edit the <codeph>title</codeph> field to match the
+                  pattern in the mitigation message</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </info>
+      </step>
+
+      <step id="step-fix-body">
+        <cmd>Fix body failures by editing the Markdown content below the front
+        matter.</cmd>
+        <info>
+          <p>The most common body failures and their fixes:</p>
+          <table>
+            <title>Common body failures</title>
+            <tgroup cols="3">
+              <colspec colname="rule" colwidth="2*"/>
+              <colspec colname="problem" colwidth="2*"/>
+              <colspec colname="fix" colwidth="3*"/>
+              <thead>
+                <row>
+                  <entry>Rule type</entry>
+                  <entry>What failed</entry>
+                  <entry>How to fix it</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>Missing H1</entry>
+                  <entry>The document has no H1 or more than one H1</entry>
+                  <entry>Ensure exactly one line begins with a single
+                  <codeph>#</codeph></entry>
+                </row>
+                <row>
+                  <entry>H1 format</entry>
+                  <entry>H1 does not start with the required prefix (such as
+                  "Tutorial:")</entry>
+                  <entry>Edit the H1 to match the pattern in the mitigation
+                  message</entry>
+                </row>
+                <row>
+                  <entry>Missing section</entry>
+                  <entry>A required H2 (such as "Prerequisites") is absent</entry>
+                  <entry>Add the required H2 section and content</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </info>
+      </step>
+
+      <step id="step-re-validate">
+        <cmd>Re-run validation to confirm all Required failures are resolved.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/my-article.md --rules rules/tutorial.json</codeblock>
+        </info>
+        <stepresult>The report shows <systemoutput>PASSED</systemoutput> when all
+        Required rules pass.</stepresult>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

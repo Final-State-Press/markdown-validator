@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<!--
+  Primary DITA map for markdown-validator end-user documentation.
+  DITA 1.3 compliant.
+  Audience: technical writers, content authors, content leads, editorial leads.
+-->
+<map id="markdown-validator-docs">
+  <title>markdown-validator Documentation</title>
+
+  <topicmeta>
+    <shortdesc>End-user documentation for markdown-validator, a rule-based
+    Markdown validation tool for documentation teams working at scale.</shortdesc>
+    <othermeta name="version" content="0.2"/>
+    <othermeta name="product" content="markdown-validator"/>
+    <othermeta name="audience" content="user, rule-creator"/>
+    <othermeta name="last-updated" content="2026-03-20"/>
+    <othermeta name="applies-to" content="markdown-validator 0.2.x"/>
+  </topicmeta>
+
+  <!-- Key definitions for shared resources -->
+  <keydef keys="product-name">
+    <topicmeta><keywords><keyword>markdown-validator</keyword></keywords></topicmeta>
+  </keydef>
+  <keydef keys="cli-name">
+    <topicmeta><keywords><keyword>md-validate</keyword></keywords></topicmeta>
+  </keydef>
+
+  <!-- Key definitions for glossary cross-references -->
+  <keydef keys="g_header-rule" href="shared/glossary.dita#g_header-rule" format="dita"/>
+  <keydef keys="g_body-rule"   href="shared/glossary.dita#g_body-rule"   format="dita"/>
+  <keydef keys="g_operator"    href="shared/glossary.dita#g_operator"    format="dita"/>
+  <keydef keys="g_flag"        href="shared/glossary.dita#g_flag"        format="dita"/>
+  <keydef keys="g_required"    href="shared/glossary.dita#g_required"    format="dita"/>
+  <keydef keys="g_suggested"   href="shared/glossary.dita#g_suggested"   format="dita"/>
+
+  <!-- ============================================================ -->
+  <!-- User Guide (secondary map)                                   -->
+  <!-- ============================================================ -->
+  <mapref href="user-guide.ditamap" format="ditamap">
+    <topicmeta>
+      <navtitle>User Guide</navtitle>
+    </topicmeta>
+  </mapref>
+
+  <!-- ============================================================ -->
+  <!-- Rule Creator Guide (secondary map)                           -->
+  <!-- ============================================================ -->
+  <mapref href="rule-creator-guide.ditamap" format="ditamap">
+    <topicmeta>
+      <navtitle>Rule Creator Guide</navtitle>
+    </topicmeta>
+  </mapref>
+
+  <!-- ============================================================ -->
+  <!-- Troubleshooting                                              -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Troubleshooting">
+    <topicref href="troubleshooting/ts_nltk-error.dita" format="dita"/>
+    <topicref href="troubleshooting/ts_no-frontmatter.dita" format="dita"/>
+    <topicref href="troubleshooting/ts_rule-never-passes.dita" format="dita"/>
+    <topicref href="troubleshooting/ts_xpath-wrong-results.dita" format="dita"/>
+    <topicref href="troubleshooting/ts_ci-fails.dita" format="dita"/>
+  </topichead>
+
+  <!-- ============================================================ -->
+  <!-- Shared reference                                             -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Reference">
+    <topicref href="shared/glossary.dita" format="dita"/>
+  </topichead>
+
+</map>

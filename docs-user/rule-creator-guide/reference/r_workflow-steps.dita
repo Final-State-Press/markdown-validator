@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<!--
+  SEO keyword phrase: markdown-validator workflow step patterns reference S-N N-D T-N
+  Audience: rule-creator
+-->
+<reference id="r_workflow-steps">
+  <title>Workflow step patterns reference</title>
+
+  <shortdesc>A workflow's <codeph>steps</codeph> field is a comma-separated string
+  of <codeph>source-target</codeph> tokens. Twelve patterns are recognised.
+  Combine them to express any conditional rule dependency.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>workflow step patterns</keyword>
+        <keyword>S-N N-D T-N F-N</keyword>
+        <keyword>step language reference</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Complete reference for all twelve markdown-validator workflow step patterns with examples of each pattern in context."/>
+    </metadata>
+  </prolog>
+
+  <refbody>
+
+    <table id="step-patterns-table">
+      <title>Workflow step patterns</title>
+      <tgroup cols="3">
+        <colspec colname="pattern" colwidth="1*"/>
+        <colspec colname="meaning" colwidth="3*"/>
+        <colspec colname="example" colwidth="4*"/>
+        <thead>
+          <row>
+            <entry>Pattern</entry>
+            <entry>Meaning</entry>
+            <entry>Used in context</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><codeph>S-N</codeph></entry>
+            <entry>Start: load rule N as the initial state.</entry>
+            <entry><codeph>S-1</codeph> — start with rule 1</entry>
+          </row>
+          <row>
+            <entry><codeph>N-D</codeph></entry>
+            <entry>Rule N result becomes the decision point (the branch
+            condition).</entry>
+            <entry><codeph>1-D</codeph> — rule 1 is the decision</entry>
+          </row>
+          <row>
+            <entry><codeph>M-D</codeph></entry>
+            <entry>Merge state becomes the decision point.</entry>
+            <entry>Used in loops or multi-rule merges</entry>
+          </row>
+          <row>
+            <entry><codeph>T-N</codeph></entry>
+            <entry>If the current decision is True (pass), load rule N.</entry>
+            <entry><codeph>T-2</codeph> — if True, run rule 2</entry>
+          </row>
+          <row>
+            <entry><codeph>F-N</codeph></entry>
+            <entry>If the current decision is False (fail), load rule N.</entry>
+            <entry><codeph>F-3</codeph> — if False, run rule 3</entry>
+          </row>
+          <row>
+            <entry><codeph>T-R</codeph></entry>
+            <entry>If the current decision is True, reverse (negate) it.</entry>
+            <entry>Rarely used; present to enable inversion patterns</entry>
+          </row>
+          <row>
+            <entry><codeph>F-R</codeph></entry>
+            <entry>If the current decision is False, reverse (negate) it.</entry>
+            <entry>Used in absence-check workarounds</entry>
+          </row>
+          <row>
+            <entry><codeph>N-M</codeph></entry>
+            <entry>Rule N result exits into the merge state.</entry>
+            <entry><codeph>2-M</codeph> — rule 2 feeds into merge</entry>
+          </row>
+          <row>
+            <entry><codeph>M-N</codeph></entry>
+            <entry>Merge state exits to rule N.</entry>
+            <entry>Continues workflow after a merge</entry>
+          </row>
+          <row>
+            <entry><codeph>M-E</codeph></entry>
+            <entry>Merge state ends the workflow.</entry>
+            <entry><codeph>M-E</codeph> — terminate at merge</entry>
+          </row>
+          <row>
+            <entry><codeph>N-E</codeph></entry>
+            <entry>Rule N result ends the workflow.</entry>
+            <entry><codeph>1-E</codeph> — terminate with rule 1's result</entry>
+          </row>
+          <row>
+            <entry><codeph>N-N</codeph></entry>
+            <entry>Both rules must pass (logical AND). The second N is the
+            rule that follows the first.</entry>
+            <entry><codeph>1-2</codeph> — rules 1 AND 2 must both pass</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <section id="recipe-simple">
+      <title>Recipe: Single rule check</title>
+      <codeblock xml:space="preserve">"steps": "S-1,1-E"</codeblock>
+      <p>Start with rule 1. Rule 1's result ends the workflow.</p>
+    </section>
+
+    <section id="recipe-conditional">
+      <title>Recipe: Conditional check (run rule B only when rule A passes)</title>
+      <codeblock xml:space="preserve">"steps": "S-A,A-D,T-B,F-sentinel,B-M,sentinel-M,M-E"</codeblock>
+      <p>Rule A is the decision. If True, rule B runs and its result feeds into
+      merge. If False, the sentinel rule (a known-passing rule) feeds into merge.
+      Merge ends the workflow.</p>
+    </section>
+
+    <section id="recipe-and">
+      <title>Recipe: Both rules must pass (AND)</title>
+      <codeblock xml:space="preserve">"steps": "S-1,1-2,2-E"</codeblock>
+      <p>Start with rule 1. Rule 1 must pass before rule 2 is checked. Rule 2's
+      result ends the workflow.</p>
+    </section>
+
+    <section id="notes-workflow">
+      <title>Notes</title>
+      <ul>
+        <li>Both <codeph>S-1,1-E</codeph> and <codeph>(S,1)(1,E)</codeph> formats
+        are accepted; the parenthesis format is normalised at load time.</li>
+        <li>Rule IDs referenced in step tokens must exist in the
+        <codeph>rules</codeph> section of the same rule set file.</li>
+      </ul>
+    </section>
+
+  </refbody>
+</reference>

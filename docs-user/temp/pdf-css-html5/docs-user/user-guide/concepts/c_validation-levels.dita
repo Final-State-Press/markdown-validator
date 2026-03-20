@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_validation-levels" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="concept:1;7:35" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="title:1;8:10">Required and Suggested validation levels</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="keyword:1;13:18">Required rule level</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="keyword:2;14:18">Suggested rule level</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="keyword:3;15:18">CI exit code</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="keyword:4;16:18">validation severity</keyword>
+      </keywords>
+      <othermeta name="description" content="Understand the difference between Required and Suggested validation rules, and how each level affects your CI/CD pipeline exit code." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="othermeta:1;19:153"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="shortdesc:1;23:14">Every rule in a rule set has a level: <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="b:1;23:55">Required</b> or <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="b:2;23:74">Suggested</b>.
+  Required failures block your CI pipeline. Suggested failures appear in the report
+  as recommendations and do not block a merge.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="conbody:1;27:12">
+
+    <section id="levels-explained" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="section:1;29:36">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="title:2;30:14">What the levels mean</title>
+
+      <table id="levels-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="table:1;32:32">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="title:3;33:16">Validation level comparison</title>
+        <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="tgroup:1;34:26">
+          <colspec colname="col1" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="colspec:1;35:51" colnum="1"/>
+          <colspec colname="col2" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="colspec:2;36:52" colnum="2"/>
+          <colspec colname="col3" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="colspec:3;37:57" colnum="3"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="thead:1;38:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="row:1;39:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="entry:1;40:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Level</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="entry:2;41:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Effect on the pipeline</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="entry:3;42:22" colname="col3" dita-ot:x="3" dita-ot:y="1">When your team sets this level</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="tbody:1;45:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="row:2;46:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="entry:4;47:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="b:3;47:25">Required</b></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="entry:5;48:22" colname="col2" dita-ot:x="2" dita-ot:y="2">CLI exits with code <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="codeph:1;48:50">1</codeph>. CI pipeline fails
+              and blocks the merge.</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="entry:6;50:22" colname="col3" dita-ot:x="3" dita-ot:y="2">The check enforces a hard editorial standard — for example,
+              every tutorial must have an <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="codeph:2;51:51">ms.topic: tutorial</codeph>
+              value and a single H1.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="row:3;54:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="entry:7;55:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="b:4;55:25">Suggested</b></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="entry:8;56:22" colname="col2" dita-ot:x="2" dita-ot:y="3">CLI exits with code <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="codeph:3;56:50">0</codeph> even if the rule
+              fails. The failure appears in the report but does not block
+              the merge.</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="entry:9;59:22" colname="col3" dita-ot:x="3" dita-ot:y="3">The check is a best-practice recommendation — for example,
+              title length should be under 60 characters. Violations are noted
+              but not enforced.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="what-authors-see" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="section:2;68:36">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="title:4;69:14">What you see</title>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="codeblock:1;70:39">  ✗  [4]  description-must-exist          [Required]
+           → Add a description field to the front matter.
+
+  ✗  [6]  title-under-60-chars            [Suggested]
+           → Title must be under 60 characters.</codeblock>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="p:1;75:10">Rule 4 blocks your pull request. Rule 6 does not. If no level is shown,
+      the rule defaults to <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_validation-levels.dita" xtrc="b:5;76:31">Required</b>.</p>
+    </section>
+
+  </conbody>
+</concept>

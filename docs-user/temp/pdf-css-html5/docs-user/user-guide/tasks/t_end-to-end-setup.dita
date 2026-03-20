@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/tasks?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/tasks/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Task//EN?><?doctype-system task.dtd?><task xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="t_end-to-end-setup" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic task/task " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="task:1;7:31" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="title:1;8:10">Set up markdown-validator from scratch</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="keyword:1;13:18">end-to-end setup</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="keyword:2;14:18">getting started markdown-validator</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="keyword:3;15:18">install validate CI pipeline setup</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="keyword:4;16:18">first-time setup</keyword>
+      </keywords>
+      <othermeta name="description" content="A complete end-to-end walkthrough: install markdown-validator, download NLTK data, validate your first file, interpret the report, and add the tool to your GitHub Actions pipeline." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="othermeta:1;19:201"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="shortdesc:1;23:14">This scenario walks you through the complete setup of
+  markdown-validator — from installation to a running CI gate — in a single
+  guided sequence. Follow it top to bottom the first time you set up the tool
+  for a documentation project.</shortdesc>
+
+  <taskbody class="- topic/body task/taskbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="taskbody:1;28:13">
+
+    <prereq id="prereq" class="- topic/section task/prereq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="prereq:1;30:25">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:1;31:10">Before you begin, confirm you have the following:</p>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="ul:1;32:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:1;33:13">Python 3.12 or later installed on your computer. To check:
+        <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:1;34:41">python --version</codeblock></li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:2;35:13">A documentation repository with at least one <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="filepath:1;35:68">.md</filepath>
+        file to validate.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:3;37:13">The path to your team's rule set file. If you do not have one,
+        ask your content lead. The file is typically at
+        <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="filepath:2;39:19">rules/tutorial.json</filepath> in your repository.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:4;40:13">Write access to the repository's
+        <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="filepath:3;41:19">.github/workflows/</filepath> directory (for the CI step).</li>
+      </ul>
+    </prereq>
+
+    <context id="context" class="- topic/section task/context " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="context:1;45:27">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:2;46:10">Stages: <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="b:1;46:21">Install → Download language data → Validate a file →
+      Fix failures → Add CI.</b> Each stage links to a detailed task for
+      more guidance.</p>
+    </context>
+
+    <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="steps:1;51:12">
+
+      
+
+      <step id="step-venv" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:1;57:28">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:1;58:14">Create and activate a Python virtual environment.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:1;59:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:3;60:14">On macOS or Linux:</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:2;61:43">python -m venv .venv
+source .venv/bin/activate</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:4;63:14">On Windows (PowerShell):</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:3;64:43">python -m venv .venv
+.venv\Scripts\Activate.ps1</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:5;66:14">Your prompt changes to show <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:1;66:50">(.venv)</codeph> when the
+          environment is active.</p>
+        </info>
+      </step>
+
+      <step id="step-install" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:2;71:31">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:2;72:14">Install markdown-validator.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:2;73:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:4;74:43">pip install markdown-validator</codeblock>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="stepresult:1;76:21">pip installs markdown-validator and its dependencies.
+        Verify with:
+        <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:5;78:41">md-validate --version</codeblock>
+        </stepresult>
+      </step>
+
+      
+
+      <step id="step-nltk" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:3;86:28">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:3;87:14">Download the NLTK language data required by sentence-count
+        and part-of-speech rules.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:3;89:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:6;90:43">python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng</codeblock>
+          <note type="tip" class="- topic/note " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="note:1;91:28">If your team's rule set does not use sentence-count
+          (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:2;92:20">s</codeph>) or part-of-speech (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:3;92:59">p&lt;N&gt;</codeph>)
+          rules, you can skip this step. Ask your content lead if you are
+          unsure. For full details, see
+          <xref href="t_download-nltk.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="xref:1;95:45">Download NLTK language data</xref>.</note>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="stepresult:2;97:21">NLTK downloads the corpora to your home directory
+        (<filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="filepath:4;98:20">~/nltk_data</filepath> on macOS/Linux). You only need to
+        do this once per Python environment.</stepresult>
+      </step>
+
+      
+
+      <step id="step-validate" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:4;106:32">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:4;107:14">Run your first validation against a Markdown file.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:4;108:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:7;109:43">md-validate validate docs/my-article.md --rules rules/tutorial.json</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:6;110:14">Replace <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:4;110:30">docs/my-article.md</codeph> with the path to
+          one of your files, and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:5;111:42">rules/tutorial.json</codeph> with
+          the path your content lead provided.</p>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="stepresult:3;114:21">The tool prints a validation report. A fully passing
+        report ends with:
+        <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:8;116:41">Score: 8/8   PASSED</codeblock>
+        A report with failures ends with:
+        <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:9;118:41">Score: 6/8   FAILED</codeblock>
+        </stepresult>
+      </step>
+
+      
+
+      <step id="step-read-report" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:5;126:35">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:5;127:14">Read the report and identify Required failures.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:5;128:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:7;129:14">Each failed rule shows a cross (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:6;129:54">✗</codeph>), the rule
+          name, and a mitigation message:</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:10;131:43">  ✗  [4]  description-must-exist          [Required]
+           → Add a description field to the front matter.</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:8;133:14">Required failures will block your pull request. Suggested
+          failures are recommendations — they do not block the merge.
+          For a full guide, see
+          <xref href="t_read-validation-report.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="xref:2;136:54">Read and act on a validation report</xref>.</p>
+        </info>
+      </step>
+
+      <step id="step-fix" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:6;140:27">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:6;141:14">Open your Markdown file and fix each Required failure using its
+        mitigation message.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:6;143:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:9;144:14">Common front-matter fixes:</p>
+          <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="ul:2;145:15">
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:5;146:17"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="b:2;146:20">Missing field</b> — add the key and value to the
+            <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:7;147:21">---</codeph> block at the top of the file</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:6;148:17"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="b:3;148:20">Wrong value</b> — change the field value to match what
+            the mitigation message specifies</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:7;150:17"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="b:4;150:20">Stale date</b> — update <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:8;150:52">ms.date</codeph> to
+            today in <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:9;151:30">YYYY-MM-DD</codeph> format</li>
+          </ul>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:10;153:14">Common body fixes:</p>
+          <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="ul:3;154:15">
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:8;155:17"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="b:5;155:20">Missing H1</b> — ensure exactly one line begins with
+            a single <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:10;156:30">#</codeph></li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:9;157:17"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="b:6;157:20">H1 format</b> — edit the H1 to match the prefix in
+            the mitigation message</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-re-validate" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:7;163:35">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:7;164:14">Re-run validation to confirm all Required failures are
+        resolved.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:7;166:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:11;167:43">md-validate validate docs/my-article.md --rules rules/tutorial.json</codeblock>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="stepresult:4;169:21">The report shows <systemoutput class="+ topic/ph sw-d/systemoutput " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="systemoutput:1;169:52">PASSED</systemoutput>
+        when all Required rules pass.</stepresult>
+      </step>
+
+      
+
+      <step id="step-ci-dir" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:8;177:30">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:8;178:14">Create the GitHub Actions workflow directory if it does not
+        exist.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:8;180:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:12;181:43">mkdir -p .github/workflows</codeblock>
+        </info>
+      </step>
+
+      <step id="step-ci-file" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:9;185:31">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:9;186:14">Create
+        <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="filepath:5;187:19">.github/workflows/validate-docs.yml</filepath> using the
+        complete workflow template in
+        <xref href="t_integrate-github-actions.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="xref:3;189:54">Add markdown-validator to a GitHub Actions workflow</xref>.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:9;190:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:11;191:14">The workflow template in that topic is the authoritative version.
+          Copy it verbatim, then update the two values shown below to match
+          your repository:</p>
+          <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="ul:4;194:15">
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:10;195:17"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:11;195:25">paths: 'docs/**/*.md'</codeph> — the glob pattern for
+            your documentation files</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="li:11;197:17"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeph:12;197:25">--rules rules/tutorial.json</codeph> — the path to
+            your team's rule set file</li>
+          </ul>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:12;200:14">The workflow installs markdown-validator, caches and downloads
+          NLTK data, validates the docs directory, and uploads per-file JSON
+          reports as a downloadable artifact — even when validation fails.</p>
+        </info>
+      </step>
+
+      <step id="step-commit-workflow" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:10;206:39">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:10;207:14">Commit the workflow file and push.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:10;208:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="codeblock:13;209:43">git add .github/workflows/validate-docs.yml
+git commit -m "Add documentation validation workflow"
+git push</codeblock>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="stepresult:5;213:21">GitHub runs the workflow on every subsequent pull
+        request that changes <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="filepath:6;214:40">.md</filepath> files matching the
+        path filter. Required failures block the merge.</stepresult>
+      </step>
+
+      <step id="step-open-pr" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="step:11;218:31">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="cmd:11;219:14">Open a test pull request to verify the workflow runs
+        correctly.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="info:11;221:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:13;222:14">Navigate to the <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="b:7;222:33">Actions</b> tab of your repository and
+          confirm the <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="b:8;223:26">Validate documentation</b> check appears and
+          completes. If it fails on a file that passed locally, check that
+          CI is using the same rule set path you tested with.</p>
+        </info>
+      </step>
+
+    </steps>
+
+    <postreq id="postreq" class="- topic/section task/postreq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="postreq:1;231:27">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="p:14;232:10">Share the rule set path, the install steps (1–4), and
+      <xref href="t_read-validation-report.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="xref:4;233:50">Read and act on a validation report</xref>
+      with your team. To validate the full repository, see
+      <xref href="t_validate-directory.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_end-to-end-setup.dita" xtrc="xref:5;235:46">Validate a directory</xref>.</p>
+    </postreq>
+
+  </taskbody>
+</task>

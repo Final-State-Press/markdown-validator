@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<!--
+  Secondary DITA map: User Guide.
+  Audience: technical writers and content authors who run validation
+  against their Markdown files.
+-->
+<map id="user-guide">
+  <title>User Guide</title>
+
+  <topicmeta>
+    <shortdesc>Step-by-step guidance for technical writers and content authors
+    who validate Markdown files with markdown-validator.</shortdesc>
+    <othermeta name="audience" content="user"/>
+  </topicmeta>
+
+  <!-- ============================================================ -->
+  <!-- Understanding markdown-validator                             -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Understanding markdown-validator">
+    <topicref href="user-guide/concepts/c_what-is-markdown-validator.dita" format="dita"/>
+    <topicref href="user-guide/concepts/c_how-validation-works.dita" format="dita"/>
+    <topicref href="user-guide/concepts/c_validation-levels.dita" format="dita"/>
+    <topicref href="user-guide/concepts/c_ci-integration-overview.dita" format="dita"/>
+    <topicref href="user-guide/concepts/c_multiple-rulesets.dita" format="dita"/>
+  </topichead>
+
+  <!-- ============================================================ -->
+  <!-- Get started                                                  -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Get started">
+    <topicref href="user-guide/tasks/t_end-to-end-setup.dita" format="dita"/>
+    <topicref href="user-guide/tasks/t_install.dita" format="dita"/>
+    <topicref href="user-guide/tasks/t_download-nltk.dita" format="dita"/>
+  </topichead>
+
+  <!-- ============================================================ -->
+  <!-- Validate documents                                           -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Validate documents">
+    <topicref href="user-guide/tasks/t_validate-single-file.dita" format="dita"/>
+    <topicref href="user-guide/tasks/t_read-validation-report.dita" format="dita"/>
+    <topicref href="user-guide/tasks/t_validate-directory.dita" format="dita"/>
+    <topicref href="user-guide/tasks/t_set-output-format.dita" format="dita"/>
+    <topicref href="user-guide/tasks/t_save-reports.dita" format="dita"/>
+  </topichead>
+
+  <!-- ============================================================ -->
+  <!-- CI/CD integration                                            -->
+  <!-- ============================================================ -->
+  <topichead navtitle="CI/CD integration">
+    <topicref href="user-guide/tasks/t_integrate-github-actions.dita" format="dita"/>
+  </topichead>
+
+  <!-- ============================================================ -->
+  <!-- Reference                                                    -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Reference">
+    <topicref href="shared/r_quick-reference.dita" format="dita"/>
+    <topicref href="user-guide/reference/r_cli-options.dita" format="dita"/>
+    <topicref href="user-guide/reference/r_exit-codes.dita" format="dita"/>
+    <topicref href="user-guide/reference/r_report-output.dita" format="dita"/>
+  </topichead>
+
+</map>

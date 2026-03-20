@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: write markdown-validator workflow conditional rule chain
+  Audience: rule-creator
+-->
+<task id="t_write-workflow">
+  <title>Write a workflow for conditional rule chains</title>
+
+  <shortdesc>A workflow chains rules together so that some checks only run when
+  others pass or fail. Write a workflow when your editorial requirement is
+  conditional — it only applies in specific circumstances.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>write workflow</keyword>
+        <keyword>conditional rule chain</keyword>
+        <keyword>workflow steps</keyword>
+        <keyword>rule dependency</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Write a markdown-validator workflow to chain rules with conditional logic, so checks only run when their preconditions are met."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <ul>
+        <li>You have defined the individual rules the workflow will reference
+        in your rule set file.</li>
+        <li>Review the workflow concept: <xref href="../concepts/c_workflow-language-overview.dita">Workflow language overview</xref>.</li>
+        <li>Review the step-pattern reference: <xref href="../reference/r_workflow-steps.dita">Workflow step reference</xref>.</li>
+      </ul>
+    </prereq>
+
+    <context id="context">
+      <p>Before writing the workflow, clarify the conditional logic in plain
+      English. For example: "If <codeph>ms.topic</codeph> is 'tutorial'
+      (rule 1 passes), then also check that the H1 starts with 'Tutorial:'
+      (rule 2). If it is not 'tutorial' (rule 1 fails), pass without
+      checking rule 2."</p>
+    </context>
+
+    <steps>
+
+      <step id="step-map-to-steps">
+        <cmd>Map the plain-English logic to the step token sequence.</cmd>
+        <info>
+          <p>For a simple conditional check (check rule B only when rule A
+          passes):</p>
+          <codeblock xml:space="preserve">S-A, A-D, T-B, F-sentinel, B-M, sentinel-M, M-E</codeblock>
+          <p>Where <codeph>sentinel</codeph> is the ID of a rule that always
+          passes for valid documents (typically rule 1 in your rule set).</p>
+
+          <p>Example: check H1 format only when <codeph>ms.topic == tutorial</codeph>
+          (rule 1) passes:</p>
+          <codeblock xml:space="preserve">"steps": "S-1,1-D,T-6,F-1,6-M,1-M,M-E"</codeblock>
+        </info>
+      </step>
+
+      <step id="step-add-workflow">
+        <cmd>Add the workflow object to the <codeph>workflows</codeph> array
+        in your rule set file.</cmd>
+        <info>
+          <codeblock xml:space="preserve">{
+  "name": "h1-format-for-tutorials",
+  "steps": "S-1,1-D,T-6,F-1,6-M,1-M,M-E",
+  "level": "Required",
+  "fix": "For tutorial articles, H1 must start with 'Tutorial:'"
+}</codeblock>
+        </info>
+      </step>
+
+      <step id="step-test-workflow">
+        <cmd>Test the workflow against documents that cover both branches.</cmd>
+        <info>
+          <codeblock xml:space="preserve"># Document where ms.topic = tutorial (should evaluate rule 6)
+md-validate validate tutorial-article.md --rules rules/tutorial.json
+
+# Document where ms.topic != tutorial (should skip rule 6)
+md-validate validate how-to-article.md --rules rules/tutorial.json</codeblock>
+          <p>For interactive workflow testing, see
+          <xref href="t_test-workflow-repl.dita">Test a workflow in the REPL</xref>.</p>
+        </info>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

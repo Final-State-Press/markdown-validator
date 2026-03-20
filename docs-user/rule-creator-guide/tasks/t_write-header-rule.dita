@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: write header rule front matter metadata check markdown-validator
+  Audience: rule-creator
+-->
+<task id="t_write-header-rule">
+  <title>Write a header rule to check front-matter metadata</title>
+
+  <shortdesc>Header rules check the YAML front-matter metadata at the top of
+  your Markdown files. Use them to enforce required fields, expected values,
+  date freshness, and naming patterns.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>header rule</keyword>
+        <keyword>front matter validation</keyword>
+        <keyword>YAML metadata check</keyword>
+        <keyword>write rule</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Write a markdown-validator header rule to check YAML front-matter fields: required fields, exact values, allowed value sets, and date freshness."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <p>You have an existing rule set file. See
+      <xref href="t_create-rule-set.dita">Create a rule set file</xref>. Understand the rule fields before
+      proceeding: <xref href="../concepts/c_rule-anatomy.dita">Anatomy of a validation rule</xref>.</p>
+    </prereq>
+
+    <steps>
+
+      <step id="step-identify">
+        <cmd>Identify the front-matter field you want to check and the editorial
+        requirement it must satisfy.</cmd>
+        <info>
+          <p>Examples:</p>
+          <ul>
+            <li>The <codeph>description</codeph> field must exist.</li>
+            <li>The <codeph>ms.topic</codeph> field must equal
+            <codeph>tutorial</codeph>.</li>
+            <li>The <codeph>ms.date</codeph> field must be within the last
+            365 days.</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-choose-flag">
+        <cmd>Choose the flag that matches how you want to process the field
+        value.</cmd>
+        <info>
+          <table>
+            <title>Flag selection for header rules</title>
+            <tgroup cols="2">
+              <colspec colname="use" colwidth="3*"/>
+              <colspec colname="flag" colwidth="1*"/>
+              <thead>
+                <row><entry>You want to check...</entry><entry>Use flag</entry></row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>The field exists (any value is acceptable)</entry>
+                  <entry><codeph>check</codeph></entry>
+                </row>
+                <row>
+                  <entry>The field equals a specific value</entry>
+                  <entry><codeph>value</codeph></entry>
+                </row>
+                <row>
+                  <entry>The field's date is within N days</entry>
+                  <entry><codeph>date</codeph></entry>
+                </row>
+                <row>
+                  <entry>The field matches a regular-expression pattern</entry>
+                  <entry><codeph>pattern</codeph></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </info>
+      </step>
+
+      <step id="step-choose-operator">
+        <cmd>Choose the operator and expected value.</cmd>
+        <info>
+          <ul>
+            <li>For <codeph>check</codeph>: use <codeph>"operation": "=="</codeph>
+            and <codeph>"value": "true"</codeph>.</li>
+            <li>For exact string match: use <codeph>"operation": "=="</codeph>
+            and the expected string.</li>
+            <li>For allowed-values set: use <codeph>"operation": "[]"</codeph>
+            and a comma-separated list in <codeph>value</codeph>.</li>
+            <li>For date freshness: use <codeph>"operation": "&lt;"</codeph>
+            and the maximum age in days.</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-write-mitigation">
+        <cmd>Write a clear, actionable mitigation message.</cmd>
+        <info>
+          <p>The mitigation message is shown directly to authors when their
+          document fails this rule. Write it as an imperative sentence that
+          tells them exactly what to do. Compare:</p>
+          <ul>
+            <li><b>Unclear:</b> "ms.topic value is invalid."</li>
+            <li><b>Clear:</b> "Set ms.topic to one of: tutorial, how-to,
+            concept, reference."</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-add-to-rule-set">
+        <cmd>Add the rule object to the <codeph>header</codeph> array in your
+        rule set file.</cmd>
+        <info>
+          <codeblock xml:space="preserve">{
+  "id": 3,
+  "name": "ms-topic-must-be-allowed-value",
+  "type": "header",
+  "query": "ms.topic",
+  "flag": "value",
+  "operation": "[]",
+  "value": "tutorial, how-to, concept, reference",
+  "level": "Required",
+  "mitigation": "Set ms.topic to one of: tutorial, how-to, concept, reference."
+}</codeblock>
+        </info>
+      </step>
+
+      <step id="step-test">
+        <cmd>Test the rule against a document that should pass and a document
+        that should fail.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate passing-doc.md --rules rules/tutorial.json
+md-validate validate failing-doc.md --rules rules/tutorial.json</codeblock>
+          <p>Confirm the passing document scores correctly and the failing
+          document shows your mitigation message. For interactive testing,
+          see <xref href="t_test-rule-repl.dita">Test a rule in the REPL</xref>.</p>
+        </info>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

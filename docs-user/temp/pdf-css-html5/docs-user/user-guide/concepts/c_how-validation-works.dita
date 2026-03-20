@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_how-validation-works" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="concept:1;7:38" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="title:1;8:10">How validation works</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="keyword:1;13:18">validation process</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="keyword:2;14:18">parse evaluate report</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="keyword:3;15:18">validation score</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="keyword:4;16:18">markdown-validator workflow</keyword>
+      </keywords>
+      <othermeta name="description" content="Understand the three stages of markdown-validator: parsing your file, evaluating rules, and producing a scored report." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="othermeta:1;19:139"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="shortdesc:1;23:14">markdown-validator processes your file in three stages: it parses
+  the front matter and document body, evaluates each rule in the rule set against
+  your file, and produces a scored report that identifies every rule your file
+  passes or fails.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="conbody:1;28:12">
+
+    <section id="three-stages" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="section:1;30:32">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="title:2;31:14">The three stages</title>
+
+      <fig id="fig-pipeline" class="- topic/fig " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="fig:1;33:30">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="title:3;34:16">The three-stage validation pipeline</title>
+        <image href="../../images/validation-pipeline.png" placement="break" class="- topic/image " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="image:1;35:78">
+          <alt class="- topic/alt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="alt:1;36:16">Flowchart showing Stage 1 Parse (extract YAML front matter and render
+          body to HTML), Stage 2 Evaluate (apply header rules, body rules, and
+          workflows), and Stage 3 Report (score, pass/fail per rule, mitigation
+          messages), leading to an exit-0 merge or exit-1 blocked outcome.</alt>
+        </image>
+      </fig>
+
+      <dl class="- topic/dl " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="dl:1;43:11">
+        <dlentry id="stage-parse" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="dlentry:1;44:35">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="dt:1;45:15">Stage 1: Parse</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="dd:1;46:15">
+            <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="p:1;47:16">The tool reads your <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="filepath:1;47:46">.md</filepath> file and splits it into
+            two parts:</p>
+            <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="ul:1;49:17">
+              <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="li:1;50:19"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="b:1;50:22">Front matter.</b> The YAML block delimited by <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="codeph:1;50:76">---</codeph>
+              at the top of the file. The tool extracts all key-value pairs from this
+              block.</li>
+              <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="li:2;53:19"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="b:2;53:22">Document body.</b> The Markdown content below the front matter.
+              The tool renders this to HTML so it can be queried structurally.</li>
+            </ul>
+            <note type="important" class="- topic/note " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="note:1;56:36">Your Markdown file must begin with a front-matter
+            block. Files without a <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="codeph:2;57:44">---</codeph> opening block produce a parse
+            error and cannot be validated. Follow
+            <xref href="../../troubleshooting/ts_no-frontmatter.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="xref:1;59:71">Resolve a missing front-matter block</xref>
+            if this happens to you.</note>
+          </dd>
+        </dlentry>
+
+        <dlentry id="stage-evaluate" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="dlentry:2;64:38">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="dt:2;65:15">Stage 2: Evaluate</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="dd:2;66:15">
+            <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="p:2;67:16">The tool applies each rule in the rule set to your file, one at a time.
+            Each rule either passes or fails. Rules are independent; a failing rule
+            does not stop evaluation of the remaining rules.</p>
+            <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="p:3;70:16">Some rules are grouped into <term class="- topic/term " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="term:1;70:50">workflows</term> — sequences that
+            apply conditional logic. For example, a workflow might check heading
+            structure only when a specific metadata value is present. As an author,
+            you do not need to understand how workflows are written; the report shows
+            you their outcome just as it shows individual rule results.</p>
+          </dd>
+        </dlentry>
+
+        <dlentry id="stage-report" class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="dlentry:3;78:36">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="dt:3;79:15">Stage 3: Report</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="dd:3;80:15">
+            <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="p:4;81:16">The tool produces a report that shows:</p>
+            <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="ul:2;82:17">
+              <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="li:3;83:19">A <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="b:3;83:24">score</b> — the number of rules that passed out of the total
+              number evaluated (for example, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="codeph:3;84:54">24/26</codeph>)</li>
+              <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="li:4;85:19">A <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="b:4;85:24">pass/fail status</b> for each rule</li>
+              <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="li:5;86:19">A <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="b:5;86:24">mitigation message</b> for each failed rule, explaining what
+              to fix</li>
+            </ul>
+          </dd>
+        </dlentry>
+      </dl>
+    </section>
+
+    <section id="what-the-score-means" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="section:2;94:40">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="title:4;95:14">What the score means</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="p:5;96:10">The score is rules passed / total rules. Not all failures block your pull
+      request — each rule is classified as <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="b:6;97:47">Required</b> (blocks CI, exit code 1)
+      or <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="b:7;98:13">Suggested</b> (informational only, exit code 0). See
+      <xref href="c_validation-levels.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="xref:2;99:45">Validation levels</xref>.</p>
+    </section>
+
+    <section id="example-output" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="section:3;102:34">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="title:5;103:14">Example output</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="p:6;104:10">Text report with two failures:</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="codeblock:1;106:39">Validating: docs/tutorial-deploy-app.md
+Rule set:   rules/tutorial.json
+
+  ✓  [1]  topic-must-be-tutorial
+  ✓  [2]  must-have-h1
+  ✓  [3]  h1-must-start-with-tutorial
+  ✗  [4]  description-must-exist
+           → Add a description field to the front matter.
+  ✓  [5]  ms-date-must-be-fresh
+  ✗  [6]  title-under-60-chars
+           → Title must be under 60 characters.
+
+Score: 4/6   FAILED</codeblock>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="p:7;120:10"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="codeph:4;120:18">✓</codeph> = passed, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="codeph:5;120:47">✗</codeph> = failed,
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/concepts/c_how-validation-works.dita" xtrc="codeph:6;121:15">→</codeph> = mitigation message (what to fix).</p>
+    </section>
+
+  </conbody>
+</concept>

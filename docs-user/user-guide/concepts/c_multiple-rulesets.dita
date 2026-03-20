@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+  SEO keyword phrase: markdown-validator multiple rule sets monorepo multi-ruleset
+  Audience: user, rule-creator
+-->
+<concept id="c_multiple-rulesets">
+  <title>Working with multiple rule sets</title>
+
+  <shortdesc>A single repository can contain content that must meet different
+  editorial standards — for example, a tutorial section and an API reference
+  section with distinct metadata requirements. Use separate rule set files and
+  specify the correct one at runtime with the <codeph>--rules</codeph>
+  option.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>multiple rule sets</keyword>
+        <keyword>monorepo validation</keyword>
+        <keyword>per-product rules</keyword>
+        <keyword>CI matrix strategy</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Learn when and how to use more than one rule set in a single repository: per-product standards, CI matrix jobs, and how to prevent local vs CI rule mismatch."/>
+      <othermeta name="version" content="markdown-validator 0.2"/>
+      <othermeta name="last-updated" content="2026-03-20"/>
+    </metadata>
+  </prolog>
+
+  <conbody>
+
+    <section id="why-multiple">
+      <title>When to use more than one rule set</title>
+      <p>A single rule set works well when all content in the repository
+      follows the same standards. Use multiple rule sets when:</p>
+      <ul>
+        <li><b>Different content types have different metadata requirements.</b>
+        For example, tutorial articles must have <codeph>ms.topic:
+        tutorial</codeph> and a "Prerequisites" section, while API reference
+        articles do not.</li>
+        <li><b>Different teams own different subdirectories</b> and maintain
+        their own editorial standards independently.</li>
+        <li><b>You are migrating from one standard to another</b> and need to
+        run the old rule set against existing content and the new rule set
+        against new content simultaneously.</li>
+        <li><b>One rule set is shared across repositories</b> (for example, a
+        base style standard) while each repository adds its own
+        product-specific rules on top.</li>
+      </ul>
+    </section>
+
+    <section id="specifying-rules">
+      <title>Specifying the rule set at runtime</title>
+      <p>The <codeph>--rules</codeph> option accepts any path to a JSON rule
+      set file. You can run the validator multiple times against different
+      directories using different rule sets:</p>
+
+      <codeblock xml:space="preserve"># Validate tutorials with the tutorial rule set
+md-validate validate docs/tutorials/ --rules rules/tutorials.json
+
+# Validate API reference with the reference rule set
+md-validate validate docs/reference/ --rules rules/api-reference.json</codeblock>
+
+      <p>There is no configuration file that automatically selects the rule
+      set. The rule set is always specified explicitly on the command line —
+      either by the author running the tool locally or by the CI pipeline.</p>
+    </section>
+
+    <section id="how-authors-know">
+      <title>How authors know which rule set applies</title>
+      <p>Document the rule set path in your repository's contributing guide.
+      Common conventions:</p>
+      <ul>
+        <li><b>By directory</b> — <filepath>docs/tutorials/</filepath> uses
+        <filepath>rules/tutorials.json</filepath>, etc.</li>
+        <li><b>By front-matter field</b> — <codeph>ms.topic</codeph> value maps
+        to a rule set.</li>
+        <li><b>Script wrapper</b> — a <filepath>validate.sh</filepath> script
+        picks the rule set automatically based on file path.</li>
+      </ul>
+      <p>Whatever convention you use, the local path must match the one CI uses.</p>
+    </section>
+
+    <section id="ci-matrix">
+      <title>CI configuration for multiple rule sets</title>
+      <p>When you have two or more rule sets, each one should run as a
+      separate CI job so that failures in one area do not suppress failures
+      in another. Use a GitHub Actions matrix strategy to avoid duplicating
+      the job definition:</p>
+
+      <codeblock xml:space="preserve">jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - docs-dir: docs/tutorials/
+            rules-file: rules/tutorials.json
+            artifact-name: reports-tutorials
+          - docs-dir: docs/reference/
+            rules-file: rules/api-reference.json
+            artifact-name: reports-reference
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Cache NLTK data
+        uses: actions/cache@v4
+        with:
+          path: ~/nltk_data
+          key: nltk-punkt-tagger
+
+      - name: Install markdown-validator
+        run: pip install markdown-validator
+
+      - name: Download NLTK language data
+        run: python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng
+
+      - name: Validate documentation
+        run: |
+          md-validate validate ${{ matrix.docs-dir }} \
+            --rules ${{ matrix.rules-file }} \
+            --format json \
+            --output reports/
+
+      - name: Upload validation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact-name }}
+          path: reports/</codeblock>
+
+      <p>Each matrix entry produces a separate check on the pull request. A
+      failure in tutorials does not prevent the reference check from running
+      and reporting its own result.</p>
+    </section>
+
+    <section id="local-ci-mismatch">
+      <title>Preventing local vs. CI rule mismatch</title>
+      <p>The most common multi-ruleset problem: an author validates with the
+      wrong rule set locally and sees different failures in CI.</p>
+      <ul>
+        <li><b>Commit all rule set files.</b> Never use local copies that
+        diverge from source control.</li>
+        <li><b>Document the exact command</b> in the contributing guide,
+        including the full <codeph>--rules</codeph> path.</li>
+        <li><b>Verify the CI <codeph>--rules</codeph> value</b> in
+        <filepath>.github/workflows/validate-docs.yml</filepath> matches
+        what authors use locally.</li>
+        <li><b>Pin shared rule sets</b> if they are shared via a package or
+        submodule — uncoordinated updates cause hard-to-trace CI failures.</li>
+      </ul>
+      <p>If local and CI results differ, check that <codeph>--rules</codeph>
+      is identical in both. See also
+      <xref href="../../troubleshooting/ts_ci-fails.dita">Resolve a validation failure in CI</xref>.</p>
+    </section>
+
+  </conbody>
+</concept>

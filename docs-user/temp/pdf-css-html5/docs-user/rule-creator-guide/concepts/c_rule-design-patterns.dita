@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_rule-design-patterns" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="concept:1;7:38" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="title:1;8:10">Rule design patterns for common editorial checks</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="keyword:1;13:18">rule design patterns</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="keyword:2;14:18">editorial checks</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="keyword:3;15:18">check field exists</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="keyword:4;16:18">enforce section order</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="keyword:5;17:18">date freshness rule</keyword>
+      </keywords>
+      <othermeta name="description" content="Ready-to-use rule patterns for common documentation governance checks: required fields, date freshness, heading presence, section order, and absence assertions." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="othermeta:1;20:181"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="shortdesc:1;24:14">These patterns cover the most common editorial requirements you
+  will need to express as rules. Each pattern includes the JSON, an explanation
+  of how it works, and common variations.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="conbody:1;28:12">
+
+    <section id="pattern-quickref" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="section:1;30:36">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="title:2;31:14">Quick-reference: choose your pattern</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:1;32:10">Find the check you want to enforce in the table below, then jump to
+      the corresponding pattern for the full rule JSON and explanation.</p>
+
+      <table id="table-pattern-quickref" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="table:1;35:42">
+        <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="tgroup:1;36:26">
+          <colspec colname="col1" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="colspec:1;37:50" colnum="1"/>
+          <colspec colname="col2" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="colspec:2;38:55" colnum="2"/>
+          <colspec colname="col3" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="colspec:3;39:53" colnum="3"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="thead:1;40:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="row:1;41:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:1;42:22" colname="col1" dita-ot:x="1" dita-ot:y="1">What you want to check</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:2;43:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Rule type</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:3;44:22" colname="col3" dita-ot:x="3" dita-ot:y="1">Pattern to use</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="tbody:1;47:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="row:2;48:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:4;49:22" colname="col1" dita-ot:x="1" dita-ot:y="2">A front-matter field must exist (any value is acceptable)</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:5;50:22" colname="col2" dita-ot:x="2" dita-ot:y="2">header</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:6;51:22" colname="col3" dita-ot:x="3" dita-ot:y="2"><xref href="#c_rule-design-patterns/pattern-required-field" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:1;51:82" type="section"><?ditaot usertext?>Pattern 1: Require a front-matter field to exist</xref></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="row:3;53:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:7;54:22" colname="col1" dita-ot:x="1" dita-ot:y="3">A front-matter field must equal a specific value, or one of a list</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:8;55:22" colname="col2" dita-ot:x="2" dita-ot:y="3">header</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:9;56:22" colname="col3" dita-ot:x="3" dita-ot:y="3"><xref href="#c_rule-design-patterns/pattern-exact-value" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:2;56:79" type="section"><?ditaot usertext?>Pattern 2: Enforce an exact front-matter value</xref></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="row:4;58:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:10;59:22" colname="col1" dita-ot:x="1" dita-ot:y="4">A date field must be within N days of today</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:11;60:22" colname="col2" dita-ot:x="2" dita-ot:y="4">header</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:12;61:22" colname="col3" dita-ot:x="3" dita-ot:y="4"><xref href="#c_rule-design-patterns/pattern-date-freshness" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:3;61:82" type="section"><?ditaot usertext?>Pattern 3: Check date freshness</xref></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="row:5;63:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:13;64:22" colname="col1" dita-ot:x="1" dita-ot:y="5">The document must have exactly N headings of a given level</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:14;65:22" colname="col2" dita-ot:x="2" dita-ot:y="5">body</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:15;66:22" colname="col3" dita-ot:x="3" dita-ot:y="5"><xref href="#c_rule-design-patterns/pattern-heading-count" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:4;66:81" type="section"><?ditaot usertext?>Pattern 4: Require exactly one H1</xref></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="row:6;68:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:16;69:22" colname="col1" dita-ot:x="1" dita-ot:y="6">A specific section heading (e.g., "Prerequisites") must exist</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:17;70:22" colname="col2" dita-ot:x="2" dita-ot:y="6">body</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:18;71:22" colname="col3" dita-ot:x="3" dita-ot:y="6"><xref href="#c_rule-design-patterns/pattern-required-section" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:5;71:84" type="section"><?ditaot usertext?>Pattern 5: Require a specific H2 section</xref></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="row:7;73:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:19;74:22" colname="col1" dita-ot:x="1" dita-ot:y="7">An H1 (or other heading) must begin with a required prefix</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:20;75:22" colname="col2" dita-ot:x="2" dita-ot:y="7">body</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:21;76:22" colname="col3" dita-ot:x="3" dita-ot:y="7"><xref href="#c_rule-design-patterns/pattern-title-format" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:6;76:80" type="section"><?ditaot usertext?>Pattern 6: Enforce an H1 naming convention</xref></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="row:8;78:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:22;79:22" colname="col1" dita-ot:x="1" dita-ot:y="8">A heading or field value must not exceed a character limit</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:23;80:22" colname="col2" dita-ot:x="2" dita-ot:y="8">body or header</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:24;81:22" colname="col3" dita-ot:x="3" dita-ot:y="8"><xref href="#c_rule-design-patterns/pattern-length-limit" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:7;81:80" type="section"><?ditaot usertext?>Pattern 7: Limit title length</xref></entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="row:9;83:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:25;84:22" colname="col1" dita-ot:x="1" dita-ot:y="9">Something must NOT be present — avoid this in v0.2; use Pattern 8 only as a last resort</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:26;85:22" colname="col2" dita-ot:x="2" dita-ot:y="9">body or header</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="entry:27;86:22" colname="col3" dita-ot:x="3" dita-ot:y="9"><xref href="#c_rule-design-patterns/pattern-absence" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:8;86:75" type="section"><?ditaot usertext?>Pattern 8: Absence checks (design smell — avoid until v0.3)</xref></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="pattern-required-field" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="section:2;93:42">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="title:3;94:14">Pattern 1: Require a front-matter field to exist</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:2;95:10">Use the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:1;95:26">check</codeph> flag to verify a key is present,
+      regardless of its value.</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:1;98:39">{
+  "id": 1, "name": "description-must-exist", "type": "header",
+  "query": "description",
+  "flag": "check", "operation": "==", "value": "true",
+  "level": "Required",
+  "mitigation": "Add a description field to the front matter."
+}</codeblock>
+    </section>
+
+    <section id="pattern-exact-value" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="section:3;107:39">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="title:4;108:14">Pattern 2: Enforce an exact front-matter value</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:3;109:10">Use the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:2;109:26">value</codeph> flag with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:3;109:59">==</codeph> to require
+      a specific value.</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:2;112:39">{
+  "id": 2, "name": "topic-must-be-tutorial", "type": "header",
+  "query": "ms.topic",
+  "flag": "value", "operation": "==", "value": "tutorial",
+  "level": "Required",
+  "mitigation": "Set ms.topic: tutorial in the front matter."
+}</codeblock>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:4;120:10">To allow any of several values, use the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:4;120:58">[]</codeph> operator
+      with a comma-separated list:</p>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:3;122:39">"flag": "value", "operation": "[]",
+"value": "tutorial, how-to, concept, reference"</codeblock>
+    </section>
+
+    <section id="pattern-date-freshness" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="section:4;126:42">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="title:5;127:14">Pattern 3: Check date freshness</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:5;128:10">Use the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:5;128:26">date</codeph> flag with the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:6;128:62">&lt;</codeph>
+      operator. The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:7;129:29">value</codeph> is the maximum age in days.</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:4;131:39">{
+  "id": 3, "name": "ms-date-must-be-within-one-year", "type": "header",
+  "query": "ms.date",
+  "flag": "date", "operation": "&lt;", "value": "365",
+  "level": "Suggested",
+  "mitigation": "Update ms.date to today's date (YYYY-MM-DD format)."
+}</codeblock>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:6;139:10">The comparison is: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:8;139:37">(today - ms.date).days &lt; 365</codeph>.</p>
+    </section>
+
+    <section id="pattern-heading-count" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="section:5;142:41">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="title:6;143:14">Pattern 4: Require exactly one H1</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:7;144:10">Use the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:9;144:26">count</codeph> flag on an XPath expression to count
+      matching elements.</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:5;147:39">{
+  "id": 4, "name": "must-have-exactly-one-h1", "type": "body",
+  "query": "/html/body/h1",
+  "flag": "count", "operation": "==", "value": "1",
+  "level": "Required",
+  "mitigation": "The document must have exactly one H1 heading."
+}</codeblock>
+    </section>
+
+    <section id="pattern-required-section" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="section:6;156:44">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="title:7;157:14">Pattern 5: Require a specific H2 section</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:8;158:10">Use the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:10;158:26">count</codeph> flag and XPath predicate to check that
+      a specific section heading exists.</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:6;161:39">{
+  "id": 5, "name": "must-have-prerequisites-section", "type": "body",
+  "query": "//h2[normalize-space(text())='Prerequisites']",
+  "flag": "count", "operation": "&gt;", "value": "0",
+  "level": "Required",
+  "mitigation": "Add a '## Prerequisites' section to the document."
+}</codeblock>
+    </section>
+
+    <section id="pattern-title-format" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="section:7;170:40">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="title:8;171:14">Pattern 6: Enforce an H1 naming convention</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:9;172:10">Use the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:11;172:26">text</codeph> flag with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:12;172:58">[:</codeph> (starts with)
+      to check the content of the H1.</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:7;175:39">{
+  "id": 6, "name": "h1-must-start-with-tutorial", "type": "body",
+  "query": "/html/body/h1",
+  "flag": "text", "operation": "[:", "value": "Tutorial:",
+  "level": "Required",
+  "mitigation": "H1 must begin with 'Tutorial:' for tutorial articles."
+}</codeblock>
+    </section>
+
+    <section id="pattern-length-limit" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="section:8;184:40">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="title:9;185:14">Pattern 7: Limit title length</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:10;186:10">Use the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:13;186:26">l</codeph> operator (length limit) to ensure the H1
+      text is under a character threshold.</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:8;189:39">{
+  "id": 7, "name": "h1-under-60-chars", "type": "body",
+  "query": "/html/body/h1",
+  "flag": "text", "operation": "l", "value": "60",
+  "level": "Suggested",
+  "mitigation": "H1 must be under 60 characters for SEO."
+}</codeblock>
+    </section>
+
+    <section id="pattern-absence" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="section:9;198:35">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="title:10;199:14">Pattern 8: Absence checks (design smell — avoid until v0.3)</title>
+      <note type="danger" class="- topic/note " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="note:1;200:27"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="b:1;200:30">Do not use this pattern for new rules.</b>
+      markdown-validator v0.2 has no negation operator. Expressing "this must
+      NOT exist" requires a workflow-inversion technique that is fragile and
+      easy to wire incorrectly. A <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:14;203:43">negate</codeph> flag is planned for
+      v0.3 and will replace this entirely. See
+      <xref href="c_known-limitations.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:9;205:45" type="concept"><?ditaot usertext?>Known limitations<?ditaot genshortdesc?><desc class="- topic/desc ">Understanding the current limitations of markdown-validator before   you write rules saves hours of debugging. Four limitations affect the types   of rules you can reliably express today.</desc></xref>.
+      Only use the workaround below if you have an immediate need and cannot
+      wait for v0.3. Track the v0.3 negation issue at
+      <xref href="https://github.com/Final-State-Press/markdown-validator/issues" format="html" scope="external" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:10;209:44"><?ditaot usertext?>github.com/Final-State-Press/markdown-validator/issues</xref>.</note>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:11;211:10">To express "the title must NOT contain the word 'guide'," a workflow
+      can invert a contains check using a known-passing sentinel rule. The
+      inversion works by swapping which branch is "good": the True branch (word
+      IS present — the bad state) is routed back to the failing rule, while the
+      False branch (word is absent — the good state) routes to a sentinel that
+      passes. <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="b:2;216:18">This is not standard workflow logic.</b> It exploits branching
+      as a substitute for a missing operator.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:12;219:10">Assume rule 5 is a <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:15;219:37">text</codeph> / <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:16;219:61">]:</codeph>
+      (contains) check on the H1 for the string <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:17;220:57">guide</codeph>, and
+      rule 1 is a sentinel rule that always passes (for example, the
+      "description-must-exist" check from Pattern 1). The inversion workflow
+      is:</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:9;225:39">{
+  "name": "title-must-not-contain-guide",
+  "steps": "S-5,5-D,F-1,T-5,5-M,M-E",
+  "fix": "Remove the word 'guide' from the title."
+}</codeblock>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:13;231:10">Rule 5 passes when <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:18;231:37">guide</codeph> IS present (the bad state).
+      The True branch (word found) loops back to rule 5, which fails the
+      workflow. The False branch (word absent — the good state) routes to the
+      sentinel rule 1, which passes. The workflow therefore passes when and
+      only when the word is absent.</p>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:14;237:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="b:3;237:13">Verify the inversion with both documents before committing the
+      rule set.</b> Use the REPL to confirm each case explicitly:</p>
+
+      <ol class="- topic/ol " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="ol:1;240:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="li:1;241:13">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:15;242:14"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="b:4;242:17">Failing case</b> — a document whose H1 contains "guide":</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:10;243:43">md-validate repl
+&gt; load docs/bad-guide.md
+&gt; eval title-must-not-contain-guide</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:16;246:14">Expected result: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:19;246:39">FAIL</codeph>. If the result is PASS, the
+          True/False branches are swapped — invert the routing.</p>
+        </li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="li:2;249:13">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:17;250:14"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="b:5;250:17">Passing case</b> — a document whose H1 does not contain "guide":</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeblock:11;251:43">&gt; load docs/clean-title.md
+&gt; eval title-must-not-contain-guide</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:18;253:14">Expected result: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:20;253:39">PASS</codeph>. If the result is FAIL,
+          the sentinel rule (rule 1) is not passing on its own — verify it
+          in isolation with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="codeph:21;255:37">eval description-must-exist</codeph>.</p>
+        </li>
+      </ol>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="p:19;259:10">Add a comment in the rule set JSON above the workflow to explain the
+      inversion and include a migration note for the v0.3 upgrade. See
+      <xref href="c_workflow-language-overview.dita#c_workflow-language-overview/inversion-antipattern" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-design-patterns.dita" xtrc="xref:11;261:105" type="section"><?ditaot usertext?>Workflow inversion anti-pattern</xref>
+      for the full failure-mode analysis.</p>
+    </section>
+
+  </conbody>
+</concept>
