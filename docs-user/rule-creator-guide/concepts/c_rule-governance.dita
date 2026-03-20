@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+  SEO keyword phrase: markdown-validator rule set governance versioning communication
+  Audience: rule-creator
+-->
+<concept id="c_rule-governance">
+  <title>Rule set governance and versioning</title>
+
+  <shortdesc>A rule set is a living document. Good governance practices protect
+  your authors from unexpected pipeline failures while allowing your editorial
+  standards to evolve over time.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>rule governance</keyword>
+        <keyword>rule set versioning</keyword>
+        <keyword>Required vs Suggested</keyword>
+        <keyword>author communication</keyword>
+        <keyword>deprecate rule</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Best practices for managing markdown-validator rule sets: versioning, communicating changes to authors, when to use Required vs. Suggested, and deprecating rules."/>
+    </metadata>
+  </prolog>
+
+  <conbody>
+
+    <section id="store-in-repo">
+      <title>Store the rule set in version control</title>
+      <p>Commit rule set files to the repository alongside the content they
+      govern, typically under <filepath>rules/</filepath>. This keeps author
+      and CI rule sets in sync and makes rollback a simple revert.</p>
+    </section>
+
+    <section id="required-vs-suggested">
+      <title>Deciding between Required and Suggested</title>
+      <p>The level of a rule determines whether authors are blocked or merely
+      informed. Use the following criteria:</p>
+
+      <table id="level-criteria">
+        <title>Level selection criteria</title>
+        <tgroup cols="2">
+          <colspec colname="situation" colwidth="3*"/>
+          <colspec colname="level" colwidth="1*"/>
+          <thead>
+            <row>
+              <entry>Situation</entry>
+              <entry>Level</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>The check enforces a hard contractual requirement (legal,
+              accessibility, platform dependency)</entry>
+              <entry>Required</entry>
+            </row>
+            <row>
+              <entry>The check enforces a well-established style rule that
+              all authors have been trained on</entry>
+              <entry>Required</entry>
+            </row>
+            <row>
+              <entry>You are introducing a new rule and want to monitor
+              compliance before enforcing it</entry>
+              <entry>Suggested (promote to Required after 30–60 days)</entry>
+            </row>
+            <row>
+              <entry>The check is a recommendation that should be visible
+              but should not block publication</entry>
+              <entry>Suggested</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <note type="tip">Introduce new Required rules gradually. Start as
+      Suggested, run reports to see how many articles fail, communicate the
+      upcoming change to your authors, then promote to Required after the
+      team has had time to address the backlog.</note>
+    </section>
+
+    <section id="communicating-changes">
+      <title>Communicating rule changes to authors</title>
+      <p>Authors who are blocked by a new rule they did not expect are
+      frustrated. Follow this process when adding or promoting a rule:</p>
+      <ol>
+        <li>Add the rule as <codeph>Suggested</codeph>.</li>
+        <li>Run a report across the repository to identify affected articles
+        and their owners.</li>
+        <li>Notify authors of the upcoming change with enough lead time to fix
+        their articles (at least two weeks for a large repository).</li>
+        <li>After the compliance window, change the level to
+        <codeph>Required</codeph> and commit the update.</li>
+      </ol>
+    </section>
+
+    <section id="deprecating-rules">
+      <title>Deprecating and removing rules</title>
+      <p>When a rule no longer reflects your editorial standards:</p>
+      <ol>
+        <li>Change the level from <codeph>Required</codeph> to
+        <codeph>Suggested</codeph> to stop blocking authors while you
+        plan the removal.</li>
+        <li>Remove the rule from the rule set file.</li>
+        <li>Update your rule set's changelog.</li>
+      </ol>
+      <p>Do not change a rule's ID once it is in use. If you change the rule
+      significantly, treat it as a new rule with a new ID and deprecate the
+      old one.</p>
+    </section>
+
+    <section id="changelog">
+      <title>Maintain a changelog</title>
+      <p>Keep a <filepath>CHANGELOG.md</filepath> alongside your rule set file
+      to document what changed, when, and why. Authors who receive unexpected
+      failures will search for this file first. At minimum, record:</p>
+      <ul>
+        <li>The date of each change</li>
+        <li>Which rules were added, changed, or removed</li>
+        <li>Whether a Suggested rule was promoted to Required</li>
+        <li>The reason for the change</li>
+      </ul>
+    </section>
+
+  </conbody>
+</concept>

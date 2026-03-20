@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_rule-sets-overview" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="concept:1;7:36" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="title:1;8:10">Understanding rule sets</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="keyword:1;13:18">rule set</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="keyword:2;14:18">JSON rule file</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="keyword:3;15:18">header rules</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="keyword:4;16:18">body rules</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="keyword:5;17:18">workflows</keyword>
+      </keywords>
+      <othermeta name="description" content="Learn how markdown-validator rule sets are structured: the rules section, header vs. body rules, and optional workflow chains." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="othermeta:1;20:147"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="shortdesc:1;24:14">A rule set is a JSON file that tells markdown-validator what to
+  check in a Markdown document. It contains two sections: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:1;25:67">rules</codeph>,
+  which defines individual checks, and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:2;26:48">workflows</codeph>, which chains
+  rules together with conditional logic.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="conbody:1;29:12">
+
+    <section id="rule-set-structure" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="section:1;31:38">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="title:2;32:14">Rule set structure</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="p:1;33:10">A rule set JSON file has the following top-level structure:</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeblock:1;35:39">{
+  "rules": {
+    "header": [ ... ],
+    "body":   [ ... ]
+  },
+  "workflows": [ ... ]
+}</codeblock>
+
+      <dl class="- topic/dl " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="dl:1;43:11">
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="dlentry:1;44:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="dt:1;45:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:3;45:23">rules.header</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="dd:1;46:15">An array of rules that check the YAML front-matter metadata at the
+          top of each Markdown file. Use header rules to validate fields like
+          <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:4;48:19">ms.topic</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:5;48:46">ms.date</codeph>,
+          <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:6;49:19">title</codeph>, and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:7;49:47">description</codeph>.</dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="dlentry:2;51:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="dt:2;52:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:8;52:23">rules.body</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="dd:2;53:15">An array of rules that check the document content — headings, section
+          structure, text patterns, paragraph length. Body rules use XPath
+          expressions to target specific elements in the rendered HTML.</dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="dlentry:3;57:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="dt:3;58:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:9;58:23">workflows</codeph></dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="dd:3;59:15">An optional array of workflow definitions. Workflows chain multiple
+          rules together with conditional logic ("if rule A passes, then also check
+          rule B"). If you do not need conditional logic, this array can be
+          empty or omitted.</dd>
+        </dlentry>
+      </dl>
+    </section>
+
+    <section id="header-vs-body" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="section:2;67:34">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="title:3;68:14">Header rules vs. body rules</title>
+
+      <table id="rule-type-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="table:1;70:35">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="title:4;71:16">Header rules vs. body rules</title>
+        <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="tgroup:1;72:26">
+          <colspec colname="col1" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="colspec:1;73:52" colnum="1"/>
+          <colspec colname="col2" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="colspec:2;74:52" colnum="2"/>
+          <colspec colname="col3" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="colspec:3;75:50" colnum="3"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="thead:1;76:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="row:1;77:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:1;78:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Aspect</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:2;79:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Header rules</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:3;80:22" colname="col3" dita-ot:x="3" dita-ot:y="1">Body rules</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="tbody:1;83:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="row:2;84:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:4;85:22" colname="col1" dita-ot:x="1" dita-ot:y="2">What they check</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:5;86:22" colname="col2" dita-ot:x="2" dita-ot:y="2">YAML front-matter key-value pairs</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:6;87:22" colname="col3" dita-ot:x="3" dita-ot:y="2">Markdown content rendered as HTML</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="row:3;89:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:7;90:22" colname="col1" dita-ot:x="1" dita-ot:y="3">Query syntax</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:8;91:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Metadata key name (for example, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:10;91:62">ms.topic</codeph>)</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:9;92:22" colname="col3" dita-ot:x="3" dita-ot:y="3">XPath expression (for example,
+              <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:11;93:23">/html/body/h1</codeph>)</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="row:4;95:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:10;96:22" colname="col1" dita-ot:x="1" dita-ot:y="4">Typical use cases</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:11;97:22" colname="col2" dita-ot:x="2" dita-ot:y="4">Required fields exist, field values match allowed values,
+              date is recent</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="entry:12;99:22" colname="col3" dita-ot:x="3" dita-ot:y="4">Heading count, section order, required headings present,
+              title starts with keyword</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="simple-example" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="section:3;107:34">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="title:5;108:14">A minimal rule set example</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="p:2;109:10">This rule set checks two things: the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:12;109:55">ms.topic</codeph>
+      front-matter field must equal <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:13;110:45">tutorial</codeph>, and the document
+      body must contain exactly one H1 heading.</p>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeblock:2;113:39">{
+  "rules": {
+    "header": [
+      {
+        "id": 1,
+        "name": "topic-must-be-tutorial",
+        "type": "header",
+        "query": "ms.topic",
+        "flag": "value",
+        "operation": "==",
+        "value": "tutorial",
+        "level": "Required",
+        "mitigation": "Set ms.topic: tutorial in the front matter."
+      }
+    ],
+    "body": [
+      {
+        "id": 2,
+        "name": "must-have-exactly-one-h1",
+        "type": "body",
+        "query": "/html/body/h1",
+        "flag": "count",
+        "operation": "==",
+        "value": "1",
+        "level": "Required",
+        "mitigation": "The document must have exactly one H1 heading."
+      }
+    ]
+  },
+  "workflows": []
+}</codeblock>
+    </section>
+
+    <section id="next-steps-ruleset" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="section:4;146:38">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="title:6;147:14">Next steps</title>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="ul:1;148:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="li:1;149:13">To understand each field in a rule, see
+        <xref href="c_rule-anatomy.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="xref:1;150:42">Anatomy of a validation rule</xref>.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="li:2;151:13">To create your first rule set file, see
+        <xref href="../tasks/t_create-rule-set.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="xref:2;152:54">Create a rule set file</xref>.</li>
+      </ul>
+    </section>
+
+  </conbody>
+</concept>

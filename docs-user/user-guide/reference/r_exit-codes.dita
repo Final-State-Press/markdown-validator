@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<!--
+  SEO keyword phrase: markdown-validator exit codes CI pipeline
+  Audience: user, DevOps
+-->
+<reference id="r_exit-codes">
+  <title>Exit codes reference</title>
+
+  <shortdesc>markdown-validator exits with code <codeph>0</codeph> when all
+  Required rules pass and code <codeph>1</codeph> when any Required rule fails.
+  CI systems use these codes to gate pull request merges.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>exit codes</keyword>
+        <keyword>CI pipeline exit code</keyword>
+        <keyword>validation pass fail code</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Reference for markdown-validator exit codes and their meaning in CI/CD pipelines."/>
+    </metadata>
+  </prolog>
+
+  <refbody>
+
+    <table id="exit-codes-table">
+      <title>Exit codes</title>
+      <tgroup cols="3">
+        <colspec colname="code" colwidth="1*"/>
+        <colspec colname="meaning" colwidth="2*"/>
+        <colspec colname="ci-effect" colwidth="3*"/>
+        <thead>
+          <row>
+            <entry>Code</entry>
+            <entry>Meaning</entry>
+            <entry>Effect in CI</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><codeph>0</codeph></entry>
+            <entry>All Required rules passed</entry>
+            <entry>CI step succeeds. The pipeline continues. Suggested-rule
+            failures do not affect this code.</entry>
+          </row>
+          <row>
+            <entry><codeph>1</codeph></entry>
+            <entry>One or more Required rules failed</entry>
+            <entry>CI step fails. The pipeline stops (unless configured to
+            continue on error). The merge is blocked.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <section id="notes">
+      <title>Notes</title>
+      <ul>
+        <li>Suggested-level failures do not change the exit code. A file with
+        only Suggested failures exits with code <codeph>0</codeph>.</li>
+        <li>A parse error (file has no front matter) produces exit code
+        <codeph>1</codeph>. The file is counted as a failed scan.</li>
+        <li>In a directory scan, one failing file sets the exit code to
+        <codeph>1</codeph> for the entire run.</li>
+      </ul>
+    </section>
+
+    <section id="check-exit-code">
+      <title>Checking the exit code in a shell script</title>
+      <codeblock xml:space="preserve">md-validate validate docs/ --rules rules/tutorial.json
+if [ $? -eq 0 ]; then
+  echo "All required rules passed."
+else
+  echo "Validation failed. Check the report for details."
+fi</codeblock>
+    </section>
+
+  </refbody>
+</reference>

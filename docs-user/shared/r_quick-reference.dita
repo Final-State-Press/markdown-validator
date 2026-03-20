@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<!--
+  SEO keyword phrase: markdown-validator quick reference cheat sheet operators flags workflow CLI
+  Audience: user, rule-creator
+-->
+<reference id="r_quick-reference">
+  <title>Quick reference</title>
+
+  <shortdesc>All operators, flags, workflow step tokens, CLI options, and exit codes
+  on one page. Use this page when you know what you need and just want the
+  symbol or syntax.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>quick reference</keyword>
+        <keyword>cheat sheet</keyword>
+        <keyword>operators flags workflow CLI</keyword>
+        <keyword>markdown-validator reference card</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Single-page quick reference for markdown-validator: CLI commands, operators, flags, workflow step tokens, and exit codes."/>
+    </metadata>
+  </prolog>
+
+  <refbody>
+
+    <!-- ============================================================ -->
+    <!-- CLI commands                                                 -->
+    <!-- ============================================================ -->
+    <section id="qr-cli">
+      <title>CLI commands</title>
+
+      <table id="qr-cli-table">
+        <tgroup cols="2">
+          <colspec colname="command" colwidth="3*"/>
+          <colspec colname="description" colwidth="3*"/>
+          <thead>
+            <row>
+              <entry>Command</entry>
+              <entry>What it does</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeblock xml:space="preserve">md-validate validate FILE --rules RULES</codeblock></entry>
+              <entry>Validate a single file and print a report.</entry>
+            </row>
+            <row>
+              <entry><codeblock xml:space="preserve">md-validate validate DIR/ --rules RULES</codeblock></entry>
+              <entry>Validate all <filepath>.md</filepath> files in the directory
+              recursively. Prints one report per file and a summary.</entry>
+            </row>
+            <row>
+              <entry><codeblock xml:space="preserve">md-validate validate DIR/ --rules RULES \
+  --format json --output reports/</codeblock></entry>
+              <entry>Validate and save one report file per document to
+              <filepath>reports/</filepath>. Formats: <codeph>text</codeph>,
+              <codeph>json</codeph>, <codeph>csv</codeph>.</entry>
+            </row>
+            <row>
+              <entry><codeblock xml:space="preserve">md-validate --verbose validate FILE --rules RULES</codeblock></entry>
+              <entry>Enable DEBUG-level logging to trace rule and workflow
+              evaluation step by step.</entry>
+            </row>
+            <row>
+              <entry><codeblock xml:space="preserve">md-validate --quiet validate DIR/ --rules RULES</codeblock></entry>
+              <entry>Suppress all output; use only the exit code
+              (<codeph>0</codeph> = pass, <codeph>1</codeph> = fail).</entry>
+            </row>
+            <row>
+              <entry><codeblock xml:space="preserve">md-validate repl</codeblock></entry>
+              <entry>Start the interactive REPL for authoring and testing
+              rules. See
+              <xref href="../rule-creator-guide/reference/r_repl-commands.dita">REPL commands reference</xref>.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <p>Full option list: <xref href="../user-guide/reference/r_cli-options.dita">CLI options reference</xref>.</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Exit codes                                                   -->
+    <!-- ============================================================ -->
+    <section id="qr-exit">
+      <title>Exit codes</title>
+
+      <table id="qr-exit-table">
+        <tgroup cols="2">
+          <colspec colname="code" colwidth="1*"/>
+          <colspec colname="meaning" colwidth="5*"/>
+          <thead>
+            <row>
+              <entry>Code</entry>
+              <entry>Meaning</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>0</codeph></entry>
+              <entry>All Required rules passed. Suggested failures do not
+              change this code.</entry>
+            </row>
+            <row>
+              <entry><codeph>1</codeph></entry>
+              <entry>One or more Required rules failed, or a file has no
+              parseable front matter. In a directory scan, one failing
+              file sets the code for the entire run.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Flags                                                        -->
+    <!-- ============================================================ -->
+    <section id="qr-flags">
+      <title>Flags</title>
+      <p>The <codeph>flag</codeph> field controls how the query result is
+      processed before comparison.</p>
+
+      <table id="qr-flags-table">
+        <tgroup cols="3">
+          <colspec colname="flag" colwidth="1*"/>
+          <colspec colname="ruletype" colwidth="1*"/>
+          <colspec colname="behavior" colwidth="4*"/>
+          <thead>
+            <row>
+              <entry>Flag</entry>
+              <entry>Rule type</entry>
+              <entry>Behavior</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>value</codeph></entry>
+              <entry>header</entry>
+              <entry>Raw string value of the front-matter key.</entry>
+            </row>
+            <row>
+              <entry><codeph>check</codeph></entry>
+              <entry>header</entry>
+              <entry>Returns <codeph>true</codeph> if the key exists,
+              <codeph>false</codeph> if absent. Use <codeph>== true</codeph>
+              by convention.</entry>
+            </row>
+            <row>
+              <entry><codeph>date</codeph></entry>
+              <entry>header</entry>
+              <entry>Parses the value as a date; computes age in days as
+              <codeph>(today − date).days</codeph>. Use <codeph>&lt;</codeph>
+              to require freshness within N days.</entry>
+            </row>
+            <row>
+              <entry><codeph>pattern</codeph></entry>
+              <entry>header</entry>
+              <entry>Applies the operator as a regex match against the
+              front-matter value.</entry>
+            </row>
+            <row>
+              <entry><codeph>count</codeph></entry>
+              <entry>body</entry>
+              <entry>Count of XPath matches. Returns an integer string.</entry>
+            </row>
+            <row>
+              <entry><codeph>text</codeph></entry>
+              <entry>body</entry>
+              <entry>Text content of the first XPath match. Empty string if
+              no match.</entry>
+            </row>
+            <row>
+              <entry><codeph>dom</codeph></entry>
+              <entry>body</entry>
+              <entry>Comma-separated list of HTML tag names of matched
+              elements.</entry>
+            </row>
+            <row>
+              <entry><codeph>all</codeph></entry>
+              <entry>body</entry>
+              <entry>All text content of matched elements including nested
+              text. Typically used with <codeph>/html/body</codeph>.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <p>Full descriptions and examples: <xref href="../rule-creator-guide/reference/r_flags.dita">Flags reference</xref>.</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Operators                                                    -->
+    <!-- ============================================================ -->
+    <section id="qr-operators">
+      <title>Operators</title>
+      <p>The <codeph>operation</codeph> field specifies the comparison between
+      the processed query result and <codeph>value</codeph>.</p>
+
+      <table id="qr-operators-table">
+        <tgroup cols="3">
+          <colspec colname="token" colwidth="1*"/>
+          <colspec colname="name" colwidth="1.5*"/>
+          <colspec colname="behavior" colwidth="3.5*"/>
+          <thead>
+            <row>
+              <entry>Token</entry>
+              <entry>Name</entry>
+              <entry>Passes when</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>==</codeph></entry>
+              <entry>Equals</entry>
+              <entry>Result equals value (whitespace-stripped, case-sensitive).</entry>
+            </row>
+            <row>
+              <entry><codeph>!=</codeph></entry>
+              <entry>Not equals</entry>
+              <entry>Result does not equal value (whitespace-stripped).</entry>
+            </row>
+            <row>
+              <entry><codeph>&gt;</codeph></entry>
+              <entry>Greater than</entry>
+              <entry>Result (integer) is greater than value (integer).</entry>
+            </row>
+            <row>
+              <entry><codeph>&lt;</codeph></entry>
+              <entry>Less than</entry>
+              <entry>Result (integer) is less than value (integer).</entry>
+            </row>
+            <row>
+              <entry><codeph>[]</codeph></entry>
+              <entry>Contains</entry>
+              <entry>Result contains value as a substring (case-insensitive);
+              for comma-separated lists, at least one value must match.</entry>
+            </row>
+            <row>
+              <entry><codeph>[:</codeph></entry>
+              <entry>Starts with</entry>
+              <entry>Result starts with value string.</entry>
+            </row>
+            <row>
+              <entry><codeph>:]</codeph></entry>
+              <entry>Ends with</entry>
+              <entry>Result ends with value string.</entry>
+            </row>
+            <row>
+              <entry><codeph>r</codeph></entry>
+              <entry>Regex match</entry>
+              <entry><codeph>re.search(value, result)</codeph> matches
+              (DOTALL mode).</entry>
+            </row>
+            <row>
+              <entry><codeph>l</codeph></entry>
+              <entry>Length limit</entry>
+              <entry><codeph>len(result) &lt; int(value)</codeph>.</entry>
+            </row>
+            <row>
+              <entry><codeph>s</codeph></entry>
+              <entry>Max sentences</entry>
+              <entry>Sentence count ≤ value. Requires NLTK corpora.</entry>
+            </row>
+            <row>
+              <entry><codeph>p&lt;N&gt;</codeph></entry>
+              <entry>Part of speech</entry>
+              <entry>Nth word's POS tag equals value (Penn Treebank tags,
+              1-indexed). Requires NLTK corpora.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <p>Full descriptions and examples: <xref href="../rule-creator-guide/reference/r_operators.dita">Operators reference</xref>.</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- Workflow step tokens                                         -->
+    <!-- ============================================================ -->
+    <section id="qr-workflow">
+      <title>Workflow step tokens</title>
+      <p>A workflow's <codeph>steps</codeph> string is a comma-separated list
+      of <codeph>source-target</codeph> tokens. N represents a rule ID.</p>
+
+      <table id="qr-workflow-table">
+        <tgroup cols="2">
+          <colspec colname="token" colwidth="1.5*"/>
+          <colspec colname="meaning" colwidth="4.5*"/>
+          <thead>
+            <row>
+              <entry>Token</entry>
+              <entry>Meaning</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>S-N</codeph></entry>
+              <entry>Start: load rule N as the initial state.</entry>
+            </row>
+            <row>
+              <entry><codeph>N-E</codeph></entry>
+              <entry>Rule N's result ends the workflow.</entry>
+            </row>
+            <row>
+              <entry><codeph>N-N</codeph></entry>
+              <entry>Both rules must pass (logical AND).</entry>
+            </row>
+            <row>
+              <entry><codeph>N-D</codeph></entry>
+              <entry>Rule N's result becomes the decision (branch) point.</entry>
+            </row>
+            <row>
+              <entry><codeph>T-N</codeph></entry>
+              <entry>If the decision is True (pass), load rule N.</entry>
+            </row>
+            <row>
+              <entry><codeph>F-N</codeph></entry>
+              <entry>If the decision is False (fail), load rule N.</entry>
+            </row>
+            <row>
+              <entry><codeph>T-R</codeph></entry>
+              <entry>If True, reverse (negate) the decision.</entry>
+            </row>
+            <row>
+              <entry><codeph>F-R</codeph></entry>
+              <entry>If False, reverse (negate) the decision.</entry>
+            </row>
+            <row>
+              <entry><codeph>N-M</codeph></entry>
+              <entry>Rule N's result exits to the merge state.</entry>
+            </row>
+            <row>
+              <entry><codeph>M-N</codeph></entry>
+              <entry>Merge state exits to rule N (continues the workflow).</entry>
+            </row>
+            <row>
+              <entry><codeph>M-D</codeph></entry>
+              <entry>Merge state becomes the decision point.</entry>
+            </row>
+            <row>
+              <entry><codeph>M-E</codeph></entry>
+              <entry>Merge state ends the workflow.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <p><b>Common recipes:</b></p>
+      <dl>
+        <dlentry>
+          <dt>Single rule</dt>
+          <dd><codeph>S-1,1-E</codeph></dd>
+        </dlentry>
+        <dlentry>
+          <dt>AND (both must pass)</dt>
+          <dd><codeph>S-1,1-2,2-E</codeph></dd>
+        </dlentry>
+        <dlentry>
+          <dt>Conditional (run B only when A passes)</dt>
+          <dd><codeph>S-A,A-D,T-B,F-sentinel,B-M,sentinel-M,M-E</codeph></dd>
+        </dlentry>
+      </dl>
+
+      <p>Full step patterns with examples: <xref href="../rule-creator-guide/reference/r_workflow-steps.dita">Workflow step patterns reference</xref>.</p>
+    </section>
+
+  </refbody>
+</reference>

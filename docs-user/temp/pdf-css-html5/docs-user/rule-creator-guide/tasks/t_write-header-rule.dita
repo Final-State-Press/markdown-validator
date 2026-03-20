@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/tasks?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/tasks/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Task//EN?><?doctype-system task.dtd?><task xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="t_write-header-rule" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic task/task " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="task:1;7:32" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="title:1;8:10">Write a header rule to check front-matter metadata</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="keyword:1;13:18">header rule</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="keyword:2;14:18">front matter validation</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="keyword:3;15:18">YAML metadata check</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="keyword:4;16:18">write rule</keyword>
+      </keywords>
+      <othermeta name="description" content="Write a markdown-validator header rule to check YAML front-matter fields: required fields, exact values, allowed value sets, and date freshness." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="othermeta:1;19:165"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="shortdesc:1;23:14">Header rules check the YAML front-matter metadata at the top of
+  your Markdown files. Use them to enforce required fields, expected values,
+  date freshness, and naming patterns.</shortdesc>
+
+  <taskbody class="- topic/body task/taskbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="taskbody:1;27:13">
+
+    <prereq id="prereq" class="- topic/section task/prereq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="prereq:1;29:25">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="p:1;30:10">You have an existing rule set file. See
+      <xref href="t_create-rule-set.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="xref:1;31:43">Create a rule set file</xref>. Understand the rule fields before
+      proceeding: <xref href="../concepts/c_rule-anatomy.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="xref:2;32:64">Anatomy of a validation rule</xref>.</p>
+    </prereq>
+
+    <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="steps:1;35:12">
+
+      <step id="step-identify" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="step:1;37:32">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="cmd:1;38:14">Identify the front-matter field you want to check and the editorial
+        requirement it must satisfy.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="info:1;40:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="p:2;41:14">Examples:</p>
+          <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="ul:1;42:15">
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="li:1;43:17">The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:1;43:29">description</codeph> field must exist.</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="li:2;44:17">The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:2;44:29">ms.topic</codeph> field must equal
+            <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:3;45:21">tutorial</codeph>.</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="li:3;46:17">The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:4;46:29">ms.date</codeph> field must be within the last
+            365 days.</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-choose-flag" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="step:2;52:35">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="cmd:2;53:14">Choose the flag that matches how you want to process the field
+        value.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="info:2;55:15">
+          <table class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="table:1;56:18">
+            <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="title:2;57:20">Flag selection for header rules</title>
+            <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="tgroup:1;58:30">
+              <colspec colname="col1" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="colspec:1;59:53" colnum="1"/>
+              <colspec colname="col2" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="colspec:2;60:54" colnum="2"/>
+              <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="thead:1;61:22">
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="row:1;62:22"><entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="entry:1;62:29" colname="col1" dita-ot:x="1" dita-ot:y="1">You want to check...</entry><entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="entry:2;62:64" colname="col2" dita-ot:x="2" dita-ot:y="1">Use flag</entry></row>
+              </thead>
+              <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="tbody:1;64:22">
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="row:2;65:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="entry:3;66:26" colname="col1" dita-ot:x="1" dita-ot:y="2">The field exists (any value is acceptable)</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="entry:4;67:26" colname="col2" dita-ot:x="2" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:5;67:34">check</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="row:3;69:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="entry:5;70:26" colname="col1" dita-ot:x="1" dita-ot:y="3">The field equals a specific value</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="entry:6;71:26" colname="col2" dita-ot:x="2" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:6;71:34">value</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="row:4;73:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="entry:7;74:26" colname="col1" dita-ot:x="1" dita-ot:y="4">The field's date is within N days</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="entry:8;75:26" colname="col2" dita-ot:x="2" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:7;75:34">date</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="row:5;77:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="entry:9;78:26" colname="col1" dita-ot:x="1" dita-ot:y="5">The field matches a regular-expression pattern</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="entry:10;79:26" colname="col2" dita-ot:x="2" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:8;79:34">pattern</codeph></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </info>
+      </step>
+
+      <step id="step-choose-operator" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="step:3;87:39">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="cmd:3;88:14">Choose the operator and expected value.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="info:3;89:15">
+          <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="ul:2;90:15">
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="li:4;91:17">For <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:9;91:29">check</codeph>: use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:10;91:57">"operation": "=="</codeph>
+            and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:11;92:25">"value": "true"</codeph>.</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="li:5;93:17">For exact string match: use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:12;93:53">"operation": "=="</codeph>
+            and the expected string.</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="li:6;95:17">For allowed-values set: use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:13;95:53">"operation": "[]"</codeph>
+            and a comma-separated list in <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:14;96:51">value</codeph>.</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="li:7;97:17">For date freshness: use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:15;97:49">"operation": "&lt;"</codeph>
+            and the maximum age in days.</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-write-mitigation" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="step:4;103:40">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="cmd:4;104:14">Write a clear, actionable mitigation message.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="info:4;105:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="p:3;106:14">The mitigation message is shown directly to authors when their
+          document fails this rule. Write it as an imperative sentence that
+          tells them exactly what to do. Compare:</p>
+          <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="ul:3;109:15">
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="li:8;110:17"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="b:1;110:20">Unclear:</b> "ms.topic value is invalid."</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="li:9;111:17"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="b:2;111:20">Clear:</b> "Set ms.topic to one of: tutorial, how-to,
+            concept, reference."</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-add-to-rule-set" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="step:5;117:39">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="cmd:5;118:14">Add the rule object to the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeph:16;118:49">header</codeph> array in your
+        rule set file.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="info:5;120:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeblock:1;121:43">{
+  "id": 3,
+  "name": "ms-topic-must-be-allowed-value",
+  "type": "header",
+  "query": "ms.topic",
+  "flag": "value",
+  "operation": "[]",
+  "value": "tutorial, how-to, concept, reference",
+  "level": "Required",
+  "mitigation": "Set ms.topic to one of: tutorial, how-to, concept, reference."
+}</codeblock>
+        </info>
+      </step>
+
+      <step id="step-test" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="step:6;135:28">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="cmd:6;136:14">Test the rule against a document that should pass and a document
+        that should fail.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="info:6;138:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="codeblock:2;139:43">md-validate validate passing-doc.md --rules rules/tutorial.json
+md-validate validate failing-doc.md --rules rules/tutorial.json</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="p:4;141:14">Confirm the passing document scores correctly and the failing
+          document shows your mitigation message. For interactive testing,
+          see <xref href="t_test-rule-repl.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-header-rule.dita" xtrc="xref:3;143:50">Test a rule in the REPL</xref>.</p>
+        </info>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

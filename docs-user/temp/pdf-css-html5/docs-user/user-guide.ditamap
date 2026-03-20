@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/?><?path2project?><?path2project-uri ./?><?path2rootmap-uri ./?><?doctype-public -//OASIS//DTD DITA Map//EN?><?doctype-system map.dtd?><map xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" cascade="merge" class="- map/map " ditaarch:DITAArchVersion="1.3" domains="(map mapgroup-d) (topic abbrev-d) (topic delay-d) a(props deliveryTarget) (map ditavalref-d) (map glossref-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" id="user-guide" specializations="@props/deliveryTarget" xtrc="map:1;8:22" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap">
+  <title class="- topic/title " xtrc="title:1;9:10" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap">User Guide</title>
+
+  <topicmeta class="- map/topicmeta " xtrc="topicmeta:1;11:14" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap">
+    <shortdesc class="- map/shortdesc " xtrc="shortdesc:1;12:16" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap">Step-by-step guidance for technical writers and content authors
+    who validate Markdown files with markdown-validator.</shortdesc>
+    <othermeta class="- topic/othermeta " content="user" name="audience" xtrc="othermeta:1;14:48" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+  </topicmeta>
+
+  
+  
+  
+  <topichead class="+ map/topicref mapgroup-d/topichead " navtitle="Understanding markdown-validator" xtrc="topichead:1;20:58" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap">
+    <topicref class="- map/topicref " format="dita" href="user-guide/concepts/c_what-is-markdown-validator.dita" xtrc="topicref:1;21:91" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/concepts/c_how-validation-works.dita" xtrc="topicref:2;22:85" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/concepts/c_validation-levels.dita" xtrc="topicref:3;23:82" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/concepts/c_ci-integration-overview.dita" xtrc="topicref:4;24:88" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/concepts/c_multiple-rulesets.dita" xtrc="topicref:5;25:82" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+  </topichead>
+
+  
+  
+  
+  <topichead class="+ map/topicref mapgroup-d/topichead " navtitle="Get started" xtrc="topichead:2;31:37" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap">
+    <topicref class="- map/topicref " format="dita" href="user-guide/tasks/t_end-to-end-setup.dita" xtrc="topicref:6;32:78" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/tasks/t_install.dita" xtrc="topicref:7;33:69" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/tasks/t_download-nltk.dita" xtrc="topicref:8;34:75" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+  </topichead>
+
+  
+  
+  
+  <topichead class="+ map/topicref mapgroup-d/topichead " navtitle="Validate documents" xtrc="topichead:3;40:44" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap">
+    <topicref class="- map/topicref " format="dita" href="user-guide/tasks/t_validate-single-file.dita" xtrc="topicref:9;41:82" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/tasks/t_read-validation-report.dita" xtrc="topicref:10;42:84" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/tasks/t_validate-directory.dita" xtrc="topicref:11;43:80" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/tasks/t_set-output-format.dita" xtrc="topicref:12;44:79" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/tasks/t_save-reports.dita" xtrc="topicref:13;45:74" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+  </topichead>
+
+  
+  
+  
+  <topichead class="+ map/topicref mapgroup-d/topichead " navtitle="CI/CD integration" xtrc="topichead:4;51:43" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap">
+    <topicref class="- map/topicref " format="dita" href="user-guide/tasks/t_integrate-github-actions.dita" xtrc="topicref:14;52:86" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+  </topichead>
+
+  
+  
+  
+  <topichead class="+ map/topicref mapgroup-d/topichead " navtitle="Reference" xtrc="topichead:5;58:35" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap">
+    <topicref class="- map/topicref " format="dita" href="shared/r_quick-reference.dita" xtrc="topicref:15;59:67" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/reference/r_cli-options.dita" xtrc="topicref:16;60:77" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/reference/r_exit-codes.dita" xtrc="topicref:17;61:76" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+    <topicref class="- map/topicref " format="dita" href="user-guide/reference/r_report-output.dita" xtrc="topicref:18;62:79" xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide.ditamap"/>
+  </topichead>
+
+</map>

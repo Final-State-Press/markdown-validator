@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/troubleshooting?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/troubleshooting/?><?path2project ../?><?path2project-uri ../?><?path2rootmap-uri ../?><?doctype-public -//OASIS//DTD DITA Troubleshooting//EN?><?doctype-system troubleshooting.dtd?><troubleshooting xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ts_ci-fails" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic troubleshooting++task) (topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic troubleshooting/troubleshooting " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="troubleshooting:1;7:35" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="title:1;8:10">Resolve a validation failure in a CI/CD pipeline</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="keyword:1;13:18">CI pipeline fails</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="keyword:2;14:18">GitHub Actions validation failure</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="keyword:3;15:18">pull request blocked</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="keyword:4;16:18">validation gate fails</keyword>
+      </keywords>
+      <othermeta name="description" content="Diagnose and fix a markdown-validator step that fails in a CI/CD pipeline, including how to read the failure report and reproduce the failure locally." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="othermeta:1;19:171"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="shortdesc:1;23:14">When the validation step in your CI pipeline fails, your pull request
+  is blocked. This topic shows you how to find the failure report, reproduce the
+  failure locally, and resolve the specific issue.</shortdesc>
+
+  <troublebody class="- topic/body troubleshooting/troublebody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="troublebody:1;27:16">
+
+    <condition id="condition" class="- topic/section troubleshooting/condition " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="condition:1;29:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="title:2;30:14">Situation</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="p:1;31:10">Your pull request shows a failing check in CI. The check is named
+      something like <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="b:1;32:25">Validate documentation</b> or <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="b:2;32:58">validate</b>. The
+      merge button is blocked.</p>
+    </condition>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="troubleSolution:1;36:22">
+      <cause id="cause-required-rule" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cause:1;37:39">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="title:3;38:16">Cause: A Required rule failed</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="p:2;39:12">One or more Required validation rules failed on at least one file
+        in your pull request.</p>
+      </cause>
+      <remedy id="remedy-required-rule" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="remedy:1;42:41">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="title:4;43:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="steps:1;44:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="step:1;45:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cmd:1;46:18">Open the CI pipeline log to find the rule failure details.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="info:1;47:19">
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="p:3;48:18">In GitHub Actions: navigate to the <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="b:3;48:56">Actions</b> tab of the
+              repository, select the failing workflow run, expand the
+              <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="b:4;50:18">Validate documentation</b> step, and read the output.</p>
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="p:4;51:18">Alternatively, if reports were uploaded as artifacts, download
+              the <b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="b:5;52:22">validation-reports</b> artifact and open the JSON file for
+              your changed article.</p>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="step:2;56:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cmd:2;57:18">Note the rule name and mitigation message for each failure.</cmd>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="step:3;59:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cmd:3;60:18">Reproduce the failure locally.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="info:2;61:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="codeblock:1;62:47">md-validate validate docs/your-article.md --rules rules/tutorial.json</codeblock>
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="p:5;63:18">Confirm you see the same failure. If local validation passes
+              but CI fails, check that your local rule set and the one in CI
+              are the same version.</p>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="step:4;68:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cmd:4;69:18">Fix the identified failures using the mitigation messages
+            as your guide.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="info:3;71:19">
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="p:6;72:18">For guidance on common failure types, see
+              <xref href="../user-guide/tasks/t_read-validation-report.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="xref:1;73:78" type="task"><?ditaot usertext?>Read the validation report<?ditaot genshortdesc?><desc class="- topic/desc ">A validation report shows which rules your file passes or fails,   the severity of each failure, and a plain-English mitigation message that tells   you exactly what to fix. This topic walks you through reading the report and   taking action.</desc></xref>.</p>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="step:5;76:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cmd:5;77:18">Push the fix and verify the CI check passes.</cmd>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="troubleSolution:2;83:22">
+      <cause id="cause-nltk-ci" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cause:2;84:33">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="title:5;85:16">Cause: NLTK data is missing from the CI environment</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="p:7;86:12">The pipeline does not include a step to download NLTK corpora, or
+        the NLTK cache step failed.</p>
+      </cause>
+      <remedy id="remedy-nltk-ci" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="remedy:2;89:35">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="title:6;90:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="steps:2;91:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="step:6;92:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cmd:6;93:18">Open your workflow file
+            (<filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="filepath:1;94:24">.github/workflows/validate-docs.yml</filepath>) and
+            add the NLTK download step before the validation step.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="info:4;96:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="codeblock:2;97:47">- name: Download NLTK language data
+  run: python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng</codeblock>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="step:7;101:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cmd:7;102:18">Commit the updated workflow file and push.</cmd>
+            <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="stepresult:1;103:25">The CI pipeline downloads the NLTK corpora before
+            validation runs. For a complete workflow example including the
+            NLTK cache step, see
+            <xref href="../user-guide/tasks/t_integrate-github-actions.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="xref:2;106:78" type="task"><?ditaot usertext?>Add markdown-validator to a GitHub Actions workflow<?ditaot genshortdesc?><desc class="- topic/desc ">Create a GitHub Actions workflow file that installs   markdown-validator, downloads NLTK language data, validates your   documentation on every pull request, and uploads reports as downloadable   artifacts.</desc></xref>.</stepresult>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="troubleSolution:3;112:22">
+      <cause id="cause-wrong-rules" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cause:3;113:37">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="title:7;114:16">Cause: CI uses a different rule set than local validation</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="p:8;115:12">CI validates with the rule set file committed to the repository.
+        If you are running a different version of the rule set locally, the
+        results will differ.</p>
+      </cause>
+      <remedy id="remedy-wrong-rules" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="remedy:3;119:39">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="title:8;120:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="steps:3;121:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="step:8;122:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cmd:8;123:18">Check the CI configuration file to see which rule set
+            it uses.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="info:5;125:19">
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="p:9;126:18">Open <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="filepath:2;126:33">.github/workflows/validate-docs.yml</filepath>
+              and look for the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="codeph:1;127:40">--rules</codeph> flag in the validate
+              step.</p>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="step:9;131:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="cmd:9;132:18">Run local validation with the same rule set path.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="info:6;133:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_ci-fails.dita" xtrc="codeblock:3;134:47">md-validate validate docs/your-article.md --rules rules/tutorial.json</codeblock>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+  </troublebody>
+</troubleshooting>

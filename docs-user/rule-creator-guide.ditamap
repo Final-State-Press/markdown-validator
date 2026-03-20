@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<!--
+  Secondary DITA map: Rule Creator Guide.
+  Audience: content leads and editorial leads who author and maintain
+  JSON rule sets for markdown-validator.
+-->
+<map id="rule-creator-guide">
+  <title>Rule Creator Guide</title>
+
+  <topicmeta>
+    <shortdesc>Complete guidance for content leads and editorial teams who
+    author, test, and maintain validation rule sets for markdown-validator.</shortdesc>
+    <othermeta name="audience" content="rule-creator"/>
+  </topicmeta>
+
+  <!-- ============================================================ -->
+  <!-- Understanding rule sets                                      -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Understanding rule sets">
+    <topicref href="rule-creator-guide/concepts/c_rule-sets-overview.dita" format="dita"/>
+    <topicref href="rule-creator-guide/concepts/c_rule-anatomy.dita" format="dita"/>
+    <topicref href="rule-creator-guide/concepts/c_workflow-language-overview.dita" format="dita"/>
+    <topicref href="rule-creator-guide/concepts/c_rule-design-patterns.dita" format="dita"/>
+  </topichead>
+
+  <!-- ============================================================ -->
+  <!-- Author rules                                                 -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Author rules">
+    <topicref href="rule-creator-guide/tasks/t_create-rule-set.dita" format="dita"/>
+    <topicref href="rule-creator-guide/tasks/t_write-header-rule.dita" format="dita"/>
+    <topicref href="rule-creator-guide/tasks/t_write-body-rule.dita" format="dita"/>
+    <topicref href="rule-creator-guide/tasks/t_write-workflow.dita" format="dita"/>
+  </topichead>
+
+  <!-- ============================================================ -->
+  <!-- Test rules                                                   -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Test rules">
+    <topicref href="rule-creator-guide/tasks/t_start-repl.dita" format="dita"/>
+    <topicref href="rule-creator-guide/tasks/t_test-rule-repl.dita" format="dita"/>
+    <topicref href="rule-creator-guide/tasks/t_test-workflow-repl.dita" format="dita"/>
+  </topichead>
+
+  <!-- ============================================================ -->
+  <!-- Govern and deploy                                            -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Govern and deploy">
+    <topicref href="rule-creator-guide/concepts/c_rule-governance.dita" format="dita"/>
+    <topicref href="rule-creator-guide/concepts/c_known-limitations.dita" format="dita"/>
+    <topicref href="rule-creator-guide/tasks/t_deploy-rule-set.dita" format="dita"/>
+  </topichead>
+
+  <!-- ============================================================ -->
+  <!-- Reference                                                    -->
+  <!-- ============================================================ -->
+  <topichead navtitle="Reference">
+    <topicref href="rule-creator-guide/reference/r_rule-fields.dita" format="dita"/>
+    <topicref href="rule-creator-guide/reference/r_flags.dita" format="dita"/>
+    <topicref href="rule-creator-guide/reference/r_operators.dita" format="dita"/>
+    <topicref href="rule-creator-guide/reference/r_workflow-steps.dita" format="dita"/>
+    <topicref href="rule-creator-guide/reference/r_repl-commands.dita" format="dita"/>
+  </topichead>
+
+</map>

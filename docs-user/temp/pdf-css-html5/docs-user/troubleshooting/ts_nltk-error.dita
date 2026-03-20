@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/troubleshooting?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/troubleshooting/?><?path2project ../?><?path2project-uri ../?><?path2rootmap-uri ../?><?doctype-public -//OASIS//DTD DITA Troubleshooting//EN?><?doctype-system troubleshooting.dtd?><troubleshooting xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ts_nltk-error" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic troubleshooting++task) (topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic troubleshooting/troubleshooting " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="troubleshooting:1;7:37" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="title:1;8:10">Resolve a NLTK LookupError on first run</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="keyword:1;13:18">NLTK LookupError</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="keyword:2;14:18">punkt_tab not found</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="keyword:3;15:18">sentence rule error</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="keyword:4;16:18">NLTK download fix</keyword>
+      </keywords>
+      <othermeta name="description" content="Fix the NLTK LookupError that occurs when running sentence-count or part-of-speech validation rules without the required NLTK language data." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="othermeta:1;19:161"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="shortdesc:1;23:14">A <systemoutput class="+ topic/ph sw-d/systemoutput " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="systemoutput:1;23:30">LookupError: Resource punkt_tab not found</systemoutput>
+  error means the NLTK language data required by sentence-count or part-of-speech
+  rules is not installed on your system.</shortdesc>
+
+  <troublebody class="- topic/body troubleshooting/troublebody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="troublebody:1;27:16">
+
+    <condition id="condition" class="- topic/section troubleshooting/condition " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="condition:1;29:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="title:2;30:14">Situation</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="p:1;31:10">You run <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="codeph:1;31:26">md-validate validate</codeph> and see an error similar
+      to:</p>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="codeblock:1;33:39">LookupError: Resource punkt_tab not found.
+Please use the NLTK Downloader to obtain the resource:
+  &gt;&gt;&gt; import nltk; nltk.download('punkt_tab')</codeblock>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="p:2;36:10">This error occurs when a rule uses the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="codeph:2;36:57">s</codeph> (sentence
+      count) or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="codeph:3;37:25">p&lt;N&gt;</codeph> (part of speech) operators and the
+      required NLTK corpora are not installed.</p>
+    </condition>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="troubleSolution:1;41:22">
+      <cause id="cause" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="cause:1;42:25">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="title:3;43:16">Cause</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="p:3;44:12">The NLTK language data files (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="codeph:4;44:50">punkt_tab</codeph> and
+        <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="codeph:5;45:17">averaged_perceptron_tagger_eng</codeph>) are not included in
+        the markdown-validator pip package. They must be downloaded once per
+        Python environment before sentence or POS rules can run.</p>
+      </cause>
+      <remedy id="remedy" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="remedy:1;49:27">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="title:4;50:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="steps:1;51:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="step:1;52:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="cmd:1;53:18">Activate the virtual environment where markdown-validator is
+            installed.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="info:1;55:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="codeblock:2;56:47">source .venv/bin/activate       # macOS/Linux
+.venv\Scripts\Activate.ps1      # Windows PowerShell</codeblock>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="step:2;60:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="cmd:2;61:18">Download the required NLTK corpora.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="info:2;62:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="codeblock:3;63:47">python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng</codeblock>
+            </info>
+            <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="stepresult:1;65:25">NLTK downloads the files to your NLTK data directory
+            (<filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="filepath:1;66:24">~/nltk_data</filepath> on macOS/Linux).</stepresult>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="step:3;68:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="cmd:3;69:18">Re-run the validation.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="info:3;70:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="codeblock:4;71:47">md-validate validate docs/article.md --rules rules/tutorial.json</codeblock>
+            </info>
+            <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="stepresult:2;73:25">The LookupError no longer appears.</stepresult>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="troubleSolution:2;79:22">
+      <cause id="cause-ci" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="cause:2;80:28">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="title:5;81:16">Cause (CI environment)</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="p:4;82:12">The CI pipeline does not include an NLTK download step.</p>
+      </cause>
+      <remedy id="remedy-ci" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="remedy:2;84:30">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="title:6;85:16">Resolution (CI environment)</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="p:5;86:12">Add the NLTK download step to your CI workflow before the validation
+        step. See <xref href="../user-guide/tasks/t_integrate-github-actions.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="xref:1;87:84">Add markdown-validator to a GitHub Actions workflow</xref>
+        for a complete example that includes this step.</p>
+      </remedy>
+    </troubleSolution>
+
+  </troublebody>
+</troubleshooting>

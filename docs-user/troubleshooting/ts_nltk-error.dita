@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE troubleshooting PUBLIC "-//OASIS//DTD DITA Troubleshooting//EN" "troubleshooting.dtd">
+<!--
+  SEO keyword phrase: markdown-validator NLTK LookupError punkt_tab fix
+  Audience: user, rule-creator
+-->
+<troubleshooting id="ts_nltk-error">
+  <title>Resolve a NLTK LookupError on first run</title>
+
+  <shortdesc>A <systemoutput>LookupError: Resource punkt_tab not found</systemoutput>
+  error means the NLTK language data required by sentence-count or part-of-speech
+  rules is not installed on your system.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>NLTK LookupError</keyword>
+        <keyword>punkt_tab not found</keyword>
+        <keyword>sentence rule error</keyword>
+        <keyword>NLTK download fix</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Fix the NLTK LookupError that occurs when running sentence-count or part-of-speech validation rules without the required NLTK language data."/>
+    </metadata>
+  </prolog>
+
+  <troublebody>
+
+    <condition id="condition">
+      <title>Situation</title>
+      <p>You run <codeph>md-validate validate</codeph> and see an error similar
+      to:</p>
+      <codeblock xml:space="preserve">LookupError: Resource punkt_tab not found.
+Please use the NLTK Downloader to obtain the resource:
+  &gt;&gt;&gt; import nltk; nltk.download('punkt_tab')</codeblock>
+      <p>This error occurs when a rule uses the <codeph>s</codeph> (sentence
+      count) or <codeph>p&lt;N&gt;</codeph> (part of speech) operators and the
+      required NLTK corpora are not installed.</p>
+    </condition>
+
+    <troubleSolution>
+      <cause id="cause">
+        <title>Cause</title>
+        <p>The NLTK language data files (<codeph>punkt_tab</codeph> and
+        <codeph>averaged_perceptron_tagger_eng</codeph>) are not included in
+        the markdown-validator pip package. They must be downloaded once per
+        Python environment before sentence or POS rules can run.</p>
+      </cause>
+      <remedy id="remedy">
+        <title>Resolution</title>
+        <steps>
+          <step>
+            <cmd>Activate the virtual environment where markdown-validator is
+            installed.</cmd>
+            <info>
+              <codeblock xml:space="preserve">source .venv/bin/activate       # macOS/Linux
+.venv\Scripts\Activate.ps1      # Windows PowerShell</codeblock>
+            </info>
+          </step>
+          <step>
+            <cmd>Download the required NLTK corpora.</cmd>
+            <info>
+              <codeblock xml:space="preserve">python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng</codeblock>
+            </info>
+            <stepresult>NLTK downloads the files to your NLTK data directory
+            (<filepath>~/nltk_data</filepath> on macOS/Linux).</stepresult>
+          </step>
+          <step>
+            <cmd>Re-run the validation.</cmd>
+            <info>
+              <codeblock xml:space="preserve">md-validate validate docs/article.md --rules rules/tutorial.json</codeblock>
+            </info>
+            <stepresult>The LookupError no longer appears.</stepresult>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution>
+      <cause id="cause-ci">
+        <title>Cause (CI environment)</title>
+        <p>The CI pipeline does not include an NLTK download step.</p>
+      </cause>
+      <remedy id="remedy-ci">
+        <title>Resolution (CI environment)</title>
+        <steps-informal>
+          <p>Add the NLTK download step to your CI workflow before the validation
+          step. See <xref href="../user-guide/tasks/t_integrate-github-actions.dita">Add markdown-validator to a GitHub Actions workflow</xref>
+          for a complete example that includes this step.</p>
+        </steps-informal>
+      </remedy>
+    </troubleSolution>
+
+  </troublebody>
+</troubleshooting>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/tasks?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/tasks/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Task//EN?><?doctype-system task.dtd?><task xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="t_download-nltk" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic task/task " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="task:1;7:28" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="title:1;8:10">Download NLTK language data</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="keyword:1;13:18">NLTK download</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="keyword:2;14:18">punkt_tab</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="keyword:3;15:18">LookupError</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="keyword:4;16:18">sentence count rules</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="keyword:5;17:18">part-of-speech rules</keyword>
+      </keywords>
+      <othermeta name="description" content="Download the NLTK language data required by sentence-count and part-of-speech validation rules. Needed once per environment." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="othermeta:1;20:145"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="shortdesc:1;24:14">Download the NLTK language corpora required by validation rules
+  that check sentence counts or part-of-speech tags. You only need to do this
+  once per Python environment.</shortdesc>
+
+  <taskbody class="- topic/body task/taskbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="taskbody:1;28:13">
+
+    <prereq id="prereq" class="- topic/section task/prereq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="prereq:1;30:25">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="p:1;31:10">markdown-validator must be installed. See
+      <xref href="t_install.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="xref:1;32:35" type="task"><?ditaot usertext?>Install markdown-validator<?ditaot genshortdesc?><desc class="- topic/desc ">Install markdown-validator with pip in a Python virtual environment.   After installation, the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeph:1;24:35">md-validate</codeph> command is available from   your terminal.</desc></xref>.</p>
+    </prereq>
+
+    <context id="context" class="- topic/section task/context " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="context:1;35:27">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="p:2;36:10">Rules that check sentence counts or part-of-speech tags require NLTK
+      language data. Without it, those rules fail with
+      <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="codeph:1;38:15">LookupError: Resource punkt_tab not found</codeph>. If your rule
+      set does not use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="codeph:2;39:32">s</codeph> or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="codeph:3;39:54">p&lt;N&gt;</codeph> rules,
+      skip this task.</p>
+    </context>
+
+    <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="steps:1;43:12">
+
+      <step id="step-activate" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="step:1;45:32">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="cmd:1;46:14">Activate the virtual environment where markdown-validator is
+        installed.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="info:1;48:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="p:3;49:14">On macOS or Linux:</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="codeblock:1;50:43">source .venv/bin/activate</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="p:4;51:14">On Windows (PowerShell):</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="codeblock:2;52:43">.venv\Scripts\Activate.ps1</codeblock>
+        </info>
+      </step>
+
+      <step id="step-download" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="step:2;56:32">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="cmd:2;57:14">Download the required NLTK corpora.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="info:2;58:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="codeblock:3;59:43">python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="p:5;60:14">This command downloads two datasets:</p>
+          <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="ul:1;61:15">
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="li:1;62:17"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="codeph:4;62:25">punkt_tab</codeph> — sentence tokenizer used for sentence-count
+            rules</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="li:2;64:17"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="codeph:5;64:25">averaged_perceptron_tagger_eng</codeph> — part-of-speech tagger
+            used for POS rules</li>
+          </ul>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="stepresult:1;68:21">NLTK downloads the files to your NLTK data directory
+        (typically <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="filepath:1;69:30">~/nltk_data</filepath> on macOS and Linux, or
+        <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="filepath:2;70:19">%APPDATA%\nltk_data</filepath> on Windows).</stepresult>
+      </step>
+
+      <step id="step-verify" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="step:3;73:30">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="cmd:3;74:14">Verify the download succeeded.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="info:3;75:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="codeblock:4;76:43">python -c "import nltk; nltk.data.find('tokenizers/punkt_tab'); print('OK')"</codeblock>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="stepresult:2;78:21">The terminal prints <systemoutput class="+ topic/ph sw-d/systemoutput " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="systemoutput:1;78:55">OK</systemoutput>. If it
+        prints a LookupError instead, the download did not complete. Run the
+        download command again.</stepresult>
+      </step>
+
+    </steps>
+
+    <postreq id="postreq" class="- topic/section task/postreq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="postreq:1;85:27">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="p:6;86:10">Ready to validate:
+      <xref href="t_validate-single-file.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="xref:2;87:48" type="task"><?ditaot usertext?>Validate a single file<?ditaot genshortdesc?><desc class="- topic/desc ">Run <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_validate-single-file.dita" xtrc="codeph:1;23:26">md-validate validate</codeph> against a single Markdown   file to check it against your team's rule set. The output shows which rules   passed, which failed, and what you need to change.</desc></xref>.
+      If you still see a LookupError, see
+      <xref href="../../troubleshooting/ts_nltk-error.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_download-nltk.dita" xtrc="xref:3;89:61" type="troubleshooting"><?ditaot usertext?>Resolve an NLTK LookupError<?ditaot genshortdesc?><desc class="- topic/desc ">A <systemoutput class="+ topic/ph sw-d/systemoutput " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_nltk-error.dita" xtrc="systemoutput:1;23:30">LookupError: Resource punkt_tab not found</systemoutput>   error means the NLTK language data required by sentence-count or part-of-speech   rules is not installed on your system.</desc></xref>.</p>
+    </postreq>
+
+  </taskbody>
+</task>

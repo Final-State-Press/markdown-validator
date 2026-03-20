@@ -1,0 +1,28 @@
+%%{init: {"theme": "neutral"}}%%
+flowchart LR
+    A["📄 .md file"] --> B
+
+    subgraph B["Stage 1 — Parse"]
+        B1["Extract YAML\nfront matter"]
+        B2["Render body\nMarkdown → HTML"]
+    end
+
+    B --> C
+
+    subgraph C["Stage 2 — Evaluate"]
+        C1["Apply header rules\n(YAML key checks)"]
+        C2["Apply body rules\n(XPath on HTML)"]
+        C3["Run workflows\n(conditional chains)"]
+    end
+
+    C --> D
+
+    subgraph D["Stage 3 — Report"]
+        D1["Score: n/total"]
+        D2["Pass ✓ / Fail ✗\nper rule"]
+        D3["Mitigation message\nper failure"]
+    end
+
+    D --> E{All Required\nrules pass?}
+    E -- "Yes → exit 0" --> F["✅ PR eligible\nto merge"]
+    E -- "No → exit 1" --> G["❌ Merge blocked\nauthor must fix"]

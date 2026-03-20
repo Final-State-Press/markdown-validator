@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+  SEO keyword phrase: what is markdown-validator documentation validation tool
+  Audience: user (technical writer, content author)
+-->
+<concept id="c_what-is-markdown-validator">
+  <title>What is markdown-validator?</title>
+
+  <shortdesc>markdown-validator is a rule-based tool that checks your Markdown files
+  against editorial standards defined by your team. It catches missing metadata,
+  incorrect front-matter values, and structural problems before your content reaches
+  review or publication.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>markdown-validator</keyword>
+        <keyword>documentation validation</keyword>
+        <keyword>front matter linting</keyword>
+        <keyword>content governance</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Learn what markdown-validator does, why documentation teams use it, and what kinds of problems it catches automatically."/>
+      <othermeta name="version" content="markdown-validator 0.2"/>
+      <othermeta name="last-updated" content="2026-03-20"/>
+    </metadata>
+  </prolog>
+
+  <conbody>
+
+    <note type="note" id="version-notice">
+      <b>Applies to:</b> markdown-validator 0.2.x (last updated 2026-03-20).
+      Planned changes in v0.3 (negation operator) and v0.4 (structured DOM)
+      may affect rule behaviour described here.
+    </note>
+
+    <note type="important" id="blocked-pr">
+      <b>Pull request just blocked?</b> Go to
+      <xref href="../tasks/t_validate-single-file.dita">Validate a single file</xref>
+      to reproduce the failure locally, then
+      <xref href="../tasks/t_read-validation-report.dita">read the validation report</xref>
+      to fix it. You do not need to read this topic first.
+    </note>
+
+    <section id="the-problem">
+      <title>What it does</title>
+      <p>Your team defines rules once in a JSON file. The tool applies them to every
+      article and reports exactly which rules each file passes or fails — catching
+      missing fields, stale dates, wrong values, and structural issues that reviewers
+      would otherwise flag manually.</p>
+
+      <p>markdown-validator checks two parts of each file:</p>
+      <table id="what-it-checks-table">
+        <tgroup cols="2">
+          <colspec colname="part" colwidth="1.5*"/>
+          <colspec colname="examples" colwidth="3*"/>
+          <thead>
+            <row><entry>Part</entry><entry>What gets checked</entry></row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><b>Front-matter metadata</b> — the YAML <codeph>---</codeph> block</entry>
+              <entry>Required fields present, values match allowed values, date is
+              recent, naming conventions</entry>
+            </row>
+            <row>
+              <entry><b>Document body</b> — content below the front matter</entry>
+              <entry>Exactly one H1, required H2 sections present, heading
+              capitalization, no empty sections</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="how-authors-use-it">
+      <title>How you use it</title>
+      <ul>
+        <li><b>Locally before a pull request</b> — run the tool from the command
+        line to catch and fix problems before reviewers see them.</li>
+        <li><b>Automatically in CI/CD</b> — the pipeline validates every pull
+        request. Required failures block the merge.</li>
+      </ul>
+      <p>Your content lead maintains the rule set. You run the validator and fix
+      what it reports.</p>
+    </section>
+
+    <section id="what-you-need">
+      <title>What you need</title>
+      <ul>
+        <li>Python 3.12+</li>
+        <li>The rule set file path (ask your content lead; typically
+        <filepath>rules/tutorial.json</filepath> in the repository)</li>
+      </ul>
+      <p>To get started: <xref href="../tasks/t_install.dita">Install markdown-validator</xref>
+      | <xref href="c_how-validation-works.dita">How validation works</xref></p>
+    </section>
+
+  </conbody>
+</concept>

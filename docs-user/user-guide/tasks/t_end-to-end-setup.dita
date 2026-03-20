@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: set up markdown-validator end to end install validate CI
+  Audience: user
+-->
+<task id="t_end-to-end-setup">
+  <title>Set up markdown-validator from scratch</title>
+
+  <shortdesc>This scenario walks you through the complete setup of
+  markdown-validator — from installation to a running CI gate — in a single
+  guided sequence. Follow it top to bottom the first time you set up the tool
+  for a documentation project.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>end-to-end setup</keyword>
+        <keyword>getting started markdown-validator</keyword>
+        <keyword>install validate CI pipeline setup</keyword>
+        <keyword>first-time setup</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="A complete end-to-end walkthrough: install markdown-validator, download NLTK data, validate your first file, interpret the report, and add the tool to your GitHub Actions pipeline."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <p>Before you begin, confirm you have the following:</p>
+      <ul>
+        <li>Python 3.12 or later installed on your computer. To check:
+        <codeblock xml:space="preserve">python --version</codeblock></li>
+        <li>A documentation repository with at least one <filepath>.md</filepath>
+        file to validate.</li>
+        <li>The path to your team's rule set file. If you do not have one,
+        ask your content lead. The file is typically at
+        <filepath>rules/tutorial.json</filepath> in your repository.</li>
+        <li>Write access to the repository's
+        <filepath>.github/workflows/</filepath> directory (for the CI step).</li>
+      </ul>
+    </prereq>
+
+    <context id="context">
+      <p>Stages: <b>Install → Download language data → Validate a file →
+      Fix failures → Add CI.</b> Each stage links to a detailed task for
+      more guidance.</p>
+    </context>
+
+    <steps>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           Stage 1: Install
+           ═══════════════════════════════════════════════════════════ -->
+
+      <step id="step-venv">
+        <cmd>Create and activate a Python virtual environment.</cmd>
+        <info>
+          <p>On macOS or Linux:</p>
+          <codeblock xml:space="preserve">python -m venv .venv
+source .venv/bin/activate</codeblock>
+          <p>On Windows (PowerShell):</p>
+          <codeblock xml:space="preserve">python -m venv .venv
+.venv\Scripts\Activate.ps1</codeblock>
+          <p>Your prompt changes to show <codeph>(.venv)</codeph> when the
+          environment is active.</p>
+        </info>
+      </step>
+
+      <step id="step-install">
+        <cmd>Install markdown-validator.</cmd>
+        <info>
+          <codeblock xml:space="preserve">pip install markdown-validator</codeblock>
+        </info>
+        <stepresult>pip installs markdown-validator and its dependencies.
+        Verify with:
+        <codeblock xml:space="preserve">md-validate --version</codeblock>
+        </stepresult>
+      </step>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           Stage 2: Download language data
+           ═══════════════════════════════════════════════════════════ -->
+
+      <step id="step-nltk">
+        <cmd>Download the NLTK language data required by sentence-count
+        and part-of-speech rules.</cmd>
+        <info>
+          <codeblock xml:space="preserve">python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng</codeblock>
+          <note type="tip">If your team's rule set does not use sentence-count
+          (<codeph>s</codeph>) or part-of-speech (<codeph>p&lt;N&gt;</codeph>)
+          rules, you can skip this step. Ask your content lead if you are
+          unsure. For full details, see
+          <xref href="t_download-nltk.dita">Download NLTK language data</xref>.</note>
+        </info>
+        <stepresult>NLTK downloads the corpora to your home directory
+        (<filepath>~/nltk_data</filepath> on macOS/Linux). You only need to
+        do this once per Python environment.</stepresult>
+      </step>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           Stage 3: Validate a file
+           ═══════════════════════════════════════════════════════════ -->
+
+      <step id="step-validate">
+        <cmd>Run your first validation against a Markdown file.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/my-article.md --rules rules/tutorial.json</codeblock>
+          <p>Replace <codeph>docs/my-article.md</codeph> with the path to
+          one of your files, and <codeph>rules/tutorial.json</codeph> with
+          the path your content lead provided.</p>
+        </info>
+        <stepresult>The tool prints a validation report. A fully passing
+        report ends with:
+        <codeblock xml:space="preserve">Score: 8/8   PASSED</codeblock>
+        A report with failures ends with:
+        <codeblock xml:space="preserve">Score: 6/8   FAILED</codeblock>
+        </stepresult>
+      </step>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           Stage 4: Read and fix the report
+           ═══════════════════════════════════════════════════════════ -->
+
+      <step id="step-read-report">
+        <cmd>Read the report and identify Required failures.</cmd>
+        <info>
+          <p>Each failed rule shows a cross (<codeph>✗</codeph>), the rule
+          name, and a mitigation message:</p>
+          <codeblock xml:space="preserve">  ✗  [4]  description-must-exist          [Required]
+           → Add a description field to the front matter.</codeblock>
+          <p>Required failures will block your pull request. Suggested
+          failures are recommendations — they do not block the merge.
+          For a full guide, see
+          <xref href="t_read-validation-report.dita">Read and act on a validation report</xref>.</p>
+        </info>
+      </step>
+
+      <step id="step-fix">
+        <cmd>Open your Markdown file and fix each Required failure using its
+        mitigation message.</cmd>
+        <info>
+          <p>Common front-matter fixes:</p>
+          <ul>
+            <li><b>Missing field</b> — add the key and value to the
+            <codeph>---</codeph> block at the top of the file</li>
+            <li><b>Wrong value</b> — change the field value to match what
+            the mitigation message specifies</li>
+            <li><b>Stale date</b> — update <codeph>ms.date</codeph> to
+            today in <codeph>YYYY-MM-DD</codeph> format</li>
+          </ul>
+          <p>Common body fixes:</p>
+          <ul>
+            <li><b>Missing H1</b> — ensure exactly one line begins with
+            a single <codeph>#</codeph></li>
+            <li><b>H1 format</b> — edit the H1 to match the prefix in
+            the mitigation message</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-re-validate">
+        <cmd>Re-run validation to confirm all Required failures are
+        resolved.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/my-article.md --rules rules/tutorial.json</codeblock>
+        </info>
+        <stepresult>The report shows <systemoutput>PASSED</systemoutput>
+        when all Required rules pass.</stepresult>
+      </step>
+
+      <!-- ═══════════════════════════════════════════════════════════
+           Stage 5: Add CI
+           ═══════════════════════════════════════════════════════════ -->
+
+      <step id="step-ci-dir">
+        <cmd>Create the GitHub Actions workflow directory if it does not
+        exist.</cmd>
+        <info>
+          <codeblock xml:space="preserve">mkdir -p .github/workflows</codeblock>
+        </info>
+      </step>
+
+      <step id="step-ci-file">
+        <cmd>Create
+        <filepath>.github/workflows/validate-docs.yml</filepath> using the
+        complete workflow template in
+        <xref href="t_integrate-github-actions.dita">Add markdown-validator to a GitHub Actions workflow</xref>.</cmd>
+        <info>
+          <p>The workflow template in that topic is the authoritative version.
+          Copy it verbatim, then update the two values shown below to match
+          your repository:</p>
+          <ul>
+            <li><codeph>paths: 'docs/**/*.md'</codeph> — the glob pattern for
+            your documentation files</li>
+            <li><codeph>--rules rules/tutorial.json</codeph> — the path to
+            your team's rule set file</li>
+          </ul>
+          <p>The workflow installs markdown-validator, caches and downloads
+          NLTK data, validates the docs directory, and uploads per-file JSON
+          reports as a downloadable artifact — even when validation fails.</p>
+        </info>
+      </step>
+
+      <step id="step-commit-workflow">
+        <cmd>Commit the workflow file and push.</cmd>
+        <info>
+          <codeblock xml:space="preserve">git add .github/workflows/validate-docs.yml
+git commit -m "Add documentation validation workflow"
+git push</codeblock>
+        </info>
+        <stepresult>GitHub runs the workflow on every subsequent pull
+        request that changes <filepath>.md</filepath> files matching the
+        path filter. Required failures block the merge.</stepresult>
+      </step>
+
+      <step id="step-open-pr">
+        <cmd>Open a test pull request to verify the workflow runs
+        correctly.</cmd>
+        <info>
+          <p>Navigate to the <b>Actions</b> tab of your repository and
+          confirm the <b>Validate documentation</b> check appears and
+          completes. If it fails on a file that passed locally, check that
+          CI is using the same rule set path you tested with.</p>
+        </info>
+      </step>
+
+    </steps>
+
+    <postreq id="postreq">
+      <p>Share the rule set path, the install steps (1–4), and
+      <xref href="t_read-validation-report.dita">Read and act on a validation report</xref>
+      with your team. To validate the full repository, see
+      <xref href="t_validate-directory.dita">Validate a directory</xref>.</p>
+    </postreq>
+
+  </taskbody>
+</task>

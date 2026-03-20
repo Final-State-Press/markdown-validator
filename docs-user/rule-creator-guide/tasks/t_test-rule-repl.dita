@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: test rule REPL markdown-validator XPath query eval
+  Audience: rule-creator
+-->
+<task id="t_test-rule-repl">
+  <title>Test a rule in the interactive REPL</title>
+
+  <shortdesc>Test a rule in the REPL by running the XPath query against a loaded
+  document and then evaluating the full rule object. This confirms your rule
+  will behave as expected before you commit it.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>test rule REPL</keyword>
+        <keyword>eval rule</keyword>
+        <keyword>XPath query REPL</keyword>
+        <keyword>validate rule before adding</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Use the markdown-validator REPL to test XPath expressions and evaluate rule JSON against a loaded document before adding the rule to a rule set."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <p>The REPL is running and a document is loaded. See
+      <xref href="t_start-repl.dita">Start the interactive REPL</xref>.</p>
+    </prereq>
+
+    <steps>
+
+      <step id="step-query-xpath">
+        <cmd>Test your XPath expression with the <codeph>query</codeph>
+        command.</cmd>
+        <info>
+          <p>Syntax: <codeph>query &lt;xpath&gt; &lt;flag&gt;</codeph></p>
+          <codeblock xml:space="preserve">&gt; query /html/body/h1 text
+Result: ['My Tutorial Title']
+
+&gt; query //h2 count
+Result: [3]
+
+&gt; query //h2 text
+Result: ['Prerequisites', 'Deploy the app', 'Clean up resources']</codeblock>
+          <p>Supported flags for <codeph>query</codeph>: <codeph>text</codeph>,
+          <codeph>count</codeph>, <codeph>dom</codeph>.</p>
+        </info>
+        <stepresult>Confirm the result matches what you expect. If it does not,
+        adjust the XPath and query again.</stepresult>
+      </step>
+
+      <step id="step-eval-rule">
+        <cmd>Evaluate the full rule JSON object with the <codeph>eval</codeph>
+        command.</cmd>
+        <info>
+          <p>Pass the rule as a single-line JSON object:</p>
+          <codeblock xml:space="preserve">&gt; eval {"id":5,"name":"must-have-prerequisites","type":"body","query":"//h2[normalize-space(text())='Prerequisites']","flag":"count","operation":">","value":"0","mitigation":"Add a Prerequisites section."}</codeblock>
+        </info>
+        <stepresult>The REPL prints PASS or FAIL with the rule name:
+        <codeblock xml:space="preserve">PASS: rule id=5 name='must-have-prerequisites'</codeblock>
+        or:
+        <codeblock xml:space="preserve">FAIL: rule id=5 name='must-have-prerequisites'
+  → Add a Prerequisites section.</codeblock>
+        </stepresult>
+      </step>
+
+      <step id="step-test-negative">
+        <cmd>Load a document that should fail the rule and confirm it does.</cmd>
+        <info>
+          <codeblock xml:space="preserve">&gt; load docs/article-without-prereqs.md
+&gt; eval {"id":5, ...same rule JSON...}</codeblock>
+        </info>
+        <stepresult>The REPL shows FAIL with your mitigation message, confirming
+        the rule catches the intended problem.</stepresult>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

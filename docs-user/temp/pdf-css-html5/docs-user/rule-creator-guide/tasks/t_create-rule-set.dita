@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/tasks?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/tasks/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Task//EN?><?doctype-system task.dtd?><task xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="t_create-rule-set" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic task/task " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="task:1;7:30" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="title:1;8:10">Create a rule set file</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="keyword:1;13:18">create rule set</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="keyword:2;14:18">rule set JSON</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="keyword:3;15:18">documentation standards file</keyword>
+      </keywords>
+      <othermeta name="description" content="Create a new markdown-validator rule set JSON file with the correct structure for header rules, body rules, and workflows." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="othermeta:1;18:143"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="shortdesc:1;22:14">Create a new JSON rule set file that markdown-validator can use to
+  validate your documentation. Start with a minimal structure and add rules
+  incrementally.</shortdesc>
+
+  <taskbody class="- topic/body task/taskbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="taskbody:1;26:13">
+
+    <prereq id="prereq" class="- topic/section task/prereq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="prereq:1;28:25">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="p:1;29:10">markdown-validator is installed. See
+      <xref href="../../user-guide/tasks/t_install.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="xref:1;30:58" type="task"><?ditaot usertext?>Install markdown-validator<?ditaot genshortdesc?><desc class="- topic/desc ">Install markdown-validator with pip in a Python virtual environment.   After installation, the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/tasks/t_install.dita" xtrc="codeph:1;24:35">md-validate</codeph> command is available from   your terminal.</desc></xref>.
+      Review the rule set structure before creating your file:
+      <xref href="../concepts/c_rule-sets-overview.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="xref:2;32:58" type="concept"><?ditaot usertext?>Understanding rule sets<?ditaot genshortdesc?><desc class="- topic/desc ">A rule set is a JSON file that tells markdown-validator what to   check in a Markdown document. It contains two sections: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:1;25:67">rules</codeph>,   which defines individual checks, and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-sets-overview.dita" xtrc="codeph:2;26:48">workflows</codeph>, which chains   rules together with conditional logic.</desc></xref>.</p>
+    </prereq>
+
+    <context id="context" class="- topic/section task/context " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="context:1;35:27">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="p:2;36:10">A rule set file is a plain JSON file. Create it in the
+      <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="filepath:1;37:17">rules/</filepath> directory of your documentation repository so
+      that it is version-controlled alongside the content it governs.</p>
+    </context>
+
+    <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="steps:1;41:12">
+
+      <step id="step-create-file" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="step:1;43:35">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="cmd:1;44:14">Create a new file named after the content type it governs.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="info:1;45:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="p:3;46:14">Use a descriptive name that reflects the content type, for
+          example <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="filepath:2;47:29">rules/tutorial.json</filepath> or
+          <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="filepath:3;48:21">rules/reference.json</filepath>.</p>
+        </info>
+      </step>
+
+      <step id="step-add-structure" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="step:2;52:37">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="cmd:2;53:14">Add the top-level JSON structure.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="info:2;54:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="codeblock:1;55:43">{
+  "rules": {
+    "header": [],
+    "body":   []
+  },
+  "workflows": []
+}</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="p:4;62:14">This is a valid, empty rule set. No rules means no checks — all
+          files will pass until you add rules.</p>
+        </info>
+      </step>
+
+      <step id="step-add-first-rule" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="step:3;67:38">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="cmd:3;68:14">Add your first header rule to check a required front-matter
+        field.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="info:3;70:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="codeblock:2;71:43">{
+  "rules": {
+    "header": [
+      {
+        "id": 1,
+        "name": "ms-topic-must-exist",
+        "type": "header",
+        "query": "ms.topic",
+        "flag": "check",
+        "operation": "==",
+        "value": "true",
+        "level": "Required",
+        "mitigation": "Add ms.topic to the front matter."
+      }
+    ],
+    "body": []
+  },
+  "workflows": []
+}</codeblock>
+        </info>
+      </step>
+
+      <step id="step-validate-structure" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="step:4;93:42">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="cmd:4;94:14">Test the rule set by running it against a sample document.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="info:4;95:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="codeblock:3;96:43">md-validate validate sample.md --rules rules/tutorial.json</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="p:5;97:14">If the JSON is malformed, the tool reports a schema error.
+          Fix the JSON and re-run.</p>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="stepresult:1;100:21">The validation report confirms the rule set loads and
+        evaluates correctly.</stepresult>
+      </step>
+
+    </steps>
+
+    <postreq id="postreq" class="- topic/section task/postreq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="postreq:1;106:27">
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="ul:1;107:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="li:1;108:13">To add header rules, see
+        <xref href="t_write-header-rule.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="xref:3;109:47" type="task"><?ditaot usertext?>Write a header rule<?ditaot genshortdesc?><desc class="- topic/desc ">Header rules check the YAML front-matter metadata at the top of   your Markdown files. Use them to enforce required fields, expected values,   date freshness, and naming patterns.</desc></xref>.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="li:2;110:13">To add body rules, see
+        <xref href="t_write-body-rule.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_create-rule-set.dita" xtrc="xref:4;111:45" type="task"><?ditaot usertext?>Write a body rule<?ditaot genshortdesc?><desc class="- topic/desc ">Body rules check the content of your Markdown documents — headings,   sections, paragraph structure, and text patterns. They use XPath expressions   to query the rendered HTML. Test your XPath expressions in the REPL before   adding them to a rule.</desc></xref>.</li>
+      </ul>
+    </postreq>
+
+  </taskbody>
+</task>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: install markdown-validator Python pip
+  Audience: user
+-->
+<task id="t_install">
+  <title>Install markdown-validator</title>
+
+  <shortdesc>Install markdown-validator with pip in a Python virtual environment.
+  After installation, the <codeph>md-validate</codeph> command is available from
+  your terminal.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>install markdown-validator</keyword>
+        <keyword>pip install</keyword>
+        <keyword>Python setup</keyword>
+        <keyword>virtual environment</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Step-by-step instructions to install markdown-validator using pip, verify the installation, and set up a development environment."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <ul>
+        <li>Python 3.12 or later must be installed. To check your Python version,
+        open a terminal and enter:
+        <codeblock xml:space="preserve">python --version</codeblock>
+        If Python is not installed or is older than 3.12, download it from
+        <xref href="https://python.org" format="html" scope="external">python.org</xref>.</li>
+        <li>You need access to a terminal (Command Prompt or PowerShell on Windows,
+        Terminal on macOS or Linux).</li>
+      </ul>
+    </prereq>
+
+    <steps>
+
+      <step id="step-venv">
+        <cmd>Create and activate a virtual environment.</cmd>
+        <info>
+          <p>On macOS or Linux:</p>
+          <codeblock xml:space="preserve">python -m venv .venv
+source .venv/bin/activate</codeblock>
+          <p>On Windows (PowerShell):</p>
+          <codeblock xml:space="preserve">python -m venv .venv
+.venv\Scripts\Activate.ps1</codeblock>
+          <p>When the virtual environment is active, your terminal prompt includes
+          <codeph>(.venv)</codeph>.</p>
+        </info>
+        <stepresult>The virtual environment is active. Packages you install now
+        go into this isolated environment.</stepresult>
+      </step>
+
+      <step id="step-pip">
+        <cmd>Install markdown-validator.</cmd>
+        <info>
+          <codeblock xml:space="preserve">pip install markdown-validator</codeblock>
+        </info>
+        <stepresult>pip downloads and installs markdown-validator and its
+        dependencies.</stepresult>
+      </step>
+
+      <step id="step-verify">
+        <cmd>Verify the installation.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate --version</codeblock>
+        </info>
+        <stepresult>The terminal displays the installed version number, confirming
+        that the tool is ready to use.</stepresult>
+      </step>
+
+    </steps>
+
+    <result id="result">
+      <p>markdown-validator is installed. You can now run
+      <codeph>md-validate validate</codeph> from this terminal session whenever
+      the virtual environment is active.</p>
+    </result>
+
+    <postreq id="postreq">
+      <p>If your team's rule set uses sentence-count (<codeph>s</codeph>) or
+      part-of-speech (<codeph>p&lt;N&gt;</codeph>) rules, also run:
+      <xref href="t_download-nltk.dita">Download NLTK language data</xref>.</p>
+      <p>Ready to validate:
+      <xref href="t_validate-single-file.dita">Validate a single file</xref>.</p>
+    </postreq>
+
+  </taskbody>
+</task>

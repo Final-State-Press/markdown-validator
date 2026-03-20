@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: write body rule XPath document structure check
+  Audience: rule-creator
+-->
+<task id="t_write-body-rule">
+  <title>Write a body rule to check document structure</title>
+
+  <shortdesc>Body rules check the content of your Markdown documents — headings,
+  sections, paragraph structure, and text patterns. They use XPath expressions
+  to query the rendered HTML. Test your XPath expressions in the REPL before
+  adding them to a rule.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>body rule</keyword>
+        <keyword>XPath rule</keyword>
+        <keyword>document structure check</keyword>
+        <keyword>heading validation rule</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Write a markdown-validator body rule using XPath to check document structure: headings, required sections, element counts, and text patterns."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <ul>
+        <li>You have an existing rule set file. See
+        <xref href="t_create-rule-set.dita">Create a rule set file</xref>.</li>
+        <li>The interactive REPL is available for XPath testing. See
+        <xref href="t_start-repl.dita">Start the interactive REPL</xref>.</li>
+      </ul>
+    </prereq>
+
+    <context id="context">
+      <p>Always test your XPath in the REPL before committing a body rule.
+      Before writing queries that rely on within-section containment, read
+      <xref href="../concepts/c_known-limitations.dita">Known limitations</xref>
+      (flat DOM caveat).</p>
+    </context>
+
+    <steps>
+
+      <step id="step-identify-check">
+        <cmd>Identify the structural property you want to check.</cmd>
+        <info>
+          <p>Common body checks:</p>
+          <ul>
+            <li>The document has exactly one H1</li>
+            <li>A specific H2 section heading is present (for example,
+            "Prerequisites")</li>
+            <li>The H1 starts with a required prefix</li>
+            <li>The H1 is under a character limit</li>
+            <li>The body contains at least one code block</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-write-xpath">
+        <cmd>Write an XPath expression that selects the element you want to
+        check.</cmd>
+        <info>
+          <p>Common XPath patterns for Markdown documents:</p>
+          <table>
+            <title>Common XPath patterns</title>
+            <tgroup cols="2">
+              <colspec colname="target" colwidth="3*"/>
+              <colspec colname="xpath" colwidth="3*"/>
+              <thead>
+                <row>
+                  <entry>What to select</entry>
+                  <entry>XPath</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>The H1 element</entry>
+                  <entry><codeph>/html/body/h1</codeph></entry>
+                </row>
+                <row>
+                  <entry>All H2 elements</entry>
+                  <entry><codeph>//h2</codeph></entry>
+                </row>
+                <row>
+                  <entry>A specific H2 by text</entry>
+                  <entry><codeph>//h2[normalize-space(text())='Prerequisites']</codeph></entry>
+                </row>
+                <row>
+                  <entry>The second H2</entry>
+                  <entry><codeph>//h2[2]</codeph></entry>
+                </row>
+                <row>
+                  <entry>All code blocks</entry>
+                  <entry><codeph>//pre/code</codeph></entry>
+                </row>
+                <row>
+                  <entry>The entire body text</entry>
+                  <entry><codeph>/html/body</codeph></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </info>
+      </step>
+
+      <step id="step-test-xpath">
+        <cmd>Test your XPath expression in the REPL before adding it to the
+        rule set.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate repl
+> load docs/sample-tutorial.md
+> query //h2[normalize-space(text())='Prerequisites'] count</codeblock>
+          <p>Confirm the query returns the expected result. See
+          <xref href="t_test-rule-repl.dita">Test a rule in the REPL</xref> for the full testing
+          workflow.</p>
+        </info>
+      </step>
+
+      <step id="step-choose-flag">
+        <cmd>Choose the flag based on what aspect of the XPath result you
+        want to evaluate.</cmd>
+        <info>
+          <table>
+            <title>Flag selection for body rules</title>
+            <tgroup cols="2">
+              <colspec colname="use" colwidth="3*"/>
+              <colspec colname="flag" colwidth="1*"/>
+              <thead>
+                <row>
+                  <entry>You want to evaluate...</entry>
+                  <entry>Use flag</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>How many elements matched</entry>
+                  <entry><codeph>count</codeph></entry>
+                </row>
+                <row>
+                  <entry>The text content of the first matched element</entry>
+                  <entry><codeph>text</codeph></entry>
+                </row>
+                <row>
+                  <entry>The HTML tag names of matched elements</entry>
+                  <entry><codeph>dom</codeph></entry>
+                </row>
+                <row>
+                  <entry>The full plain text of the entire body</entry>
+                  <entry><codeph>all</codeph></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </info>
+      </step>
+
+      <step id="step-add-rule">
+        <cmd>Add the body rule object to the <codeph>body</codeph> array in
+        your rule set file.</cmd>
+        <info>
+          <codeblock xml:space="preserve">{
+  "id": 5,
+  "name": "must-have-prerequisites-section",
+  "type": "body",
+  "query": "//h2[normalize-space(text())='Prerequisites']",
+  "flag": "count",
+  "operation": "&gt;",
+  "value": "0",
+  "level": "Required",
+  "mitigation": "Add a '## Prerequisites' section to the document."
+}</codeblock>
+        </info>
+      </step>
+
+      <step id="step-test-rule">
+        <cmd>Validate sample documents to confirm the rule behaves
+        correctly.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/sample-with-prereqs.md --rules rules/tutorial.json
+md-validate validate docs/sample-without-prereqs.md --rules rules/tutorial.json</codeblock>
+        </info>
+        <stepresult>The document with the section passes rule 5; the document
+        without it fails with your mitigation message.</stepresult>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

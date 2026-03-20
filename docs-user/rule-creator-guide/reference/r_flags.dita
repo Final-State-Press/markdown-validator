@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<!--
+  SEO keyword phrase: markdown-validator flags reference value check date count text
+  Audience: rule-creator
+-->
+<reference id="r_flags">
+  <title>Flags reference</title>
+
+  <shortdesc>The <codeph>flag</codeph> field controls how a rule's query result
+  is processed before comparison. Header and body rules each have their own
+  flag set.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>flags reference</keyword>
+        <keyword>value check date pattern count text dom all</keyword>
+        <keyword>rule flag</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Complete reference for markdown-validator rule flags: value, check, date, pattern for header rules; count, text, dom, all for body rules."/>
+    </metadata>
+  </prolog>
+
+  <refbody>
+
+    <section id="header-flags">
+      <title>Header flags</title>
+
+      <table id="header-flag-table">
+        <tgroup cols="3">
+          <colspec colname="flag" colwidth="1*"/>
+          <colspec colname="behavior" colwidth="3*"/>
+          <colspec colname="example" colwidth="4*"/>
+          <thead>
+            <row>
+              <entry>Flag</entry>
+              <entry>Behavior</entry>
+              <entry>Example rule</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>value</codeph></entry>
+              <entry>Retrieves the raw string value of the front-matter key.
+              Applies the operator and value comparison directly to this
+              string.</entry>
+              <entry>
+                <codeblock xml:space="preserve">"query": "ms.topic",
+"flag": "value",
+"operation": "==",
+"value": "tutorial"</codeblock>
+              </entry>
+            </row>
+            <row>
+              <entry><codeph>check</codeph></entry>
+              <entry>Returns <codeph>true</codeph> if the key exists in the
+              front matter, <codeph>false</codeph> if absent. The
+              <codeph>operation</codeph> and <codeph>value</codeph> fields
+              are ignored. Use <codeph>"operation": "=="</codeph> and
+              <codeph>"value": "true"</codeph> by convention.</entry>
+              <entry>
+                <codeblock xml:space="preserve">"query": "description",
+"flag": "check",
+"operation": "==",
+"value": "true"</codeblock>
+              </entry>
+            </row>
+            <row>
+              <entry><codeph>date</codeph></entry>
+              <entry>Parses the front-matter value as a date. Computes the age
+              in days as <codeph>(today - date).days</codeph>. Applies the
+              operator against <codeph>value</codeph> (the age threshold in
+              days). Use <codeph>"operation": "&lt;"</codeph> to require the
+              date is fresher than N days.</entry>
+              <entry>
+                <codeblock xml:space="preserve">"query": "ms.date",
+"flag": "date",
+"operation": "&lt;",
+"value": "365"</codeblock>
+              </entry>
+            </row>
+            <row>
+              <entry><codeph>pattern</codeph></entry>
+              <entry>Applies the operator as a regular expression match against
+              the front-matter value. Equivalent to using the <codeph>r</codeph>
+              operator on a <codeph>value</codeph> flag.</entry>
+              <entry>
+                <codeblock xml:space="preserve">"query": "author",
+"flag": "pattern",
+"operation": "r",
+"value": "^[a-z0-9-]+$"</codeblock>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="body-flags">
+      <title>Body flags</title>
+
+      <table id="body-flag-table">
+        <tgroup cols="3">
+          <colspec colname="flag" colwidth="1*"/>
+          <colspec colname="behavior" colwidth="3*"/>
+          <colspec colname="example" colwidth="4*"/>
+          <thead>
+            <row>
+              <entry>Flag</entry>
+              <entry>Behavior</entry>
+              <entry>Example rule</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><codeph>count</codeph></entry>
+              <entry>Counts the number of XPath matches. Returns the count as
+              a string for comparison.</entry>
+              <entry>
+                <codeblock xml:space="preserve">"query": "/html/body/h1",
+"flag": "count",
+"operation": "==",
+"value": "1"</codeblock>
+              </entry>
+            </row>
+            <row>
+              <entry><codeph>text</codeph></entry>
+              <entry>Extracts the text content of the first XPath match.
+              Returns an empty string if there are no matches.</entry>
+              <entry>
+                <codeblock xml:space="preserve">"query": "/html/body/h1",
+"flag": "text",
+"operation": "l",
+"value": "60"</codeblock>
+              </entry>
+            </row>
+            <row>
+              <entry><codeph>dom</codeph></entry>
+              <entry>Returns a comma-separated list of HTML tag names of the
+              matched elements. Useful for checking element type.</entry>
+              <entry>
+                <codeblock xml:space="preserve">"query": "/html/body/*[2]",
+"flag": "dom",
+"operation": "==",
+"value": "h2"</codeblock>
+              </entry>
+            </row>
+            <row>
+              <entry><codeph>all</codeph></entry>
+              <entry>Extracts all text content of the matched elements,
+              including nested text. Typically used with
+              <codeph>/html/body</codeph> to operate on the full page
+              text.</entry>
+              <entry>
+                <codeblock xml:space="preserve">"query": "/html/body",
+"flag": "all",
+"operation": "s",
+"value": "500"</codeblock>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+  </refbody>
+</reference>

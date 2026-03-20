@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/tasks?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/tasks/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Task//EN?><?doctype-system task.dtd?><task xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="t_write-body-rule" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic task/task " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="task:1;7:30" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="title:1;8:10">Write a body rule to check document structure</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="keyword:1;13:18">body rule</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="keyword:2;14:18">XPath rule</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="keyword:3;15:18">document structure check</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="keyword:4;16:18">heading validation rule</keyword>
+      </keywords>
+      <othermeta name="description" content="Write a markdown-validator body rule using XPath to check document structure: headings, required sections, element counts, and text patterns." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="othermeta:1;19:162"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="shortdesc:1;23:14">Body rules check the content of your Markdown documents — headings,
+  sections, paragraph structure, and text patterns. They use XPath expressions
+  to query the rendered HTML. Test your XPath expressions in the REPL before
+  adding them to a rule.</shortdesc>
+
+  <taskbody class="- topic/body task/taskbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="taskbody:1;28:13">
+
+    <prereq id="prereq" class="- topic/section task/prereq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="prereq:1;30:25">
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="ul:1;31:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="li:1;32:13">You have an existing rule set file. See
+        <xref href="t_create-rule-set.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="xref:1;33:45">Create a rule set file</xref>.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="li:2;34:13">The interactive REPL is available for XPath testing. See
+        <xref href="t_start-repl.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="xref:2;35:40">Start the interactive REPL</xref>.</li>
+      </ul>
+    </prereq>
+
+    <context id="context" class="- topic/section task/context " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="context:1;39:27">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="p:1;40:10">Always test your XPath in the REPL before committing a body rule.
+      Before writing queries that rely on within-section containment, read
+      <xref href="../concepts/c_known-limitations.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="xref:3;42:57">Known limitations</xref>
+      (flat DOM caveat).</p>
+    </context>
+
+    <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="steps:1;46:12">
+
+      <step id="step-identify-check" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="step:1;48:38">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="cmd:1;49:14">Identify the structural property you want to check.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="info:1;50:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="p:2;51:14">Common body checks:</p>
+          <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="ul:2;52:15">
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="li:3;53:17">The document has exactly one H1</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="li:4;54:17">A specific H2 section heading is present (for example,
+            "Prerequisites")</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="li:5;56:17">The H1 starts with a required prefix</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="li:6;57:17">The H1 is under a character limit</li>
+            <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="li:7;58:17">The body contains at least one code block</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-write-xpath" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="step:2;63:35">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="cmd:2;64:14">Write an XPath expression that selects the element you want to
+        check.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="info:2;66:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="p:3;67:14">Common XPath patterns for Markdown documents:</p>
+          <table class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="table:1;68:18">
+            <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="title:2;69:20">Common XPath patterns</title>
+            <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="tgroup:1;70:30">
+              <colspec colname="col1" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="colspec:1;71:56" colnum="1"/>
+              <colspec colname="col2" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="colspec:2;72:55" colnum="2"/>
+              <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="thead:1;73:22">
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:1;74:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:1;75:26" colname="col1" dita-ot:x="1" dita-ot:y="1">What to select</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:2;76:26" colname="col2" dita-ot:x="2" dita-ot:y="1">XPath</entry>
+                </row>
+              </thead>
+              <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="tbody:1;79:22">
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:2;80:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:3;81:26" colname="col1" dita-ot:x="1" dita-ot:y="2">The H1 element</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:4;82:26" colname="col2" dita-ot:x="2" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:1;82:34">/html/body/h1</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:3;84:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:5;85:26" colname="col1" dita-ot:x="1" dita-ot:y="3">All H2 elements</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:6;86:26" colname="col2" dita-ot:x="2" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:2;86:34">//h2</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:4;88:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:7;89:26" colname="col1" dita-ot:x="1" dita-ot:y="4">A specific H2 by text</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:8;90:26" colname="col2" dita-ot:x="2" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:3;90:34">//h2[normalize-space(text())='Prerequisites']</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:5;92:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:9;93:26" colname="col1" dita-ot:x="1" dita-ot:y="5">The second H2</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:10;94:26" colname="col2" dita-ot:x="2" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:4;94:34">//h2[2]</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:6;96:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:11;97:26" colname="col1" dita-ot:x="1" dita-ot:y="6">All code blocks</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:12;98:26" colname="col2" dita-ot:x="2" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:5;98:34">//pre/code</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:7;100:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:13;101:26" colname="col1" dita-ot:x="1" dita-ot:y="7">The entire body text</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:14;102:26" colname="col2" dita-ot:x="2" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:6;102:34">/html/body</codeph></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </info>
+      </step>
+
+      <step id="step-test-xpath" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="step:3;110:34">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="cmd:3;111:14">Test your XPath expression in the REPL before adding it to the
+        rule set.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="info:3;113:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeblock:1;114:43">md-validate repl
+&gt; load docs/sample-tutorial.md
+&gt; query //h2[normalize-space(text())='Prerequisites'] count</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="p:4;117:14">Confirm the query returns the expected result. See
+          <xref href="t_test-rule-repl.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="xref:4;118:46">Test a rule in the REPL</xref> for the full testing
+          workflow.</p>
+        </info>
+      </step>
+
+      <step id="step-choose-flag" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="step:4;123:35">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="cmd:4;124:14">Choose the flag based on what aspect of the XPath result you
+        want to evaluate.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="info:4;126:15">
+          <table class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="table:2;127:18">
+            <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="title:3;128:20">Flag selection for body rules</title>
+            <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="tgroup:2;129:30">
+              <colspec colname="col1" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="colspec:3;130:53" colnum="1"/>
+              <colspec colname="col2" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="colspec:4;131:54" colnum="2"/>
+              <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="thead:2;132:22">
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:8;133:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:15;134:26" colname="col1" dita-ot:x="1" dita-ot:y="1">You want to evaluate...</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:16;135:26" colname="col2" dita-ot:x="2" dita-ot:y="1">Use flag</entry>
+                </row>
+              </thead>
+              <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="tbody:2;138:22">
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:9;139:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:17;140:26" colname="col1" dita-ot:x="1" dita-ot:y="2">How many elements matched</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:18;141:26" colname="col2" dita-ot:x="2" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:7;141:34">count</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:10;143:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:19;144:26" colname="col1" dita-ot:x="1" dita-ot:y="3">The text content of the first matched element</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:20;145:26" colname="col2" dita-ot:x="2" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:8;145:34">text</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:11;147:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:21;148:26" colname="col1" dita-ot:x="1" dita-ot:y="4">The HTML tag names of matched elements</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:22;149:26" colname="col2" dita-ot:x="2" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:9;149:34">dom</codeph></entry>
+                </row>
+                <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="row:12;151:22">
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:23;152:26" colname="col1" dita-ot:x="1" dita-ot:y="5">The full plain text of the entire body</entry>
+                  <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="entry:24;153:26" colname="col2" dita-ot:x="2" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:10;153:34">all</codeph></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </info>
+      </step>
+
+      <step id="step-add-rule" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="step:5;161:32">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="cmd:5;162:14">Add the body rule object to the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeph:11;162:54">body</codeph> array in
+        your rule set file.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="info:5;164:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeblock:2;165:43">{
+  "id": 5,
+  "name": "must-have-prerequisites-section",
+  "type": "body",
+  "query": "//h2[normalize-space(text())='Prerequisites']",
+  "flag": "count",
+  "operation": "&gt;",
+  "value": "0",
+  "level": "Required",
+  "mitigation": "Add a '## Prerequisites' section to the document."
+}</codeblock>
+        </info>
+      </step>
+
+      <step id="step-test-rule" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="step:6;179:33">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="cmd:6;180:14">Validate sample documents to confirm the rule behaves
+        correctly.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="info:6;182:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="codeblock:3;183:43">md-validate validate docs/sample-with-prereqs.md --rules rules/tutorial.json
+md-validate validate docs/sample-without-prereqs.md --rules rules/tutorial.json</codeblock>
+        </info>
+        <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-body-rule.dita" xtrc="stepresult:1;186:21">The document with the section passes rule 5; the document
+        without it fails with your mitigation message.</stepresult>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/tasks?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/tasks/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Task//EN?><?doctype-system task.dtd?><task xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="t_write-workflow" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic task/task " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="task:1;7:29" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="title:1;8:10">Write a workflow for conditional rule chains</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="keyword:1;13:18">write workflow</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="keyword:2;14:18">conditional rule chain</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="keyword:3;15:18">workflow steps</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="keyword:4;16:18">rule dependency</keyword>
+      </keywords>
+      <othermeta name="description" content="Write a markdown-validator workflow to chain rules with conditional logic, so checks only run when their preconditions are met." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="othermeta:1;19:148"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="shortdesc:1;23:14">A workflow chains rules together so that some checks only run when
+  others pass or fail. Write a workflow when your editorial requirement is
+  conditional — it only applies in specific circumstances.</shortdesc>
+
+  <taskbody class="- topic/body task/taskbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="taskbody:1;27:13">
+
+    <prereq id="prereq" class="- topic/section task/prereq " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="prereq:1;29:25">
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="ul:1;30:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="li:1;31:13">You have defined the individual rules the workflow will reference
+        in your rule set file.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="li:2;33:13">Review the workflow concept: <xref href="../concepts/c_workflow-language-overview.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="xref:1;33:101">Workflow language overview</xref>.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="li:3;34:13">Review the step-pattern reference: <xref href="../reference/r_workflow-steps.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="xref:2;34:96">Workflow step reference</xref>.</li>
+      </ul>
+    </prereq>
+
+    <context id="context" class="- topic/section task/context " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="context:1;38:27">
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="p:1;39:10">Before writing the workflow, clarify the conditional logic in plain
+      English. For example: "If <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="codeph:1;40:41">ms.topic</codeph> is 'tutorial'
+      (rule 1 passes), then also check that the H1 starts with 'Tutorial:'
+      (rule 2). If it is not 'tutorial' (rule 1 fails), pass without
+      checking rule 2."</p>
+    </context>
+
+    <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="steps:1;46:12">
+
+      <step id="step-map-to-steps" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="step:1;48:36">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="cmd:1;49:14">Map the plain-English logic to the step token sequence.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="info:1;50:15">
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="p:2;51:14">For a simple conditional check (check rule B only when rule A
+          passes):</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="codeblock:1;53:43">S-A, A-D, T-B, F-sentinel, B-M, sentinel-M, M-E</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="p:3;54:14">Where <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="codeph:2;54:28">sentinel</codeph> is the ID of a rule that always
+          passes for valid documents (typically rule 1 in your rule set).</p>
+
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="p:4;57:14">Example: check H1 format only when <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="codeph:3;57:57">ms.topic == tutorial</codeph>
+          (rule 1) passes:</p>
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="codeblock:2;59:43">"steps": "S-1,1-D,T-6,F-1,6-M,1-M,M-E"</codeblock>
+        </info>
+      </step>
+
+      <step id="step-add-workflow" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="step:2;63:36">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="cmd:2;64:14">Add the workflow object to the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="codeph:4;64:53">workflows</codeph> array
+        in your rule set file.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="info:2;66:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="codeblock:3;67:43">{
+  "name": "h1-format-for-tutorials",
+  "steps": "S-1,1-D,T-6,F-1,6-M,1-M,M-E",
+  "level": "Required",
+  "fix": "For tutorial articles, H1 must start with 'Tutorial:'"
+}</codeblock>
+        </info>
+      </step>
+
+      <step id="step-test-workflow" class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="step:3;76:37">
+        <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="cmd:3;77:14">Test the workflow against documents that cover both branches.</cmd>
+        <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="info:3;78:15">
+          <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="codeblock:4;79:43"># Document where ms.topic = tutorial (should evaluate rule 6)
+md-validate validate tutorial-article.md --rules rules/tutorial.json
+
+# Document where ms.topic != tutorial (should skip rule 6)
+md-validate validate how-to-article.md --rules rules/tutorial.json</codeblock>
+          <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="p:5;84:14">For interactive workflow testing, see
+          <xref href="t_test-workflow-repl.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/tasks/t_write-workflow.dita" xtrc="xref:3;85:50">Test a workflow in the REPL</xref>.</p>
+        </info>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

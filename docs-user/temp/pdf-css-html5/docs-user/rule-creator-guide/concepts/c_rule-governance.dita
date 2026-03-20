@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/concepts/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Concept//EN?><?doctype-system concept.dtd?><concept xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="c_rule-governance" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="concept:1;7:33" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="title:1;8:10">Rule set governance and versioning</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="keyword:1;13:18">rule governance</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="keyword:2;14:18">rule set versioning</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="keyword:3;15:18">Required vs Suggested</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="keyword:4;16:18">author communication</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="keyword:5;17:18">deprecate rule</keyword>
+      </keywords>
+      <othermeta name="description" content="Best practices for managing markdown-validator rule sets: versioning, communicating changes to authors, when to use Required vs. Suggested, and deprecating rules." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="othermeta:1;20:183"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="shortdesc:1;24:14">A rule set is a living document. Good governance practices protect
+  your authors from unexpected pipeline failures while allowing your editorial
+  standards to evolve over time.</shortdesc>
+
+  <conbody class="- topic/body  concept/conbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="conbody:1;28:12">
+
+    <section id="store-in-repo" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="section:1;30:33">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="title:2;31:14">Store the rule set in version control</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="p:1;32:10">Commit rule set files to the repository alongside the content they
+      govern, typically under <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="filepath:1;33:41">rules/</filepath>. This keeps author
+      and CI rule sets in sync and makes rollback a simple revert.</p>
+    </section>
+
+    <section id="required-vs-suggested" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="section:2;37:41">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="title:3;38:14">Deciding between Required and Suggested</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="p:2;39:10">The level of a rule determines whether authors are blocked or merely
+      informed. Use the following criteria:</p>
+
+      <table id="level-criteria" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="table:1;42:34">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="title:4;43:16">Level selection criteria</title>
+        <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="tgroup:1;44:26">
+          <colspec colname="col1" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="colspec:1;45:55" colnum="1"/>
+          <colspec colname="col2" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="colspec:2;46:51" colnum="2"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="thead:1;47:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="row:1;48:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="entry:1;49:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Situation</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="entry:2;50:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Level</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="tbody:1;53:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="row:2;54:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="entry:3;55:22" colname="col1" dita-ot:x="1" dita-ot:y="2">The check enforces a hard contractual requirement (legal,
+              accessibility, platform dependency)</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="entry:4;57:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Required</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="row:3;59:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="entry:5;60:22" colname="col1" dita-ot:x="1" dita-ot:y="3">The check enforces a well-established style rule that
+              all authors have been trained on</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="entry:6;62:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Required</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="row:4;64:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="entry:7;65:22" colname="col1" dita-ot:x="1" dita-ot:y="4">You are introducing a new rule and want to monitor
+              compliance before enforcing it</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="entry:8;67:22" colname="col2" dita-ot:x="2" dita-ot:y="4">Suggested (promote to Required after 30–60 days)</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="row:5;69:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="entry:9;70:22" colname="col1" dita-ot:x="1" dita-ot:y="5">The check is a recommendation that should be visible
+              but should not block publication</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="entry:10;72:22" colname="col2" dita-ot:x="2" dita-ot:y="5">Suggested</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <note type="tip" class="- topic/note " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="note:1;78:24">Introduce new Required rules gradually. Start as
+      Suggested, run reports to see how many articles fail, communicate the
+      upcoming change to your authors, then promote to Required after the
+      team has had time to address the backlog.</note>
+    </section>
+
+    <section id="communicating-changes" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="section:3;84:41">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="title:5;85:14">Communicating rule changes to authors</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="p:3;86:10">Authors who are blocked by a new rule they did not expect are
+      frustrated. Follow this process when adding or promoting a rule:</p>
+      <ol class="- topic/ol " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="ol:1;88:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:1;89:13">Add the rule as <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="codeph:1;89:37">Suggested</codeph>.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:2;90:13">Run a report across the repository to identify affected articles
+        and their owners.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:3;92:13">Notify authors of the upcoming change with enough lead time to fix
+        their articles (at least two weeks for a large repository).</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:4;94:13">After the compliance window, change the level to
+        <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="codeph:2;95:17">Required</codeph> and commit the update.</li>
+      </ol>
+    </section>
+
+    <section id="deprecating-rules" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="section:4;99:37">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="title:6;100:14">Deprecating and removing rules</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="p:4;101:10">When a rule no longer reflects your editorial standards:</p>
+      <ol class="- topic/ol " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="ol:2;102:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:5;103:13">Change the level from <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="codeph:3;103:43">Required</codeph> to
+        <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="codeph:4;104:17">Suggested</codeph> to stop blocking authors while you
+        plan the removal.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:6;106:13">Remove the rule from the rule set file.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:7;107:13">Update your rule set's changelog.</li>
+      </ol>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="p:5;109:10">Do not change a rule's ID once it is in use. If you change the rule
+      significantly, treat it as a new rule with a new ID and deprecate the
+      old one.</p>
+    </section>
+
+    <section id="changelog" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="section:5;114:29">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="title:7;115:14">Maintain a changelog</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="p:6;116:10">Keep a <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="filepath:2;116:27">CHANGELOG.md</filepath> alongside your rule set file
+      to document what changed, when, and why. Authors who receive unexpected
+      failures will search for this file first. At minimum, record:</p>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="ul:1;119:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:8;120:13">The date of each change</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:9;121:13">Which rules were added, changed, or removed</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:10;122:13">Whether a Suggested rule was promoted to Required</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/concepts/c_rule-governance.dita" xtrc="li:11;123:13">The reason for the change</li>
+      </ul>
+    </section>
+
+  </conbody>
+</concept>

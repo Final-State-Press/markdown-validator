@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/reference?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/rule-creator-guide/reference/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="r_flags" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="reference:1;7:25" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="title:1;8:10">Flags reference</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="keyword:1;13:18">flags reference</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="keyword:2;14:18">value check date pattern count text dom all</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="keyword:3;15:18">rule flag</keyword>
+      </keywords>
+      <othermeta name="description" content="Complete reference for markdown-validator rule flags: value, check, date, pattern for header rules; count, text, dom, all for body rules." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="othermeta:1;18:158"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="shortdesc:1;22:14">The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:1;22:26">flag</codeph> field controls how a rule's query result
+  is processed before comparison. Header and body rules each have their own
+  flag set.</shortdesc>
+
+  <refbody class="- topic/body        reference/refbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="refbody:1;26:12">
+
+    <section id="header-flags" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="section:1;28:32">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="title:2;29:14">Header flags</title>
+
+      <table id="header-flag-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="table:1;31:37">
+        <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="tgroup:1;32:26">
+          <colspec colname="col1" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="colspec:1;33:50" colnum="1"/>
+          <colspec colname="col2" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="colspec:2;34:54" colnum="2"/>
+          <colspec colname="col3" colwidth="4*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="colspec:3;35:53" colnum="3"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="thead:1;36:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="row:1;37:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:1;38:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Flag</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:2;39:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Behavior</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:3;40:22" colname="col3" dita-ot:x="3" dita-ot:y="1">Example rule</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="tbody:1;43:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="row:2;44:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:4;45:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:2;45:30">value</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:5;46:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Retrieves the raw string value of the front-matter key.
+              Applies the operator and value comparison directly to this
+              string.</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:6;49:22" colname="col3" dita-ot:x="3" dita-ot:y="2">
+                <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeblock:1;50:49">"query": "ms.topic",
+"flag": "value",
+"operation": "==",
+"value": "tutorial"</codeblock>
+              </entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="row:3;56:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:7;57:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:3;57:30">check</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:8;58:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Returns <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:4;58:38">true</codeph> if the key exists in the
+              front matter, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:5;59:37">false</codeph> if absent. The
+              <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:6;60:23">operation</codeph> and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:7;60:54">value</codeph> fields
+              are ignored. Use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:8;61:40">"operation": "=="</codeph> and
+              <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:9;62:23">"value": "true"</codeph> by convention.</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:9;63:22" colname="col3" dita-ot:x="3" dita-ot:y="3">
+                <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeblock:2;64:49">"query": "description",
+"flag": "check",
+"operation": "==",
+"value": "true"</codeblock>
+              </entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="row:4;70:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:10;71:22" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:10;71:30">date</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:11;72:22" colname="col2" dita-ot:x="2" dita-ot:y="4">Parses the front-matter value as a date. Computes the age
+              in days as <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:11;73:34">(today - date).days</codeph>. Applies the
+              operator against <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:12;74:40">value</codeph> (the age threshold in
+              days). Use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:13;75:34">"operation": "&lt;"</codeph> to require the
+              date is fresher than N days.</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:12;77:22" colname="col3" dita-ot:x="3" dita-ot:y="4">
+                <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeblock:3;78:49">"query": "ms.date",
+"flag": "date",
+"operation": "&lt;",
+"value": "365"</codeblock>
+              </entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="row:5;84:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:13;85:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:14;85:30">pattern</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:14;86:22" colname="col2" dita-ot:x="2" dita-ot:y="5">Applies the operator as a regular expression match against
+              the front-matter value. Equivalent to using the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:15;87:71">r</codeph>
+              operator on a <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:16;88:37">value</codeph> flag.</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:15;89:22" colname="col3" dita-ot:x="3" dita-ot:y="5">
+                <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeblock:4;90:49">"query": "author",
+"flag": "pattern",
+"operation": "r",
+"value": "^[a-z0-9-]+$"</codeblock>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="body-flags" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="section:2;101:30">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="title:3;102:14">Body flags</title>
+
+      <table id="body-flag-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="table:2;104:35">
+        <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="tgroup:2;105:26">
+          <colspec colname="col1" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="colspec:4;106:50" colnum="1"/>
+          <colspec colname="col2" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="colspec:5;107:54" colnum="2"/>
+          <colspec colname="col3" colwidth="4*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="colspec:6;108:53" colnum="3"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="thead:2;109:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="row:6;110:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:16;111:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Flag</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:17;112:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Behavior</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:18;113:22" colname="col3" dita-ot:x="3" dita-ot:y="1">Example rule</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="tbody:2;116:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="row:7;117:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:19;118:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:17;118:30">count</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:20;119:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Counts the number of XPath matches. Returns the count as
+              a string for comparison.</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:21;121:22" colname="col3" dita-ot:x="3" dita-ot:y="2">
+                <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeblock:5;122:49">"query": "/html/body/h1",
+"flag": "count",
+"operation": "==",
+"value": "1"</codeblock>
+              </entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="row:8;128:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:22;129:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:18;129:30">text</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:23;130:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Extracts the text content of the first XPath match.
+              Returns an empty string if there are no matches.</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:24;132:22" colname="col3" dita-ot:x="3" dita-ot:y="3">
+                <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeblock:6;133:49">"query": "/html/body/h1",
+"flag": "text",
+"operation": "l",
+"value": "60"</codeblock>
+              </entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="row:9;139:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:25;140:22" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:19;140:30">dom</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:26;141:22" colname="col2" dita-ot:x="2" dita-ot:y="4">Returns a comma-separated list of HTML tag names of the
+              matched elements. Useful for checking element type.</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:27;143:22" colname="col3" dita-ot:x="3" dita-ot:y="4">
+                <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeblock:7;144:49">"query": "/html/body/*[2]",
+"flag": "dom",
+"operation": "==",
+"value": "h2"</codeblock>
+              </entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="row:10;150:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:28;151:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:20;151:30">all</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:29;152:22" colname="col2" dita-ot:x="2" dita-ot:y="5">Extracts all text content of the matched elements,
+              including nested text. Typically used with
+              <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeph:21;154:23">/html/body</codeph> to operate on the full page
+              text.</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="entry:30;156:22" colname="col3" dita-ot:x="3" dita-ot:y="5">
+                <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_flags.dita" xtrc="codeblock:8;157:49">"query": "/html/body",
+"flag": "all",
+"operation": "s",
+"value": "500"</codeblock>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+  </refbody>
+</reference>

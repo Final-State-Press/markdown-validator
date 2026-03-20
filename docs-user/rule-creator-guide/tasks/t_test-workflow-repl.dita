@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: test workflow REPL markdown-validator conditional rule
+  Audience: rule-creator
+-->
+<task id="t_test-workflow-repl">
+  <title>Test a workflow in the interactive REPL</title>
+
+  <shortdesc>Testing a workflow requires validating that both the True and False
+  branches execute correctly. Use the full <codeph>md-validate validate</codeph>
+  command with representative documents rather than the REPL
+  <codeph>eval</codeph> command, because <codeph>eval</codeph> tests only a
+  single rule.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>test workflow REPL</keyword>
+        <keyword>validate workflow</keyword>
+        <keyword>conditional rule testing</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Verify that a markdown-validator workflow evaluates correctly by testing both branches against representative documents in the REPL."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <p>Your workflow is written in the rule set file and you have at least two
+      test documents: one that exercises the True branch and one that exercises
+      the False branch.</p>
+    </prereq>
+
+    <steps>
+
+      <step id="step-test-true-branch">
+        <cmd>Run validation on a document that should exercise the True branch
+        of the workflow.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate --verbose validate docs/tutorial-article.md --rules rules/tutorial.json</codeblock>
+          <p>With <codeph>--verbose</codeph>, the output shows each rule
+          evaluated and its result, including workflow steps.</p>
+        </info>
+        <stepresult>Confirm the workflow report shows the expected True-branch
+        result for this document.</stepresult>
+      </step>
+
+      <step id="step-test-false-branch">
+        <cmd>Run validation on a document that exercises the False branch.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate --verbose validate docs/how-to-article.md --rules rules/tutorial.json</codeblock>
+        </info>
+        <stepresult>Confirm the workflow passes or fails as intended for this
+        document type.</stepresult>
+      </step>
+
+      <step id="step-check-repl" importance="optional">
+        <cmd>Use the REPL to inspect the metadata and structure of a document
+        that produces unexpected results.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate repl
+&gt; load docs/unexpected-result-doc.md
+&gt; get ms.topic
+&gt; query //h2 text</codeblock>
+          <p>Compare the actual metadata and structure against what your
+          workflow rules expect. Common causes of unexpected results:</p>
+          <ul>
+            <li>The precondition rule (the decision rule) matches more or fewer
+            documents than you expected.</li>
+            <li>A sentinel rule (used in the False branch) is failing instead
+            of always passing.</li>
+            <li>Whitespace in a metadata value causes an equality check to
+            fail.</li>
+          </ul>
+        </info>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

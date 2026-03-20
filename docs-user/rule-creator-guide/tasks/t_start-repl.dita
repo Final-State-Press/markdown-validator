@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: start markdown-validator interactive REPL rule development
+  Audience: rule-creator
+-->
+<task id="t_start-repl">
+  <title>Start the interactive REPL</title>
+
+  <shortdesc>The interactive REPL lets you load a Markdown document and explore
+  its structure, test XPath queries, and evaluate rules interactively. Use it
+  when writing new rules to confirm your queries return what you expect before
+  adding them to a rule set.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>start REPL</keyword>
+        <keyword>interactive rule testing</keyword>
+        <keyword>md-validate repl</keyword>
+        <keyword>rule development tool</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Start the markdown-validator interactive REPL to explore document structure, test XPath expressions, and evaluate rules before adding them to a rule set."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <p>markdown-validator is installed and the virtual environment is active.
+      See <xref href="../../user-guide/tasks/t_install.dita">Install markdown-validator</xref>.</p>
+    </prereq>
+
+    <context id="context">
+      <p>The REPL is a scratch pad for rule authors — try queries and rules
+      against real documents without modifying the rule set file. Use
+      <codeph>md-validate validate</codeph> for production validation.</p>
+    </context>
+
+    <steps>
+
+      <step id="step-start">
+        <cmd>Start the REPL.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate repl</codeblock>
+        </info>
+        <stepresult>The terminal shows a welcome message and the
+        <systemoutput>&gt;</systemoutput> prompt:
+        <codeblock xml:space="preserve">Markdown Validator REPL
+Type 'help' for a list of commands, 'quit' to exit.
+&gt;</codeblock>
+        </stepresult>
+      </step>
+
+      <step id="step-load">
+        <cmd>Load a Markdown document to work with.</cmd>
+        <info>
+          <codeblock xml:space="preserve">&gt; load docs/tutorial-deploy-app.md</codeblock>
+        </info>
+        <stepresult>The REPL confirms the file is loaded and shows the
+        front-matter keys:
+        <codeblock xml:space="preserve">Loaded: /abs/path/docs/tutorial-deploy-app.md
+  Metadata keys: ['title', 'ms.topic', 'ms.date', 'author', 'description']</codeblock>
+        </stepresult>
+      </step>
+
+      <step id="step-explore" importance="optional">
+        <cmd>Inspect the document's metadata and HTML structure before
+        testing rules.</cmd>
+        <info>
+          <codeblock xml:space="preserve">&gt; dump metadata
+&gt; dump html</codeblock>
+          <p><codeph>dump metadata</codeph> prints the YAML front matter as a
+          JSON object. <codeph>dump html</codeph> prints the rendered HTML body,
+          which shows the exact structure your XPath queries will run against.</p>
+        </info>
+      </step>
+
+    </steps>
+
+    <result id="result">
+      <p>The REPL is running with a document loaded. To test rules, see
+      <xref href="t_test-rule-repl.dita">Test a rule in the interactive REPL</xref>.</p>
+    </result>
+
+    <postreq id="postreq">
+      <p>To exit the REPL, enter <userinput>quit</userinput> or press
+      <uicontrol>Ctrl+D</uicontrol>.</p>
+    </postreq>
+
+  </taskbody>
+</task>

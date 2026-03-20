@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+  SEO keyword phrase: Required vs Suggested validation levels markdown-validator
+  Audience: user, rule-creator
+-->
+<concept id="c_validation-levels">
+  <title>Required and Suggested validation levels</title>
+
+  <shortdesc>Every rule in a rule set has a level: <b>Required</b> or <b>Suggested</b>.
+  Required failures block your CI pipeline. Suggested failures appear in the report
+  as recommendations and do not block a merge.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>Required rule level</keyword>
+        <keyword>Suggested rule level</keyword>
+        <keyword>CI exit code</keyword>
+        <keyword>validation severity</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Understand the difference between Required and Suggested validation rules, and how each level affects your CI/CD pipeline exit code."/>
+    </metadata>
+  </prolog>
+
+  <conbody>
+
+    <section id="levels-explained">
+      <title>What the levels mean</title>
+
+      <table id="levels-table">
+        <title>Validation level comparison</title>
+        <tgroup cols="3">
+          <colspec colname="level" colwidth="1*"/>
+          <colspec colname="effect" colwidth="2*"/>
+          <colspec colname="when-to-use" colwidth="2*"/>
+          <thead>
+            <row>
+              <entry>Level</entry>
+              <entry>Effect on the pipeline</entry>
+              <entry>When your team sets this level</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><b>Required</b></entry>
+              <entry>CLI exits with code <codeph>1</codeph>. CI pipeline fails
+              and blocks the merge.</entry>
+              <entry>The check enforces a hard editorial standard — for example,
+              every tutorial must have an <codeph>ms.topic: tutorial</codeph>
+              value and a single H1.</entry>
+            </row>
+            <row>
+              <entry><b>Suggested</b></entry>
+              <entry>CLI exits with code <codeph>0</codeph> even if the rule
+              fails. The failure appears in the report but does not block
+              the merge.</entry>
+              <entry>The check is a best-practice recommendation — for example,
+              title length should be under 60 characters. Violations are noted
+              but not enforced.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="what-authors-see">
+      <title>What you see</title>
+      <codeblock xml:space="preserve">  ✗  [4]  description-must-exist          [Required]
+           → Add a description field to the front matter.
+
+  ✗  [6]  title-under-60-chars            [Suggested]
+           → Title must be under 60 characters.</codeblock>
+      <p>Rule 4 blocks your pull request. Rule 6 does not. If no level is shown,
+      the rule defaults to <b>Required</b>.</p>
+    </section>
+
+  </conbody>
+</concept>

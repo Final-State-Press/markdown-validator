@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<!--
+  SEO keyword phrase: markdown-validator rule fields JSON schema reference
+  Audience: rule-creator
+-->
+<reference id="r_rule-fields">
+  <title>Rule fields reference</title>
+
+  <shortdesc>Complete reference for every field in a rule object. Use this page
+  to look up allowed values, defaults, and field-level constraints.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>rule fields</keyword>
+        <keyword>rule schema</keyword>
+        <keyword>id name type query flag operation value</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Complete reference for every field in a markdown-validator rule object: data type, whether it is required, allowed values, and default behavior."/>
+    </metadata>
+  </prolog>
+
+  <refbody>
+
+    <table id="rule-fields-table">
+      <title>Rule object fields</title>
+      <tgroup cols="5">
+        <colspec colname="field" colwidth="1.5*"/>
+        <colspec colname="type" colwidth="1*"/>
+        <colspec colname="required" colwidth="0.8*"/>
+        <colspec colname="default" colwidth="1*"/>
+        <colspec colname="description" colwidth="4*"/>
+        <thead>
+          <row>
+            <entry>Field</entry>
+            <entry>Type</entry>
+            <entry>Required</entry>
+            <entry>Default</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><codeph>id</codeph></entry>
+            <entry>integer</entry>
+            <entry>Yes</entry>
+            <entry>—</entry>
+            <entry>Unique positive integer. Strings are coerced to integers at
+            load time for backward compatibility. Do not reuse IDs within a
+            rule set.</entry>
+          </row>
+          <row>
+            <entry><codeph>name</codeph></entry>
+            <entry>string</entry>
+            <entry>Yes</entry>
+            <entry>—</entry>
+            <entry>Human-readable label shown in reports. Recommended format:
+            lowercase words separated by hyphens
+            (<codeph>must-have-h1</codeph>).</entry>
+          </row>
+          <row>
+            <entry><codeph>type</codeph></entry>
+            <entry>string</entry>
+            <entry>Yes*</entry>
+            <entry>Injected from section</entry>
+            <entry>Either <codeph>"header"</codeph> or <codeph>"body"</codeph>.
+            Can be omitted if the rule is in the correct
+            <codeph>rules.header</codeph> or <codeph>rules.body</codeph>
+            array — the tool injects the value automatically.</entry>
+          </row>
+          <row>
+            <entry><codeph>query</codeph></entry>
+            <entry>string</entry>
+            <entry>Yes</entry>
+            <entry>—</entry>
+            <entry>For header rules: the front-matter key name. For body rules:
+            an XPath 1.0 expression against the rendered HTML.</entry>
+          </row>
+          <row>
+            <entry><codeph>flag</codeph></entry>
+            <entry>string</entry>
+            <entry>Yes</entry>
+            <entry>—</entry>
+            <entry>Processing mode. Controls how the query result is extracted
+            before comparison. See
+            <xref href="r_flags.dita"/>.</entry>
+          </row>
+          <row>
+            <entry><codeph>operation</codeph></entry>
+            <entry>string</entry>
+            <entry>Yes</entry>
+            <entry>—</entry>
+            <entry>Comparison operator token. See
+            <xref href="r_operators.dita"/>.</entry>
+          </row>
+          <row>
+            <entry><codeph>value</codeph></entry>
+            <entry>string</entry>
+            <entry>Yes</entry>
+            <entry>—</entry>
+            <entry>Expected value for the comparison. Always a string; numeric
+            coercion is applied by the operator. For multi-value checks, use
+            a comma-separated list.</entry>
+          </row>
+          <row>
+            <entry><codeph>level</codeph></entry>
+            <entry>string</entry>
+            <entry>No</entry>
+            <entry><codeph>"Required"</codeph></entry>
+            <entry>Either <codeph>"Required"</codeph> or
+            <codeph>"Suggested"</codeph>. Required failures block the CI
+            pipeline (exit code 1). Suggested failures are reported but
+            do not change the exit code.</entry>
+          </row>
+          <row>
+            <entry><codeph>mitigation</codeph></entry>
+            <entry>string</entry>
+            <entry>No</entry>
+            <entry><codeph>""</codeph></entry>
+            <entry>Plain-English remediation message shown to authors when the
+            rule fails. Write as an imperative sentence: what to do to fix the
+            problem.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <section id="minimal-example">
+      <title>Minimal valid rule</title>
+      <codeblock xml:space="preserve">{
+  "id": 1,
+  "name": "topic-must-exist",
+  "type": "header",
+  "query": "ms.topic",
+  "flag": "check",
+  "operation": "==",
+  "value": "true"
+}</codeblock>
+    </section>
+
+  </refbody>
+</reference>

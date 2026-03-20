@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/troubleshooting?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/troubleshooting/?><?path2project ../?><?path2project-uri ../?><?path2rootmap-uri ../?><?doctype-public -//OASIS//DTD DITA Troubleshooting//EN?><?doctype-system troubleshooting.dtd?><troubleshooting xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ts_no-frontmatter" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic troubleshooting++task) (topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic troubleshooting/troubleshooting " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="troubleshooting:1;7:41" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="title:1;8:10">Resolve a ParseError caused by missing front matter</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="keyword:1;13:18">ParseError</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="keyword:2;14:18">no front matter</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="keyword:3;15:18">YAML front matter required</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="keyword:4;16:18">--- delimiter missing</keyword>
+      </keywords>
+      <othermeta name="description" content="Fix the ParseError that occurs when a Markdown file does not begin with a valid YAML front-matter block delimited by ---." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="othermeta:1;19:142"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="shortdesc:1;23:14">A <systemoutput class="+ topic/ph sw-d/systemoutput " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="systemoutput:1;23:30">ParseError</systemoutput> means markdown-validator
+  could not find a valid YAML front-matter block at the top of your file.
+  Every Markdown file must begin with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="codeph:1;25:47">---</codeph> to be
+  validated.</shortdesc>
+
+  <troublebody class="- topic/body troubleshooting/troublebody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="troublebody:1;28:16">
+
+    <condition id="condition" class="- topic/section troubleshooting/condition " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="condition:1;30:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="title:2;31:14">Situation</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="p:1;32:10">You run validation and see an error similar to:</p>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="codeblock:1;33:39">ParseError: docs/article.md — no front matter found.
+  File must begin with a --- delimited YAML block.</codeblock>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="p:2;35:10">The file is not validated and counts as a failure in the report.</p>
+    </condition>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="troubleSolution:1;38:22">
+      <cause id="cause-missing" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="cause:1;39:33">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="title:3;40:16">Cause: Front matter block is absent</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="p:3;41:12">The file does not start with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="codeph:2;41:49">---</codeph>, or the opening
+        delimiter is preceded by whitespace or a blank line.</p>
+      </cause>
+      <remedy id="remedy-missing" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="remedy:1;44:35">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="title:4;45:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="steps:1;46:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="step:1;47:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="cmd:1;48:18">Ensure the very first line is exactly <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="codeph:3;48:64">---</codeph>
+            with no preceding whitespace, and close the block with a second
+            <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="codeph:4;50:21">---</codeph> line.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="info:1;51:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="codeblock:2;52:47">---
+title: "Deploy a web application"
+ms.topic: tutorial
+ms.date: 2026-03-20
+author: your-github-username
+description: "Step-by-step guide to deploying a web app."
+---
+
+# Tutorial: Deploy a web application
+...</codeblock>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="troubleSolution:2;68:22">
+      <cause id="cause-encoding" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="cause:2;69:34">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="title:5;70:16">Cause: File encoding issue</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="p:4;71:12">The file contains a byte-order mark (BOM) or non-UTF-8 characters
+        before the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="codeph:5;72:28">---</codeph> delimiter.</p>
+      </cause>
+      <remedy id="remedy-encoding" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="remedy:2;74:36">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="title:6;75:16">Resolution</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="p:5;76:12">Save the file as UTF-8 without BOM. In most text editors, this is
+        the default encoding. If you are using VS Code, check the encoding
+        indicator in the status bar at the bottom right — it should show
+        <uicontrol class="+ topic/ph ui-d/uicontrol " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_no-frontmatter.dita" xtrc="uicontrol:1;79:20">UTF-8</uicontrol>.</p>
+      </remedy>
+    </troubleSolution>
+
+  </troublebody>
+</troubleshooting>

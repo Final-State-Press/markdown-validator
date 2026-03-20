@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/shared?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/shared/?><?path2project ../?><?path2project-uri ../?><?path2rootmap-uri ../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="r_quick-reference" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="reference:1;7:35" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="title:1;8:10">Quick reference</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="keyword:1;13:18">quick reference</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="keyword:2;14:18">cheat sheet</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="keyword:3;15:18">operators flags workflow CLI</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="keyword:4;16:18">markdown-validator reference card</keyword>
+      </keywords>
+      <othermeta name="description" content="Single-page quick reference for markdown-validator: CLI commands, operators, flags, workflow step tokens, and exit codes." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="othermeta:1;19:142"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="shortdesc:1;23:14">All operators, flags, workflow step tokens, CLI options, and exit codes
+  on one page. Use this page when you know what you need and just want the
+  symbol or syntax.</shortdesc>
+
+  <refbody class="- topic/body        reference/refbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="refbody:1;27:12">
+
+    
+    
+    
+    <section id="qr-cli" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="section:1;32:26">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="title:2;33:14">CLI commands</title>
+
+      <table id="qr-cli-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="table:1;35:32">
+        <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="tgroup:1;36:26">
+          <colspec colname="col1" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:1;37:53" colnum="1"/>
+          <colspec colname="col2" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:2;38:57" colnum="2"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="thead:1;39:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:1;40:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:1;41:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Command</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:2;42:22" colname="col2" dita-ot:x="2" dita-ot:y="1">What it does</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="tbody:1;45:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:2;46:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:3;47:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeblock:1;47:54">md-validate validate FILE --rules RULES</codeblock></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:4;48:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Validate a single file and print a report.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:3;50:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:5;51:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeblock:2;51:54">md-validate validate DIR/ --rules RULES</codeblock></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:6;52:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Validate all <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="filepath:1;52:45">.md</filepath> files in the directory
+              recursively. Prints one report per file and a summary.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:4;55:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:7;56:22" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeblock:3;56:54">md-validate validate DIR/ --rules RULES \
+  --format json --output reports/</codeblock></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:8;58:22" colname="col2" dita-ot:x="2" dita-ot:y="4">Validate and save one report file per document to
+              <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="filepath:2;59:25">reports/</filepath>. Formats: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:1;59:63">text</codeph>,
+              <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:2;60:23">json</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:3;60:46">csv</codeph>.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:5;62:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:9;63:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeblock:4;63:54">md-validate --verbose validate FILE --rules RULES</codeblock></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:10;64:22" colname="col2" dita-ot:x="2" dita-ot:y="5">Enable DEBUG-level logging to trace rule and workflow
+              evaluation step by step.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:6;67:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:11;68:22" colname="col1" dita-ot:x="1" dita-ot:y="6"><codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeblock:5;68:54">md-validate --quiet validate DIR/ --rules RULES</codeblock></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:12;69:22" colname="col2" dita-ot:x="2" dita-ot:y="6">Suppress all output; use only the exit code
+              (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:4;70:24">0</codeph> = pass, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:5;70:51">1</codeph> = fail).</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:7;72:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:13;73:22" colname="col1" dita-ot:x="1" dita-ot:y="7"><codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeblock:6;73:54">md-validate repl</codeblock></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:14;74:22" colname="col2" dita-ot:x="2" dita-ot:y="7">Start the interactive REPL for authoring and testing
+              rules. See
+              <xref href="../rule-creator-guide/reference/r_repl-commands.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="xref:1;76:81">REPL commands reference</xref>.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="p:1;82:10">Full option list: <xref href="../user-guide/reference/r_cli-options.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="xref:2;82:84">CLI options reference</xref>.</p>
+    </section>
+
+    
+    
+    
+    <section id="qr-exit" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="section:2;88:27">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="title:3;89:14">Exit codes</title>
+
+      <table id="qr-exit-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="table:2;91:33">
+        <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="tgroup:2;92:26">
+          <colspec colname="col1" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:3;93:50" colnum="1"/>
+          <colspec colname="col2" colwidth="5*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:4;94:53" colnum="2"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="thead:2;95:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:8;96:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:15;97:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Code</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:16;98:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Meaning</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="tbody:2;101:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:9;102:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:17;103:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:6;103:30">0</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:18;104:22" colname="col2" dita-ot:x="2" dita-ot:y="2">All Required rules passed. Suggested failures do not
+              change this code.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:10;107:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:19;108:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:7;108:30">1</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:20;109:22" colname="col2" dita-ot:x="2" dita-ot:y="3">One or more Required rules failed, or a file has no
+              parseable front matter. In a directory scan, one failing
+              file sets the code for the entire run.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    
+    
+    
+    <section id="qr-flags" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="section:3;121:28">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="title:4;122:14">Flags</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="p:2;123:10">The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:8;123:22">flag</codeph> field controls how the query result is
+      processed before comparison.</p>
+
+      <table id="qr-flags-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="table:3;126:34">
+        <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="tgroup:3;127:26">
+          <colspec colname="col1" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:5;128:50" colnum="1"/>
+          <colspec colname="col2" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:6;129:54" colnum="2"/>
+          <colspec colname="col3" colwidth="4*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:7;130:54" colnum="3"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="thead:3;131:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:11;132:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:21;133:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Flag</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:22;134:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Rule type</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:23;135:22" colname="col3" dita-ot:x="3" dita-ot:y="1">Behavior</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="tbody:3;138:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:12;139:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:24;140:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:9;140:30">value</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:25;141:22" colname="col2" dita-ot:x="2" dita-ot:y="2">header</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:26;142:22" colname="col3" dita-ot:x="3" dita-ot:y="2">Raw string value of the front-matter key.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:13;144:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:27;145:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:10;145:30">check</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:28;146:22" colname="col2" dita-ot:x="2" dita-ot:y="3">header</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:29;147:22" colname="col3" dita-ot:x="3" dita-ot:y="3">Returns <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:11;147:38">true</codeph> if the key exists,
+              <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:12;148:23">false</codeph> if absent. Use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:13;148:61">== true</codeph>
+              by convention.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:14;151:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:30;152:22" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:14;152:30">date</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:31;153:22" colname="col2" dita-ot:x="2" dita-ot:y="4">header</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:32;154:22" colname="col3" dita-ot:x="3" dita-ot:y="4">Parses the value as a date; computes age in days as
+              <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:15;155:23">(today − date).days</codeph>. Use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:16;155:65">&lt;</codeph>
+              to require freshness within N days.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:15;158:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:33;159:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:17;159:30">pattern</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:34;160:22" colname="col2" dita-ot:x="2" dita-ot:y="5">header</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:35;161:22" colname="col3" dita-ot:x="3" dita-ot:y="5">Applies the operator as a regex match against the
+              front-matter value.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:16;164:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:36;165:22" colname="col1" dita-ot:x="1" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:18;165:30">count</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:37;166:22" colname="col2" dita-ot:x="2" dita-ot:y="6">body</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:38;167:22" colname="col3" dita-ot:x="3" dita-ot:y="6">Count of XPath matches. Returns an integer string.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:17;169:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:39;170:22" colname="col1" dita-ot:x="1" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:19;170:30">text</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:40;171:22" colname="col2" dita-ot:x="2" dita-ot:y="7">body</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:41;172:22" colname="col3" dita-ot:x="3" dita-ot:y="7">Text content of the first XPath match. Empty string if
+              no match.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:18;175:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:42;176:22" colname="col1" dita-ot:x="1" dita-ot:y="8"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:20;176:30">dom</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:43;177:22" colname="col2" dita-ot:x="2" dita-ot:y="8">body</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:44;178:22" colname="col3" dita-ot:x="3" dita-ot:y="8">Comma-separated list of HTML tag names of matched
+              elements.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:19;181:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:45;182:22" colname="col1" dita-ot:x="1" dita-ot:y="9"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:21;182:30">all</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:46;183:22" colname="col2" dita-ot:x="2" dita-ot:y="9">body</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:47;184:22" colname="col3" dita-ot:x="3" dita-ot:y="9">All text content of matched elements including nested
+              text. Typically used with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:22;185:49">/html/body</codeph>.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="p:3;191:10">Full descriptions and examples: <xref href="../rule-creator-guide/reference/r_flags.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="xref:3;191:100">Flags reference</xref>.</p>
+    </section>
+
+    
+    
+    
+    <section id="qr-operators" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="section:4;197:32">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="title:5;198:14">Operators</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="p:4;199:10">The <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:23;199:22">operation</codeph> field specifies the comparison between
+      the processed query result and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:24;200:46">value</codeph>.</p>
+
+      <table id="qr-operators-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="table:4;202:38">
+        <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="tgroup:4;203:26">
+          <colspec colname="col1" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:8;204:51" colnum="1"/>
+          <colspec colname="col2" colwidth="1.5*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:9;205:52" colnum="2"/>
+          <colspec colname="col3" colwidth="3.5*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:10;206:56" colnum="3"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="thead:4;207:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:20;208:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:48;209:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Token</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:49;210:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Name</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:50;211:22" colname="col3" dita-ot:x="3" dita-ot:y="1">Passes when</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="tbody:4;214:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:21;215:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:51;216:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:25;216:30">==</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:52;217:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Equals</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:53;218:22" colname="col3" dita-ot:x="3" dita-ot:y="2">Result equals value (whitespace-stripped, case-sensitive).</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:22;220:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:54;221:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:26;221:30">!=</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:55;222:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Not equals</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:56;223:22" colname="col3" dita-ot:x="3" dita-ot:y="3">Result does not equal value (whitespace-stripped).</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:23;225:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:57;226:22" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:27;226:30">&gt;</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:58;227:22" colname="col2" dita-ot:x="2" dita-ot:y="4">Greater than</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:59;228:22" colname="col3" dita-ot:x="3" dita-ot:y="4">Result (integer) is greater than value (integer).</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:24;230:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:60;231:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:28;231:30">&lt;</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:61;232:22" colname="col2" dita-ot:x="2" dita-ot:y="5">Less than</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:62;233:22" colname="col3" dita-ot:x="3" dita-ot:y="5">Result (integer) is less than value (integer).</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:25;235:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:63;236:22" colname="col1" dita-ot:x="1" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:29;236:30">[]</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:64;237:22" colname="col2" dita-ot:x="2" dita-ot:y="6">Contains</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:65;238:22" colname="col3" dita-ot:x="3" dita-ot:y="6">Result contains value as a substring (case-insensitive);
+              for comma-separated lists, at least one value must match.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:26;241:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:66;242:22" colname="col1" dita-ot:x="1" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:30;242:30">[:</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:67;243:22" colname="col2" dita-ot:x="2" dita-ot:y="7">Starts with</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:68;244:22" colname="col3" dita-ot:x="3" dita-ot:y="7">Result starts with value string.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:27;246:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:69;247:22" colname="col1" dita-ot:x="1" dita-ot:y="8"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:31;247:30">:]</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:70;248:22" colname="col2" dita-ot:x="2" dita-ot:y="8">Ends with</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:71;249:22" colname="col3" dita-ot:x="3" dita-ot:y="8">Result ends with value string.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:28;251:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:72;252:22" colname="col1" dita-ot:x="1" dita-ot:y="9"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:32;252:30">r</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:73;253:22" colname="col2" dita-ot:x="2" dita-ot:y="9">Regex match</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:74;254:22" colname="col3" dita-ot:x="3" dita-ot:y="9"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:33;254:30">re.search(value, result)</codeph> matches
+              (DOTALL mode).</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:29;257:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:75;258:22" colname="col1" dita-ot:x="1" dita-ot:y="10"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:34;258:30">l</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:76;259:22" colname="col2" dita-ot:x="2" dita-ot:y="10">Length limit</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:77;260:22" colname="col3" dita-ot:x="3" dita-ot:y="10"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:35;260:30">len(result) &lt; int(value)</codeph>.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:30;262:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:78;263:22" colname="col1" dita-ot:x="1" dita-ot:y="11"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:36;263:30">s</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:79;264:22" colname="col2" dita-ot:x="2" dita-ot:y="11">Max sentences</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:80;265:22" colname="col3" dita-ot:x="3" dita-ot:y="11">Sentence count ≤ value. Requires NLTK corpora.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:31;267:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:81;268:22" colname="col1" dita-ot:x="1" dita-ot:y="12"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:37;268:30">p&lt;N&gt;</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:82;269:22" colname="col2" dita-ot:x="2" dita-ot:y="12">Part of speech</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:83;270:22" colname="col3" dita-ot:x="3" dita-ot:y="12">Nth word's POS tag equals value (Penn Treebank tags,
+              1-indexed). Requires NLTK corpora.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="p:5;277:10">Full descriptions and examples: <xref href="../rule-creator-guide/reference/r_operators.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="xref:4;277:104">Operators reference</xref>.</p>
+    </section>
+
+    
+    
+    
+    <section id="qr-workflow" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="section:5;283:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="title:6;284:14">Workflow step tokens</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="p:6;285:10">A workflow's <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:38;285:31">steps</codeph> string is a comma-separated list
+      of <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:39;286:18">source-target</codeph> tokens. N represents a rule ID.</p>
+
+      <table id="qr-workflow-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="table:5;288:37">
+        <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="tgroup:5;289:26">
+          <colspec colname="col1" colwidth="1.5*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:11;290:53" colnum="1"/>
+          <colspec colname="col2" colwidth="4.5*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="colspec:12;291:55" colnum="2"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="thead:5;292:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:32;293:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:84;294:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Token</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:85;295:22" colname="col2" dita-ot:x="2" dita-ot:y="1">Meaning</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="tbody:5;298:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:33;299:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:86;300:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:40;300:30">S-N</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:87;301:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Start: load rule N as the initial state.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:34;303:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:88;304:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:41;304:30">N-E</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:89;305:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Rule N's result ends the workflow.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:35;307:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:90;308:22" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:42;308:30">N-N</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:91;309:22" colname="col2" dita-ot:x="2" dita-ot:y="4">Both rules must pass (logical AND).</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:36;311:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:92;312:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:43;312:30">N-D</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:93;313:22" colname="col2" dita-ot:x="2" dita-ot:y="5">Rule N's result becomes the decision (branch) point.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:37;315:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:94;316:22" colname="col1" dita-ot:x="1" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:44;316:30">T-N</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:95;317:22" colname="col2" dita-ot:x="2" dita-ot:y="6">If the decision is True (pass), load rule N.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:38;319:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:96;320:22" colname="col1" dita-ot:x="1" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:45;320:30">F-N</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:97;321:22" colname="col2" dita-ot:x="2" dita-ot:y="7">If the decision is False (fail), load rule N.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:39;323:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:98;324:22" colname="col1" dita-ot:x="1" dita-ot:y="8"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:46;324:30">T-R</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:99;325:22" colname="col2" dita-ot:x="2" dita-ot:y="8">If True, reverse (negate) the decision.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:40;327:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:100;328:22" colname="col1" dita-ot:x="1" dita-ot:y="9"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:47;328:30">F-R</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:101;329:22" colname="col2" dita-ot:x="2" dita-ot:y="9">If False, reverse (negate) the decision.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:41;331:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:102;332:22" colname="col1" dita-ot:x="1" dita-ot:y="10"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:48;332:30">N-M</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:103;333:22" colname="col2" dita-ot:x="2" dita-ot:y="10">Rule N's result exits to the merge state.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:42;335:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:104;336:22" colname="col1" dita-ot:x="1" dita-ot:y="11"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:49;336:30">M-N</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:105;337:22" colname="col2" dita-ot:x="2" dita-ot:y="11">Merge state exits to rule N (continues the workflow).</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:43;339:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:106;340:22" colname="col1" dita-ot:x="1" dita-ot:y="12"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:50;340:30">M-D</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:107;341:22" colname="col2" dita-ot:x="2" dita-ot:y="12">Merge state becomes the decision point.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="row:44;343:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:108;344:22" colname="col1" dita-ot:x="1" dita-ot:y="13"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:51;344:30">M-E</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="entry:109;345:22" colname="col2" dita-ot:x="2" dita-ot:y="13">Merge state ends the workflow.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="p:7;351:10"><b class="+ topic/ph hi-d/b " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="b:1;351:13">Common recipes:</b></p>
+      <dl class="- topic/dl " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="dl:1;352:11">
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="dlentry:1;353:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="dt:1;354:15">Single rule</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="dd:1;355:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:52;355:23">S-1,1-E</codeph></dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="dlentry:2;357:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="dt:2;358:15">AND (both must pass)</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="dd:2;359:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:53;359:23">S-1,1-2,2-E</codeph></dd>
+        </dlentry>
+        <dlentry class="- topic/dlentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="dlentry:3;361:18">
+          <dt class="- topic/dt " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="dt:3;362:15">Conditional (run B only when A passes)</dt>
+          <dd class="- topic/dd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="dd:3;363:15"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="codeph:54;363:23">S-A,A-D,T-B,F-sentinel,B-M,sentinel-M,M-E</codeph></dd>
+        </dlentry>
+      </dl>
+
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="p:8;367:10">Full step patterns with examples: <xref href="../rule-creator-guide/reference/r_workflow-steps.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/r_quick-reference.dita" xtrc="xref:5;367:111">Workflow step patterns reference</xref>.</p>
+    </section>
+
+  </refbody>
+</reference>

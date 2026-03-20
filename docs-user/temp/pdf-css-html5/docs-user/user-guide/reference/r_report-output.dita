@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/reference?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/reference/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="r_report-output" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="reference:1;7:33" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="title:1;8:10">Validation report output reference</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="keyword:1;13:18">report output</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="keyword:2;14:18">JSON report fields</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="keyword:3;15:18">CSV report columns</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="keyword:4;16:18">validation score</keyword>
+      </keywords>
+      <othermeta name="description" content="Reference for the fields in markdown-validator text, JSON, and CSV validation reports." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="othermeta:1;19:107"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="shortdesc:1;23:14">Reference for the structure and fields of markdown-validator
+  validation reports in text, JSON, and CSV format.</shortdesc>
+
+  <refbody class="- topic/body        reference/refbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="refbody:1;26:12">
+
+    <section id="text-format" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="section:1;28:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="title:2;29:14">Text format</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="p:1;30:10">Text format is the default. It is designed for reading in a terminal.</p>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeblock:1;31:39">Validating: docs/tutorial-deploy-app.md
+Rule set:   rules/tutorial.json
+
+  ✓  [1]  topic-must-be-tutorial
+  ✗  [4]  description-must-exist              [Required]
+           → Add a description field to the front matter.
+  ✗  [6]  title-under-60-chars                [Suggested]
+           → Title must be under 60 characters.
+
+Score: 4/6   FAILED</codeblock>
+
+      <table id="text-fields" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="table:1;42:31">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="title:3;43:16">Text report fields</title>
+        <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="tgroup:1;44:26">
+          <colspec colname="col1" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="colspec:1;45:51" colnum="1"/>
+          <colspec colname="col2" colwidth="4*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="colspec:2;46:50" colnum="2"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="thead:1;47:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:1;48:18"><entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:1;48:25" colname="col1" dita-ot:x="1" dita-ot:y="1">Field</entry><entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:2;48:45" colname="col2" dita-ot:x="2" dita-ot:y="1">Description</entry></row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="tbody:1;50:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:2;51:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:3;52:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:1;52:30">✓</codeph> / <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:2;52:51">✗</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:4;53:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Check mark = rule passed. Cross = rule failed.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:3;55:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:5;56:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:3;56:30">[N]</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:6;57:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Rule ID number.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:4;59:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:7;60:22" colname="col1" dita-ot:x="1" dita-ot:y="4">Rule name</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:8;61:22" colname="col2" dita-ot:x="2" dita-ot:y="4">Human-readable name of the rule as defined in the rule set.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:5;63:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:9;64:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:4;64:30">[Required]</codeph> / <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:5;64:60">[Suggested]</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:10;65:22" colname="col2" dita-ot:x="2" dita-ot:y="5">Severity level. Shown for failed rules. Required failures
+              block the pipeline.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:6;68:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:11;69:22" colname="col1" dita-ot:x="1" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:6;69:30">→ message</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:12;70:22" colname="col2" dita-ot:x="2" dita-ot:y="6">Mitigation message. Plain-English description of what to
+              fix. Shown only for failed rules.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:7;73:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:13;74:22" colname="col1" dita-ot:x="1" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:7;74:30">Score: N/T</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:14;75:22" colname="col2" dita-ot:x="2" dita-ot:y="7">N = rules passed, T = total rules evaluated.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="json-format" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="section:2;82:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="title:4;83:14">JSON format</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="p:2;84:10">JSON format produces a single object with all validation results.</p>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeblock:2;85:39">{
+  "filepath": "docs/tutorial-deploy-app.md",
+  "score": 4,
+  "total_rules": 6,
+  "passed": false,
+  "results": [
+    {
+      "rule_id": 1,
+      "rule_name": "topic-must-be-tutorial",
+      "passed": true,
+      "level": "Required",
+      "expected_value": "tutorial",
+      "actual_value": "tutorial",
+      "mitigation": "",
+      "filepath": "docs/tutorial-deploy-app.md"
+    },
+    {
+      "rule_id": 4,
+      "rule_name": "description-must-exist",
+      "passed": false,
+      "level": "Required",
+      "expected_value": "true",
+      "actual_value": "",
+      "mitigation": "Add a description field to the front matter.",
+      "filepath": "docs/tutorial-deploy-app.md"
+    }
+  ]
+}</codeblock>
+
+      <table id="json-fields" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="table:2;114:31">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="title:5;115:16">JSON report fields</title>
+        <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="tgroup:2;116:26">
+          <colspec colname="col1" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="colspec:3;117:51" colnum="1"/>
+          <colspec colname="col2" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="colspec:4;118:50" colnum="2"/>
+          <colspec colname="col3" colwidth="4*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="colspec:5;119:50" colnum="3"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="thead:2;120:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:8;121:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:15;122:22" colname="col1" dita-ot:x="1" dita-ot:y="1">Field</entry><entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:16;122:42" colname="col2" dita-ot:x="2" dita-ot:y="1">Type</entry><entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:17;122:61" colname="col3" dita-ot:x="3" dita-ot:y="1">Description</entry>
+            </row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="tbody:2;125:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:9;126:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:18;127:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:8;127:30">filepath</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:19;128:22" colname="col2" dita-ot:x="2" dita-ot:y="2">string</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:20;129:22" colname="col3" dita-ot:x="3" dita-ot:y="2">Path to the validated document.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:10;131:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:21;132:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:9;132:30">score</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:22;133:22" colname="col2" dita-ot:x="2" dita-ot:y="3">integer</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:23;134:22" colname="col3" dita-ot:x="3" dita-ot:y="3">Number of rules that passed.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:11;136:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:24;137:22" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:10;137:30">total_rules</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:25;138:22" colname="col2" dita-ot:x="2" dita-ot:y="4">integer</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:26;139:22" colname="col3" dita-ot:x="3" dita-ot:y="4">Total number of rules evaluated.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:12;141:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:27;142:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:11;142:30">passed</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:28;143:22" colname="col2" dita-ot:x="2" dita-ot:y="5">boolean</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:29;144:22" colname="col3" dita-ot:x="3" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:12;144:30">true</codeph> if all Required rules passed.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:13;146:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:30;147:22" colname="col1" dita-ot:x="1" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:13;147:30">results[].rule_id</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:31;148:22" colname="col2" dita-ot:x="2" dita-ot:y="6">integer</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:32;149:22" colname="col3" dita-ot:x="3" dita-ot:y="6">Rule identifier.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:14;151:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:33;152:22" colname="col1" dita-ot:x="1" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:14;152:30">results[].passed</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:34;153:22" colname="col2" dita-ot:x="2" dita-ot:y="7">boolean</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:35;154:22" colname="col3" dita-ot:x="3" dita-ot:y="7">Whether this individual rule passed.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:15;156:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:36;157:22" colname="col1" dita-ot:x="1" dita-ot:y="8"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:15;157:30">results[].mitigation</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:37;158:22" colname="col2" dita-ot:x="2" dita-ot:y="8">string</entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:38;159:22" colname="col3" dita-ot:x="3" dita-ot:y="8">Remediation message. Empty string if the rule passed.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="csv-format" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="section:3;166:30">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="title:6;167:14">CSV format</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="p:3;168:10">CSV format produces one row per rule evaluation. Useful for importing
+      into a spreadsheet or BI tool.</p>
+      <table id="csv-columns" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="table:3;170:31">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="title:7;171:16">CSV columns</title>
+        <tgroup cols="2" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="tgroup:3;172:26">
+          <colspec colname="col1" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="colspec:6;173:49" colnum="1"/>
+          <colspec colname="col2" colwidth="4*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="colspec:7;174:50" colnum="2"/>
+          <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="thead:3;175:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:16;176:18"><entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:39;176:25" colname="col1" dita-ot:x="1" dita-ot:y="1">Column</entry><entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:40;176:46" colname="col2" dita-ot:x="2" dita-ot:y="1">Description</entry></row>
+          </thead>
+          <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="tbody:3;178:18">
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:17;179:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:41;180:22" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:16;180:30">filepath</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:42;181:22" colname="col2" dita-ot:x="2" dita-ot:y="2">Path to the validated document.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:18;183:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:43;184:22" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:17;184:30">rule_id</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:44;185:22" colname="col2" dita-ot:x="2" dita-ot:y="3">Rule identifier.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:19;187:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:45;188:22" colname="col1" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:18;188:30">rule_name</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:46;189:22" colname="col2" dita-ot:x="2" dita-ot:y="4">Human-readable rule name.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:20;191:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:47;192:22" colname="col1" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:19;192:30">type</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:48;193:22" colname="col2" dita-ot:x="2" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:20;193:30">header</codeph> or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:21;193:57">body</codeph>.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:21;195:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:49;196:22" colname="col1" dita-ot:x="1" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:22;196:30">level</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:50;197:22" colname="col2" dita-ot:x="2" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:23;197:30">Required</codeph> or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:24;197:59">Suggested</codeph>.</entry>
+            </row>
+            <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="row:22;199:18">
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:51;200:22" colname="col1" dita-ot:x="1" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:25;200:30">passed</codeph></entry>
+              <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="entry:52;201:22" colname="col2" dita-ot:x="2" dita-ot:y="7"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:26;201:30">true</codeph> or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_report-output.dita" xtrc="codeph:27;201:55">false</codeph>.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+  </refbody>
+</reference>

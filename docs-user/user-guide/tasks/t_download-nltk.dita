@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: download NLTK data markdown-validator sentence POS rules
+  Audience: user
+-->
+<task id="t_download-nltk">
+  <title>Download NLTK language data</title>
+
+  <shortdesc>Download the NLTK language corpora required by validation rules
+  that check sentence counts or part-of-speech tags. You only need to do this
+  once per Python environment.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>NLTK download</keyword>
+        <keyword>punkt_tab</keyword>
+        <keyword>LookupError</keyword>
+        <keyword>sentence count rules</keyword>
+        <keyword>part-of-speech rules</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Download the NLTK language data required by sentence-count and part-of-speech validation rules. Needed once per environment."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <p>markdown-validator must be installed. See
+      <xref href="t_install.dita">Install markdown-validator</xref>.</p>
+    </prereq>
+
+    <context id="context">
+      <p>Rules that check sentence counts or part-of-speech tags require NLTK
+      language data. Without it, those rules fail with
+      <codeph>LookupError: Resource punkt_tab not found</codeph>. If your rule
+      set does not use <codeph>s</codeph> or <codeph>p&lt;N&gt;</codeph> rules,
+      skip this task.</p>
+    </context>
+
+    <steps>
+
+      <step id="step-activate">
+        <cmd>Activate the virtual environment where markdown-validator is
+        installed.</cmd>
+        <info>
+          <p>On macOS or Linux:</p>
+          <codeblock xml:space="preserve">source .venv/bin/activate</codeblock>
+          <p>On Windows (PowerShell):</p>
+          <codeblock xml:space="preserve">.venv\Scripts\Activate.ps1</codeblock>
+        </info>
+      </step>
+
+      <step id="step-download">
+        <cmd>Download the required NLTK corpora.</cmd>
+        <info>
+          <codeblock xml:space="preserve">python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng</codeblock>
+          <p>This command downloads two datasets:</p>
+          <ul>
+            <li><codeph>punkt_tab</codeph> — sentence tokenizer used for sentence-count
+            rules</li>
+            <li><codeph>averaged_perceptron_tagger_eng</codeph> — part-of-speech tagger
+            used for POS rules</li>
+          </ul>
+        </info>
+        <stepresult>NLTK downloads the files to your NLTK data directory
+        (typically <filepath>~/nltk_data</filepath> on macOS and Linux, or
+        <filepath>%APPDATA%\nltk_data</filepath> on Windows).</stepresult>
+      </step>
+
+      <step id="step-verify">
+        <cmd>Verify the download succeeded.</cmd>
+        <info>
+          <codeblock xml:space="preserve">python -c "import nltk; nltk.data.find('tokenizers/punkt_tab'); print('OK')"</codeblock>
+        </info>
+        <stepresult>The terminal prints <systemoutput>OK</systemoutput>. If it
+        prints a LookupError instead, the download did not complete. Run the
+        download command again.</stepresult>
+      </step>
+
+    </steps>
+
+    <postreq id="postreq">
+      <p>Ready to validate:
+      <xref href="t_validate-single-file.dita">Validate a single file</xref>.
+      If you still see a LookupError, see
+      <xref href="../../troubleshooting/ts_nltk-error.dita">Resolve an NLTK LookupError</xref>.</p>
+    </postreq>
+
+  </taskbody>
+</task>

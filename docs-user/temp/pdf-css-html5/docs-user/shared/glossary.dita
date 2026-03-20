@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/shared?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/shared/?><?path2project ../?><?path2project-uri ../?><?path2rootmap-uri ../?><?doctype-public -//OASIS//DTD DITA Glossary Group//EN?><?doctype-system glossgroup.dtd?><glossgroup xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="glossary" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossgroup/glossgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossgroup:1;7:27" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="title:1;8:10">Glossary</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="keyword:1;13:18">glossary</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="keyword:2;14:18">markdown-validator terms</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="keyword:3;15:18">terminology</keyword>
+      </keywords>
+      <othermeta name="description" content="Definitions for key terms used in markdown-validator documentation: front matter, rule, rule set, flag, operator, workflow, XPath, and more." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="othermeta:1;18:161"/>
+    </metadata>
+  </prolog>
+
+  <glossentry id="g_body-rule" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:1;22:32" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:1;23:16">body rule</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:1;24:15">A validation rule that checks the content of the Markdown document
+    below the front-matter block. Body rules use XPath expressions to query the
+    rendered HTML. Contrast with <term keyref="g_header-rule" class="- topic/term " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="term:1;26:63">header rule</term>.
+    </glossdef>
+  </glossentry>
+
+  <glossentry id="g_ci-cd" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:2;30:28" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:2;31:16">CI/CD</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:2;32:15">Continuous Integration / Continuous Delivery. An automated pipeline
+    that builds, tests, and validates code and content on every pull request.
+    markdown-validator runs as a step in a CI/CD pipeline to gate merges on
+    validation results.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_exit-code" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:3;38:32" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:3;39:16">exit code</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:3;40:15">An integer returned by a command-line program when it finishes.
+    markdown-validator exits with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:1;41:43">0</codeph> when all Required rules
+    pass and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:2;42:22">1</codeph> when any Required rule fails. CI systems use
+    exit codes to determine whether a step succeeded or failed.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_flag" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:4;46:27" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:4;47:16">flag</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:4;48:15">A field in a validation rule that controls how the query result
+    is processed before being compared to the expected value. Header flags
+    include <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:3;50:21">value</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:4;50:45">check</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:5;50:69">date</codeph>,
+    and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:6;51:17">pattern</codeph>. Body flags include <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:7;51:62">count</codeph>,
+    <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:8;52:13">text</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:9;52:36">dom</codeph>, and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:10;52:62">all</codeph>.
+    See also: <term keyref="g_operator" class="- topic/term " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="term:2;53:41">operator</term>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_front-matter" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:5;56:35" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:5;57:16">front matter</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:5;58:15">A YAML metadata block at the top of a Markdown file, delimited by
+    <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:11;59:13">---</codeph> lines. Front matter contains structured metadata such as
+    <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:12;60:13">title</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:13;60:37">ms.topic</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:14;60:64">ms.date</codeph>,
+    and <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:15;61:17">description</codeph>. markdown-validator requires every file to
+    have a front-matter block.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_header-rule" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:6;65:34" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:6;66:16">header rule</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:6;67:15">A validation rule that checks the YAML front-matter metadata at the
+    top of a Markdown file. Header rules use a metadata key name as their
+    <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:16;69:13">query</codeph> field. Contrast with
+    <term keyref="g_body-rule" class="- topic/term " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="term:3;70:32">body rule</term>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_mitigation" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:7;73:33" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:7;74:16">mitigation message</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:7;75:15">A plain-English remediation message shown to an author when a rule
+    fails. Defined in the rule's <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:17;76:42">mitigation</codeph> field. A good
+    mitigation message is an imperative sentence that tells the author exactly
+    what to change.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_operator" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:8;81:31" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:8;82:16">operator</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:8;83:15">A comparison function applied between the processed query result and
+    the expected value in a rule. Operators include equality (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:18;84:71">==</codeph>),
+    inequality (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:19;85:25">!=</codeph>), contains (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:20;85:57">[]</codeph>), starts-with
+    (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:21;86:14">[:</codeph>), regex match (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:22;86:49">r</codeph>), and length limit
+    (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:23;87:14">l</codeph>). See also: <term keyref="g_flag" class="- topic/term " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="term:4;87:59">flag</term>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_parse-error" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:9;90:34" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:9;91:16">ParseError</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:9;92:15">An error raised when markdown-validator cannot read a
+    <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="filepath:1;93:15">.md</filepath> file because it does not begin with a valid YAML
+    front-matter block. A file that produces a ParseError is counted as a failed
+    scan and contributes to the exit code of <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:24;95:54">1</codeph>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_repl" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:10;98:27" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:10;99:16">REPL</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:10;100:15">Read–Eval–Print Loop. An interactive command-line session started
+    with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:25;101:18">md-validate repl</codeph>. The REPL lets rule creators load a
+    Markdown file, inspect its structure, test XPath expressions, and evaluate
+    rule JSON objects before committing rules to a rule set file.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_rule" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:11;106:27" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:11;107:16">rule</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:11;108:15">A JSON object that defines a single assertion about a Markdown
+    document. A rule specifies what to query (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:26;109:55">query</codeph>), how to
+    process the result (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:27;110:33">flag</codeph>), how to compare it
+    (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:28;111:14">operation</codeph>), and what the expected value is
+    (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:29;112:14">value</codeph>). Rules have a severity level (<codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:30;112:68">Required</codeph>
+    or <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:31;113:16">Suggested</codeph>) and a mitigation message.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_rule-set" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:12;116:31" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:12;117:16">rule set</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:12;118:15">A JSON file that defines all the validation rules and workflows for
+    a specific content type. A rule set has three top-level elements:
+    <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:32;120:13">rules.header</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:33;120:44">rules.body</codeph>, and
+    <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:34;121:13">workflows</codeph>. Rule set files are version-controlled in the
+    documentation repository and used by both local validation and CI.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_scan-report" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:13;125:34" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:13;126:16">scan report</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:13;127:15">The output produced by validating one Markdown file against a rule
+    set. A scan report includes a score (passing rules / total rules), a per-rule
+    pass/fail result, and mitigation messages for each failure. Available in text,
+    JSON, and CSV formats.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_score" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:14;133:28" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:14;134:16">score</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:14;135:15">The number of rules that passed divided by the total number of rules
+    evaluated, expressed as a fraction (for example, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:35;136:62">24/26</codeph>).
+    A score of <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:36;137:24">26/26</codeph> means every rule passed. The score does not
+    directly determine the CI exit code — only the pass/fail status of Required
+    rules does.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_suggested" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:15;142:32" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:15;143:16">Suggested</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:15;144:15">A rule severity level that indicates a best-practice recommendation.
+    Suggested-level failures are reported but do not affect the CLI exit code.
+    A CI pipeline step passes even if Suggested rules fail. Contrast with
+    <term keyref="g_required" class="- topic/term " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="term:5;147:31">Required</term>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_required" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:16;150:31" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:16;151:16">Required</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:16;152:15">A rule severity level that indicates a mandatory editorial standard.
+    Required-level failures set the CLI exit code to <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:37;153:62">1</codeph>, causing
+    a CI pipeline step to fail and blocking the merge. The default level if
+    <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:38;155:13">level</codeph> is omitted from a rule. Contrast with
+    <term keyref="g_suggested" class="- topic/term " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="term:6;156:32">Suggested</term>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_workflow" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:17;159:31" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:17;160:16">workflow</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:17;161:15">A named sequence of rule evaluation steps that uses conditional
+    branching. Workflows allow a check to run only when a precondition is met.
+    Defined in the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:39;163:28">workflows</codeph> array of a rule set file using the
+    workflow step language.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_xpath" ditaarch:DITAArchVersion="1.3" domains="(topic concept) (topic concept glossentry) (topic concept glossgroup) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic abbrev-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic concept/concept glossentry/glossentry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossentry:18;167:28" specializations="@props/deliveryTarget">
+    <glossterm class="- topic/title concept/title glossentry/glossterm " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossterm:18;168:16">XPath</glossterm>
+    <glossdef class="- topic/abstract concept/abstract glossentry/glossdef " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="glossdef:18;169:15">XML Path Language. A query language for selecting nodes in an XML
+    or HTML document. markdown-validator body rules use XPath 1.0 expressions to
+    query the rendered HTML of a Markdown file's body. The HTML is flat: all
+    headings are direct children of <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/shared/glossary.dita" xtrc="codeph:40;172:45">&lt;body&gt;</codeph>.</glossdef>
+  </glossentry>
+
+</glossgroup>

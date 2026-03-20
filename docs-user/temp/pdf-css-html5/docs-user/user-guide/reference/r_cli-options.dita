@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/reference?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/reference/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="r_cli-options" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="reference:1;7:31" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="title:1;8:10">CLI options reference</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="keyword:1;13:18">CLI options</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="keyword:2;14:18">md-validate flags</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="keyword:3;15:18">command-line reference</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="keyword:4;16:18">--rules --format --output --verbose</keyword>
+      </keywords>
+      <othermeta name="description" content="Complete reference for all md-validate command-line options, subcommands, and flags with examples." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="othermeta:1;19:119"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="shortdesc:1;23:14">Complete reference for all <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:1;23:49">md-validate</codeph> commands
+  and options. Use this page to look up the syntax, default values, and effect
+  of every command-line flag.</shortdesc>
+
+  <refbody class="- topic/body        reference/refbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="refbody:1;27:12">
+
+    <section id="synopsis" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="section:1;29:28">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="title:2;30:14">Synopsis</title>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeblock:1;31:39">md-validate [--verbose] [--quiet] COMMAND [OPTIONS]
+
+Commands:
+  validate    Validate a Markdown file or directory
+  repl        Start the interactive REPL</codeblock>
+    </section>
+
+    <section id="global-options" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="section:2;38:34">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="title:3;39:14">Global options</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="p:1;40:10">These options apply to all subcommands and must appear before the
+      subcommand name.</p>
+
+      <properties id="global-props" class="- topic/simpletable reference/properties " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="properties:1;43:37">
+        <prophead class="- topic/sthead      reference/prophead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="prophead:1;44:19">
+          <proptypehd class="- topic/stentry     reference/proptypehd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="proptypehd:1;45:23" dita-ot:x="1" dita-ot:y="1">Option</proptypehd>
+          <propvaluehd class="- topic/stentry     reference/propvaluehd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propvaluehd:1;46:24" dita-ot:x="2" dita-ot:y="1">Default</propvaluehd>
+          <propdeschd class="- topic/stentry     reference/propdeschd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propdeschd:1;47:23" dita-ot:x="3" dita-ot:y="1">Description</propdeschd>
+        </prophead>
+        <property id="verbose" class="- topic/strow       reference/property " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="property:1;49:32">
+          <proptype class="- topic/stentry     reference/proptype " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="proptype:1;50:21" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:2;50:29">--verbose</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:3;50:57">-v</codeph></proptype>
+          <propvalue class="- topic/stentry     reference/propvalue " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propvalue:1;51:22" dita-ot:x="2" dita-ot:y="2">Off</propvalue>
+          <propdesc class="- topic/stentry     reference/propdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propdesc:1;52:21" dita-ot:x="3" dita-ot:y="2">Enable DEBUG-level logging. Use this when diagnosing
+          unexpected results or rule failures.</propdesc>
+        </property>
+        <property id="quiet" class="- topic/strow       reference/property " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="property:2;55:30">
+          <proptype class="- topic/stentry     reference/proptype " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="proptype:2;56:21" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:4;56:29">--quiet</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:5;56:55">-q</codeph></proptype>
+          <propvalue class="- topic/stentry     reference/propvalue " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propvalue:2;57:22" dita-ot:x="2" dita-ot:y="3">Off</propvalue>
+          <propdesc class="- topic/stentry     reference/propdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propdesc:2;58:21" dita-ot:x="3" dita-ot:y="3">Suppress all non-error output. Only the exit code indicates
+          pass or fail. Useful in CI pipelines that parse exit codes
+          only.</propdesc>
+        </property>
+      </properties>
+    </section>
+
+    <section id="validate-command" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="section:3;65:36">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="title:4;66:14">validate — Validate a file or directory</title>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeblock:2;67:39">md-validate validate TARGET --rules RULES [OPTIONS]</codeblock>
+
+      <properties id="validate-props" class="- topic/simpletable reference/properties " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="properties:2;69:39">
+        <prophead class="- topic/sthead      reference/prophead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="prophead:2;70:19">
+          <proptypehd class="- topic/stentry     reference/proptypehd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="proptypehd:2;71:23" dita-ot:x="1" dita-ot:y="1">Option</proptypehd>
+          <propvaluehd class="- topic/stentry     reference/propvaluehd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propvaluehd:2;72:24" dita-ot:x="2" dita-ot:y="1">Default</propvaluehd>
+          <propdeschd class="- topic/stentry     reference/propdeschd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propdeschd:2;73:23" dita-ot:x="3" dita-ot:y="1">Description</propdeschd>
+        </prophead>
+        <property id="target" class="- topic/strow       reference/property " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="property:3;75:31">
+          <proptype class="- topic/stentry     reference/proptype " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="proptype:3;76:21" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:6;76:29">TARGET</codeph></proptype>
+          <propvalue class="- topic/stentry     reference/propvalue " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propvalue:3;77:22" dita-ot:x="2" dita-ot:y="2">(required)</propvalue>
+          <propdesc class="- topic/stentry     reference/propdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propdesc:3;78:21" dita-ot:x="3" dita-ot:y="2">Path to a <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="filepath:1;78:41">.md</filepath> file or a directory.
+          When a directory is provided, all <filepath class="+ topic/ph sw-d/filepath " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="filepath:2;79:55">.md</filepath> files
+          are validated recursively.</propdesc>
+        </property>
+        <property id="rules" class="- topic/strow       reference/property " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="property:4;82:30">
+          <proptype class="- topic/stentry     reference/proptype " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="proptype:4;83:21" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:7;83:29">--rules</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:8;83:55">-r</codeph></proptype>
+          <propvalue class="- topic/stentry     reference/propvalue " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propvalue:4;84:22" dita-ot:x="2" dita-ot:y="3">(required)</propvalue>
+          <propdesc class="- topic/stentry     reference/propdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propdesc:4;85:21" dita-ot:x="3" dita-ot:y="3">Path to the JSON rule set file.</propdesc>
+        </property>
+        <property id="output" class="- topic/strow       reference/property " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="property:5;87:31">
+          <proptype class="- topic/stentry     reference/proptype " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="proptype:5;88:21" dita-ot:x="1" dita-ot:y="4"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:9;88:29">--output</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:10;88:56">-o</codeph></proptype>
+          <propvalue class="- topic/stentry     reference/propvalue " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propvalue:5;89:22" dita-ot:x="2" dita-ot:y="4">None (print to stdout)</propvalue>
+          <propdesc class="- topic/stentry     reference/propdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propdesc:5;90:21" dita-ot:x="3" dita-ot:y="4">Directory where report files are written. One file is
+          created per validated document. The directory is created if it does
+          not exist.</propdesc>
+        </property>
+        <property id="format" class="- topic/strow       reference/property " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="property:6;94:31">
+          <proptype class="- topic/stentry     reference/proptype " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="proptype:6;95:21" dita-ot:x="1" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:11;95:29">--format</codeph>, <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:12;95:56">-f</codeph></proptype>
+          <propvalue class="- topic/stentry     reference/propvalue " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propvalue:6;96:22" dita-ot:x="2" dita-ot:y="5"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:13;96:30">text</codeph></propvalue>
+          <propdesc class="- topic/stentry     reference/propdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propdesc:6;97:21" dita-ot:x="3" dita-ot:y="5">Report format. One of: <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:14;97:52">text</codeph> (human-readable
+          terminal output), <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:15;98:37">json</codeph> (machine-readable JSON object),
+          <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:16;99:19">csv</codeph> (one row per rule).</propdesc>
+        </property>
+        <property id="workflows" class="- topic/strow       reference/property " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="property:7;101:34">
+          <proptype class="- topic/stentry     reference/proptype " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="proptype:7;102:21" dita-ot:x="1" dita-ot:y="6"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:17;102:29">--workflows</codeph> / <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:18;102:60">--no-workflows</codeph></proptype>
+          <propvalue class="- topic/stentry     reference/propvalue " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propvalue:7;103:22" dita-ot:x="2" dita-ot:y="6">Workflows enabled</propvalue>
+          <propdesc class="- topic/stentry     reference/propdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="propdesc:7;104:21" dita-ot:x="3" dita-ot:y="6">Controls whether workflow chains are executed after individual
+          rule evaluation. Use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeph:19;105:40">--no-workflows</codeph> to evaluate rules
+          only.</propdesc>
+        </property>
+      </properties>
+    </section>
+
+    <section id="repl-command" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="section:4;111:32">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="title:5;112:14">repl — Start the interactive REPL</title>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeblock:3;113:39">md-validate repl</codeblock>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="p:2;114:10">Starts the interactive REPL for rule development and debugging. No
+      options are required. See the
+      <xref href="../../rule-creator-guide/reference/r_repl-commands.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="xref:1;116:90" type="reference"><?ditaot gentext?>REPL commands reference<?ditaot genshortdesc?><desc class="- topic/desc ">Complete reference for all commands available in the   <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/rule-creator-guide/reference/r_repl-commands.dita" xtrc="codeph:1;23:11">md-validate repl</codeph> interactive session.</desc></xref>
+      for the list of REPL commands.</p>
+    </section>
+
+    <section id="examples" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="section:5;120:28">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="title:6;121:14">Examples</title>
+
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_cli-options.dita" xtrc="codeblock:4;123:39"># Validate a single file with text output
+md-validate validate article.md --rules rules/tutorial.json
+
+# Validate a directory and save JSON reports
+md-validate validate docs/ --rules rules/tutorial.json \
+  --format json --output reports/
+
+# Validate quietly (exit code only, no output)
+md-validate --quiet validate docs/ --rules rules/tutorial.json
+
+# Validate with debug logging
+md-validate --verbose validate article.md --rules rules/tutorial.json</codeblock>
+    </section>
+
+  </refbody>
+</reference>

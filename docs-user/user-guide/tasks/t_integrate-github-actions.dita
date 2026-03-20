@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: add markdown-validator GitHub Actions CI workflow
+  Audience: user, DevOps
+-->
+<task id="t_integrate-github-actions">
+  <title>Add markdown-validator to a GitHub Actions workflow</title>
+
+  <shortdesc>Create a GitHub Actions workflow file that installs
+  markdown-validator, downloads NLTK language data, validates your
+  documentation on every pull request, and uploads reports as downloadable
+  artifacts.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>GitHub Actions</keyword>
+        <keyword>CI/CD integration</keyword>
+        <keyword>validate docs pipeline</keyword>
+        <keyword>pull request gate</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Add markdown-validator as a GitHub Actions job to automatically validate Markdown files on every pull request and block merges on Required failures."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <ul>
+        <li>Your documentation repository is hosted on GitHub.</li>
+        <li>The rule set file is committed to the repository.</li>
+        <li>You have write access to the repository to create workflow files.</li>
+      </ul>
+    </prereq>
+
+    <context id="context">
+      <p>A GitHub Actions workflow runs automatically when you open or update a
+      pull request. If the validation step exits with code <codeph>1</codeph>
+      (one or more Required rules failed), GitHub marks the check as failed and
+      prevents the merge. Authors can see the report in the Actions log or as a
+      downloaded artifact.</p>
+    </context>
+
+    <steps>
+
+      <step id="step-create-dir">
+        <cmd>In your repository, create the directory
+        <filepath>.github/workflows/</filepath> if it does not exist.</cmd>
+        <info>
+          <codeblock xml:space="preserve">mkdir -p .github/workflows</codeblock>
+        </info>
+      </step>
+
+      <step id="step-create-file">
+        <cmd>Create a new file named
+        <filepath>.github/workflows/validate-docs.yml</filepath> and paste in
+        the following workflow. Do not modify it yet — update the two
+        project-specific values in the next step.</cmd>
+        <info>
+          <codeblock xml:space="preserve">name: Validate documentation
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**/*.md'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Cache NLTK data
+        uses: actions/cache@v4
+        with:
+          path: ~/nltk_data
+          key: nltk-punkt-tagger
+
+      - name: Install markdown-validator
+        run: pip install markdown-validator
+
+      - name: Download NLTK language data
+        run: |
+          python -m nltk.downloader punkt_tab averaged_perceptron_tagger_eng
+
+      - name: Validate documentation
+        run: |
+          md-validate validate docs/ \
+            --rules rules/tutorial.json \
+            --format json \
+            --output reports/
+
+      - name: Upload validation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-reports
+          path: reports/</codeblock>
+        </info>
+      </step>
+
+      <step id="step-understand">
+        <cmd>Review the non-obvious workflow steps before customizing.</cmd>
+        <info>
+          <dl>
+            <dlentry>
+              <dt>Cache NLTK data</dt>
+              <dd>Caches the NLTK corpora between runs so the pipeline does
+              not re-download them on every pull request.</dd>
+            </dlentry>
+            <dlentry>
+              <dt>Download NLTK language data</dt>
+              <dd>Downloads <codeph>punkt_tab</codeph> and
+              <codeph>averaged_perceptron_tagger_eng</codeph> for sentence-count
+              and part-of-speech rules. Runs even when the cache is warm; the
+              downloader skips files already present.</dd>
+            </dlentry>
+            <dlentry>
+              <dt>Validate documentation</dt>
+              <dd>Exits with code <codeph>1</codeph> if any Required rule fails,
+              marking the GitHub check as failed and blocking the merge.</dd>
+            </dlentry>
+            <dlentry>
+              <dt>Upload validation reports</dt>
+              <dd><codeph>if: always()</codeph> ensures the upload runs even
+              when validation fails, so authors can download the report without
+              scrolling CI logs.</dd>
+            </dlentry>
+          </dl>
+        </info>
+      </step>
+
+      <step id="step-customize">
+        <cmd>Update the workflow to match your repository's paths and rule set
+        location.</cmd>
+        <info>
+          <p>Change the following values:</p>
+          <ul>
+            <li><codeph>docs/**/*.md</codeph> — the glob pattern matching your
+            documentation files</li>
+            <li><codeph>docs/</codeph> (in the validate command) — the directory
+            to scan</li>
+            <li><codeph>rules/tutorial.json</codeph> — the path to your team's
+            rule set file</li>
+          </ul>
+        </info>
+      </step>
+
+      <step id="step-commit">
+        <cmd>Commit the workflow file and push the branch.</cmd>
+        <info>
+          <codeblock xml:space="preserve">git add .github/workflows/validate-docs.yml
+git commit -m "Add documentation validation workflow"
+git push</codeblock>
+        </info>
+        <stepresult>GitHub runs the workflow on every subsequent pull request
+        that changes files matching the path filter.</stepresult>
+      </step>
+
+      <step id="step-verify">
+        <cmd>Open a pull request to verify the workflow runs correctly.</cmd>
+        <info>
+          <p>Navigate to the <b>Actions</b> tab of your repository and select the
+          latest workflow run to see the validation output. If the workflow fails,
+          the output shows which rules failed and what to fix.</p>
+        </info>
+      </step>
+
+    </steps>
+
+  </taskbody>
+</task>

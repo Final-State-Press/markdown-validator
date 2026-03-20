@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<!--
+  SEO keyword phrase: md-validate CLI options flags reference
+  Audience: user, rule-creator
+-->
+<reference id="r_cli-options">
+  <title>CLI options reference</title>
+
+  <shortdesc>Complete reference for all <codeph>md-validate</codeph> commands
+  and options. Use this page to look up the syntax, default values, and effect
+  of every command-line flag.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>CLI options</keyword>
+        <keyword>md-validate flags</keyword>
+        <keyword>command-line reference</keyword>
+        <keyword>--rules --format --output --verbose</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Complete reference for all md-validate command-line options, subcommands, and flags with examples."/>
+    </metadata>
+  </prolog>
+
+  <refbody>
+
+    <section id="synopsis">
+      <title>Synopsis</title>
+      <codeblock xml:space="preserve">md-validate [--verbose] [--quiet] COMMAND [OPTIONS]
+
+Commands:
+  validate    Validate a Markdown file or directory
+  repl        Start the interactive REPL</codeblock>
+    </section>
+
+    <section id="global-options">
+      <title>Global options</title>
+      <p>These options apply to all subcommands and must appear before the
+      subcommand name.</p>
+
+      <simpletable id="global-props">
+        <sthead>
+          <stentry>Option</stentry>
+          <stentry>Default</stentry>
+          <stentry>Description</stentry>
+        </sthead>
+        <strow>
+          <stentry><codeph>--verbose</codeph>, <codeph>-v</codeph></stentry>
+          <stentry>Off</stentry>
+          <stentry>Enable DEBUG-level logging. Use this when diagnosing
+          unexpected results or rule failures.</stentry>
+        </strow>
+        <strow>
+          <stentry><codeph>--quiet</codeph>, <codeph>-q</codeph></stentry>
+          <stentry>Off</stentry>
+          <stentry>Suppress all non-error output. Only the exit code indicates
+          pass or fail. Useful in CI pipelines that parse exit codes
+          only.</stentry>
+        </strow>
+      </simpletable>
+    </section>
+
+    <section id="validate-command">
+      <title>validate — Validate a file or directory</title>
+      <codeblock xml:space="preserve">md-validate validate TARGET --rules RULES [OPTIONS]</codeblock>
+
+      <simpletable id="validate-props">
+        <sthead>
+          <stentry>Option</stentry>
+          <stentry>Default</stentry>
+          <stentry>Description</stentry>
+        </sthead>
+        <strow>
+          <stentry><codeph>TARGET</codeph></stentry>
+          <stentry>(required)</stentry>
+          <stentry>Path to a <filepath>.md</filepath> file or a directory.
+          When a directory is provided, all <filepath>.md</filepath> files
+          are validated recursively.</stentry>
+        </strow>
+        <strow>
+          <stentry><codeph>--rules</codeph>, <codeph>-r</codeph></stentry>
+          <stentry>(required)</stentry>
+          <stentry>Path to the JSON rule set file.</stentry>
+        </strow>
+        <strow>
+          <stentry><codeph>--output</codeph>, <codeph>-o</codeph></stentry>
+          <stentry>None (print to stdout)</stentry>
+          <stentry>Directory where report files are written. One file is
+          created per validated document. The directory is created if it does
+          not exist.</stentry>
+        </strow>
+        <strow>
+          <stentry><codeph>--format</codeph>, <codeph>-f</codeph></stentry>
+          <stentry><codeph>text</codeph></stentry>
+          <stentry>Report format. One of: <codeph>text</codeph> (human-readable
+          terminal output), <codeph>json</codeph> (machine-readable JSON object),
+          <codeph>csv</codeph> (one row per rule).</stentry>
+        </strow>
+        <strow>
+          <stentry><codeph>--workflows</codeph> / <codeph>--no-workflows</codeph></stentry>
+          <stentry>Workflows enabled</stentry>
+          <stentry>Controls whether workflow chains are executed after individual
+          rule evaluation. Use <codeph>--no-workflows</codeph> to evaluate rules
+          only.</stentry>
+        </strow>
+      </simpletable>
+    </section>
+
+    <section id="repl-command">
+      <title>repl — Start the interactive REPL</title>
+      <codeblock xml:space="preserve">md-validate repl</codeblock>
+      <p>Starts the interactive REPL for rule development and debugging. No
+      options are required. See the
+      <xref href="../../rule-creator-guide/reference/r_repl-commands.dita">REPL commands reference</xref>
+      for the list of REPL commands.</p>
+    </section>
+
+    <section id="examples">
+      <title>Examples</title>
+
+      <codeblock xml:space="preserve"># Validate a single file with text output
+md-validate validate article.md --rules rules/tutorial.json
+
+# Validate a directory and save JSON reports
+md-validate validate docs/ --rules rules/tutorial.json \
+  --format json --output reports/
+
+# Validate quietly (exit code only, no output)
+md-validate --quiet validate docs/ --rules rules/tutorial.json
+
+# Validate with debug logging
+md-validate --verbose validate article.md --rules rules/tutorial.json</codeblock>
+    </section>
+
+  </refbody>
+</reference>

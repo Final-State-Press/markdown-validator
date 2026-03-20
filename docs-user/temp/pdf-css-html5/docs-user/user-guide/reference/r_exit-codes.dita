@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/reference?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/user-guide/reference/?><?path2project ../../?><?path2project-uri ../../?><?path2rootmap-uri ../../?><?doctype-public -//OASIS//DTD DITA Reference//EN?><?doctype-system reference.dtd?><reference xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="r_exit-codes" ditaarch:DITAArchVersion="1.3" domains="(topic reference) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d)" class="- topic/topic       reference/reference " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="reference:1;7:30" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="title:1;8:10">Exit codes reference</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="keyword:1;13:18">exit codes</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="keyword:2;14:18">CI pipeline exit code</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="keyword:3;15:18">validation pass fail code</keyword>
+      </keywords>
+      <othermeta name="description" content="Reference for markdown-validator exit codes and their meaning in CI/CD pipelines." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="othermeta:1;18:102"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="shortdesc:1;22:14">markdown-validator exits with code <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="codeph:1;22:57">0</codeph> when all
+  Required rules pass and code <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="codeph:2;23:40">1</codeph> when any Required rule fails.
+  CI systems use these codes to gate pull request merges.</shortdesc>
+
+  <refbody class="- topic/body        reference/refbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="refbody:1;26:12">
+
+    <table id="exit-codes-table" class="- topic/table " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="table:1;28:34">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="title:2;29:14">Exit codes</title>
+      <tgroup cols="3" class="- topic/tgroup " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="tgroup:1;30:24">
+        <colspec colname="col1" colwidth="1*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="colspec:1;31:48" colnum="1"/>
+        <colspec colname="col2" colwidth="2*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="colspec:2;32:51" colnum="2"/>
+        <colspec colname="col3" colwidth="3*" class="- topic/colspec " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="colspec:3;33:53" colnum="3"/>
+        <thead class="- topic/thead " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="thead:1;34:16">
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="row:1;35:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="entry:1;36:20" colname="col1" dita-ot:x="1" dita-ot:y="1">Code</entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="entry:2;37:20" colname="col2" dita-ot:x="2" dita-ot:y="1">Meaning</entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="entry:3;38:20" colname="col3" dita-ot:x="3" dita-ot:y="1">Effect in CI</entry>
+          </row>
+        </thead>
+        <tbody class="- topic/tbody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="tbody:1;41:16">
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="row:2;42:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="entry:4;43:20" colname="col1" dita-ot:x="1" dita-ot:y="2"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="codeph:3;43:28">0</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="entry:5;44:20" colname="col2" dita-ot:x="2" dita-ot:y="2">All Required rules passed</entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="entry:6;45:20" colname="col3" dita-ot:x="3" dita-ot:y="2">CI step succeeds. The pipeline continues. Suggested-rule
+            failures do not affect this code.</entry>
+          </row>
+          <row class="- topic/row " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="row:3;48:16">
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="entry:7;49:20" colname="col1" dita-ot:x="1" dita-ot:y="3"><codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="codeph:4;49:28">1</codeph></entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="entry:8;50:20" colname="col2" dita-ot:x="2" dita-ot:y="3">One or more Required rules failed</entry>
+            <entry class="- topic/entry " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="entry:9;51:20" colname="col3" dita-ot:x="3" dita-ot:y="3">CI step fails. The pipeline stops (unless configured to
+            continue on error). The merge is blocked.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
+    <section id="notes" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="section:1;58:25">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="title:3;59:14">Notes</title>
+      <ul class="- topic/ul " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="ul:1;60:11">
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="li:1;61:13">Suggested-level failures do not change the exit code. A file with
+        only Suggested failures exits with code <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="codeph:5;62:57">0</codeph>.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="li:2;63:13">A parse error (file has no front matter) produces exit code
+        <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="codeph:6;64:17">1</codeph>. The file is counted as a failed scan.</li>
+        <li class="- topic/li " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="li:3;65:13">In a directory scan, one failing file sets the exit code to
+        <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="codeph:7;66:17">1</codeph> for the entire run.</li>
+      </ul>
+    </section>
+
+    <section id="check-exit-code" class="- topic/section " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="section:2;70:35">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="title:4;71:14">Checking the exit code in a shell script</title>
+      <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/user-guide/reference/r_exit-codes.dita" xtrc="codeblock:1;72:39">md-validate validate docs/ --rules rules/tutorial.json
+if [ $? -eq 0 ]; then
+  echo "All required rules passed."
+else
+  echo "Validation failed. Check the report for details."
+fi</codeblock>
+    </section>
+
+  </refbody>
+</reference>

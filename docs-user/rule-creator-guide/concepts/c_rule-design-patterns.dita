@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<!--
+  SEO keyword phrase: markdown-validator rule design patterns common checks
+  Audience: rule-creator
+-->
+<concept id="c_rule-design-patterns">
+  <title>Rule design patterns for common editorial checks</title>
+
+  <shortdesc>These patterns cover the most common editorial requirements you
+  will need to express as rules. Each pattern includes the JSON, an explanation
+  of how it works, and common variations.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>rule design patterns</keyword>
+        <keyword>editorial checks</keyword>
+        <keyword>check field exists</keyword>
+        <keyword>enforce section order</keyword>
+        <keyword>date freshness rule</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Ready-to-use rule patterns for common documentation governance checks: required fields, date freshness, heading presence, section order, and absence assertions."/>
+    </metadata>
+  </prolog>
+
+  <conbody>
+
+    <section id="pattern-quickref">
+      <title>Quick-reference: choose your pattern</title>
+      <p>Find the check you want to enforce in the table below, then jump to
+      the corresponding pattern for the full rule JSON and explanation.</p>
+
+      <table id="table-pattern-quickref">
+        <tgroup cols="3">
+          <colspec colname="goal" colwidth="2*"/>
+          <colspec colname="rule-type" colwidth="1*"/>
+          <colspec colname="pattern" colwidth="2*"/>
+          <thead>
+            <row>
+              <entry>What you want to check</entry>
+              <entry>Rule type</entry>
+              <entry>Pattern to use</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>A front-matter field must exist (any value is acceptable)</entry>
+              <entry>header</entry>
+              <entry><xref href="#c_rule-design-patterns/pattern-required-field">Pattern 1: Require a front-matter field to exist</xref></entry>
+            </row>
+            <row>
+              <entry>A front-matter field must equal a specific value, or one of a list</entry>
+              <entry>header</entry>
+              <entry><xref href="#c_rule-design-patterns/pattern-exact-value">Pattern 2: Enforce an exact front-matter value</xref></entry>
+            </row>
+            <row>
+              <entry>A date field must be within N days of today</entry>
+              <entry>header</entry>
+              <entry><xref href="#c_rule-design-patterns/pattern-date-freshness">Pattern 3: Check date freshness</xref></entry>
+            </row>
+            <row>
+              <entry>The document must have exactly N headings of a given level</entry>
+              <entry>body</entry>
+              <entry><xref href="#c_rule-design-patterns/pattern-heading-count">Pattern 4: Require exactly one H1</xref></entry>
+            </row>
+            <row>
+              <entry>A specific section heading (e.g., "Prerequisites") must exist</entry>
+              <entry>body</entry>
+              <entry><xref href="#c_rule-design-patterns/pattern-required-section">Pattern 5: Require a specific H2 section</xref></entry>
+            </row>
+            <row>
+              <entry>An H1 (or other heading) must begin with a required prefix</entry>
+              <entry>body</entry>
+              <entry><xref href="#c_rule-design-patterns/pattern-title-format">Pattern 6: Enforce an H1 naming convention</xref></entry>
+            </row>
+            <row>
+              <entry>A heading or field value must not exceed a character limit</entry>
+              <entry>body or header</entry>
+              <entry><xref href="#c_rule-design-patterns/pattern-length-limit">Pattern 7: Limit title length</xref></entry>
+            </row>
+            <row>
+              <entry>Something must NOT be present — avoid this in v0.2; use Pattern 8 only as a last resort</entry>
+              <entry>body or header</entry>
+              <entry><xref href="#c_rule-design-patterns/pattern-absence">Pattern 8: Absence checks (design smell — avoid until v0.3)</xref></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+
+    <section id="pattern-required-field">
+      <title>Pattern 1: Require a front-matter field to exist</title>
+      <p>Use the <codeph>check</codeph> flag to verify a key is present,
+      regardless of its value.</p>
+
+      <codeblock xml:space="preserve">{
+  "id": 1, "name": "description-must-exist", "type": "header",
+  "query": "description",
+  "flag": "check", "operation": "==", "value": "true",
+  "level": "Required",
+  "mitigation": "Add a description field to the front matter."
+}</codeblock>
+    </section>
+
+    <section id="pattern-exact-value">
+      <title>Pattern 2: Enforce an exact front-matter value</title>
+      <p>Use the <codeph>value</codeph> flag with <codeph>==</codeph> to require
+      a specific value.</p>
+
+      <codeblock xml:space="preserve">{
+  "id": 2, "name": "topic-must-be-tutorial", "type": "header",
+  "query": "ms.topic",
+  "flag": "value", "operation": "==", "value": "tutorial",
+  "level": "Required",
+  "mitigation": "Set ms.topic: tutorial in the front matter."
+}</codeblock>
+
+      <p>To allow any of several values, use the <codeph>[]</codeph> operator
+      with a comma-separated list:</p>
+      <codeblock xml:space="preserve">"flag": "value", "operation": "[]",
+"value": "tutorial, how-to, concept, reference"</codeblock>
+    </section>
+
+    <section id="pattern-date-freshness">
+      <title>Pattern 3: Check date freshness</title>
+      <p>Use the <codeph>date</codeph> flag with the <codeph>&lt;</codeph>
+      operator. The <codeph>value</codeph> is the maximum age in days.</p>
+
+      <codeblock xml:space="preserve">{
+  "id": 3, "name": "ms-date-must-be-within-one-year", "type": "header",
+  "query": "ms.date",
+  "flag": "date", "operation": "&lt;", "value": "365",
+  "level": "Suggested",
+  "mitigation": "Update ms.date to today's date (YYYY-MM-DD format)."
+}</codeblock>
+
+      <p>The comparison is: <codeph>(today - ms.date).days &lt; 365</codeph>.</p>
+    </section>
+
+    <section id="pattern-heading-count">
+      <title>Pattern 4: Require exactly one H1</title>
+      <p>Use the <codeph>count</codeph> flag on an XPath expression to count
+      matching elements.</p>
+
+      <codeblock xml:space="preserve">{
+  "id": 4, "name": "must-have-exactly-one-h1", "type": "body",
+  "query": "/html/body/h1",
+  "flag": "count", "operation": "==", "value": "1",
+  "level": "Required",
+  "mitigation": "The document must have exactly one H1 heading."
+}</codeblock>
+    </section>
+
+    <section id="pattern-required-section">
+      <title>Pattern 5: Require a specific H2 section</title>
+      <p>Use the <codeph>count</codeph> flag and XPath predicate to check that
+      a specific section heading exists.</p>
+
+      <codeblock xml:space="preserve">{
+  "id": 5, "name": "must-have-prerequisites-section", "type": "body",
+  "query": "//h2[normalize-space(text())='Prerequisites']",
+  "flag": "count", "operation": "&gt;", "value": "0",
+  "level": "Required",
+  "mitigation": "Add a '## Prerequisites' section to the document."
+}</codeblock>
+    </section>
+
+    <section id="pattern-title-format">
+      <title>Pattern 6: Enforce an H1 naming convention</title>
+      <p>Use the <codeph>text</codeph> flag with <codeph>[:</codeph> (starts with)
+      to check the content of the H1.</p>
+
+      <codeblock xml:space="preserve">{
+  "id": 6, "name": "h1-must-start-with-tutorial", "type": "body",
+  "query": "/html/body/h1",
+  "flag": "text", "operation": "[:", "value": "Tutorial:",
+  "level": "Required",
+  "mitigation": "H1 must begin with 'Tutorial:' for tutorial articles."
+}</codeblock>
+    </section>
+
+    <section id="pattern-length-limit">
+      <title>Pattern 7: Limit title length</title>
+      <p>Use the <codeph>l</codeph> operator (length limit) to ensure the H1
+      text is under a character threshold.</p>
+
+      <codeblock xml:space="preserve">{
+  "id": 7, "name": "h1-under-60-chars", "type": "body",
+  "query": "/html/body/h1",
+  "flag": "text", "operation": "l", "value": "60",
+  "level": "Suggested",
+  "mitigation": "H1 must be under 60 characters for SEO."
+}</codeblock>
+    </section>
+
+    <section id="pattern-absence">
+      <title>Pattern 8: Absence checks (design smell — avoid until v0.3)</title>
+      <note type="danger"><b>Do not use this pattern for new rules.</b>
+      markdown-validator v0.2 has no negation operator. Expressing "this must
+      NOT exist" requires a workflow-inversion technique that is fragile and
+      easy to wire incorrectly. A <codeph>negate</codeph> flag is planned for
+      v0.3 and will replace this entirely. See
+      <xref href="c_known-limitations.dita">Known limitations</xref>.
+      Only use the workaround below if you have an immediate need and cannot
+      wait for v0.3. Track the v0.3 negation issue at
+      <xref href="https://github.com/Final-State-Press/markdown-validator/issues"
+            format="html" scope="external">github.com/Final-State-Press/markdown-validator/issues</xref>.</note>
+
+      <p>To express "the title must NOT contain the word 'guide'," a workflow
+      can invert a contains check using a known-passing sentinel rule. The
+      inversion works by swapping which branch is "good": the True branch (word
+      IS present — the bad state) is routed back to the failing rule, while the
+      False branch (word is absent — the good state) routes to a sentinel that
+      passes. <b>This is not standard workflow logic.</b> It exploits branching
+      as a substitute for a missing operator.</p>
+
+      <p>Assume rule 5 is a <codeph>text</codeph> / <codeph>]:</codeph>
+      (contains) check on the H1 for the string <codeph>guide</codeph>, and
+      rule 1 is a sentinel rule that always passes (for example, the
+      "description-must-exist" check from Pattern 1). The inversion workflow
+      is:</p>
+
+      <codeblock xml:space="preserve">{
+  "name": "title-must-not-contain-guide",
+  "steps": "S-5,5-D,F-1,T-5,5-M,M-E",
+  "fix": "Remove the word 'guide' from the title."
+}</codeblock>
+
+      <p>Rule 5 passes when <codeph>guide</codeph> IS present (the bad state).
+      The True branch (word found) loops back to rule 5, which fails the
+      workflow. The False branch (word absent — the good state) routes to the
+      sentinel rule 1, which passes. The workflow therefore passes when and
+      only when the word is absent.</p>
+
+      <p><b>Verify the inversion with both documents before committing the
+      rule set.</b> Use the REPL to confirm each case explicitly:</p>
+
+      <ol>
+        <li>
+          <p><b>Failing case</b> — a document whose H1 contains "guide":</p>
+          <codeblock xml:space="preserve">md-validate repl
+&gt; load docs/bad-guide.md
+&gt; eval title-must-not-contain-guide</codeblock>
+          <p>Expected result: <codeph>FAIL</codeph>. If the result is PASS, the
+          True/False branches are swapped — invert the routing.</p>
+        </li>
+        <li>
+          <p><b>Passing case</b> — a document whose H1 does not contain "guide":</p>
+          <codeblock xml:space="preserve">&gt; load docs/clean-title.md
+&gt; eval title-must-not-contain-guide</codeblock>
+          <p>Expected result: <codeph>PASS</codeph>. If the result is FAIL,
+          the sentinel rule (rule 1) is not passing on its own — verify it
+          in isolation with <codeph>eval description-must-exist</codeph>.</p>
+        </li>
+      </ol>
+
+      <p>Add a comment in the rule set JSON above the workflow to explain the
+      inversion and include a migration note for the v0.3 upgrade. See
+      <xref href="c_workflow-language-overview.dita#c_workflow-language-overview/inversion-antipattern">Workflow inversion anti-pattern</xref>
+      for the full failure-mode analysis.</p>
+    </section>
+
+  </conbody>
+</concept>

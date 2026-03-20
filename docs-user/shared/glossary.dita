@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glossgroup PUBLIC "-//OASIS//DTD DITA Glossary Group//EN" "glossgroup.dtd">
+<!--
+  SEO keyword phrase: markdown-validator glossary terminology definitions
+  Audience: user, rule-creator
+-->
+<glossgroup id="glossary">
+  <title>Glossary</title>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>glossary</keyword>
+        <keyword>markdown-validator terms</keyword>
+        <keyword>terminology</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Definitions for key terms used in markdown-validator documentation: front matter, rule, rule set, flag, operator, workflow, XPath, and more."/>
+    </metadata>
+  </prolog>
+
+  <glossentry id="g_body-rule">
+    <glossterm>body rule</glossterm>
+    <glossdef>A validation rule that checks the content of the Markdown document
+    below the front-matter block. Body rules use XPath expressions to query the
+    rendered HTML. Contrast with <term keyref="g_header-rule">header rule</term>.
+    </glossdef>
+  </glossentry>
+
+  <glossentry id="g_ci-cd">
+    <glossterm>CI/CD</glossterm>
+    <glossdef>Continuous Integration / Continuous Delivery. An automated pipeline
+    that builds, tests, and validates code and content on every pull request.
+    markdown-validator runs as a step in a CI/CD pipeline to gate merges on
+    validation results.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_exit-code">
+    <glossterm>exit code</glossterm>
+    <glossdef>An integer returned by a command-line program when it finishes.
+    markdown-validator exits with <codeph>0</codeph> when all Required rules
+    pass and <codeph>1</codeph> when any Required rule fails. CI systems use
+    exit codes to determine whether a step succeeded or failed.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_flag">
+    <glossterm>flag</glossterm>
+    <glossdef>A field in a validation rule that controls how the query result
+    is processed before being compared to the expected value. Header flags
+    include <codeph>value</codeph>, <codeph>check</codeph>, <codeph>date</codeph>,
+    and <codeph>pattern</codeph>. Body flags include <codeph>count</codeph>,
+    <codeph>text</codeph>, <codeph>dom</codeph>, and <codeph>all</codeph>.
+    See also: <term keyref="g_operator">operator</term>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_front-matter">
+    <glossterm>front matter</glossterm>
+    <glossdef>A YAML metadata block at the top of a Markdown file, delimited by
+    <codeph>---</codeph> lines. Front matter contains structured metadata such as
+    <codeph>title</codeph>, <codeph>ms.topic</codeph>, <codeph>ms.date</codeph>,
+    and <codeph>description</codeph>. markdown-validator requires every file to
+    have a front-matter block.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_header-rule">
+    <glossterm>header rule</glossterm>
+    <glossdef>A validation rule that checks the YAML front-matter metadata at the
+    top of a Markdown file. Header rules use a metadata key name as their
+    <codeph>query</codeph> field. Contrast with
+    <term keyref="g_body-rule">body rule</term>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_mitigation">
+    <glossterm>mitigation message</glossterm>
+    <glossdef>A plain-English remediation message shown to an author when a rule
+    fails. Defined in the rule's <codeph>mitigation</codeph> field. A good
+    mitigation message is an imperative sentence that tells the author exactly
+    what to change.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_operator">
+    <glossterm>operator</glossterm>
+    <glossdef>A comparison function applied between the processed query result and
+    the expected value in a rule. Operators include equality (<codeph>==</codeph>),
+    inequality (<codeph>!=</codeph>), contains (<codeph>[]</codeph>), starts-with
+    (<codeph>[:</codeph>), regex match (<codeph>r</codeph>), and length limit
+    (<codeph>l</codeph>). See also: <term keyref="g_flag">flag</term>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_parse-error">
+    <glossterm>ParseError</glossterm>
+    <glossdef>An error raised when markdown-validator cannot read a
+    <filepath>.md</filepath> file because it does not begin with a valid YAML
+    front-matter block. A file that produces a ParseError is counted as a failed
+    scan and contributes to the exit code of <codeph>1</codeph>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_repl">
+    <glossterm>REPL</glossterm>
+    <glossdef>Read–Eval–Print Loop. An interactive command-line session started
+    with <codeph>md-validate repl</codeph>. The REPL lets rule creators load a
+    Markdown file, inspect its structure, test XPath expressions, and evaluate
+    rule JSON objects before committing rules to a rule set file.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_rule">
+    <glossterm>rule</glossterm>
+    <glossdef>A JSON object that defines a single assertion about a Markdown
+    document. A rule specifies what to query (<codeph>query</codeph>), how to
+    process the result (<codeph>flag</codeph>), how to compare it
+    (<codeph>operation</codeph>), and what the expected value is
+    (<codeph>value</codeph>). Rules have a severity level (<codeph>Required</codeph>
+    or <codeph>Suggested</codeph>) and a mitigation message.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_rule-set">
+    <glossterm>rule set</glossterm>
+    <glossdef>A JSON file that defines all the validation rules and workflows for
+    a specific content type. A rule set has three top-level elements:
+    <codeph>rules.header</codeph>, <codeph>rules.body</codeph>, and
+    <codeph>workflows</codeph>. Rule set files are version-controlled in the
+    documentation repository and used by both local validation and CI.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_scan-report">
+    <glossterm>scan report</glossterm>
+    <glossdef>The output produced by validating one Markdown file against a rule
+    set. A scan report includes a score (passing rules / total rules), a per-rule
+    pass/fail result, and mitigation messages for each failure. Available in text,
+    JSON, and CSV formats.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_score">
+    <glossterm>score</glossterm>
+    <glossdef>The number of rules that passed divided by the total number of rules
+    evaluated, expressed as a fraction (for example, <codeph>24/26</codeph>).
+    A score of <codeph>26/26</codeph> means every rule passed. The score does not
+    directly determine the CI exit code — only the pass/fail status of Required
+    rules does.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_suggested">
+    <glossterm>Suggested</glossterm>
+    <glossdef>A rule severity level that indicates a best-practice recommendation.
+    Suggested-level failures are reported but do not affect the CLI exit code.
+    A CI pipeline step passes even if Suggested rules fail. Contrast with
+    <term keyref="g_required">Required</term>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_required">
+    <glossterm>Required</glossterm>
+    <glossdef>A rule severity level that indicates a mandatory editorial standard.
+    Required-level failures set the CLI exit code to <codeph>1</codeph>, causing
+    a CI pipeline step to fail and blocking the merge. The default level if
+    <codeph>level</codeph> is omitted from a rule. Contrast with
+    <term keyref="g_suggested">Suggested</term>.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_workflow">
+    <glossterm>workflow</glossterm>
+    <glossdef>A named sequence of rule evaluation steps that uses conditional
+    branching. Workflows allow a check to run only when a precondition is met.
+    Defined in the <codeph>workflows</codeph> array of a rule set file using the
+    workflow step language.</glossdef>
+  </glossentry>
+
+  <glossentry id="g_xpath">
+    <glossterm>XPath</glossterm>
+    <glossdef>XML Path Language. A query language for selecting nodes in an XML
+    or HTML document. markdown-validator body rules use XPath 1.0 expressions to
+    query the rendered HTML of a Markdown file's body. The HTML is flat: all
+    headings are direct children of <codeph>&lt;body&gt;</codeph>.</glossdef>
+  </glossentry>
+
+</glossgroup>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><?workdir /Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/troubleshooting?><?workdir-uri file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/temp/pdf-css-html5/docs-user/troubleshooting/?><?path2project ../?><?path2project-uri ../?><?path2rootmap-uri ../?><?doctype-public -//OASIS//DTD DITA Troubleshooting//EN?><?doctype-system troubleshooting.dtd?><troubleshooting xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="ts_rule-never-passes" ditaarch:DITAArchVersion="1.3" domains="(topic task) (topic troubleshooting++task) (topic task) (topic abbrev-d) a(props deliveryTarget) (topic equation-d) (topic hazard-d) (topic hi-d) (topic indexing-d) (topic markup-d) (topic mathml-d) (topic pr-d) (topic relmgmt-d) (topic sw-d) (topic svg-d) (topic ui-d) (topic ut-d) (topic markup-d xml-d) (topic task strictTaskbody-c)" class="- topic/topic troubleshooting/troubleshooting " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="troubleshooting:1;7:44" specializations="@props/deliveryTarget">
+  <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="title:1;8:10">Debug a rule that never passes on a valid document</title>
+
+  <prolog class="- topic/prolog " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="prolog:1;10:11">
+    <metadata class="- topic/metadata " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="metadata:1;11:15">
+      <keywords class="- topic/keywords " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="keywords:1;12:17">
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="keyword:1;13:18">rule always fails</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="keyword:2;14:18">rule debug</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="keyword:3;15:18">rule never passes</keyword>
+        <keyword class="- topic/keyword " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="keyword:4;16:18">incorrect rule result</keyword>
+      </keywords>
+      <othermeta name="description" content="Debug a markdown-validator rule that fails on every document even when the document satisfies the rule's intent. Common causes: whitespace, wrong operator, multi-element XPath, wrong flag." class="- topic/othermeta " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="othermeta:1;19:209"/>
+    </metadata>
+  </prolog>
+
+  <shortdesc class="- topic/shortdesc " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="shortdesc:1;23:14">A rule that always fails even on correctly formatted documents
+  usually has a mismatch between the query result and the expected value.
+  Use the REPL to inspect the exact values the rule is working with.</shortdesc>
+
+  <troublebody class="- topic/body troubleshooting/troublebody " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="troublebody:1;27:16">
+
+    <condition id="condition" class="- topic/section troubleshooting/condition " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="condition:1;29:31">
+      <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="title:2;30:14">Situation</title>
+      <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="p:1;31:10">You have a rule that you believe should pass on a correctly formatted
+      document, but it always reports FAIL regardless of the document
+      content.</p>
+    </condition>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="troubleSolution:1;36:22">
+      <cause id="cause-whitespace" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cause:1;37:36">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="title:3;38:16">Cause: Whitespace in the query result</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="p:2;39:12">The metadata value or XPath text result has leading or trailing
+        whitespace that prevents an equality match.</p>
+      </cause>
+      <remedy id="remedy-whitespace" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="remedy:1;42:38">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="title:4;43:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="steps:1;44:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="step:1;45:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cmd:1;46:18">Start the REPL, load the document, and inspect the exact
+            value.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="info:1;48:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeblock:1;49:47">md-validate repl
+&gt; load docs/article.md
+&gt; get ms.topic</codeblock>
+            </info>
+            <stepresult class="- topic/itemgroup task/stepresult " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="stepresult:1;53:25">Compare the output to what your rule's
+            <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:1;54:21">value</codeph> field expects. Look for extra spaces or
+            quotes.</stepresult>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="step:2;57:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cmd:2;58:18">Update the rule's <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:2;58:44">value</codeph> field to match the
+            exact string, or clean up the front matter.</cmd>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="troubleSolution:2;65:22">
+      <cause id="cause-multi-element" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cause:2;66:39">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="title:5;67:16">Cause: Multi-element XPath result with equality operator</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="p:3;68:12">An XPath expression returns multiple elements, and the
+        <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:3;69:17">==</codeph> operator requires <i class="+ topic/ph hi-d/i " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="i:1;69:50">every</i> element to match
+        the expected value. If any element differs, the rule fails. This
+        is almost never the intended behavior.</p>
+      </cause>
+      <remedy id="remedy-multi-element" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="remedy:2;73:41">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="title:6;74:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="steps:2;75:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="step:3;76:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cmd:3;77:18">In the REPL, run the query with the <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:4;77:62">text</codeph>
+            flag to see all results.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="info:2;79:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeblock:2;80:47">&gt; query //h2 text
+Result: ['Prerequisites', 'Deploy the app', 'Clean up resources']</codeblock>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="step:4;84:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cmd:4;85:18">Narrow the XPath to target the specific element you want
+            by position.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="info:3;87:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeblock:3;88:47"># Instead of: //h2[last()]/preceding-sibling::h2
+# Use:
+&gt; query //h2[last()-1] text
+Result: ['Deploy the app']</codeblock>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="troubleSolution:3;98:22">
+      <cause id="cause-wrong-flag" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cause:3;99:36">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="title:7;100:16">Cause: Wrong flag for the check type</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="p:4;101:12">Using <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:5;101:26">text</codeph> when you need <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:6;101:62">count</codeph>,
+        or vice versa, causes the comparison to fail because the result is
+        not in the expected form.</p>
+      </cause>
+      <remedy id="remedy-wrong-flag" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="remedy:3;105:38">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="title:8;106:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="steps:3;107:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="step:5;108:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cmd:5;109:18">Review the flags reference to confirm you are using the
+            correct flag for your check.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="info:4;111:19">
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="p:5;112:18">The <xref href="../rule-creator-guide/reference/r_flags.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="xref:1;112:80">flags reference</xref>
+              lists all flags with descriptions and examples.</p>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="step:6;116:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cmd:6;117:18">In the REPL, compare the output of different flags on the
+            same XPath to see which form matches your expected value.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="info:5;119:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeblock:4;120:47">&gt; query /html/body/h1 count
+Result: 1
+
+&gt; query /html/body/h1 text
+Result: ['How to deploy the app']</codeblock>
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="p:6;125:18">Use <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:7;125:30">count</codeph> when comparing to a number, and
+              <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:8;126:23">text</codeph> when comparing to a string.</p>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+    <troubleSolution class="- topic/bodydiv troubleshooting/troubleSolution " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="troubleSolution:4;133:22">
+      <cause id="cause-inverted-workflow" class="- topic/section troubleshooting/cause " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cause:4;134:43">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="title:9;135:16">Cause: Inverted workflow branch logic</title>
+        <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="p:7;136:12">A workflow intended to express absence uses a branch pattern that
+        is inverted — it passes when the content is wrong and fails when the
+        content is correct.</p>
+      </cause>
+      <remedy id="remedy-inverted-workflow" class="- topic/section troubleshooting/remedy " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="remedy:4;140:45">
+        <title class="- topic/title " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="title:10;141:16">Resolution</title>
+        <steps class="- topic/ol task/steps " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="steps:4;142:16">
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="step:7;143:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cmd:7;144:18">Run validation with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:9;144:46">--verbose</codeph> to trace the
+            workflow step-by-step.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="info:6;146:19">
+              <codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeblock:5;147:47">md-validate --verbose validate docs/article.md --rules rules/tutorial.json</codeblock>
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="p:8;148:18">The verbose output shows which branch (True or False) the
+              decision node follows for each workflow step.</p>
+            </info>
+          </step>
+          <step class="- topic/li task/step " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="step:8;152:17">
+            <cmd class="- topic/ph task/cmd " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="cmd:8;153:18">Read the decision point output carefully and verify your
+            branch routing.</cmd>
+            <info class="- topic/itemgroup task/info " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="info:7;155:19">
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="p:9;156:18">The True branch runs when the precondition rule
+              <i class="+ topic/ph hi-d/i " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="i:2;157:18">passes</i>. If your workflow uses <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:10;157:60">F-sentinel</codeph>
+              for the False branch, confirm the sentinel rule passes on valid
+              documents by testing it in the REPL with <codeph class="+ topic/ph pr-d/codeph " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="codeph:11;159:64">eval</codeph>.</p>
+              <p class="- topic/p " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="p:10;160:18"><xref href="../rule-creator-guide/concepts/c_rule-design-patterns.dita" class="- topic/xref " xtrf="file:/Volumes/Matt_files/Git/mb/markdown-validator/docs-user/troubleshooting/ts_rule-never-passes.dita" xtrc="xref:2;160:90">Rule design patterns</xref>
+              covers the absence-check pattern and the known fragility of
+              workflow inversion.</p>
+            </info>
+          </step>
+        </steps>
+      </remedy>
+    </troubleSolution>
+
+  </troublebody>
+</troubleshooting>

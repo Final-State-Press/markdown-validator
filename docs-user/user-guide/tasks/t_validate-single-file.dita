@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<!--
+  SEO keyword phrase: validate Markdown file command line md-validate
+  Audience: user
+-->
+<task id="t_validate-single-file">
+  <title>Validate a Markdown file from the command line</title>
+
+  <shortdesc>Run <codeph>md-validate validate</codeph> against a single Markdown
+  file to check it against your team's rule set. The output shows which rules
+  passed, which failed, and what you need to change.</shortdesc>
+
+  <prolog>
+    <metadata>
+      <keywords>
+        <keyword>validate markdown file</keyword>
+        <keyword>md-validate validate</keyword>
+        <keyword>command line validation</keyword>
+        <keyword>check documentation article</keyword>
+      </keywords>
+      <othermeta name="description"
+        content="Run markdown-validator against a single Markdown file and review the pass/fail report to identify and fix validation failures."/>
+    </metadata>
+  </prolog>
+
+  <taskbody>
+
+    <prereq id="prereq">
+      <ul>
+        <li>markdown-validator is installed and the virtual environment is
+        active. See <xref href="t_install.dita"/>.</li>
+        <li>You have the path to your team's rule set file. If you are unsure,
+        ask your content lead. The rule set is typically stored in the
+        documentation repository under a folder named <filepath>rules/</filepath>.</li>
+      </ul>
+    </prereq>
+
+    <context id="context">
+      <p>Validating your article locally before opening a pull request lets you
+      catch and fix problems before the CI pipeline sees them. Fix all Required
+      failures before you push; you can choose whether to address Suggested
+      failures.</p>
+    </context>
+
+    <steps>
+
+      <step id="step-navigate">
+        <cmd>Open a terminal and navigate to your documentation repository.</cmd>
+        <info>
+          <codeblock xml:space="preserve">cd path/to/your/docs-repo</codeblock>
+        </info>
+      </step>
+
+      <step id="step-activate">
+        <cmd>Activate the virtual environment.</cmd>
+        <info>
+          <p>On macOS or Linux:</p>
+          <codeblock xml:space="preserve">source .venv/bin/activate</codeblock>
+          <p>On Windows (PowerShell):</p>
+          <codeblock xml:space="preserve">.venv\Scripts\Activate.ps1</codeblock>
+        </info>
+      </step>
+
+      <step id="step-run">
+        <cmd>Run the validate command with the path to your file and your
+        team's rule set.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/my-article.md --rules rules/tutorial.json</codeblock>
+          <p>Replace <codeph>docs/my-article.md</codeph> with the path to your
+          file and <codeph>rules/tutorial.json</codeph> with the path to your
+          team's rule set.</p>
+        </info>
+        <stepresult>The tool prints a validation report to the terminal.</stepresult>
+      </step>
+
+      <step id="step-review">
+        <cmd>Review the output and identify any failed rules.</cmd>
+        <info>
+          <p>A passing report looks like this:</p>
+          <codeblock xml:space="preserve">  ✓  [1]  topic-must-be-tutorial
+  ✓  [2]  must-have-h1
+  ✓  [3]  description-must-exist
+
+Score: 3/3   PASSED</codeblock>
+
+          <p>A report with failures looks like this:</p>
+          <codeblock xml:space="preserve">  ✓  [1]  topic-must-be-tutorial
+  ✗  [2]  must-have-h1
+           → The document must have exactly one H1 heading.
+  ✓  [3]  description-must-exist
+
+Score: 2/3   FAILED</codeblock>
+
+          <p>Rules marked with <codeph>✗</codeph> failed. The arrow
+          (<codeph>→</codeph>) shows the mitigation message — a plain-English
+          description of what to fix.</p>
+        </info>
+      </step>
+
+      <step id="step-fix" importance="optional">
+        <cmd>Fix the failures identified in the report.</cmd>
+        <info>
+          <p>Open your Markdown file in your editor and address each failing rule
+          using the mitigation message as your guide. For detailed guidance on
+          interpreting and acting on a report, see
+          <xref href="t_read-validation-report.dita">Read the validation report</xref>.</p>
+        </info>
+      </step>
+
+      <step id="step-rerun" importance="optional">
+        <cmd>Re-run the validate command to confirm all failures are resolved.</cmd>
+        <info>
+          <codeblock xml:space="preserve">md-validate validate docs/my-article.md --rules rules/tutorial.json</codeblock>
+        </info>
+        <stepresult>The score and PASSED/FAILED status reflect your changes.</stepresult>
+      </step>
+
+    </steps>
+
+    <result id="result">
+      <p>Your file either passes all Required rules (score shows PASSED) or
+      shows the remaining failures to fix.</p>
+    </result>
+
+    <postreq id="postreq">
+      <ul>
+        <li>To understand what each part of the report means and how to fix
+        specific failure types, see
+        <xref href="t_read-validation-report.dita">Read the validation report</xref>.</li>
+        <li>To validate an entire folder of files at once, see
+        <xref href="t_validate-directory.dita">Validate a directory</xref>.</li>
+      </ul>
+    </postreq>
+
+  </taskbody>
+</task>
